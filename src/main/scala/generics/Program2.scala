@@ -45,7 +45,6 @@ class TestProb2 extends App {
   val azx:B[Z] = ax
   val azy:B[Z] = ayx
 
-  val l  = 1 :: Nil
 }
 
 trait X
