@@ -1,12 +1,21 @@
 class X(val name:String)
 only getter is generated for above class
 class X(private name:String)
-no getter now but we can access it from a public method inside of class
+only getter generated and is private so we can access fields by public methods inside of class
 
 class X(var name:String)
 both getter and setter are generated
 class X(private var name:String)
-no getter and setter generated but can be accessed by public methods inside of class
+getter and setter generated are private so we can access fields by public methods inside of class
 
 class X(name:String)
 no getter or setter generated at all but can be accessed from a public method from a class.
+
+case class Person(name: String)
+Case class constructor parameters are val by default
+
+However its possible:-
+case class x(var name:String) // var here but make no sense as case class are intended to be val for functional approaches
+val d = x("abc")
+d.name
+d.name = "Abc"
