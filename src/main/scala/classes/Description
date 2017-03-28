@@ -1,0 +1,12 @@
+class X(val name:String)
+only getter is generated for above class
+class X(private name:String)
+no getter now but we can access it from a public method inside of class
+
+class X(var name:String)
+both getter and setter are generated
+class X(private var name:String)
+no getter and setter generated but can be accessed by public methods inside of class
+
+class X(name:String)
+no getter or setter generated at all but can be accessed from a public method from a class.
