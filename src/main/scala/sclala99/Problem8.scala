@@ -33,4 +33,6 @@ object P8 extends App {
   println("list after removing consecutive dup. = " + removeConsecutiveDuplicates(l))
   println("using folding left = " + foldingLeft.reverse)
   println("using folding right = " + foldingRight(l))
+
+
 }

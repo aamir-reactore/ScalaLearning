@@ -18,14 +18,22 @@ object Problem9 extends App {
     def subList[T](l: List[T], tempList: List[List[T]]):List[List[Any]] = l match {
       case Nil => tempList
       case h :: _ => {
-        val (same, _)  = l.span(_ == h)
+        val (same, _)  = l.span( h==)
         subList(l.filterNot(_ == h),  same :: tempList)
       }
     }
     subList(l, List[List[T]]())
   }
 
+  def f1[T]: List[T] => List[List[T]] = {
+    case Nil => Nil
+    case h :: t =>
+      val (a, b) = t.span(h == _)
+      (h :: a) :: f1(b)
+  }
   println(s"sublisting duplicates = ${subListDuplicates(l)}")
-  println(s"sublisting duplicates = ${usingSpan(l)}")
+  println(s"sublisting duplicates = ${f1(l)}")
+
+
 
 }
