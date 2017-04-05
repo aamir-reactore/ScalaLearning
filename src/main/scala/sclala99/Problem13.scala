@@ -8,7 +8,7 @@ object P13 extends App {
        def runEncoding[T](l:List[T], tempList:List[(Int, Any)]):List[(Int, Any)]= l match {
          case Nil => tempList.reverse
          case h :: _ => {
-           val (group, list) = l.span(_ == h)
+           val (group, list) = l.span(h == )
            val x = (group.length, group.head) :: tempList
            runEncoding(list, x)
          }
