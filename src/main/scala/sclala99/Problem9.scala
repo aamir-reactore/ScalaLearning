@@ -1,7 +1,7 @@
 package sclala99
 
 //Pack consecutive duplicates of list elements into sublists.
-object Problem9 extends App {
+object P9 extends App {
 
 
   val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
@@ -25,6 +25,8 @@ object Problem9 extends App {
     subList(l, List[List[T]]())
   }
 
+
+//Todo reason about
   def f1[T]: List[T] => List[List[T]] = {
     case Nil => Nil
     case h :: t =>
