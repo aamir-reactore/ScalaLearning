@@ -19,4 +19,14 @@ object P16 extends App {
   }
   println(s"remove elements at = ${usingZip(l, 3)}")
   println(s"remove elements at = ${tailRecursive(l, 3)}")
+
+  def f4[T](n: Int, list: List[T]): List[T] = {
+    val cycle = Stream.iterate(1) { it =>
+      print(it + ">>");
+      if (it < n) { println("if");it + 1 }else {println("else");1 }
+    }
+    println(cycle.take(4).mkString)
+    list.zip(cycle).filter(_._2 < n).map(_._1)
+  }
+  println(f4(2,l))
 }
