@@ -1,5 +1,13 @@
-List(6,1,2,3,4).partition(x => x % 2 == 0)
-List(6,1,2,3,4).span(x => x % 2 == 0)
+package collections.zipping.stack
+
+object P1 extends App {
+  val stk: Cons[Int] = Cons(1, Cons(2,Empty))
+
+  stk.head
+  stk.tail
+
+  stk.cons(10)
+}
 
 trait Stack[+T] {
   def isEmpty: Boolean
@@ -24,10 +32,4 @@ case class Cons[+T](hd: T, tl: CList[T]) extends CList[T] {
   def tail: CList[T] = tl
 }
 
-val stk: Cons[Int] = Cons(1, Cons(2,Empty))
-
-stk.head
-stk.tail
-
-stk.cons(10)
 
