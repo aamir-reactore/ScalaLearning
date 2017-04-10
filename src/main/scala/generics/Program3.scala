@@ -21,7 +21,7 @@ object Test extends App {
 
   type myType = Map[Int, String]
 
-  def x(abc:Int) = Map(1 -> "abc")
+  def x(abc:Int):myType = Map(1 -> "abc")
 
   trait Base {
     type T
