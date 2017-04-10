@@ -1,33 +1,25 @@
-List(6,1,2,3,4).partition(x => x % 2 == 0)
-List(6,1,2,3,4).span(x => x % 2 == 0)
+List(6, 1, 2, 3, 4).partition(x => x % 2 == 0)
+List(6, 1, 2, 3, 4).span(x => x % 2 == 0)
 
-trait Stack[+T] {
-  def isEmpty: Boolean
-  def cons[U >: T](t: U): Stack[U]
-  def head: T
-  def tail: Stack[T]
+val l = List(1, 2, 3, 4, 5, 6,7,8,9)
+
+def remoteIndexElement(list: List[Int], index: Int) = {
+
+  def remove(curlList: List[Int], n: Int): List[Int] = {
+    if (n > list.length) {
+      curlList
+    } else {
+      remove(list(n - 1) :: curlList, n + n)
+    }
+  }
+
+  remove(Nil, index)
 }
+remoteIndexElement(l, 4)
 
-sealed abstract class CList[+T] extends Stack[T] {
-  def cons[U >: T](t: U): CList[U] = Cons(t, this)
+def usingZip(l:List[Int], index:Int) = {
+  l.zipWithIndex.filterNot { x =>
+    (x._2 + 1) % index == 0
+  }.map(_._1)
 }
-
-case object Empty extends CList[Nothing] {
-  def isEmpty: Boolean = true
-  def head: Nothing = throw new NoSuchElementException()
-  def tail: Nothing = throw new NoSuchElementException()
-}
-
-case class Cons[+T](hd: T, tl: CList[T]) extends CList[T] {
-  def isEmpty: Boolean = false
-  def head: T = hd
-  def tail: CList[T] = tl
-}
-
-val stk: Cons[Int] = Cons(1, Cons(2,Empty))
-
-stk.head
-stk.tail
-
-stk.cons(10)
-
+usingZip(l, 4)
