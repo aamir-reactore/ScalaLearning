@@ -4,13 +4,13 @@ object P17 extends App {
 
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
 
-  def usingSplitFunction[T](list:List[T], n:Int): (List[T], List[T]) = {
+  def usingSplitFunction[T](list:List[T], n:Int): (List[T], List[T]) =
      list.splitAt(n)
-  }
 
-  def usingTakeDrop[T](list: List[T], n:Int): (List[T], List[T]) = {
+
+  def usingTakeDrop[T](list: List[T], n:Int): (List[T], List[T]) =
     (list.take(n),list.drop(n))
-  }
+
 
   def usingTailRecursion[T](list:List[T], n:Int): (List[T], List[T]) = {
      def recursive[T](l:List[T], resList:List[T], n: Int):(List[T], List[T]) = (n,l) match {
