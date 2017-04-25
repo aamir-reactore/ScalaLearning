@@ -14,6 +14,6 @@ object P1 extends App {
   println("last element of list recursive is = " + recursiveLast[Int](l))
 
   def reduceMethod[T](list:List[T]):T = if(list.nonEmpty) list.reduce((_,b) => b) else throw new NoSuchElementException("List is empty")
-  println("last element of list folding is = " + recursiveLast[Int](l))
+  println("last element of list folding is = " + reduceMethod[Int](l))
 
 }

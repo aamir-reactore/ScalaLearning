@@ -16,10 +16,10 @@ object P9 extends App {
 
   def usingSpan[T](l: List[T]) = {
     def subList[T](l: List[T], tempList: List[List[T]]):List[List[Any]] = l match {
-      case Nil => tempList
-      case h :: _ => {
-        val (same, _)  = l.span( h==)
-        subList(l.filterNot(_ == h),  same :: tempList)
+      case Nil => tempList.reverse
+      case h :: tail => {
+        val (same, rest)  = tail.span(h==)
+        subList(rest,  (h :: same) :: tempList)
       }
     }
     subList(l, List[List[T]]())
@@ -34,6 +34,7 @@ object P9 extends App {
       (h :: a) :: f1(b)
   }
   println(s"sublisting duplicates = ${subListDuplicates(l)}")
+  println(s"usingSpan  duplicates = ${usingSpan(l)}")
   println(s"sublisting duplicates = ${f1(l)}")
 
 

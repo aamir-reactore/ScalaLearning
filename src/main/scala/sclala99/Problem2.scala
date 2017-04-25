@@ -14,5 +14,4 @@ object P2 extends App {
   }
 
   println("penultimate element of list using tail rec. is = " + recursivePenultimate(l))
-  println("penultimate element of list is = ")
 }

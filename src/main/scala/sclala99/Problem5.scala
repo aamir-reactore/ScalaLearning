@@ -11,7 +11,7 @@ object P5 extends App {
     }
     reverse(l,Nil)
   }
-  def foldReverse[T](l:List[T]) = l.foldLeft(List[T]())((a, b) => b :: a)
+  def foldReverse[T](l:List[T]) = l.foldLeft(List[T]())((acc, b) => b :: acc)
 
   println("reversed elements of a list = " + recursiveReverse(l))
   println("reversed elements of a list = " + foldReverse(l))

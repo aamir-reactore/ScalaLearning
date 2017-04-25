@@ -1,5 +1,5 @@
 package sclala99
-
+//finding length of a list
 object P4 extends App {
 
   val l = List(1,2,3,4,5,6)
@@ -10,7 +10,6 @@ object P4 extends App {
       case _ :: tail => findLength(acc + 1, tail)
       case Nil => acc
     }
-
     findLength(0, l)
   }
 

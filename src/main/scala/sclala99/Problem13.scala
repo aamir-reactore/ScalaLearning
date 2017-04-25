@@ -2,7 +2,7 @@ package sclala99
 //P10 directly without using utility methods
 object P13 extends App {
 
-    val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
+    val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e', 'f')
 
      def usingSpan[T](l:List[T]) = {
        def runEncoding[T](l:List[T], tempList:List[(Int, Any)]):List[(Int, Any)]= l match {

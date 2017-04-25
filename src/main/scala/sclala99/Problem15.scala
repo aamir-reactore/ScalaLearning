@@ -17,7 +17,7 @@ object P15 extends App {
 
 
   def prepend[T](n:Int, elem:T, accu:List[T]):List[T] =
-    if(n == 0) accu else elem :: prepend(n - 1, elem, accu)
+        if(n == 0) accu else elem :: prepend(n - 1, elem, accu)
 
   println(usingFoldRight(l, n))
 

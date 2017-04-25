@@ -9,7 +9,6 @@ object P8 extends App {
       case Nil => tempList.reverse
       case h :: tail => remove(tail.dropWhile(_ == h), h :: tempList)
     }
-
     remove(l, Nil)
   }
 
@@ -20,19 +19,17 @@ object P8 extends App {
   //using foldRight
   def  foldingRight[T]: List[T] => List[T] = {
     case Nil => Nil
-    case l => l.foldRight(List(l.last)) { (elem, acc) => if (elem == acc.head) acc else elem :: acc
-    }
+    case l => l.foldRight(List(l.last)){(elem, acc) => if (elem == acc.head) acc else elem :: acc}
   }
 
   //using zip hats-off
   def usingZip[T]: List[T] => List[T] = {
     case Nil => Nil
-    case xs@(x :: _) => x :: xs.zip(xs.tail).filter(p => p._1 != p._2).map(_._2)
+    case xs@(x :: tail) => x :: xs.zip(tail).filter(p => p._1 != p._2).map(_._2) // @ = variable binding on pattern matching
   }
 
   println("list after removing consecutive dup. = " + removeConsecutiveDuplicates(l))
   println("using folding left = " + foldingLeft.reverse)
   println("using folding right = " + foldingRight(l))
-
 
 }

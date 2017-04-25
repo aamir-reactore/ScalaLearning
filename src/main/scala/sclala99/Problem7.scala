@@ -10,7 +10,7 @@ object P7 extends App {
   }
 
   println("flatten result = " + flatten(List(List(1, 1), 2, List(3, List(5, 8)))))
-  println(List(List(1, 1), List(2), List(List(3), List(5, 8)).flatten).flatten)
+  println(List(List(1, 1), List(2), List(List(3), List(5, 8)).flatten))
 
   //Todo: understand the code
   abstract sealed class NestedList[T]
@@ -24,9 +24,9 @@ object P7 extends App {
     case Sequence(list) => list.flatMap(f2)
   }
 
-  val list = List[Value[Int]](Value(1), Value(2), Value(3))
+  val list: List[NestedList[Int]] = List[Value[Int]](Value(1), Value(2), Value(3))
 
-   val l = Sequence(list)
+  val l = Sequence(list)
   val res = f2(l)
   println(res)
 

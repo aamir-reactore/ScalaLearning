@@ -22,7 +22,7 @@ object P16 extends App {
 
   def f4[T](n: Int, list: List[T]): List[T] = {
     val cycle = Stream.iterate(1) { it =>
-      if (it < n) { println(s"if $it");it + 1 }else {println(s"else $it");1 }
+      if (it < n) { it + 1 }else {1 }
     }
     list.zip(cycle).filter(_._2 < n).map(_._1)
   }
