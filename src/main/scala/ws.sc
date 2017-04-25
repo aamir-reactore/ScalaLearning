@@ -8,6 +8,7 @@ s.takeWhile(_ < 10).foreach(println)
 val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
 l.splitAt(3)
 
+l.drop(3) ::: l.take(3)
 
 
 
