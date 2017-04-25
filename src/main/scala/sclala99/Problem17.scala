@@ -5,7 +5,7 @@ object P17 extends App {
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
 
   def usingSplitFunction[T](list:List[T], n:Int): (List[T], List[T]) =
-     list.splitAt(n)
+     list.splitAt(n) //1 not 0 based
 
 
   def usingTakeDrop[T](list: List[T], n:Int): (List[T], List[T]) =
@@ -22,6 +22,6 @@ object P17 extends App {
   }
   println(s"splitting using split function = ${usingSplitFunction(l,3)}")
   println(s"splitting using take drop = ${usingTakeDrop(l,3)}")
-  println(s"splitting using tail recursion= ${usingTailRecursion(List(1),3)}")
+  println(s"splitting using tail recursion= ${usingTailRecursion(l,5)}")
 
 }

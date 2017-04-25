@@ -21,8 +21,9 @@ object P16 extends App {
   println(s"remove elements at = ${tailRecursive(l, 3)}")
 
   def f4[T](n: Int, list: List[T]): List[T] = {
-    val cycle = Stream.iterate(1) { it =>
-      if (it < n) { it + 1 }else {1 }
+    //here stream will have a starting value of 1, so it comes as 1 at starting for it i.e (1, now it as 1 and evaluate if else)
+    val cycle: Stream[Int] = Stream.iterate(1) { it =>
+      if (it < n)  it + 1 else  1
     }
     list.zip(cycle).filter(_._2 < n).map(_._1)
   }
