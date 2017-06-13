@@ -2,7 +2,7 @@ package generics
 
 
 object AttemptTest extends App {
-  println(Attempt[Int](11./(0)))
+  println(Attempt[Int](11/(0)))
   val l = 1 :: List[Nothing]()
 }
 

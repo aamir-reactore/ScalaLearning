@@ -5,11 +5,13 @@ List.fill(4)('a')
 val s = Stream.from(4)
 s.takeWhile(_ < 10).foreach(println)
 
-val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
-l.splitAt(3)
 
-l.drop(3) ::: l.take(3)
 
+val str = """yaduscala.math.BigDecimal("0")"""
+val l = str.replace(str.substring(str.indexOf("scala"),str.indexOf("(")).trim,"Double").replace("\"","")
+
+val r = """^(.{5}).*?"(\\d+)".*$""".r
+val b = r.replaceAllIn(str, "Double")
 
 
 
