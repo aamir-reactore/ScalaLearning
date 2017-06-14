@@ -5,7 +5,7 @@ object P15 extends App {
 
   val l = List('a','b','c')
   println("Enter duplication index..")
-  val n = scala.io.StdIn.readInt()
+  val n = 4//StdIn.readInt()
 
   val res1 = l.flatMap{ x => List.fill(n)(x)}
   println(res1)
