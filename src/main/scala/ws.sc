@@ -1,17 +1,12 @@
 List(6, 1, 2, 3, 4).partition(x => x % 2 == 0)
 List(6, 1, 2, 3, 4).span(x => x % 2 == 0)
 
-List.fill(4)('a')
-val s = Stream.from(4)
-s.takeWhile(_ < 10).foreach(println)
+val n = 4
+val l = List('a', 'b', 'c','d','e','f','g')
+val tempList = (l.take(n) ++ l.drop(n+1),l(n))
 
+l.splitAt(2)
 
-
-val str = """yaduscala.math.BigDecimal("0")"""
-val l = str.replace(str.substring(str.indexOf("scala"),str.indexOf("(")).trim,"Double").replace("\"","")
-
-val r = """^(.{5}).*?"(\\d+)".*$""".r
-val b = r.replaceAllIn(str, "Double")
 
 
 
