@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 //Find last element of a list
 object P1 extends App {

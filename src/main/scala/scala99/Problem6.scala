@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 //check if list is palindrome
 object P6 extends App {

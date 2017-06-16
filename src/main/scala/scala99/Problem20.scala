@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 object P20 extends App {
 
@@ -13,7 +13,6 @@ object P20 extends App {
         (acc.reverse ::: t, h)
       }
     }
-
     partitionTuple(list, Nil, index)
   }
 

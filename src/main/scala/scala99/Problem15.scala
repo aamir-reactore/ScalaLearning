@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 import scala.io.StdIn
 

@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 object P16 extends App {
   val l = List(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16)
@@ -25,6 +25,7 @@ object P16 extends App {
     val cycle: Stream[Int] = Stream.iterate(1) { it =>
       if (it < n)  it + 1 else  1
     }
+    println(s"head of stream ${cycle.head}")
     list.zip(cycle).filter(_._2 < n).map(_._1)
   }
   println(f4(3,l))

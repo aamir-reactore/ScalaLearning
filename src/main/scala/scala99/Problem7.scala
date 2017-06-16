@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 object P7 extends App {
 

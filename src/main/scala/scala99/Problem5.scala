@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 //reversing elements of a list
 object P5 extends App {

@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 //finding length of a list
 object P4 extends App {
 

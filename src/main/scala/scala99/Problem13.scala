@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 //P10 directly without using utility methods
 object P13 extends App {
 

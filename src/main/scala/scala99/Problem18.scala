@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 // first index is 0 based and second one is 1 based (kinda like substring)
 object P18 extends App {
@@ -27,14 +27,14 @@ object P18 extends App {
   println(s"slice using fold right method = ${usingFoldRight(l, 3, 7)}")
 
 
-  def f4[T](list: List[T], i: Int, k: Int, acc: List[T] = Nil): List[T] = {
+  def f4[T](list: List[T], i: Int, j: Int, acc: List[T] = Nil): List[T] = {
     list match {
       case Nil => acc.reverse
       case x :: xs =>
         if (i > 0)
-          f4(xs, i - 1, k - 1, acc)
-        else if (k > 0)
-          f4(xs, 0, k - 1, x :: acc)
+          f4(xs, i - 1, j - 1, acc)
+        else if (j > 0)
+          f4(xs, 0, j - 1, x :: acc)
         else acc.reverse
     }
   }

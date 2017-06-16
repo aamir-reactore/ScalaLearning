@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 object P19 extends App {
 
@@ -17,7 +17,15 @@ object P19 extends App {
     }
   }
 
+  def f1[T](list: List[T], n: Int): List[T] = {
+    val l = list.size
+    val i = if (list.nonEmpty) n % l else 0
+    val (a, b) = list.splitAt(if (i < 0) l + i else i)
+    b ::: a
+  }
 
-  println(test(Nil, 100))
+
+  println(test(l, -2))
+  println(f1(l, -3))
   // println(abc(List(1,2,3,4,5,6)))
 }

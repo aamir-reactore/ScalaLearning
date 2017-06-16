@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 // Run-length encoding of a list modified
 object P11 extends App {
 
