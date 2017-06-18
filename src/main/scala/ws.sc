@@ -7,11 +7,13 @@ s.takeWhile(_ < 10).foreach(println)
 
 
 
-val str = """yaduscala.math.BigDecimal("0")"""
-val l = str.replace(str.substring(str.indexOf("scala"),str.indexOf("(")).trim,"Double").replace("\"","")
+val str = """richardcore.util.BigNum("0")"""
+//val l = str.replace(str.substring(str.indexOf("scala"),str.indexOf("(")).trim,"Double").replace("\"","")
 
-val r = """^(.{5}).*?"(\\d+)".*$""".r
-val b = r.replaceAllIn(str, "Double")
+val r = """^(.*?)core.util.BigNum.*?"(\d+)".*$""".r
+val b = r.replaceAllIn(str,"Int")
+
+
 
 
 
