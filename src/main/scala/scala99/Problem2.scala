@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 // print penultimate element of a list
 object P2 extends App {

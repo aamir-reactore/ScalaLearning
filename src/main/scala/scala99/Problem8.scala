@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 object P8 extends App {
 
@@ -13,7 +13,7 @@ object P8 extends App {
   }
 
   //using foldleft
-  val foldingLeft = l.foldLeft(List(l.head)){ (acc, elem) =>
+  val foldingLeft = l.foldLeft(List(l.head)) { (acc, elem) =>
                    if(elem == acc.head)acc  else  elem :: acc
                 }
   //using foldRight
@@ -31,5 +31,6 @@ object P8 extends App {
   println("list after removing consecutive dup. = " + removeConsecutiveDuplicates(l))
   println("using folding left = " + foldingLeft.reverse)
   println("using folding right = " + foldingRight(l))
+  println("using unzip = " + usingZip(l))
 
 }

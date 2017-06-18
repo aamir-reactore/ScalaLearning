@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 // Duplicate the elements of a list.
 object P14 extends App {

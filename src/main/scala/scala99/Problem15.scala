@@ -1,11 +1,13 @@
-package sclala99
+package scala99
+
+import scala.io.StdIn
 
 //duplicate elements of a list by number specified
 object P15 extends App {
 
   val l = List('a','b','c')
   println("Enter duplication index..")
-  val n = 4//StdIn.readInt()
+  val n = StdIn.readInt()
 
   val res1 = l.flatMap{ x => List.fill(n)(x)}
   println(res1)

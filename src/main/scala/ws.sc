@@ -1,20 +1,9 @@
 List(6, 1, 2, 3, 4).partition(x => x % 2 == 0)
 List(6, 1, 2, 3, 4).span(x => x % 2 == 0)
 
-List.fill(4)('a')
-val s = Stream.from(4)
-s.takeWhile(_ < 10).foreach(println)
+List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k').slice(3,7)
+List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k').zip(1 to 7).filter(_._2 > 3).unzip._1
 
-
-
-val str = """richardcore.util.BigNum("0")"""
-//val l = str.replace(str.substring(str.indexOf("scala"),str.indexOf("(")).trim,"Double").replace("\"","")
-
-val r = """^(.*?)core.util.BigNum.*?"(\d+)".*$""".r
-val b = r.replaceAllIn(str,"Int")
-
-
-
-
-
-
+val l = List(1,2,3,4)
+l :+ 5
+List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k').splitAt(9)

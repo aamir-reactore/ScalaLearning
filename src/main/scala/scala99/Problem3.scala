@@ -1,4 +1,4 @@
-package sclala99
+package scala99
 
 //find nth element in a list
 object P3 extends App {
@@ -12,17 +12,5 @@ object P3 extends App {
     case (_, Nil) => throw new NoSuchElementException("list is empty")
   }
 
-  //with one index
-  def recursiveN[T](l: List[T], index: Int): T = {
-    require(index > 0, "index must be greater than 1")
-    l match {
-      case Nil => throw new NoSuchElementException
-      case h :: tail => {
-        if (index == 1) h else recursiveN(tail, index - 1)
-      }
-    }
-  }
-
   println("nth element of list is = " + recursiveNth(4, l))
-  println("nth element of list is = " + recursiveN(l, 0))
 }
