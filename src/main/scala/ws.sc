@@ -7,3 +7,6 @@ List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k').zip(1 to 7).filter(_
 val l = List(1,2,3,4)
 l :+ 5
 List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k').splitAt(9)
+
+
+

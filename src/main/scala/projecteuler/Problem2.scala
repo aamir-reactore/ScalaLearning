@@ -1,6 +1,6 @@
 package projecteuler
 
-object Problem2Sol extends App {
+object FibonacciSeries extends App {
 
   def fibonacci(num1:Long,num2:Long):Stream[Long] = {
     num1 #:: fibonacci(num2, num1 + num2)

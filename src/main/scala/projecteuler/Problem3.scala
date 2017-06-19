@@ -1,6 +1,6 @@
 package projecteuler
 
-object Problem3Sol extends App {
+object PrimeFactors extends App {
   def primeFactors(num:Long):List[Long] = {
     val res = (2L to Math.sqrt(num).toLong).find(num % _ == 0)
     res match {
