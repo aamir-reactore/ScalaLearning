@@ -1,6 +1,6 @@
 package projecteuler
 
-object Problem5Sol extends App {
+object BetweenLimitDivisible extends App {
 
   /**
     * takes lot of time to finish.

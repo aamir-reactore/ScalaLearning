@@ -1,6 +1,6 @@
 package projecteuler
 
-object Problem7Sol extends App {
+object NumberPrimeNumberMax extends App {
 
   def checkPrime(num: Int): Boolean = {
     !(2L to Math.sqrt(num).toInt).exists(num % _ == 0)

@@ -13,13 +13,18 @@ object Problem21Sol extends App {
   def usingTakeDrop[T](list: List[T], n: Int, x: T): List[T] =
     list.take(n) ::: x :: list.drop(n)
 
-  def usingTailRecursion[T](list: List[T], n: Int, x: T, acc: List[T]): List[T] = (n, list) match {
-    case (0, _ :: tail) => acc ::: x :: tail
-    case (n, h :: tail) => usingTailRecursion(tail, n - 1, x, h :: acc)
-    case (_, Nil) => throw new NoSuchElementException("list is empty")
+  def usingTailRecursion[T](list: List[T], n: Int, x: T): List[T] = {
+    def insertElement(list: List[T], n: Int, acc: List[T]): List[T] = (n, list) match {
+      case (0, l) => acc.reverse ::: x :: l
+      case (n, h :: tail) => insertElement(tail, n - 1, h :: acc)
+      case (_, Nil) => throw new NoSuchElementException("list is empty")
+    }
+
+    insertElement(list, n, Nil)
   }
 
   println(s"insert using split          ==>${usingSplit(l, 3, 'z')}")
   println(s"insert using take drop      ==>${usingTakeDrop(l, 3, 'z')}")
-  println(s"insert using tail recursion ==>${usingTakeDrop(l, 3, 'z')}")
+  println(s"insert using tail recursion ==>${usingTailRecursion(l, 3, 'z')}")
+
 }

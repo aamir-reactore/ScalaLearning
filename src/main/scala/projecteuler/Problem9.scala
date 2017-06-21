@@ -3,7 +3,7 @@ package projecteuler
 import scala.collection.SeqView
 import scala.collection.immutable.IndexedSeq
 
-object Problem9Sol extends App {
+object PythNumberLimit extends App {
   val sum = 1000
   val resTrip: SeqView[(Int, Int, Int), Seq[_]] = for (
     x <- (1 to sum / 3).view;

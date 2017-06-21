@@ -1,6 +1,6 @@
 package projecteuler
 
-object Problem8Sol extends App {
+object SlideListSum extends App {
 
  //char.toInt changes to ASCII and char.asDigit changes to actual digit
 

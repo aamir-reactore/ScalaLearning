@@ -1,6 +1,6 @@
 package projecteuler
 
-object Problem11Sol extends App {
+object MaxGridProduct extends App {
 
 
   val arr: Array[Array[Long]] = {

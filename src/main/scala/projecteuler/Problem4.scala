@@ -2,7 +2,7 @@ package projecteuler
 
 import scala.collection.immutable.Seq
 
-object Problem4Sol extends App {
+object CheckPalindromeInRange extends App {
 
   calculatePalindrome
 

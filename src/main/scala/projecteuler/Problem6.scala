@@ -1,6 +1,6 @@
 package projecteuler
 
-object Problem6Sol extends App {
+object SumSquareDiff extends App {
 
   val sum = (1 to 100).sum
   val sumSquare = sum * sum
