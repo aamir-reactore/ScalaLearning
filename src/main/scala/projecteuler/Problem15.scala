@@ -9,7 +9,7 @@ object NumberOfRoutes extends App {
 }
 
 object Factorial {
-  implicit class FactorialInt(val num:Int)  extends AnyVal {
+  implicit class FactorialInt(num:Int) {
     def ! : BigInt = (BigInt(1) to num).product
   }
 }

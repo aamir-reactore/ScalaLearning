@@ -11,7 +11,6 @@ object CollatzSequenceSol extends App {
           collatzTail((3 * num) + 1, acc + 1)
       }
     }
-
     collatzTail(num, 0)
   }
 
