@@ -34,7 +34,6 @@ object HigherOrderFunctionExample3 extends App {
     // here type of sum is (Int => Int) => (Int, Int) => Int
     if (a > b) 0 else f(a) + sum(f)(a + 1, b)
   }
-
   val res: Int = sum(x => x * x * x)(1, 5)
   println(res)
 
@@ -90,7 +89,7 @@ object HigherOrderFunctionExample6 extends App {
   def squareRoot(x:Double):Double= fixedPoint(y => (y + x / y) / 2)(1.0)
 
   def averageDump(f:Double => Double)(x:Double):Double = x + f(x) / 2
-  def squareWithAvergeDump(x:Double) = fixedPoint(averageDump(y => x / y))(1.0)
+  def squareWithAverageDump(x:Double) = fixedPoint(averageDump(y => x / y))(1.0)
 
   println(s"fixed point of a function f(x) = 1 + x / 2 is ${fixedPoint(x => 1 + x / 2)(1.0)}")
   println(s"square root of 2 using fixed point algorithm is is ${squareRoot(2)}")
