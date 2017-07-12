@@ -6,8 +6,6 @@ package martinoderskyvideos
   */
 object NewtonsFormula extends App {
 
-
-
   def squareRoot(num: Double): Double = {
     def abs(num: Double) = if (num < 0) -num else num
 
