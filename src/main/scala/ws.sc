@@ -32,7 +32,7 @@ class D extends B with C {}
 
 object ScalaDiamonProblemTest extends App {
   val d = new D
-  d display
+  println(s">>>>>>>>>${d display}")
 }
 
 
@@ -57,10 +57,6 @@ val obj2 = new Reactore("arif", "bhat")
 
 val obj3 = Reactore("arif", "ahmad", "bhat")
 val obj4 = Reactore("arif", "bhat")
-
-
-
-
 
 
 
