@@ -9,33 +9,6 @@ val obj = new Person
 obj.isInstanceOf[Serializable]
 P.isInstanceOf[Serializable]
 
-
-trait A {
-  def display() {
-    println("From A.display")
-  }
-}
-
-trait B extends A {
-  override def display() {
-    println("From B.display")
-  }
-}
-
-trait C extends A {
-  override def display() {
-    println("From C.display")
-  }
-}
-
-class D extends B with C {}
-
-object ScalaDiamonProblemTest extends App {
-  val d = new D
-  println(s">>>>>>>>>${d display}")
-}
-
-
 class Reactore(fn: String, mn: String, ln: String) {
   def this(fn: String, ln: String) {
     this(fn, "Ahmad", ln)
