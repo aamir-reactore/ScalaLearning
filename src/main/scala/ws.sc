@@ -35,7 +35,7 @@ object ScalaDiamonProblemTest extends App {
   println(s">>>>>>>>>${d display}")
 }
 
-
+/*
 class Reactore(fn: String, mn: String, ln: String) {
   def this(fn: String, ln: String) {
     this(fn, "Ahmad", ln)
@@ -58,7 +58,9 @@ val obj2 = new Reactore("arif", "bhat")
 val obj3 = Reactore("arif", "ahmad", "bhat")
 val obj4 = Reactore("arif", "bhat")
 
-
+val x = null
+val y: String = x
+val z: Int = null //Throws a type mismatch error*/
 
 
 
