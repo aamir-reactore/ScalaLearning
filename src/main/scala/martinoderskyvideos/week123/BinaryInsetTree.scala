@@ -1,4 +1,4 @@
-package martinoderskyvideos
+package martinoderskyvideos.week123
 
 //https://stackoverflow.com/questions/16217304/recursive-set-union-how-does-it-work-really
 object BinaryInsetTree1 extends App {

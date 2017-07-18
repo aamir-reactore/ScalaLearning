@@ -1,4 +1,4 @@
-package martinoderskyvideos
+package martinoderskyvideos.week123
 
 object TailRecursionExample extends App {
 
