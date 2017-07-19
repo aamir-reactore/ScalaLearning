@@ -27,4 +27,8 @@ object List1 extends App {
   }
   println(getElementAtIndex(list,10))
 }
+object List2FunctionObject extends App {
+  def apply[T](x1:T,x2:T) = new Cons[T](x1, new Cons(x2, new Nil[T]()))
+  println(apply[Int](1,2))
+}
 
