@@ -6,7 +6,6 @@ object HigherOrderFunctionExample1 extends App {
     def loop(a: Int, acc: Int): Int = {
       if (a > b) acc else loop(a + 1, f(a) + acc)
     }
-
     loop(a, 0)
   }
 
@@ -20,7 +19,6 @@ object HigherOrderFunctionExample2 extends App {
     def sumF(a: Int, b: Int): Int = {
       if (a > b) 0 else f(a) + sumF(a + 1, b)
     }
-
     sumF
   }
 
