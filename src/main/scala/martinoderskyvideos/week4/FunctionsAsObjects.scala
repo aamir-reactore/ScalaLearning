@@ -28,6 +28,7 @@ object FunctionsAsObjects2 extends App {
   }
   println(anonfun0())
   assert(javaVersion() == anonfun0())
+  println(javaVersion.apply())
 
   val l:List[String] = Nil
   l.::("Abc")
