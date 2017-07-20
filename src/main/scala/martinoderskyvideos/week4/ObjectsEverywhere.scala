@@ -1,6 +1,6 @@
 package martinoderskyvideos.week4
 
-
+//paeno numbers
 object Nats extends App {
 
   abstract class Nat {
@@ -18,6 +18,7 @@ object Nats extends App {
     def -(that: Nat): Nat = throw new Exception("A nat can't be negative")
     override def toString = "0"
   }
+
   class Succ(n: Nat) extends Nat {
     def isZero: Boolean = false
     def predecessor : Nat = n
@@ -25,7 +26,11 @@ object Nats extends App {
     def - (that: Nat): Nat = if(that.isZero) this else n - that.predecessor
     override def toString = n.toString + "+1"
   }
+
   val one = new Succ(Zero)
+   println("one is==> " + one)
+   println("predecessor of one is ===>" + one.predecessor)
+   println("successor is one is === >" + one.successor)
   println("zero plus one => " + (one))
   println("two is ==>" + new Succ(one))
   println("three is ==>" + new Succ(new Succ(one)))
