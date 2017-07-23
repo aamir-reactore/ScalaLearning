@@ -29,8 +29,9 @@ object FunctionsAsObjects2 extends App {
   println(anonfun0())
   assert(javaVersion() == anonfun0())
   println(javaVersion.apply())
+  println(anonfun0.apply())
 
   val l:List[String] = Nil
-  l.::("Abc")
+  l.::("Abc") // ==> "Abc" :: l
 
 }

@@ -1,6 +1,5 @@
-package generics
+package miscellaneous
 
-import scala.collection.immutable.HashSet
 import scala.util.control.NonFatal
 
 object Test extends App {
@@ -24,7 +23,7 @@ object Test extends App {
   def x(abc:Int):myType = Map(1 -> "abc")
 
   /**
-    * For types : https://stackoverflow.com/questions/19492542/understanding-what-type-keyword-does-in-scala
+    * For type :https://stackoverflow.com/questions/19492542/understanding-what-type-keyword-does-in-scala
     */
   trait Base {
     type T
