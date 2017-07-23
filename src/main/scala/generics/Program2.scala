@@ -7,13 +7,13 @@ object TestProb1 extends App {
   //type constraints
   class D[T <: B] // T must be a B. i.e. for any T, it is a B or a subclass of B.
 
-  new D[B]()
+  new D[B]() //(upper bound)
   new D[C]()
   //new D[A]() CTE (type arguments [generics.A] do not conform to class D's type parameter bounds [T <: generics.B]
 
   class E[T >: B] // T superclass of B or B must be a T. i.e. for any T, B must also be that same type.
 
-  new E[B]()
+  new E[B]() //(lower bound)
   new E[A]()
 
   //new E[C]() same error as above
@@ -22,7 +22,7 @@ object TestProb1 extends App {
 trait X
 trait Y extends X
 trait Z extends Y
-
+//variance annotations.(by default invariant)
 class TestProb2 extends App {
 
   //covariance

@@ -5,7 +5,7 @@ package Sorting;
  */
 public class MergeSort {
     public static void main(String[] args) throws InterruptedException {
-        int[] array = {4, 3, 1, 7, 6, 5};
+        int[] array = {6, 5, 4, 3, 1, 2};
         mergeSort(array, 0, 5);
         for(int i=0;i<array.length;i++)
             System.out.print(array[i] + " ");

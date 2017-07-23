@@ -13,7 +13,7 @@ object Test extends App {
   def loop = throw new Exception("aa")
   def nullIfFailed[T >: Null](expr: => T): T =
     try expr catch {
-      case NonFatal(_) => null
+      case NonFatal(_) => println("something bad");null
     }
 
   nullIfFailed(loop)
@@ -23,6 +23,9 @@ object Test extends App {
 
   def x(abc:Int):myType = Map(1 -> "abc")
 
+  /**
+    * For types : https://stackoverflow.com/questions/19492542/understanding-what-type-keyword-does-in-scala
+    */
   trait Base {
     type T
 
