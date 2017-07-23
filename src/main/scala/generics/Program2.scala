@@ -1,5 +1,7 @@
 package generics
-
+class A
+class B extends A
+class C extends B
 object TestProb1 extends App {
 
   //type constraints
@@ -17,28 +19,28 @@ object TestProb1 extends App {
   //new E[C]() same error as above
 }
 
-class A
-class B extends A
-class C extends B
+trait X
+trait Y extends X
+trait Z extends Y
 
 class TestProb2 extends App {
 
   //covariance
-  class A[+T]
-  val az:A[Z] = new A[Z]()
+  class LL[+T]
+  val z:LL[Z] = new LL[Z]()
 
   //we can assign any A[T] to A[Y] as long as T <: Y. i.e if T is an Y, then any A[T] is an A[Y]
-  val ayz:A[Y] = az
+  val y:LL[Y] = z
 
   // we can assign any A[T] to A[X] as long as T <: X.
-  val axy:A[X] = ayz
-  val axz:A[X] = az
+  val x1:LL[X] = y
+  val x2:LL[X] = z
 
   //contravariance
 
   class B[-T]
 
-  val ax:B[X] = new B[X]()
+  val ax:B[Y] = new B[Y]()
   //we can assign any B[T] to B[Y] as long as T >: Y. i.e if Y is a T, then B[Y] is an B[T]
   val ayx:B[Y] = ax
   //we can assign any A[T] to A[Z} as long as T >: Z. i.e if Z is a T , then B[Z] is an B[T]
@@ -47,6 +49,3 @@ class TestProb2 extends App {
 
 }
 
-trait X
-trait Y extends X
-trait Z extends Y
