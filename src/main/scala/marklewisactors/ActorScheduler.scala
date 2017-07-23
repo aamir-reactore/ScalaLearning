@@ -13,7 +13,6 @@ object ActorSchedulerExample1 extends App {
         println(num)
         num +=1
     }
-
     def foo: Unit = println("Normal Method")
   }
 

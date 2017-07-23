@@ -3,7 +3,7 @@ package marklewisactors
 import akka.actor.SupervisorStrategy.{Restart, Resume, Stop}
 import akka.actor.{Actor, ActorSystem, OneForOneStrategy, Props}
 
-object ActorSupervision1 extends App {
+object ActorSupervision11 extends App {
 
   case object CreateChild
 

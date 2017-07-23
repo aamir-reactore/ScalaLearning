@@ -1,4 +1,4 @@
-package martinoderskyvideos
+package martinoderskyvideos.week123
 
 object HigherOrderFunctionExample1 extends App {
 
@@ -87,12 +87,11 @@ object HigherOrderFunctionExample6 extends App {
   }
 
   def squareRoot(x:Double):Double= fixedPoint(y => (y + x / y) / 2)(1.0)
-
   def averageDump(f:Double => Double)(x:Double):Double = x + f(x) / 2
   def squareWithAverageDump(x:Double) = fixedPoint(averageDump(y => x / y))(1.0)
 
   println(s"fixed point of a function f(x) = 1 + x / 2 is ${fixedPoint(x => 1 + x / 2)(1.0)}")
   println(s"square root of 2 using fixed point algorithm is is ${squareRoot(2)}")
-  println(s"square root of 2 using fixed point algorithm with averageDump function is is ${squareRoot(2)}")
+  println(s"square root of 2 using fixed point algorithm with averageDump function is is ${squareWithAverageDump(2)}")
 
 }
