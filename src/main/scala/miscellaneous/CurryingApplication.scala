@@ -59,9 +59,10 @@ object CurryingApplication4 extends App {
 
 object CurryingApplication5 extends App {
 
-  def sum(x:Int)(y:Int) = x+ y
+  def sum(x:Int)(y:Int): Int = x+ y
   val res: (Int) => (Int) => Int = sum
    println(res(2)(4))
   val f: (Int, Int) => Int = Function.uncurried(res)
   println(f(2,3))
+
 }

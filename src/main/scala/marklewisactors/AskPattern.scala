@@ -83,17 +83,16 @@ object AsKpattern3 extends App {
   actor1 ! AskNameOf(actor2)
 }*/
 
-object AsKpattern4 extends App {
+object AskPattern4 extends App {
 
   case object AskName
-
   case class NameResponse(name: String)
-
   case class AskNameOf(actorRef: ActorRef)
 
   class AskActor(val name: String) extends Actor {
     //we can define ExecutionContext for the current system
     implicit val ec = context.system.dispatcher
+
     override def receive = {
       case AskName => sender ! NameResponse(name)
       case AskNameOf(other) =>

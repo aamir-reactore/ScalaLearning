@@ -43,7 +43,7 @@ object ActorSupervision1 extends App {
 
     override def postStop(): Unit = {
       super.postStop()
-      println("From PreStop")
+      println("From postStop")
     }
 
     override def preRestart(reason: Throwable, message: Option[Any]): Unit = {

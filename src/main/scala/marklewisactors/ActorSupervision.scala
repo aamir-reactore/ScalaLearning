@@ -6,13 +6,9 @@ import akka.actor.{Actor, ActorSystem, OneForOneStrategy, Props}
 object ActorSupervision11 extends App {
 
   case object CreateChild
-
   case class SignalChildren(order: Int)
-
   case class PrintSignal(order: Int)
-
   case class DivideByZero(n: Int, d: Int)
-
   case object BadStuff
 
   class ParentActor extends Actor {
