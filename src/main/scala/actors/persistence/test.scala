@@ -30,7 +30,7 @@ class DemoPersistentActor extends PersistentActor {
       println(s"offered state = $snapshot")
       state = snapshot
     }
-    case _ => println("came here 777777777777777777777")
+    case x:RecoveryCompleted => println("came here 777777777777777777777" + x)
   }
 
   val receiveCommand: Receive = {
