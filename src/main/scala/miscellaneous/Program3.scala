@@ -37,3 +37,10 @@ object Test extends App {
     def method: T = 42
   }
 }
+object llcoolj extends App {
+  trait A2 {  def string = "" }
+  trait B2 extends A2 { override def string = "B String" + super.string }
+  trait C2 extends B2 { override def string = "C String" + super.string }
+  class MultipleMixinM2 extends B2 with C2
+  println(new MultipleMixinM2().string)
+}

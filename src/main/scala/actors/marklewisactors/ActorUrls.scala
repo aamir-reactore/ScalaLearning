@@ -1,4 +1,4 @@
-package marklewisactors
+package actors.marklewisactors
 
 import akka.actor.{Actor, ActorRef, ActorSelection, ActorSystem, Props}
 
@@ -84,7 +84,7 @@ object ActorUrls2 extends App {
 
 /**
   * If ur working inside the same ActorSystem then we can leave off
-  * protocol and actorSystem from actorUrl
+  * protocol and actorSystem from actorUrl(actorPath)
   */
 object ActorUrls3 extends App {
 
