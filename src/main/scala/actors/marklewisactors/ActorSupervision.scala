@@ -1,6 +1,6 @@
-package marklewisactors
+package actors.marklewisactors
 
-import akka.actor.SupervisorStrategy.{Restart, Resume, Stop}
+import akka.actor.SupervisorStrategy.{Restart, Resume}
 import akka.actor.{Actor, ActorSystem, OneForOneStrategy, Props}
 
 object ActorSupervision11 extends App {

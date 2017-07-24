@@ -1,4 +1,4 @@
-package marklewisactors
+package actors.marklewisactors
 
 import akka.actor.{Actor, ActorRef, ActorSelection, ActorSystem, Props}
 
