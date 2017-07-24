@@ -19,7 +19,9 @@ class DemoPersistentActor extends PersistentActor {
   //note : This is  mutable
   var state = ExampleState()
 
-  def updateState(event: Evt): Unit = state = state.updated(event)
+  def updateState(event: Evt): Unit ={
+    state = state.updated(event)
+  }
 
   def numEvents = state.size
 
@@ -30,14 +32,14 @@ class DemoPersistentActor extends PersistentActor {
       println(s"offered state = $snapshot")
       state = snapshot
     }
-    case x:RecoveryCompleted => println("came here 777777777777777777777" + x)
+    case x:RecoveryCompleted => println(x)
   }
 
   val receiveCommand: Receive = {
     case Cmd(data) =>
       persist(Evt(s"$data-${numEvents + 1}")) { event =>
         updateState(event)
-        context.system.eventStream.publish(event)
+       context.system.eventStream.publish(event)
       }
     case "snap" => saveSnapshot(state)
     case SaveSnapshotSuccess(metadata) =>
@@ -65,15 +67,15 @@ object pertest1 extends App {
 
   val persistentActor = system.actorOf(Props(classOf[DemoPersistentActor]), "demo-persistent-actor-1")
 
-  persistentActor ! "print"
-  persistentActor ! Cmd("foo")
-  persistentActor ! "snap"
+ // persistentActor ! "print"
+  // persistentActor ! Cmd("foo")
+ // persistentActor ! "snap"
 
-  //  persistentActor ! Cmd("baz")
+    // persistentActor ! Cmd("baz")
   //    persistentActor ! "boom"
   //    persistentActor ! Cmd("bar")
   //    persistentActor ! Cmd("buzz")
-  //    persistentActor ! "print"
+     persistentActor ! "print"
 
 
   Thread.sleep(1000)
