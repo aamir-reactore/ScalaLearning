@@ -2,7 +2,7 @@ package generics
 class A
 class B extends A
 class C extends B
-object TestProb1 extends App {
+  object TestProb1 extends App {
 
   //type constraints
   class D[T <: B] // T must be a B. i.e. for any T, it is a B or a subclass of B.
