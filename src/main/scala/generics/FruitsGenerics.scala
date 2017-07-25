@@ -32,16 +32,25 @@ object FruitGenericsTest1 extends App {
   }
 }*/
 
-class Box[+F <: Fruit](aFruit: F) {
-  def fruit:F = aFruit
+abstract class Box[+F <: Fruit] {
+  def fruit:F
+  def replace(replacement: F)
   def contains(aFruit:Fruit) = fruit.name == aFruit.name
 }
-object FruitGenericsTest2 extends App {
-  val appleBox: Box[Apple] = new Box[Apple](new Apple)
-  val orangeBox: Box[Orange] = new Box[Orange](new Orange)
+class OrangeBox(orange: Orange) extends Box[Orange] {
+  def fruit:Orange = orange
+}
 
-  // Illegal: Box[Apple] is no subtype of Box[Fruit].
-  var box: Box[Fruit] = new Box[Apple](new Apple)
+class AppleBox(apple: Apple) extends Box[Apple] {
+  def fruit:Apple = apple
+}
+
+object FruitGenericsTest2 extends App {
+
+  var fruitBox: Box[Fruit] = new AppleBox(new Apple)
+
+  var fruit: Fruit = fruitBox.fruit
+  println(fruit.name)
 }
 
 /*
@@ -69,6 +78,6 @@ object FruitContravariant extends App {
 
     def fruit: Apple = apple
     // more generic class Fruit instead of Apple: would be type safe, but isn't allowed.
-    override def contains(aFruit: Fruit) = fruit.name.equals(aFruit.name)
+    //override def contains(aFruit: Fruit) = fruit.name.equals(aFruit.name)
   }
 }
