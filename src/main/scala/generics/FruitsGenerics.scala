@@ -57,3 +57,18 @@ object FruitGenericsTest3 extends App {
   var box: Box2[Apple] = new Box2[Fruit](new Apple)
 }
 */
+object FruitContravariant extends App {
+  abstract class Box {
+
+    def fruit: Fruit
+
+    def contains(apple: Apple) = fruit.name.equals(apple.name)
+  }
+
+  class AppleBox(apple: Apple) extends Box {
+
+    def fruit: Apple = apple
+    // more generic class Fruit instead of Apple: would be type safe, but isn't allowed.
+    override def contains(aFruit: Fruit) = fruit.name.equals(aFruit.name)
+  }
+}
