@@ -1,4 +1,8 @@
 package generics
+
+/**
+  * https://stackoverflow.com/questions/30365846/why-are-input-parameters-contravariant-in-methods
+  */
 class A
 class B extends A
 class C extends B

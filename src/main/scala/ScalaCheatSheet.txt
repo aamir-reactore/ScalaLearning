@@ -1,0 +1,1 @@
+http://mbonaci.github.io/scala/#433---checking-variance-annotations

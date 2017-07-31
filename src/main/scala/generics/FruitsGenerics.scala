@@ -34,15 +34,19 @@ object FruitGenericsTest1 extends App {
 
 abstract class Box[+F <: Fruit] {
   def fruit:F
-  def replace(replacement: F)
+  def replace[U >: F](replacement: U)
   def contains(aFruit:Fruit) = fruit.name == aFruit.name
 }
 class OrangeBox(orange: Orange) extends Box[Orange] {
   def fruit:Orange = orange
+
+  override def replace[U >: Orange](replacement: U): Unit = ???
 }
 
 class AppleBox(apple: Apple) extends Box[Apple] {
   def fruit:Apple = apple
+
+  override def replace[U >: Apple](replacement: U): Unit = ???
 }
 
 object FruitGenericsTest2 extends App {
@@ -80,4 +84,12 @@ object FruitContravariant extends App {
     // more generic class Fruit instead of Apple: would be type safe, but isn't allowed.
     //override def contains(aFruit: Fruit) = fruit.name.equals(aFruit.name)
   }
+}
+
+abstract class Boxz[+A] {
+  def foo[B >: A](b: B) // way to use covariant in method argument
+}
+
+abstract class Boxy[-A] {
+  def foo[B <: A](): B //way to use contravariant in method return type
 }
