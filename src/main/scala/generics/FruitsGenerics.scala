@@ -91,5 +91,5 @@ abstract class Boxz[+A] {
 }
 
 abstract class Boxy[-A] {
-  def foo[B <: A](): B //way to use contravariant in method return type
+  def foo[A](): A//way to use contravariant in method return type
 }
