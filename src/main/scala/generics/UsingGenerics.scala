@@ -7,12 +7,12 @@ abstract class Type [-T]{
   def typeName : Unit
 }
 
-class SuperType extends Type[AnyVal]{
+class SuperType extends Type[AnyVal] {
   override def typeName: Unit = {
     println("SuperType")
   }
 }
-class SubType extends Type[Int]{
+class SubType extends Type[Int] {
   override def typeName: Unit = {
     println("SubType")
   }

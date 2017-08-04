@@ -7,7 +7,6 @@ trait List[+T] {
   def head: T
   def tail: List[T]
   def prepend[U >: T](elem:U):List[U] = new Cons(elem,this)
-
 }
 
 object Nil extends List[Nothing] {
