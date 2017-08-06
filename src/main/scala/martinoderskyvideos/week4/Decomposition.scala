@@ -49,7 +49,6 @@ class Sum2(e1:Expr2,e2:Expr2) extends Expr2  {
   override def rightOpt: Expr2 = e2
 }
 object Expr2Test extends App {
-
   def eval(e:Expr2): Int = {
       if(e.isInstanceOf[Number2]) e.asInstanceOf[Number2].numValue
       else if(e.isInstanceOf[Sum2]) eval(e.asInstanceOf[Sum2].leftOpt) + eval(e.asInstanceOf[Sum2].rightOpt)

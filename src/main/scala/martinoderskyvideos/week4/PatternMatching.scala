@@ -1,7 +1,11 @@
 package martinoderskyvideos.week4
 
+/**
+  * A case class automatically gets companion object with factory method apply
+  * i.e, case class Number(n:Int) ==> object Number {def apply(n: Int) = new Number(n)}
+  */
 trait Expr
-case class Number(n:Int) extends Expr //automatically gets companion object with factory method apply i.e, object Number {def apply(n: Int) = new Number(n)}
+case class Number(n:Int) extends Expr
 case class Sum(e1:Expr,e2:Expr) extends Expr
 case class Var(x: String) extends Expr
 case class Product(e1: Expr, e2: Expr) extends Expr
