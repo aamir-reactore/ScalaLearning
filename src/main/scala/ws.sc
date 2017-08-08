@@ -1,13 +1,12 @@
-def ll(n:Int):Int = {
-  if(n < 2) 1 else ll(n-1) + ll(n-2)
-}
-
-ll(5)
+val x = 1  #:: 2  #:: Stream.empty
+x.tail
 
 
 
+def primeStream(s: Stream[Int]): Stream[Int] =
+  Stream.cons(s.head, primeStream(s.tail filter { _ % s.head != 0 }))
+val primes = primeStream(Stream.from(2))
 
 
 
-
-
+"madam".zip("hello")
