@@ -9,7 +9,7 @@ object BetweenLimitDivisible extends App {
     (20 to 11 by -1).forall(num % _ == 0)
   }
 
-  //val res = Iterator.from(1).find(checkDiv(_))
+  //val res1 = Iterator.from(1).find(checkDiv(_))
 
    val res = (1L to 20L).reduceLeft{(a,b) =>lcm(a,b)}
   println(res)

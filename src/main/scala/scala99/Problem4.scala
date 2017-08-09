@@ -1,6 +1,6 @@
 package scala99
 //finding length of a list
-object P4 extends App {
+object ListLength extends App {
 
   val l = List(1,2,3,4,5,6)
   def foldLength[T](l: List[T]): Int = l.foldLeft(0)((a, _) => a + 1)

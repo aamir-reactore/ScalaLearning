@@ -16,7 +16,7 @@ object CheckPalindromeInRange extends App {
 
   def isPalindrome(num: Int): Boolean = {
     val numStr = num.toString
-    numStr.zip(numStr.reverse)//.forall(x => x._1 == x._2)
+    numStr.zip(numStr.reverse).forall(x => x._1 == x._2)
   }
  println(s"largest palindrome from three digit number is ==>${calculatePalindrome.max}")
 }

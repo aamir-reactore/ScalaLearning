@@ -1,7 +1,7 @@
 package scala99
 
 //find nth element in a list
-object P3 extends App {
+object NthListElement extends App {
 
   val l = List(1, 2, 3, 4, 5, 6)
 
