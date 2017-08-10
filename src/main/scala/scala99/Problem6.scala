@@ -1,7 +1,7 @@
 package scala99
 
 //check if list is palindrome
-object P6 extends App {
+object PalindromeCheck extends App {
 
   val l = List(1, 2, 2, 1)
   println("is list palindrome = " + (l == l.reverse))

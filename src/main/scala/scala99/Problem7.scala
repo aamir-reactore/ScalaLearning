@@ -1,6 +1,6 @@
 package scala99
 
-object P7 extends App {
+object FlattenList extends App {
 
   def flatten(x: List[Any]): List[Any] = {
     x flatMap {
@@ -21,13 +21,13 @@ object P7 extends App {
 
   def f2[T]: (NestedList[T]) => List[T] = {
     case Value(v) => List(v)
-    case Sequence(list) => list.flatMap(f2)
+    case Sequence(l) => l.flatMap(f2)
   }
 
-  val list: List[NestedList[Int]] = List[Value[Int]](Value(1), Value(2), Value(3))
+  val list: List[NestedList[Int]] = List[Value[Int]](Value(1)/*, Value(2), Value(3)*/)
 
   val l = Sequence(list)
   val res = f2(l)
-  println(res)
+  println(s"functional ==> $res")
 
 }
