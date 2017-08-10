@@ -10,25 +10,10 @@ val primes = primeStream(Stream.from(2))
 
 
 "madam".zip("hello")
-def tr(a:Int, b:Int) = if(a>b) a else b
+def tr(a:Int, b:Int) = if(a > b) a else b
 val res = (1 to 10).reduceLeft{(a,b) => tr(a,b)}
 
+val l = List(6,5)
+val n = l.length / 2
+val r = l splitAt(n)
 
-
-
-def msort(xs: List[Int]): List[Int] = {
-  val n = xs.length / 2
-  if (n == 0) xs
-  else {
-    def merge(xs: List[Int], ys: List[Int]): List[Int] = (xs, ys) match {
-      case (Nil, ys) => ys
-      case (xs, Nil) => xs
-      case (x :: xs1, y :: ys1) =>
-        if (x < y) x :: merge(xs1, ys)
-        else y :: merge(xs, ys1)
-    }
-    val (fst, snd) = xs splitAt n
-    merge(msort(fst), msort(snd))
-  }
-}
-msort(List(6,5,4,3,2,1))
