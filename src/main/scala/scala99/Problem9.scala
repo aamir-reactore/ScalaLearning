@@ -1,7 +1,7 @@
 package scala99
 
 //Pack consecutive duplicates of list elements into sublists.
-object P9 extends App {
+object SublistDuplicates extends App {
 
 
   val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
@@ -26,7 +26,6 @@ object P9 extends App {
   }
 
 
-//Todo reason about
   def f1[T]: List[T] => List[List[T]] = {
     case Nil => Nil
     case h :: t =>
@@ -36,7 +35,5 @@ object P9 extends App {
   println(s"sublisting duplicates = ${subListDuplicates(l)}")
   println(s"usingSpan  duplicates = ${usingSpan(l)}")
   println(s"sublisting duplicates = ${f1(l)}")
-
-
 
 }

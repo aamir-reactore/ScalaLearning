@@ -1,7 +1,7 @@
 package scala99
 
 // Run-length encoding of a list
-object P10 extends App {
+object SubListEncodingLength extends App {
 
   val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
 
