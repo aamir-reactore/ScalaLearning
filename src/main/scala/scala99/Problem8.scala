@@ -1,6 +1,6 @@
 package scala99
 
-object P8 extends App {
+object RemoveConsecutiveDuplicates extends App {
 
   val l = List[Char]('a', 'a', 'a', 'a', 'b', 'b', 'c', 'a', 'a', 'd', 'd')
 
