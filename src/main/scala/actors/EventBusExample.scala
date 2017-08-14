@@ -10,11 +10,10 @@ case class Book1(title:String, authors:List[String])
 class AuthorBookBus(author: String) extends EventBus
       with LookupClassification
       with ActorEventBus {
+
   override type Event = Book1
   override type Classifier = Boolean
-
   override protected def mapSize(): Int = 2
-
   override protected def classify(book: Book1) = book.authors.contains(author)
 
   /**
