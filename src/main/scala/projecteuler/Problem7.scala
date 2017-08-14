@@ -14,5 +14,10 @@ object NumberPrimeNumberMax extends App {
   val res = primeList.take(10001).toList.max
   println(res)
 
-
 }
+
+/**
+  * As soon as Iterator.find() matches the condition it instantly returns without continuing other Iterator elements else keeps on iterating.
+  * Please check Implementation of Iterator.find in trait Iterator and plz check Iterator.iterate implementation also.
+  * We can find object-private implementation of variables inside Iterator.iterate method.
+  */
