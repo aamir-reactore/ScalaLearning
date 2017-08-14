@@ -84,7 +84,7 @@ object HigherOrderFunctionExample6 extends App {
     iterate(firstGuess)
   }
 
-  def squareRoot(x:Double):Double= fixedPoint(y => (y + x / y) / 2)(1.0)
+  def squareRoot(x:Double):Double= fixedPoint(y => (y + x / y) / 2)(1.0) // num => guess + num / guess , it gets num value here
   def averageDump(f:Double => Double)(x:Double):Double = x + f(x) / 2
   def squareWithAverageDump(x:Double) = fixedPoint(averageDump(y => x / y))(1.0)
 

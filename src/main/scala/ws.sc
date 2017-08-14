@@ -15,5 +15,7 @@ val res = (1 to 10).reduceLeft{(a,b) => tr(a,b)}
 
 val l = List(6,5)
 val n = l.length / 2
-val r = l splitAt(n)
+val r = l splitAt n
 
+val xxx = List(1,2)
+xxx ::: List(3,4)
