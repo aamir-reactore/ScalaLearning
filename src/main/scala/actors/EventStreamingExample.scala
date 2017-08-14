@@ -3,7 +3,7 @@ package actors
 import akka.actor.{Actor, ActorSystem, Props}
 
 /**
-  *  https://danielasfregola.com/2015/04/20/peer-to-many-communication-in-akka/
+  * Source ==> https://danielasfregola.com/2015/04/20/peer-to-many-communication-in-akka/
   */
 case class Book(title:String, authors:List[String])
 
