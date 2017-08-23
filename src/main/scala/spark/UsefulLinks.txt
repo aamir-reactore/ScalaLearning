@@ -1,2 +1,3 @@
 https://stackoverflow.com/questions/30691385/internal-work-of-spark/30691654#30691654 (tutorials)
 https://www.youtube.com/watch?v=eQ0nPdfVfc0 (setup and basic program)
+https://stackoverflow.com/questions/39282434/how-to-build-spark-from-the-sources-from-the-download-spark-page (set up)
