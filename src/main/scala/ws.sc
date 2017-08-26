@@ -13,9 +13,15 @@ val primes = primeStream(Stream.from(2))
 def tr(a:Int, b:Int) = if(a > b) a else b
 val res = (1 to 10).reduceLeft{(a,b) => tr(a,b)}
 
-val l = List(6,5)
-val n = l.length / 2
-val r = l splitAt n
 
-val xxx = List(1,2)
-xxx ::: List(3,4)
+val list = List(1, 2, 3, 4)
+list.foreach(println(_))
+list.foreach(x => println(x + "test"))
+
+val numList1 = List(1,2)
+val numList2 = List(3,4)
+
+for {
+   first <- numList1
+  second <- numList2
+} yield first + second
