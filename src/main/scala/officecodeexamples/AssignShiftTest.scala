@@ -6,6 +6,7 @@ import org.scalatest.FunSuite
 class AssignShiftTest extends FunSuite {
 
 
+
   test("assignRotationalShifts returns single record when empRosterDates list when only 1 record is passed") {
     val empRosterDatesList = List((LocalDate.parse("2016-12-05"), true))
     val shiftChangeDuration = 6L
@@ -148,4 +149,59 @@ class AssignShiftTest extends FunSuite {
 
     assert(res == resultList)
   }
+
+  test("assignRotationalShifts, when empRosterDatesList has only 3 records and nextShiftSequence has 6 records and shift duration is 2") {
+    val empRosterDatesList = List((LocalDate.parse("2016-12-02"), true),
+      (LocalDate.parse("2016-12-03"), true), (LocalDate.parse("2016-12-04"), true))
+    val shiftChangeDuration = 2l
+    val nextShiftSequence = List[Long](1, 2, 3,4,5,6)
+    // after shuffling recursion this will be the structure
+    val resultList = List(((LocalDate.parse("2016-12-02"), true), Some(1l)),
+      ((LocalDate.parse("2016-12-03"), true), Some(2l)), ((LocalDate.parse("2016-12-04"), true), Some(3l)))
+
+    val res = ShiftTest.assignRotationalShifts(empRosterDatesList, shiftChangeDuration, nextShiftSequence)
+
+    assert(res == resultList)
+  }
+  test("shiftAssignmentWithRotation should first shuffle shift with sequence and then assignRotationalShifts will return multiple records when  empRosterDates list contains multiple records") {
+    val rosterShiftsSequenceMappings = List[(Long,Long)]((2,1),(3,2),(1,3))
+    val empRosterDatesList = List((LocalDate.parse("2016-12-02"), true), (LocalDate.parse("2016-12-03"), true), (LocalDate.parse("2016-12-04"), true),
+      (LocalDate.parse("2016-12-06"), true), (LocalDate.parse("2016-12-07"), true), (LocalDate.parse("2016-12-09"), true), (LocalDate.parse("2016-12-10"), true),
+      (LocalDate.parse("2016-12-11"), true), (LocalDate.parse("2016-12-12"), true), (LocalDate.parse("2016-12-14"), true), (LocalDate.parse("2016-12-16"), true)
+      , (LocalDate.parse("2016-12-17"), true), (LocalDate.parse("2016-12-18"), true), (LocalDate.parse("2016-12-20"), true))
+    val shiftChangeDuration = 6l
+    val currentShiftId = 1l
+    // after shuffling recursion this will be the structure
+    val resultList = List(((LocalDate.parse("2016-12-02"), true), Some(1l)), ((LocalDate.parse("2016-12-03"), true), Some(1l)),
+      ((LocalDate.parse("2016-12-04"), true), Some(1l)),
+      ((LocalDate.parse("2016-12-06"), true), Some(1l)), ((LocalDate.parse("2016-12-07"), true), Some(1l)),
+      ((LocalDate.parse("2016-12-09"), true), Some(2l)), ((LocalDate.parse("2016-12-10"), true), Some(2l)),
+      ((LocalDate.parse("2016-12-11"), true), Some(2l)), ((LocalDate.parse("2016-12-12"), true), Some(2l)), ((LocalDate.parse("2016-12-14"), true), Some(2l)), ((LocalDate.parse("2016-12-16"), true), Some(3l))
+      , ((LocalDate.parse("2016-12-17"), true), Some(3l)), ((LocalDate.parse("2016-12-18"), true), Some(3l)), ((LocalDate.parse("2016-12-20"), true), Some(3l)))
+    val res = ShiftTest.shiftAssignmentWithRotation(currentShiftId,rosterShiftsSequenceMappings,
+      empRosterDatesList, shiftChangeDuration)
+    assert(res == resultList)
+  }
+  test("shiftAssignmentWithRotation should not shuffle as current shift Id doesn't match with table  then assignRotationalShifts will return multiple records based on shift sequence in table") {
+    val rosterShiftsSequenceMappings = List[(Long,Long)]((5,3),(3,2),(4,1))
+    val empRosterDatesList = List((LocalDate.parse("2016-12-02"), true), (LocalDate.parse("2016-12-03"), true), (LocalDate.parse("2016-12-04"), true),
+      (LocalDate.parse("2016-12-06"), true), (LocalDate.parse("2016-12-07"), true), (LocalDate.parse("2016-12-09"), true), (LocalDate.parse("2016-12-10"), true),
+      (LocalDate.parse("2016-12-11"), true), (LocalDate.parse("2016-12-12"), true), (LocalDate.parse("2016-12-14"), true), (LocalDate.parse("2016-12-16"), true)
+      , (LocalDate.parse("2016-12-17"), true), (LocalDate.parse("2016-12-18"), true), (LocalDate.parse("2016-12-20"), true))
+    val shiftChangeDuration = 6l
+    val currentShiftId = 12l
+    // after shuffling recursion this will be the structure
+    val resultList = List(((LocalDate.parse("2016-12-02"), true), Some(4l)), ((LocalDate.parse("2016-12-03"), true), Some(4l)),
+      ((LocalDate.parse("2016-12-04"), true), Some(4l)),
+      ((LocalDate.parse("2016-12-06"), true), Some(4l)), ((LocalDate.parse("2016-12-07"), true), Some(4l)),
+      ((LocalDate.parse("2016-12-09"), true), Some(3l)), ((LocalDate.parse("2016-12-10"), true), Some(3l)),
+      ((LocalDate.parse("2016-12-11"), true), Some(3l)), ((LocalDate.parse("2016-12-12"), true), Some(3l)),
+      ((LocalDate.parse("2016-12-14"), true), Some(3l)), ((LocalDate.parse("2016-12-16"), true), Some(5l))
+      , ((LocalDate.parse("2016-12-17"), true), Some(5l)), ((LocalDate.parse("2016-12-18"), true), Some(5l)),
+      ((LocalDate.parse("2016-12-20"), true), Some(5l)))
+    val res = ShiftTest.shiftAssignmentWithRotation(currentShiftId,rosterShiftsSequenceMappings,
+      empRosterDatesList, shiftChangeDuration)
+    assert(res == resultList)
+  }
+
 }

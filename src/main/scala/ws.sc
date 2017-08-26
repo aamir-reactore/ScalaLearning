@@ -25,3 +25,15 @@ for {
    first <- numList1
   second <- numList2
 } yield first + second
+
+def rotationalShiftsShuffle(currentShift: Long, rosterShiftsSequenceMappings: List[(Long, Long)]): List[Long] = rosterShiftsSequenceMappings match {
+  case Nil => Nil
+  case _ =>
+    val sortedList = rosterShiftsSequenceMappings.sortBy(x => x._2)
+    val i = sortedList.indexWhere(_._1 == currentShift)
+    if (i == -1) sortedList.map(_._1) else (sortedList(i) :: sortedList.take(i) ++ sortedList.drop(i + 1)).map(_._1)
+
+  //if(i == -1) Nil else (sortedList.drop(i + 1) ++ sortedList.take(i + 1)).map(_._1)
+}
+val rosterShiftsSequenceMappings = List[(Long,Long)]((2,1),(3,2),(1,3))
+rotationalShiftsShuffle(1L,rosterShiftsSequenceMappings)
