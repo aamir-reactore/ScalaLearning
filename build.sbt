@@ -13,5 +13,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.4.0",
   "com.typesafe.akka" %% "akka-persistence" % "2.4.0",
   "org.iq80.leveldb" % "leveldb" % "0.7",
-  "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8"
+  "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8",
+   "joda-time" % "joda-time" % "2.9.9",
+  "org.scalatest" % "scalatest-funsuite_2.11" % "3.0.0-SNAP13"
 )
