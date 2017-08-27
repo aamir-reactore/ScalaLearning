@@ -1,7 +1,19 @@
 package officecodeexamples
 
-import org.joda.time.LocalDate
 
+import org.joda.time.LocalDate
+/**
+  * General Algorithm (applies to each employee in the list of employees assigned for a shift)
+  * 1. Skip public holidays
+  * 2. Skip weekdays with false record
+  * 3. split records with working days and weekdays
+  * 4. If continuous shift then assign all resulting split true records with same shift
+  * 5. If rotational shift then first calculate shift sequence and
+  *    then assign to respective shifts based on shift duration chane.
+  * 6. concatenate results of step 4 or 5 with split 3 weekdays records
+  * 7. sort records based on local date time
+  * 8. build entity for table insertion
+  * */
 object ShiftTest extends App {
 
   def shiftAssignmentWithRotation(currentShift:Long,rosterShiftsSequenceMappings: List[(Long, Long)],
@@ -46,16 +58,3 @@ object ShiftTest extends App {
   //combining rotationalShiftsShuffle and assignRotationalShifts
 
 }
-
-/**
-  * General Algorithm (applies to each employee in the list of employees assigned for a shift)
-  * 1. Skip public holidays
-  * 2. Skip weekdays with false record
-  * 3. split records with working days and weekdays
-  * 4. If continuous shift then assign all resulting split true records with same shift
-  * 5. If rotational shift then first calculate shift sequence and
-   *    then assign to respective shifts based on shift duration chane.
-  * 6. concatenate results of step 4 or 5 with split 3 weekdays records
-  * 7. sort records based on local date time
-  * 8. build entity for table insertion
-  * */
