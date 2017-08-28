@@ -25,3 +25,5 @@ for {
    first <- numList1
   second <- numList2
 } yield first + second
+
+List('a', 'b', 'c', 'd', 'e', 'f', 'g').splitAt(-2)

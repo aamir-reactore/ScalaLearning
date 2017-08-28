@@ -3,7 +3,7 @@ package scala99
 // Run-length encoding of a list
 object SubListEncodingLength extends App {
 
-  val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
+/*  val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
 
   import SublistDuplicates._
 
@@ -14,6 +14,6 @@ object SubListEncodingLength extends App {
 
   println("Run-length encoding of list =" + res1)
   println("Run-length encoding of list =" + res2)
-  println("Run-length encoding of list =" + res3)
+  println("Run-length encoding of list =" + res3)*/
 
 }
