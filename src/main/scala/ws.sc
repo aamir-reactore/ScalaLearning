@@ -1,3 +1,5 @@
+import org.joda.time.{LocalTime, Minutes, Period}
+
 val x = 1  #:: 2  #:: Stream.empty
 x.tail
 
@@ -28,4 +30,8 @@ for {
 
 List('a', 'b', 'c', 'd', 'e', 'f', 'g').splitAt(-2)
 
-val lt = LocalTime.
+val time1 = LocalTime.parse("08:20:00.000")
+val time2 = LocalTime.parse("10:00:00.000")
+val timeDiff = Minutes.minutesBetween(time1, time2).getMinutes * 60000
+val period = new Period(timeDiff)
+s"Hours-${period.getHours} Minutes-${period.getMinutes} Seconds-${period.getSeconds}"
