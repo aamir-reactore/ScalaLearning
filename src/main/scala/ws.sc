@@ -35,3 +35,6 @@ val time2 = LocalTime.parse("10:00:00.000")
 val timeDiff = Minutes.minutesBetween(time1, time2).getMinutes * 60000
 val period = new Period(timeDiff)
 s"Hours-${period.getHours} Minutes-${period.getMinutes} Seconds-${period.getSeconds}"
+
+Seq(6,2,3,4).span(x => x % 2 == 0)
+Seq(1,2,3,4).span(x => x % 2 == 0)

@@ -11,7 +11,7 @@ object LocalDateCheckTest1 extends App {
     !date.isBefore(startDate) && !date.isAfter(endDate)
   }
   def areLocalDatesBetweenTwoLocalDates(date1: LocalDate,date2: LocalDate, startDate: LocalDate, endDate: LocalDate) = {
-    !date1.isBefore(startDate) && !date2.isBefore(endDate)
+    !date1.isBefore(startDate) && !date2.isAfter(endDate)
   }
 }
 
