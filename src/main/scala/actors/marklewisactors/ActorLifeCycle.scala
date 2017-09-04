@@ -1,6 +1,6 @@
 package actors.marklewisactors
 
-import akka.actor.SupervisorStrategy.{Restart, Resume, Stop}
+import akka.actor.SupervisorStrategy.{Restart, Resume}
 import akka.actor.{Actor, ActorSystem, OneForOneStrategy, Props}
 
 object ActorSupervision1 extends App {
@@ -31,7 +31,6 @@ object ActorSupervision1 extends App {
   class ChildActor extends Actor {
     println("From Default Constructor, Child Actor Created..")
     override def receive = {
-      case PrintSignal(n) => println(s"$n--$self")
       case DivideByZero(n, d) => println(s"n /d is ${n / d}")
       case BadStuff => throw new RuntimeException("Bad stuff happened")
     }
@@ -68,3 +67,7 @@ object ActorSupervision1 extends App {
   actSel ! DivideByZero(4, 2)
   actSel ! BadStuff
 }
+/**
+  * one-for-one strategy, meaning that each child is treated separately (an all-for-one strategy works very similarly,
+  * the only difference is that any decision is applied to all children of the supervisor, not only the failing one)
+  */

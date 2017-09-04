@@ -1,6 +1,6 @@
 package actors.marklewisactors
 
-import akka.actor.{Actor, ActorSystem, Props}
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 
 object ActorReplyingTest extends App {
 
@@ -27,7 +27,7 @@ object ActorReplyingTest extends App {
   }
 
   val actorSystem = ActorSystem("ActorSystem")
-  val actor = actorSystem.actorOf(Props[ActorReplyExample], "RootActor")
+  val actor: ActorRef = actorSystem.actorOf(Props[ActorReplyExample], "RootActor")
   println(actor.path)
   println(actor)
   actor ! "Hello"

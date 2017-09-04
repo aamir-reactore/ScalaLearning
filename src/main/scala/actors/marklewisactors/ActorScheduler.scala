@@ -22,7 +22,7 @@ object ActorSchedulerExample1 extends App {
   system.scheduler.scheduleOnce(4.seconds)(actor ! Count)
   val cancel: Cancellable = system.scheduler.schedule(5.seconds,1.seconds,actor,Count)
 
-  Thread.sleep(10000)
+  Thread.sleep(20000)
   cancel.cancel()
   //system.terminate()
 }
