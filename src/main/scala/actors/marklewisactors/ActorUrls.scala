@@ -5,9 +5,7 @@ import akka.actor.{Actor, ActorRef, ActorSelection, ActorSystem, Props}
 object ActorUrls1 extends App {
 
   case object CreateChild
-
   case class SignalChildren(order: Int)
-
   case class PrintSignal(order: Int)
 
   class ParentActor extends Actor {

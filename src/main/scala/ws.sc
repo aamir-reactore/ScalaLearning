@@ -27,3 +27,9 @@ for {
 } yield first + second
 
 List('a', 'b', 'c', 'd', 'e', 'f', 'g').splitAt(-2)
+val num = 99
+num match {
+  case x if x == 1 => println("one, a lonely number")
+  case x if (x == 2 || x == 3) => println(x)
+  case _ => println("some other value")
+}
