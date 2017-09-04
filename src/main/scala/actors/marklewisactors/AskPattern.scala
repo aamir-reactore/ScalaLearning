@@ -4,11 +4,12 @@ import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
 
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
+import scala.concurrent.ExecutionContext.Implicits.global
 
-/*object AsKpattern1 extends App {
+object AskPattern1 extends App {
 
   case object AskName
 
@@ -28,7 +29,7 @@ import scala.util.{Failure, Success}
   askResponse.foreach(x => println(s"Name is $x"))
 }
 
-object AsKpattern2 extends App {
+object AskPattern2 extends App {
 
   case object AskName
 
@@ -46,9 +47,10 @@ object AsKpattern2 extends App {
   val askResponse: Future[NameResponse] = (actor ? AskName).mapTo[NameResponse]
 
   askResponse.foreach(x => println(s"Name is ${x.name}"))
+
 }
 
-object AsKpattern3 extends App {
+object AskPattern3 extends App {
 
   case object AskName
 
@@ -64,9 +66,9 @@ object AsKpattern3 extends App {
         res onComplete {
           case Success(NameResponse(s)) =>
             println(s"They said their name was $s")
-          case Success(s) =>
+          case Success(_) =>
             println("They didn't say their name")
-          case Failure(f) =>
+          case Failure(_) =>
             println("Asking name failed")
         }
     }
@@ -81,9 +83,10 @@ object AsKpattern3 extends App {
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
   actor1 ! AskNameOf(actor2)
-}*/
+}
 
-object AskPattern4 extends App {
+
+/*object AskPattern4 extends App {
 
   case object AskName
   case class NameResponse(name: String)
@@ -119,4 +122,62 @@ object AskPattern4 extends App {
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
   actor1 ! AskNameOf(actor2)
+}*/
+object AskPattern5 extends App {
+
+  class ActorExample extends Actor {
+    def receive = {
+      case message: String => println("Message received: " + message)
+    }
+  }
+
+  //java.util.concurrent.TimeoutException as receive block doesn't respond with a reply
+  val actorSystem = ActorSystem("ActorSystem")
+  val actor = actorSystem.actorOf(Props[ActorExample], "RootActor")
+  implicit val timeout = Timeout(2.seconds)
+  val future = actor ? "Hello"
+  val result = Await.result(future, timeout.duration)
+  println(result)
+
+}
+
+object AskPattern6 extends App {
+
+  class ActorExample extends Actor {
+    def receive = {
+      case message: String => {
+        println("Message received: " + message)
+        sender ! "some response"
+      }
+    }
+  }
+
+  val actorSystem = ActorSystem("ActorSystem")
+  val actor = actorSystem.actorOf(Props[ActorExample], "RootActor")
+  implicit val timeout = Timeout(2.seconds)
+  val future = actor ? "Hello"
+  val result = Await.result(future, timeout.duration)
+  println(result)
+
+}
+
+object AskPattern7 extends App {
+
+  class ActorExample extends Actor {
+    def receive = {
+      case message: String => {
+        println("Message received: " + message)
+        Thread.sleep(5000)
+        sender ! "some response"
+      }
+    }
+  }
+
+  val actorSystem = ActorSystem("ActorSystem")
+  val actor = actorSystem.actorOf(Props[ActorExample], "RootActor")
+  implicit val timeout = Timeout(2.seconds)
+  val future = actor ? "Hello"
+  val result = Await.result(future, timeout.duration)
+  println(result)
+
 }

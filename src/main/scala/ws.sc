@@ -27,6 +27,16 @@ for {
 } yield first + second
 
 List('a', 'b', 'c', 'd', 'e', 'f', 'g').splitAt(-2)
+
+val time1 = LocalTime.parse("08:20:00.000")
+val time2 = LocalTime.parse("10:00:00.000")
+val timeDiff = Minutes.minutesBetween(time1, time2).getMinutes * 60000
+val period = new Period(timeDiff)
+s"Hours-${period.getHours} Minutes-${period.getMinutes} Seconds-${period.getSeconds}"
+
+Seq(6,2,3,4).span(x => x % 2 == 0)
+Seq(1,2,3,4).span(x => x % 2 == 0)
+
 val num = 99
 num match {
   case x if x == 1 => println("one, a lonely number")

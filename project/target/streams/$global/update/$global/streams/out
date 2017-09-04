@@ -1,4 +1,4 @@
-[info] Updating {file:/home/aamir/LearnScala/ScalaLearning/project/}scalalearning-build...
+[info] Updating {file:/home/aamir/ScalaLearning/ScalaLearning/project/}scalalearning-build...
 [debug] :: resolving dependencies :: default#scalalearning-build;0.1-SNAPSHOT
 [debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
 [debug] 	validate = true
@@ -6074,19 +6074,19 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 3050ms :: artifacts dl 102ms
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT compile produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-compile.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT runtime produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-runtime.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT test produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-test.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT provided produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-provided.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT optional produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-optional.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT compile-internal produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-compile-internal.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT runtime-internal produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-runtime-internal.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT test-internal produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-test-internal.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT plugin produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-plugin.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT sources produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-sources.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT docs produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-docs.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT pom produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-pom.xml
-[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT scala-tool produced in /home/aamir/LearnScala/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-scala-tool.xml
-[debug] 	resolve done (3050ms resolve - 102ms download)
+[debug] :: resolution report :: resolve 751ms :: artifacts dl 14ms
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT compile produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-compile.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT runtime produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-runtime.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT test produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-test.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT provided produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-provided.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT optional produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-optional.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT compile-internal produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-compile-internal.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT runtime-internal produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-runtime-internal.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT test-internal produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-test-internal.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT plugin produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-plugin.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT sources produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-sources.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT docs produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-docs.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT pom produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-pom.xml
+[debug] 	report for default#scalalearning-build;0.1-SNAPSHOT scala-tool produced in /home/aamir/ScalaLearning/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-scala-tool.xml
+[debug] 	resolve done (751ms resolve - 14ms download)
 [info] Done updating.

@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/25115547/difference-between-forward-and-tell-in-akka-actors
+(Above link to differentiate between tell and forward)

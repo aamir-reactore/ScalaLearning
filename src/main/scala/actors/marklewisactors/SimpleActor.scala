@@ -24,4 +24,5 @@ object SimpleActorExample1 extends App {
   println("After Number")
   actor ! 'a'
   println("After Character")
+
 }
