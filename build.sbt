@@ -13,5 +13,9 @@ libraryDependencies ++= Seq(
   "org.iq80.leveldb" % "leveldb" % "0.7",
   "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8",
   "joda-time" % "joda-time" % "2.9.9",
-  "org.scalatest" % "scalatest-funsuite_2.11" % "3.0.0-SNAP13"
+  "org.scalatest" % "scalatest-funsuite_2.11" % "3.0.0-SNAP13",
+  "com.typesafe.akka" % "akka-testkit_2.11" % "2.5.4",
+  "org.mockito" % "mockito-all" % "1.10.19",
+  "org.specs2" %% "specs2" % "2.4.6",
+  "org.scalatest" %% "scalatest" % "3.0.1"
 )

@@ -23,6 +23,7 @@ class BookSubscriber extends Actor {
 }
 
 object EventStreamTest extends App {
+
   implicit val system = ActorSystem("publisher-subscriber-example")
 
   val bookPublisher = system.actorOf(Props[BookPublisher],name="book-publisher")
