@@ -3,7 +3,7 @@ package actors.marklewisactors
 import akka.actor.{Actor, ActorSystem, PoisonPill, Props}
 case object FromActor3
 /**
-  * forward method: Forwards the message and passes the original sender actor as the sender.
+  * forward method: Forwards the message and passes the original sender actor as the sender
   */
 object ActorForward extends App {
 
