@@ -24,7 +24,7 @@ object ActorSupervision1 extends App {
 
     override val supervisorStrategy = OneForOneStrategy(loggingEnabled = false) {
       case _: ArithmeticException => Resume // No LifeCycle methods will be called on Resume
-      case _: Exception => Restart
+      case _: Exception           => Restart
     }
   }
 
@@ -32,7 +32,7 @@ object ActorSupervision1 extends App {
     println("From Default Constructor, Child Actor Created..")
     override def receive = {
       case DivideByZero(n, d) => println(s"n /d is ${n / d}")
-      case BadStuff => throw new RuntimeException("Bad stuff happened")
+      case BadStuff           => throw new RuntimeException("Bad stuff happened")
     }
 
     override def preStart(): Unit = {

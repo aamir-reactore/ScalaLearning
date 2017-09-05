@@ -11,4 +11,5 @@ object AnonymousActors1 extends App {
      }
    }))
   actor.tell("hello",actor)
+  actor.tell("hello",null)
 }
