@@ -37,6 +37,7 @@ class Book1Subscriber extends Actor {
 }
 
 object EventBusTest extends App {
+
   implicit val system = ActorSystem("publisher-subscribers-example")
   val author = "Author"
 
