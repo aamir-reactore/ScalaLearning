@@ -21,16 +21,16 @@ object ImplicitExample extends App {
   yo(1)
 }*/
 
-/*
-object ImplicitExample3 extends App {
+
+/*object ImplicitExample3 extends App {
   def method1(x:Int) = println(s"Integer value is $x")
   implicit def doubleToInt(d: Double) = d.toInt
   method1(42.0)
-}
-*/
+}*/
 
 
-/*object ImplicitExample4 extends App {
+
+object ImplicitExample4 extends App {
 
   case class Text(content: String)
   case class Prefix(text: String)
@@ -38,6 +38,7 @@ object ImplicitExample3 extends App {
   def printText(text: Text): Unit = {
     println(text.content)
   }
+
   implicit def String2Text(content: String)(implicit prefix: Prefix) = {
     Text(prefix.text + " " + content)
   }
@@ -47,4 +48,4 @@ object ImplicitExample3 extends App {
   // Best to hide this line somewhere below a pile of completely unrelated code.
   // Better yet, import its package from another distant place.
   //implicit val prefixLOL = Prefix("Hello")
-}*/
+}
