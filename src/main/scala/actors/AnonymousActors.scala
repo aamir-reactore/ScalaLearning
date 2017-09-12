@@ -1,6 +1,6 @@
 package actors
 
-import akka.actor.{Actor, ActorSystem, Props}
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 
 object AnonymousActors1 extends App {
 
@@ -12,4 +12,5 @@ object AnonymousActors1 extends App {
    }))
   actor.tell("hello",actor)
   actor.tell("hello",null)
+  actor.tell("hello",ActorRef.noSender)
 }
