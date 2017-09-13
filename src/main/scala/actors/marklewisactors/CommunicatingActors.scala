@@ -22,10 +22,11 @@ object CommunicatingActorsExample1 extends App {
           context.system.terminate()
     }
   }
-  val system = ActorSystem("CommunicatingActors1")
-  val actor1 = system.actorOf(Props[CountDownActor],"CountDownActor1")
-  val actor2 = system.actorOf(Props[CountDownActor],"CountDownActor2")
 
-  actor1 ! StartCounting(5,actor2)
+  val system = ActorSystem("CommunicatingActors1")
+  val actor1 = system.actorOf(Props[CountDownActor], "CountDownActor1")
+  val actor2 = system.actorOf(Props[CountDownActor], "CountDownActor2")
+
+  actor1 ! StartCounting(5, actor2)
 
 }

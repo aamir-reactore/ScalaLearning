@@ -33,7 +33,6 @@ object ActorSupervision11 extends App {
       case PrintSignal(n) => println(s"$n--$self")
       case DivideByZero(n, d) => println(s"n /d is ${n / d}")
       case BadStuff => throw new RuntimeException("Bad stuff happened")
-
     }
   }
 

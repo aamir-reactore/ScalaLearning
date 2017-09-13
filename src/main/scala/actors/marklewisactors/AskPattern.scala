@@ -12,7 +12,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 object AskPattern1 extends App {
 
   case object AskName
-
   case class NameResponse(name: String)
 
   class AskActor(val name: String) extends Actor {
