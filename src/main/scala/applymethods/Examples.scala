@@ -1,13 +1,12 @@
-package applymethods.Program1
+package applymethods
 
 /**
   * Created by aamir on 13/9/17.
-  *
   * Useful Resource:- https://blog.matthewrathbone.com/2017/03/06/scala-object-apply-functions.html
   */
 object ApplyTest1 extends App {
 
-  class MyAddser(x: Int) {
+  class MyAdder(x: Int) {
     def apply(y: Int): Int = x + y
   }
 
@@ -33,15 +32,42 @@ object ApplyTest2 extends App {
 }
 object ApplyTest3 extends App {
   object Greet {
-    def apply(name: String): String = {
-      "Hello %s".format(name)
-    }
+    def apply(name: String): String = s"Hello $name"
   }
   println( Greet.apply("world") )
   println( Greet("world") )
 }
 
 object ApplyTest4 extends App {
+  //Case class has no constructor but has a default apply method.
   case class Person(name: String, age: Integer, favColor: String)
   println(Person("aamir",28,"Dark Blue"))
+}
+
+object ApplyTest5 extends App {
+  class Person(val name: String)
+  object Person {
+    def apply(name: String): Person = new Person("aamir")
+  }
+  val person1: Person = new Person("aamir")
+  val person2: Person = Person("aamir")
+
+}
+
+object ApplyTest6 extends App {
+//  Apply Functions are used for Anonymous Functions
+  // In scala you can create an anonymous function like so:
+
+  val func1 = (x: String) => "hello %s".format(x)
+  val func2 = new Function1[String,String] {
+    def apply(s:String) = "hello %s".format(s)
+  }
+  //syntactic sugar
+  val func3 = new ((String) => String) {
+    def apply(s:String) = "hello %s".format(s)
+  }
+  println(func1("world"))
+  println(func2("world"))
+  println(func2.apply("world"))
+  println(func3("world"))
 }
