@@ -3,7 +3,7 @@ package actors.marklewisactors
 import akka.actor.{Actor, ActorSystem, PoisonPill, Props}
 case object FromActor3
 /**
-  * forward method: Forwards the message and passes the original sender actor as the sender.
+  * forward method: Forwards the message and passes the original sender actor as the sender
   */
 object ActorForward extends App {
 
@@ -18,7 +18,7 @@ object ActorForward extends App {
         //context.stop(self) // to terminate child actor
         self ! PoisonPill // will recursively stop all its child actors.
     }
-    override def postStop(){
+    override def postStop() {
       println("Child ActorExample stopped")
     }
   }
@@ -30,6 +30,7 @@ object ActorForward extends App {
         val child = context.actorOf(Props[Actor3], "ChildActor")
         println("forwarding...")
         child forward message
+      case FromActor3 => println("should not hit this...")
       case _ => println("Unknown message")
     }
     override def postStop() {
@@ -53,6 +54,6 @@ object ActorForward extends App {
   val actor = actorSystem.actorOf(Props[ActorExample], "RootActor")
   actor ! "Hello"
   Thread.sleep(1000)
-  actor ! "Hello" // throws error as actor was stopped.
+ // actor ! "Hello" // throws error as actor was stopped.
   //actorSystem.terminate() to stop actorSystem
 }

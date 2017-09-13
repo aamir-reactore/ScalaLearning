@@ -1,5 +1,3 @@
-import org.joda.time.{LocalTime, Minutes, Period}
-
 val x = 1  #:: 2  #:: Stream.empty
 x.tail
 
@@ -38,3 +36,10 @@ s"Hours-${period.getHours} Minutes-${period.getMinutes} Seconds-${period.getSeco
 
 Seq(6,2,3,4).span(x => x % 2 == 0)
 Seq(1,2,3,4).span(x => x % 2 == 0)
+
+val num = 99
+num match {
+  case x if x == 1 => println("one, a lonely number")
+  case x if (x == 2 || x == 3) => println(x)
+  case _ => println("some other value")
+}

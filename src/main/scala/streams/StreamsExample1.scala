@@ -50,7 +50,7 @@ object Sink1 extends App {
 
   val sink = Sink.foreach[Int](elem => println(s"sink received: $elem"))
 
-  val flow: RunnableGraph[NotUsed] = source to sink
+  val flow = source to sink
 
   flow.run()
 }
@@ -68,7 +68,7 @@ object Sink2 extends App {
   * forward all values that arrive at a sink to an actor
   */
   val sink = Sink.actorRef[Int](actor,onCompleteMessage = "stream completed")
-  val runnable: RunnableGraph[NotUsed] = Source(1 to 3) to sink
+  val runnable= Source(1 to 3) to sink
 
   runnable.run()
 }

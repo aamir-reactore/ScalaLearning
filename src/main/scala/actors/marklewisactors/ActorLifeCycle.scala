@@ -22,7 +22,7 @@ object ActorSupervision1 extends App {
         context.children.foreach(_ ! PrintSignal(n))
     }
 
-    override val supervisorStrategy = OneForOneStrategy(loggingEnabled = false) {
+    override val supervisorStrategy: OneForOneStrategy = OneForOneStrategy(loggingEnabled = false) {
       case _: ArithmeticException => Resume // No LifeCycle methods will be called on Resume
       case _: Exception           => Restart
     }
