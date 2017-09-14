@@ -46,6 +46,9 @@ num match {
 List(1,2,3,4) ++ List(5,6,7,8)
 List(1,2,3,4) ::: List(5,6,7,8)
 
+List(5,4).splitAt(2)
+
+
 
 
 

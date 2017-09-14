@@ -68,7 +68,7 @@ object HigherOrderFunctionExample5 extends App {
 }
 
 /**
-  * Finding fixed points of a functions so square root also.
+  * Finding fixed points of a functions ==> so square root also.
   */
 object HigherOrderFunctionExample6 extends App {
 
