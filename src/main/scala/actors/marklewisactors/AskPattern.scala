@@ -1,6 +1,6 @@
 package actors.marklewisactors
 
-import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props}
 import akka.pattern.ask
 import akka.util.Timeout
 
@@ -37,7 +37,10 @@ object AskPattern2 extends App {
 
   class AskActor(val name: String) extends Actor {
     override def receive = {
-      case AskName => sender ! NameResponse(name)
+      case AskName => {
+        sender ! NameResponse(name)
+        self ! PoisonPill
+      }
     }
   }
 
@@ -47,7 +50,6 @@ object AskPattern2 extends App {
   val askResponse: Future[NameResponse] = (actor ? AskName).mapTo[NameResponse]
 
   askResponse.foreach(x => println(s"Name is ${x.name}"))
-
 }
 
 object AskPattern3 extends App {

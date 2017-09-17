@@ -31,11 +31,11 @@ object CurryingApplication3 extends App {
 
 object CurryingApplication4 extends App {
 
-  def curry[A, B, C](f:(A,B) => C):A => (B => C) = {
+  def curry[A, B, C](f:(A,B) => C):A => B => C = {
     (a: A) => (b: B) => f(a, b)
   }
 
-  val g: (Int, Int) => Int = (x:Int, y:Int) => x + y
+  val g: (Int, Int) => Int = (x, y) => x + y
   val sum: Int => Int => Int = curry(g)
   println( sum(1)(2) )
 
