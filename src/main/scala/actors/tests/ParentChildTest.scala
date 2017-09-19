@@ -1,4 +1,4 @@
-/*
+
 package actors.testssupervisor
 
 
@@ -35,4 +35,4 @@ object l extends App {
   val props: Props = Props[EchoActor]
   val actor = ActorSystem("test").actorOf(props)
    actor.tell("test",null)
-}*/
+}

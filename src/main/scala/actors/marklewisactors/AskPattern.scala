@@ -1,3 +1,4 @@
+/*
 package actors.marklewisactors
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
@@ -85,7 +86,7 @@ object AskPattern3 extends App {
 }
 
 
-/*object AskPattern4 extends App {
+object AskPattern4 extends App {
 
   case object AskName
   case class NameResponse(name: String)
@@ -121,7 +122,7 @@ object AskPattern3 extends App {
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
   actor1 ! AskNameOf(actor2)
-}*/
+}
 object AskPattern5 extends App {
 
   class ActorExample extends Actor {
@@ -179,4 +180,4 @@ object AskPattern7 extends App {
   val result = Await.result(future, timeout.duration)
   println(result)
 
-}
+}*/

@@ -14,7 +14,7 @@ object ActorForward extends App {
         val child = context.actorOf(Props[Actor2], "ChildActor")
         child ! message
       case FromActor3 =>
-        println("Response when forwarded by Actor2 to Actor3")
+        println("Response when forwarded by Actor2 to ActorL to Actor3")
         //context.stop(self) // to terminate child actor
         self ! PoisonPill // will recursively stop all its child actors.
     }
@@ -26,11 +26,26 @@ object ActorForward extends App {
   class Actor2 extends Actor {
     def receive = {
       case message: String =>
-        println(s"Message received from ${sender.path.name}, message = $message")
+        println(s"Message received from ${sender.path}, message = $message")
+        val child = context.actorOf(Props[ActorL], "ChildActor")
+        println("forwarding...")
+        child forward message
+      case FromActor3 => println("should not hit this..Actor2.")
+      case _ => println("Unknown message")
+    }
+    override def postStop() {
+      println("Child Actor2 stopped")
+    }
+  }
+
+  class ActorL extends Actor {
+    def receive = {
+      case message: String =>
+        println(s"Message received from ${sender.path}, message = $message")
         val child = context.actorOf(Props[Actor3], "ChildActor")
         println("forwarding...")
         child forward message
-      case FromActor3 => println("should not hit this...")
+      case FromActor3 => println("should not hit this..ActorL.")
       case _ => println("Unknown message")
     }
     override def postStop() {
@@ -40,7 +55,7 @@ object ActorForward extends App {
   class Actor3 extends Actor {
     def receive = {
       case message: String =>
-        println(s"Message received from ${sender.path.name}, message = $message")
+        println(s"Message received from ${sender.path}, message = $message")
         sender ! FromActor3
       case _ => println("Unknown message")
     }
