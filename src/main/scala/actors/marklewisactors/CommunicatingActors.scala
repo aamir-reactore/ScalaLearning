@@ -9,7 +9,7 @@ object CommunicatingActorsExample1 extends App {
   case class CountDown(n: Int)
 
   class CountDownActor extends Actor {
-    override def receive = {
+    override def receive: PartialFunction[Any, Unit] = {
       case StartCounting(n, other) =>
         println(s"From StartCounting Case -> $n and self $self")
         other ! CountDown(n - 1)

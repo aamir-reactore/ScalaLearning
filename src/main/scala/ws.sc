@@ -28,18 +28,31 @@ for {
 
 List('a', 'b', 'c', 'd', 'e', 'f', 'g').splitAt(-2)
 
-val time1 = LocalTime.parse("08:20:00.000")
+/*val time1 = LocalTime.parse("08:20:00.000")
 val time2 = LocalTime.parse("10:00:00.000")
 val timeDiff = Minutes.minutesBetween(time1, time2).getMinutes * 60000
 val period = new Period(timeDiff)
-s"Hours-${period.getHours} Minutes-${period.getMinutes} Seconds-${period.getSeconds}"
+s"Hours-${period.getHours} Minutes-${period.getMinutes} Seconds-${period.getSeconds}"*/
 
 Seq(6,2,3,4).span(x => x % 2 == 0)
 Seq(1,2,3,4).span(x => x % 2 == 0)
 
-val num = 99
+val num = 2
 num match {
   case x if x == 1 => println("one, a lonely number")
-  case x if (x == 2 || x == 3) => println(x)
+  case y if y == 2 || y == 3 => println(x)
   case _ => println("some other value")
 }
+List(1,2,3,4) ++ List(5,6,7,8)
+List(1,2,3,4) ::: List(5,6,7,8)
+
+List(5,4).splitAt(2)
+
+
+
+
+
+
+
+
+

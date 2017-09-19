@@ -2,17 +2,13 @@ package martinoderskyvideos.week123
 
 trait List[T] {
   def isEmpty: Boolean
-
   def head: T
-
   def tail: List[T]
 }
 
 class Nil[T] extends List[T] {
   def isEmpty = true
-
   def head: Nothing = throw new NoSuchElementException("Nil.head")
-
   def tail: Nothing = throw new NoSuchElementException("Nil.tail")
 }
 
@@ -32,8 +28,8 @@ class Cons[T](val head: T, val tail: List[T]) extends List[T] {
 object List1 extends App {
 
   val list: Cons[Int] = new Cons(2, new Cons(4, new Cons(6, new Cons(8, new Nil))))
-  //println(list.isEmpty)
-  //println(list.head)
+  println(list.isEmpty)
+  println(list.head)
   println("printing cons")
   list.printCons(list)
   def getElementAtIndex[T](list: List[T], index: Int): T = {
