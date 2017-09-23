@@ -24,7 +24,7 @@ object ActorSupervision11 extends App {
 
     override val supervisorStrategy = OneForOneStrategy(loggingEnabled = false) {
       case _: ArithmeticException => Resume
-      case _: Exception => Restart
+      case _: Exception           => Restart
     }
   }
 
