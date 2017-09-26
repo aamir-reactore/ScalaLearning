@@ -2,27 +2,20 @@ package currying
 
 /**
   * https://stackoverflow.com/documentation/scala/1636/currying#t=201707240343042457183
-  *
-  *
   * val f: (A, B) => C to val curriedF: A => B => C or val curriedF: A => (B => C)
   */
 object CurryingApplication1 extends App {
-
   val totalYearlyIncome:(Int,Int) => Int =  (income, bonus) => income + bonus
   val totalYearlyIncomeCurried: Int => (Int => Int) = totalYearlyIncome.curried
-
   val partialTotalYearlyIncome: Int => Int = totalYearlyIncomeCurried(10000)
-
   partialTotalYearlyIncome(100)
-
-
 }
 
 object CurryingApplication3 extends App {
 
   def minus(left: Int, right: Int): Int = left - right
 
-  val numberMinus5: (Int) => Int = minus(_: Int, 5)
+  val numberMinus5: (Int) => Int    = minus(_: Int, 5)
   val fiveMinusNumber: (Int) => Int = minus(5, _: Int)
 
   println( numberMinus5(7))    //  2
