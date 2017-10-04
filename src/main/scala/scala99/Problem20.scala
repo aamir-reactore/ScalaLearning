@@ -4,7 +4,7 @@ object RemoveKthElementFromList extends App {
 
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g')
 
-  def usingTailRec[T](list: List[T], index: Int) = {
+  def remoteKthUsingPartitionRec[T](list: List[T], index: Int): (List[T], T) = {
     def partitionTuple(list: List[T], acc: List[T], index: Int): (List[T], T) = {
       val h :: t = list
       if (index > 0) {
@@ -16,7 +16,7 @@ object RemoveKthElementFromList extends App {
     partitionTuple(list, Nil, index)
   }
 
-  def usingDropTake[T](list:List[T], index:Int) = {
+  def removeUsingDropTake[T](list:List[T], index:Int)  = {
     (l.take(index) ++ l.drop(index + 1),list(index))
   }
   def usingSplitAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
