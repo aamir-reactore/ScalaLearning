@@ -49,7 +49,7 @@ object ActorForward extends App {
       case _ => println("Unknown message")
     }
     override def postStop() {
-      println("Child Actor2 stopped")
+      println("Child ActorL stopped")
     }
   }
   class Actor3 extends Actor {

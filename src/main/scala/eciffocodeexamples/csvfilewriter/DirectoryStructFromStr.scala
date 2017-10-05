@@ -1,4 +1,4 @@
-package officecodeexamples.csvfilewriter
+package eciffocodeexamples.csvfilewriter
 
 object DirectoryStructure1 extends App {
 

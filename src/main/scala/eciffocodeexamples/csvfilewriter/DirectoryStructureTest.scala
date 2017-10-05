@@ -1,4 +1,4 @@
-import officecodeexamples.csvfilewriter.DirectoryStructure1
+import eciffocodeexamples.csvfilewriter.DirectoryStructure1
 import org.scalatest.FunSuite
 
 class DirectoryStructureTest extends FunSuite {

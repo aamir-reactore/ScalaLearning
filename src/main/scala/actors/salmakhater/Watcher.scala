@@ -17,7 +17,7 @@ object WatcherTest extends App {
 
     override def receive = {
       case ActorIdentity(_, Some(ref)) =>
-        println(s"Actor Reference for counter is ...$ref")
+        println(s"Actor Reference for counter is ...$ref and actor name itself is ${ref.path.name}")
       case ActorIdentity(_, None) =>
         println(s"Actor Reference for actor doesn't live")
     }
@@ -26,7 +26,6 @@ object WatcherTest extends App {
   class Counter extends Actor {
 
     import Counter._
-
     var count = 0
 
     override def receive = {
@@ -45,9 +44,6 @@ object WatcherTest extends App {
 }
 
 object Counter {
-
   final case class Inc(count: Int)
-
   final case class Dec(count: Int)
-
 }

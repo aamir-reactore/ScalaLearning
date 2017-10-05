@@ -1,4 +1,4 @@
-package officecodeexamples.csvfilewriter
+package eciffocodeexamples.csvfilewriter
 
 import java.io.{BufferedWriter, File, FileWriter, PrintWriter}
 

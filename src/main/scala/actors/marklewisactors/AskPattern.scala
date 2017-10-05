@@ -32,9 +32,7 @@ object AskPattern1 extends App {
 object AskPattern2 extends App {
 
   case object AskName
-
   case class NameResponse(name: String)
-
   class AskActor(val name: String) extends Actor {
     override def receive = {
       case AskName => {

@@ -31,7 +31,9 @@ object ActorUrls1 extends App {
 
   actor ! CreateChild
   actor ! CreateChild
- //SignalChildren(1) will print out before SignalChildren(2)--thanks to actor inbox.
+  actor ! CreateChild
+
+  //SignalChildren(1) will print out before SignalChildren(2)--thanks to actor inbox.
   actor ! SignalChildren(1)
   actor ! CreateChild
   actor ! CreateChild

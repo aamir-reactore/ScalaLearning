@@ -1,4 +1,4 @@
-package officecodeexamples
+package eciffocodeexamples
 
 import org.joda.time.LocalDate
 import org.scalatest.FunSuite
