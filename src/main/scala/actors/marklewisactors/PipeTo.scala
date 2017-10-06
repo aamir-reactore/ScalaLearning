@@ -2,9 +2,11 @@ package actors.marklewisactors
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.pattern.{ask, pipe}
+import akka.util.Timeout
 
+import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
-case object RespondToActorB
+case class RespondToActorB(message:Any)
 object PipeToExample1 extends App {
 
   class ActorA extends Actor {
@@ -13,8 +15,11 @@ object PipeToExample1 extends App {
         println("inside ActorA message block")
         val actorB = context.actorOf(Props[ActorB], "ActorB")
         actorB ! message
-      case RespondToActorB =>
+      case x: RespondToActorB =>
         println("Response when ActorB processed ActorC response and piped that to me")
+      case _ => {
+        println("came here")
+      }
     }
   }
 
@@ -23,9 +28,10 @@ object PipeToExample1 extends App {
       case message: String =>
         println("inside ActorB message block")
         val actorC = context.actorOf(Props[ActorC], "ActorC")
-        val fromActorC = ask(actorC,"asking actorc").map { x=>
-          println("asked actorc and got positive response")
-          println(x)
+        implicit val to = Timeout(2 seconds)
+        val fromActorC = ask(actorC,"asking actorc").mapTo[RespondToActorB].map {x=>
+          println("asked actorc and got positive response, now piping back to ActorA")
+          println(s"x is $x")
         }.pipeTo(sender)
     }
 
@@ -35,7 +41,7 @@ object PipeToExample1 extends App {
     def receive = {
       case message: String =>
         println("inside ActorC message Block")
-      sender ! RespondToActorB
+      sender ! RespondToActorB(None)
     }
   }
 
