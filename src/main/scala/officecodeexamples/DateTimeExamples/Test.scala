@@ -26,37 +26,36 @@ object jj extends App {
     def toDateTimeAtEndOfDay = {
       dateTime.withTime(LocalTime.parse("23:59:59.999"))
     }
+
+    def toUTCFormat = {
+      dateTime.toString("yyyy-MM-dd'T'HH:mm:ss'Z'")
+    }
   }
 
-  val index = 1506092400000L
-  val lastProcessedDateTimeInUTC = new DateTime(index, DateTimeZone.UTC)
-  val lastProcessedDateInLocalZone = convertToLocalZone(lastProcessedDateTimeInUTC.getMillis)
+/*
+
+  val index = 1506085200000L
+  //val lastProcessedDateTimeInUTC = new DateTime(index, DateTimeZone.UTC)
+  val lastProcessedDateInLocalZone = convertToLocalZone(index)
   val nowInLocalZone = convertToLocalZone(DateTime.now.getMillis)
   val startDateInLocalZone = lastProcessedDateInLocalZone
   val localDayEnd = lastProcessedDateInLocalZone.toDateTimeAtEndOfDay
   val endDateInLocalZone = if (lastProcessedDateInLocalZone.toDateTimeAtEndOfDay.isAfter(nowInLocalZone)) {
     nowInLocalZone
   } else lastProcessedDateInLocalZone.toDateTimeAtEndOfDay
-  val searchDat1 = convertToUTC(startDateInLocalZone.getMillis)
-  val searchDat2 = convertToUTC(endDateInLocalZone.getMillis)
-  println(searchDat1 + " " + searchDat2)
+  val searchDat1 = convertToUTC(startDateInLocalZone.getMillis).toUTCFormat
+  val searchDat2 = convertToUTC(endDateInLocalZone.getMillis).toUTCFormat
+  println(searchDat1 + " " + searchDat2)*/
 
-  val endDateInUTC = {
-    if (lastProcessedDateTimeInUTC.toLocalDate equals LocalDate.now) {
-      // updating for the same day. Do not update the zk index with the end of day value.
-      //lastProcessedDateTimeInUTC //.plusSeconds(1)
-      DateTime.now
-    } else {
-      lastProcessedDateTimeInUTC.toDateTimeAtEndOfDay.plusSeconds(1)
-    }
-  }
 
+
+ println("*******")
   println(DateTime.now)
   println(DateTime.now.getMillis)
   println(convertToLocalZone(DateTime.now().getMillis))
   println(convertToUTC(DateTime.now().getMillis))
 
-  println(">>>>>" + new DateTime(DateTime.now.getMillis, DateTimeZone.UTC))
+  println(">>>>>" + new DateTime(1506051000000l, DateTimeZone.UTC))
   println("ss" + new DateTime(DateTime.now.getMillis, DateTimeZone.forID("Asia/Kolkata")))
 
 
