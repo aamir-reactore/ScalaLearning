@@ -43,12 +43,10 @@ num match {
   case y if y == 2 || y == 3 => println(x)
   case _ => println("some other value")
 }
-List(1,2,3,4) ++ List(5,6,7,8)
+List(1,2,3,4) ++  List(5,6,7,8)
 List(1,2,3,4) ::: List(5,6,7,8)
 
-List(5,4).splitAt(2)
-
-
+List(5,4).splitAt(1)
 
 
 

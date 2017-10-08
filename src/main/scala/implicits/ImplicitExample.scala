@@ -30,7 +30,7 @@ object ImplicitExample extends App {
 
 
 
-object ImplicitExample4 extends App {
+/*object ImplicitExample4 extends App {
 
   case class Text(content: String)
   case class Prefix(text: String)
@@ -48,4 +48,4 @@ object ImplicitExample4 extends App {
   // Best to hide this line somewhere below a pile of completely unrelated code.
   // Better yet, import its package from another distant place.
   //implicit val prefixLOL = Prefix("Hello")
-}
+}*/

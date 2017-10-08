@@ -1,3 +1,4 @@
+
 package actors.marklewisactors
 
 import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props}
@@ -8,11 +9,10 @@ import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
 import scala.concurrent.ExecutionContext.Implicits.global
-
+/*
 object AskPattern1 extends App {
 
   case object AskName
-
   case class NameResponse(name: String)
 
   class AskActor(val name: String) extends Actor {
@@ -27,31 +27,34 @@ object AskPattern1 extends App {
   val askResponse: Future[Any] = actor ? AskName
 
   askResponse.foreach(x => println(s"Name is $x"))
-}
+}*/
+import akka.pattern.pipe
 
 object AskPattern2 extends App {
 
   case object AskName
-
-  case class NameResponse(name: String)
-
+  case class  NameResponse(name: String)
   class AskActor(val name: String) extends Actor {
     override def receive = {
       case AskName => {
         sender ! NameResponse(name)
-        self ! PoisonPill
+        //self ! PoisonPill
+      }
+      case NameResponse(name) => {
+        println(s"piped here $name")
       }
     }
   }
-
   val system = ActorSystem("AskPatternActorSystem")
   val actor = system.actorOf(Props(new AskActor("jimmyactor")), "AskActor1")
   implicit val timeOut = Timeout(2.seconds)
-  val askResponse: Future[NameResponse] = (actor ? AskName).mapTo[NameResponse]
+  val askResponse  = (actor ? AskName).mapTo[NameResponse]
 
   askResponse.foreach(x => println(s"Name is ${x.name}"))
-}
 
+  val askResponsePiping  = (actor ? AskName) pipeTo actor
+}
+/*
 object AskPattern3 extends App {
 
   case object AskName
@@ -88,7 +91,7 @@ object AskPattern3 extends App {
 }
 
 
-/*object AskPattern4 extends App {
+object AskPattern4 extends App {
 
   case object AskName
   case class NameResponse(name: String)
@@ -124,7 +127,7 @@ object AskPattern3 extends App {
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
   actor1 ! AskNameOf(actor2)
-}*/
+}
 object AskPattern5 extends App {
 
   class ActorExample extends Actor {
@@ -182,4 +185,4 @@ object AskPattern7 extends App {
   val result = Await.result(future, timeout.duration)
   println(result)
 
-}
+}*/

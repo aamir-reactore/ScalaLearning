@@ -9,6 +9,7 @@ object CommunicatingActorsExample1 extends App {
   case class CountDown(n: Int)
 
   class CountDownActor extends Actor {
+
     override def receive: PartialFunction[Any, Unit] = {
       case StartCounting(n, other) =>
         println(s"From StartCounting Case -> $n and self $self")
@@ -21,12 +22,13 @@ object CommunicatingActorsExample1 extends App {
         else
           context.system.terminate()
     }
+
   }
 
   val system = ActorSystem("CommunicatingActors1")
   val actor1 = system.actorOf(Props[CountDownActor], "CountDownActor1")
   val actor2 = system.actorOf(Props[CountDownActor], "CountDownActor2")
 
-  actor1 ! StartCounting(5, actor2)
+  actor1 ! StartCounting(10, actor2)
 
 }

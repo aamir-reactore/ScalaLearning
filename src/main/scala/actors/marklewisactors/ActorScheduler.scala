@@ -21,7 +21,7 @@ object ActorSchedulerExample1 extends App {
   val system: ActorSystem = ActorSystem("SchedulerActorExample1")
   val actor: ActorRef = system.actorOf(Props[SchedulerActor], "SchedulerActor")
   implicit val ex = system.dispatcher
-  system.scheduler.scheduleOnce(4.seconds)(actor ! Count)
+  system.scheduler.scheduleOnce(4.seconds,actor, Count)
   val cancel: Cancellable = system.scheduler.schedule(5.seconds, 1.seconds, actor, Count)
   Thread.sleep(20000)
   cancel.cancel()

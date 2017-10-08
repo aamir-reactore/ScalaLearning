@@ -1,4 +1,4 @@
-package officecodeexamples.Maps
+package eciffocodeexamples.Maps
 
 import scala.collection.immutable
 

@@ -17,7 +17,7 @@ class AuthorBookBus(author: String) extends EventBus
   override protected def classify(book: Book1) = book.authors.contains(author)
 
   /**
-    * called in loop from bus.publish(book) and classified first for filters.
+    * called in loop from bus.publish(book) in Book1Publisher actor and classified first for filters.
     */
   override protected def publish(event: Book1, subscriber: Subscriber) = subscriber ! event //  type Subscriber = ActorRef
 }

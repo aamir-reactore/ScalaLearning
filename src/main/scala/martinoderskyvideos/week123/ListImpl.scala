@@ -14,7 +14,6 @@ class Nil[T] extends List[T] {
 
 class Cons[T](val head: T, val tail: List[T]) extends List[T] {
   def isEmpty = false
-
   def printCons[T](cons: List[T]): Unit = {
     if (cons.tail.isEmpty) {
       print(cons.head + " ")
