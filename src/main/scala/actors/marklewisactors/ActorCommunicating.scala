@@ -22,7 +22,7 @@ object ActorReplyingTest extends App {
       case message: String =>
         println(s"Message received from ${sender.path.name} and $self, message = $message")
         println(s"Replying to ${sender.path.name}")
-        sender ! "I got you message"
+        sender ! "I got your message"
     }
   }
 
