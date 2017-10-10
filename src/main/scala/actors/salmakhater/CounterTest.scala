@@ -1,3 +1,4 @@
+/*
 package actors.salmakhater
 
 import actors.salmakhater.WatcherTest.Counter
@@ -37,4 +38,4 @@ class CounterSpec extends TestKit(ActorSystem("test-system"))
     expectMsg(0)
   }
 
-}
+}*/
