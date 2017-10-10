@@ -18,7 +18,7 @@ object DirectoryStructure1 extends App {
     println("path created")
   }
 
-  val list = "/var/reactore/webapps/debians/zipfiles"
+  val list = "/var/def/webapps/debians/zipfiles"
   val x = buildPaths(list.split("/").toList.tail)
   println(s"created structure x")
 }

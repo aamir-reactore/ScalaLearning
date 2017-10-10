@@ -69,7 +69,7 @@ import scala.concurrent.duration._
       Escalate
     }
     case ex: Exception =>
-      println("Recreating dead Reactore instance, cause " + ex.getCause + ", message " + ex.printStackTrace())
+      println("Recreating dead instance, cause " + ex.getCause + ", message " + ex.printStackTrace())
       Resume
   }
 

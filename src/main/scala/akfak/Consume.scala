@@ -27,7 +27,7 @@ trait SomeEvent extends CreateDate {
   val mineId: Long
 }
 object ActorSystemContainer  {
-  lazy val system: ActorSystem =  ActorSystem("ReactorActorSystem")
+  lazy val system: ActorSystem =  ActorSystem("ActorSystem")
 
   def publish[E <: SomeEvent](event:E) = {
     system.eventStream.publish(event)
@@ -41,7 +41,7 @@ trait KafkaConsumerComponent[M <:KafkaPublishEntity[_]] {
 
   implicit val manifest: Manifest[M]
 
-  def onRSBMsgReceived(messages: List[KafkaMessage[M]]): Future[_]
+  def onKafkaMsgReceived(messages: List[KafkaMessage[M]]): Future[_]
 
   val topics: List[String]
 }
@@ -53,7 +53,7 @@ trait KafkaConsumer[M <:KafkaPublishEntity[_]] extends KafkaConsumerComponent[M]
         s"""
            | ###################
            |
-          | #### Started subscribing for ${rsbProps.groupId}
+          | #### Started subscribing for ${kafkaProps.groupId}
            |
           | ###################
         """.stripMargin)
@@ -66,7 +66,7 @@ trait KafkaConsumer[M <:KafkaPublishEntity[_]] extends KafkaConsumerComponent[M]
     context.system.eventStream.subscribe(self,classOf[ServiceBindingCompleted])
   }
 
-  def rsbProps: RsbProps = RsbProps(getClass.getCanonicalName)
+  def kafkaProps: KafkaProps = KafkaProps(getClass.getCanonicalName)
 
   implicit val system: ActorSystem = ActorSystemContainer.system
   implicit val fm = ActorMaterializer()
@@ -79,12 +79,12 @@ trait KafkaConsumer[M <:KafkaPublishEntity[_]] extends KafkaConsumerComponent[M]
   def init() = {
 
     val consumerSettings: ConsumerSettings[Array[Byte], String] = ConsumerSettings(ActorSystemContainer.system, new ByteArrayDeserializer, new StringDeserializer)
-      .withBootstrapServers(rsbProps.serverUrl)
-      .withGroupId(rsbProps.groupId)
+      .withBootstrapServers(kafkaProps.serverUrl)
+      .withGroupId(kafkaProps.groupId)
       .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 
     val src: Source[Done, Control] = Consumer.committableSource(consumerSettings, Subscriptions.topics(topics: _*))
-      .groupedWithin(rsbProps.batchSize, rsbProps.waitPeriod)
+      .groupedWithin(kafkaProps.batchSize, kafkaProps.waitPeriod)
       .mapAsync(1) { group =>
         val msgs = group.toList.map({ elem =>
           val extracted = extractEntityWithTry[KafkaMessage[M]](elem.record.value())
@@ -114,10 +114,10 @@ trait KafkaConsumer[M <:KafkaPublishEntity[_]] extends KafkaConsumerComponent[M]
   }
 
   private def processOnReceived(msgs: List[KafkaMessage[M]]): Future[_] = {
-    onRSBMsgReceived(msgs)
+    onKafkaMsgReceived(msgs)
   }
 
-  //def logOnException(msgs: List[RSBMessage[M]])
+  //def logOnException(msgs: List[KafkaMessage[M]])
 }
 
 case class ConsumedMessage(topicId: String, value: String) {
@@ -131,12 +131,12 @@ object ConsumedMessage {
 }
 
 
-class RsbProps(val groupId: String,
-               val serverUrl: String,
-               val batchSize: Int = 500,
-               val waitPeriod: FiniteDuration = 10.seconds,
-               val retryingInterval: FiniteDuration = 5.minutes,
-               val ignorableExceptions:List[Exception] = Nil) {
+class KafkaProps(val groupId: String,
+                 val serverUrl: String,
+                 val batchSize: Int = 500,
+                 val waitPeriod: FiniteDuration = 10.seconds,
+                 val retryingInterval: FiniteDuration = 5.minutes,
+                 val ignorableExceptions:List[Exception] = Nil) {
 
   def withBatchSize(batchSize: Int) = {
     copy(batchSize = batchSize)
@@ -167,19 +167,19 @@ class RsbProps(val groupId: String,
                    waitPeriod: FiniteDuration = waitPeriod,
                    retryingInterval: FiniteDuration = retryingInterval,
                    ignorableExceptions:List[Exception] = ignorableExceptions
-                  ): RsbProps =
-    new RsbProps(groupId, serverUrl, batchSize, waitPeriod, retryingInterval,ignorableExceptions)
+                  ): KafkaProps =
+    new KafkaProps(groupId, serverUrl, batchSize, waitPeriod, retryingInterval,ignorableExceptions)
 
 }
 
-object RsbProps {
+object KafkaProps {
 
-  def apply(groupId: String, serverUrl: String): RsbProps = {
-    new RsbProps(MacAddressUtility.getAddress+"-"+groupId, serverUrl)
+  def apply(groupId: String, serverUrl: String): KafkaProps = {
+    new KafkaProps(MacAddressUtility.getAddress+"-"+groupId, serverUrl)
   }
 
   def apply(groupId: String) = {
-    new RsbProps(MacAddressUtility.getAddress+"-"+groupId, ConfigHelper.KAFKA_CONNECTION_STRING)
+    new KafkaProps(MacAddressUtility.getAddress+"-"+groupId, ConfigHelper.KAFKA_CONNECTION_STRING)
   }
 }
 case class PubSubTest(name:String, age:Int) extends KafkaPublishEntity[Long] {
@@ -200,7 +200,7 @@ object sll extends App with KafkaProducerClient {
 class XX extends KafkaConsumer[PubSubTest] {
   override lazy val topics: List[String] = List("test-topic")
   override implicit val manifest: Manifest[PubSubTest] = Manifest.classType(classOf[PubSubTest])
-  override def onRSBMsgReceived(messages: List[KafkaMessage[PubSubTest]]): Future[Boolean] = {
+  override def onKafkaMsgReceived(messages: List[KafkaMessage[PubSubTest]]): Future[Boolean] = {
     val res: PubSubTest = messages.flatMap(x =>x.payload).head
     println("came here >>>>>>>>>>>>>>>>>>>>>>> + " + res)
     Future.successful(true)
