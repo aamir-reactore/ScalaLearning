@@ -147,7 +147,7 @@ class KafkaProps(val groupId: String,
   }
 
   def withGroupId(groupId: String) = {
-    copy(groupId = MacAddressUtility.getAddress+"-"+groupId)
+    copy(groupId = MachineAddressUtility.getAddress+"-"+groupId)
   }
 
   def withRetryInterval(retryingInterval: FiniteDuration) = {
@@ -175,11 +175,11 @@ class KafkaProps(val groupId: String,
 object KafkaProps {
 
   def apply(groupId: String, serverUrl: String): KafkaProps = {
-    new KafkaProps(MacAddressUtility.getAddress+"-"+groupId, serverUrl)
+    new KafkaProps(MachineAddressUtility.getAddress+"-"+groupId, serverUrl)
   }
 
   def apply(groupId: String) = {
-    new KafkaProps(MacAddressUtility.getAddress+"-"+groupId, ConfigHelper.KAFKA_CONNECTION_STRING)
+    new KafkaProps(MachineAddressUtility.getAddress+"-"+groupId, ConfigHelper.KAFKA_CONNECTION_STRING)
   }
 }
 case class PubSubTest(name:String, age:Int) extends KafkaPublishEntity[Long] {

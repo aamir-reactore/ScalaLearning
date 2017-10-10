@@ -4,14 +4,14 @@ import java.net.{Inet4Address, InetAddress, NetworkInterface}
 
 import scala.collection.JavaConversions._
 import scala.util.{Failure, Success, Try}
-object MacAddressUtility {
+object MachineAddressUtility {
 
   def getAddress: String = {
     val net = NetworkInterface.getNetworkInterfaces.toSeq
-    val result = Try(net.filter(x => !isVMMac(x.getHardwareAddress)).flatMap { network =>
+    val result = Try(net.filter(x => !isVMMachine(x.getHardwareAddress)).flatMap { network =>
       network.getInetAddresses.filter(ip => ip.isInstanceOf[Inet4Address] && ip.isSiteLocalAddress) map { ip =>
         Some(InetAddress.getByName(ip.getHostAddress))
-        getMacAddress(InetAddress.getByName(ip.getHostAddress)) match {
+        getMachineAddress(InetAddress.getByName(ip.getHostAddress)) match {
           case Success(str) => str
           case Failure(ex) => ex.getMessage
         }
@@ -24,7 +24,7 @@ object MacAddressUtility {
     } else ""
   }
 
-  private def getMacAddress(ip: InetAddress): Try[String] = {
+  private def getMachineAddress(ip: InetAddress): Try[String] = {
     Try({
       val network: NetworkInterface = NetworkInterface.getByInetAddress(ip)
       val mac: Array[Byte] = network.getHardwareAddress
@@ -33,7 +33,7 @@ object MacAddressUtility {
     )
   }
 
-  private def isVMMac(mac: Array[Byte]): Boolean = {
+  private def isVMMachine(mac: Array[Byte]): Boolean = {
     if (null == mac) false else {
       val invalidMacs = Array(Array(0x00, 0x05, 0x69), Array(0x00, 0x1C, 0x14), Array(0x00, 0x0C, 0x29), Array(0x00, 0x50, 0x56),
         Array(0x08, 0x00, 0x27), Array(0x0A, 0x00, 0x27), Array(0x00, 0x03, 0xFF.toByte), Array(0x00, 0x15, 0x5D))
@@ -43,4 +43,8 @@ object MacAddressUtility {
       x.forall(_ == true)
     }
   }
+}
+
+object jjk extends App {
+  println(MachineAddressUtility.getAddress)
 }
