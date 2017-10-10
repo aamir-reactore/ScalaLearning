@@ -7,7 +7,7 @@ import org.json4s.jackson.JsonMethods.{compact, parse, render}
 
 import scala.util.Try
 trait RequestResponseEntity
-abstract class BaseEntity[E, TId](implicit val manifest1: Manifest[E]) {
+abstract class JsUBEntity[E, TId](implicit val manifest1: Manifest[E]) {
   def attributes: Map[String, String] = Map.empty
 
   val createdBy: Long
@@ -15,7 +15,7 @@ abstract class BaseEntity[E, TId](implicit val manifest1: Manifest[E]) {
 trait Persisteble[TId] extends RequestResponseEntity {
   val id: TId
 }
-abstract class AggregateRoot[E, TId](implicit val mf: Manifest[E]) extends BaseEntity[E, TId] with Persisteble[TId] {
+abstract class AggregateRoot[E, TId](implicit val mf: Manifest[E]) extends JsUBEntity[E, TId] with Persisteble[TId] {
   /*  def set(cc:Long ,createdDate:Timestamp,modifiedBy:Long,modifiedDate:Timestamp)(implicit session:Session)={
        createdBy = cc
     }*/

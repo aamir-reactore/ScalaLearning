@@ -28,40 +28,40 @@ trait Topic[TId] {
   def isIgnore: Boolean = false
 }
 trait Publishable[TId] extends Topic[TId]
-trait RSBEntity[TID <: Long] extends Publishable[TID] {
+trait KafkaPublishEntity[TID <: Long] extends Publishable[TID] {
   val index: BigInt = {
     Thread.sleep(1) // just to make the millisecond value unique
     System.currentTimeMillis()
   }
 }
-case class RSBMessage[E <: RSBEntity[_]] (mineId:Long, payload:List[E], exception: Option[Throwable] = None, topicId:String = "") {
+case class KafkaMessage[E <: KafkaPublishEntity[_]](mineId:Long, payload:List[E], exception: Option[Throwable] = None, topicId:String = "") {
   val lastIndex = payload.last.index
 
-  def ++ (that: RSBMessage[E]) = {
-    RSBMessage[E](this.mineId, this.payload ++ that.payload )
+  def ++ (that: KafkaMessage[E]) = {
+    KafkaMessage[E](this.mineId, this.payload ++ that.payload )
   }
 }
-trait RSBProducerClientComponent {
+trait KafkaProducerClientComponent {
 
-  def produceAsync(topicId: String, records: RSBMessage[_]): Future[Boolean]
+  def produceAsync(topicId: String, records: KafkaMessage[_]): Future[Boolean]
 
   def produceAsync(topicId: String, records: String): Future[Boolean]
 
 }
 
- object RSBProducerClientHelper {
-  val producer = KafkaProducerHelper.createNewKafkaProducer(ConfigHelper.KAFKA_CONNECTION_STRING, acks = 1)
+ object KafkaProducerClientHelper {
+  val producer = KafkaUtil.createNewKafkaProducer(ConfigHelper.KAFKA_CONNECTION_STRING, acks = 1)
 }
 
 trait KafkaProducerComponent {
   def producer: KafkaProducer[Array[Byte], Array[Byte]]
 }
 
-trait AbstractRSBProducerClient extends RSBProducerClientComponent {
+trait AbstractKafkaProducerClient extends KafkaProducerClientComponent {
   this: KafkaProducerComponent  =>
 
 
-  override def produceAsync(topicId: String, records: RSBMessage[_]): Future[Boolean] = {
+  override def produceAsync(topicId: String, records: KafkaMessage[_]): Future[Boolean] = {
 
     val serialized = records.asJson
     val (p: Promise[(RecordMetadata, Exception)], reqMetadata: RecordMetadata) = sendToKafka(topicId, serialized.getBytes)
@@ -117,17 +117,17 @@ trait AbstractRSBProducerClient extends RSBProducerClientComponent {
 }
 
 trait KafkaProducerImpl extends KafkaProducerComponent {
-  override val  producer = RSBProducerClientHelper.producer
+  override val  producer = KafkaProducerClientHelper.producer
 }
-trait RSBProducerClient extends AbstractRSBProducerClient with KafkaProducerImpl
+trait KafkaProducerClient extends AbstractKafkaProducerClient with KafkaProducerImpl
 
-object ll extends App with RSBProducerClient {
-case class A(name:String, age:Int)extends  RSBEntity[Long] {
+object ll extends App with KafkaProducerClient {
+case class A(name:String, age:Int)extends  KafkaPublishEntity[Long] {
   topicId = "test-topic"
 }
   def publishToKafka() {
     for {
-      result <- produceAsync("test-topic", RSBMessage(1L, List(A("johny", 34)), topicId = "test-topic"))
+      result <- produceAsync("test-topic", KafkaMessage(1L, List(A("johny", 34)), topicId = "test-topic"))
       _=println("result === " + result)
     } yield result
   }
