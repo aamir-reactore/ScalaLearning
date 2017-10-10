@@ -38,7 +38,7 @@ case class KafkaMessage[E <: KafkaPublishEntity[_]](mineId:Long, payload:List[E]
   val lastIndex = payload.last.index
 
   def ++ (that: KafkaMessage[E]) = {
-    KafkaMessage[E](this.mineId, this.payload ++ that.payload )
+    KafkaMessage[E](this.mineId, this.payload ++ that.payload)
   }
 }
 trait KafkaProducerClientComponent {
@@ -122,12 +122,12 @@ trait KafkaProducerImpl extends KafkaProducerComponent {
 trait KafkaProducerClient extends AbstractKafkaProducerClient with KafkaProducerImpl
 
 object ll extends App with KafkaProducerClient {
-case class A(name:String, age:Int)extends  KafkaPublishEntity[Long] {
+case class MqttData(name:String, age:Int)extends  KafkaPublishEntity[Long] {
   topicId = "test-topic"
 }
   def publishToKafka() {
     for {
-      result <- produceAsync("test-topic", KafkaMessage(1L, List(A("johny", 34)), topicId = "test-topic"))
+      result <- produceAsync("test-topic", KafkaMessage(1L, List(MqttData("johny", 34)), topicId = "test-topic"))
       _=println("result === " + result)
     } yield result
   }
