@@ -4,7 +4,7 @@ import java.net.{Inet4Address, InetAddress, NetworkInterface}
 
 import scala.collection.JavaConversions._
 import scala.util.{Failure, Success, Try}
-object MachineAddressUtility {
+object ResolveAddressUtility {
 
   def getAddress: String = {
     val net = NetworkInterface.getNetworkInterfaces.toSeq
@@ -46,5 +46,5 @@ object MachineAddressUtility {
 }
 
 object jjk extends App {
-  println(MachineAddressUtility.getAddress)
+  println(ResolveAddressUtility.getAddress)
 }
