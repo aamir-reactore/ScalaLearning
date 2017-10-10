@@ -7,6 +7,7 @@ object ActorHierarchy1 extends App {
   case object CreateChild
   case object SignalChildren
   case object PrintSignal
+
   class ParentActor extends Actor {
     private var num = 0
     private val children = collection.mutable.Buffer[ActorRef]()

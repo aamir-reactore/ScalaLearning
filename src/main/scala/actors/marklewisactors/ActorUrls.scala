@@ -66,9 +66,9 @@ object ActorUrls2 extends App {
     }
   }
 
-  val system = ActorSystem("ActorHierarchy1")
-  val actor = system.actorOf(Props[ParentActor], "ParentActor1")
-  val actor2 = system.actorOf(Props[ParentActor], "ParentActor2")
+  val system   = ActorSystem("ActorHierarchy1")
+  val actor    = system.actorOf(Props[ParentActor], "ParentActor1")
+  val actor2   = system.actorOf(Props[ParentActor], "ParentActor2")
 
   actor2 ! CreateChild
   val child0Actor2: ActorSelection = system.actorSelection("akka://ActorHierarchy1/user/ParentActor2/child-0")

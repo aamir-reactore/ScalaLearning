@@ -17,9 +17,6 @@ object PipeToExample1 extends App {
         actorB ! message
       case x: RespondToActorB =>
         println("Response when ActorB processed ActorC response and piped that to me")
-      case _ => {
-        println("came here")
-      }
     }
   }
 
@@ -29,10 +26,7 @@ object PipeToExample1 extends App {
         println("inside ActorB message block")
         val actorC = context.actorOf(Props[ActorC], "ActorC")
         implicit val to = Timeout(2 seconds)
-        val fromActorC = ask(actorC,"asking actorc").mapTo[RespondToActorB].map {x=>
-          println("asked actorc and got positive response, now piping back to ActorA")
-          println(s"x is $x")
-        }.pipeTo(sender)
+        val fromActorC = ask(actorC,"asking actorc").mapTo[RespondToActorB] pipeTo sender
     }
 
   }
