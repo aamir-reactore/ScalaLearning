@@ -2,6 +2,9 @@ package actors.chatroom
 
 import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props}
 
+/**
+  * Source ==> http://www.deadcoderising.com/2015-05-26-akka-change-an-actors-behavior-using-context-become/
+  */
 abstract class Msg
 case class Send(msg:String) extends Msg
 case class NewMsg(from:String,msg:String) extends Msg
