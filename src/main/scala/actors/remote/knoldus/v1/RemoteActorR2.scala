@@ -1,12 +1,13 @@
 package actors.remote.knoldus.v1
 
-import akka.actor.{Actor, ActorLogging}
+import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
+import com.typesafe.config.ConfigFactory
 
 class RemoteActorR2 extends Actor with ActorLogging {
   override def receive: Receive = ???
 }
 
-object RemoteActorR2 {
+object RemoteActorR2 extends App {
   val conf =
     """
       |akka {
@@ -23,5 +24,10 @@ object RemoteActorR2 {
       |  }
       |}
     """.stripMargin
-
+  val config   = ConfigFactory.parseString(conf)
+  val client   = ActorSystem("remote-r2", config)
+  val path     = "akka.tcp://remote-r1@0.0.0.0:2551/user/RemoteActorR1"
+  val server   = client.actorSelection(path)
+  server ! "Hello Server"
 }
+
