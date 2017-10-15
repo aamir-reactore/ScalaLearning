@@ -1,3 +1,4 @@
+/*
 package actors.persistence
 
 import akka.persistence._
@@ -82,4 +83,4 @@ object pertest1 extends App {
   //shutdown the actor system
   system.terminate()
 
-}
+}*/

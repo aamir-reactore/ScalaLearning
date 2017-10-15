@@ -26,7 +26,7 @@ class Cons[T](val head: T, val tail: List[T]) extends List[T] {
 
 object List1 extends App {
 
-  val list: Cons[Int] = new Cons(2, new Cons(4, new Cons(6, new Cons(8, new Nil))))
+  val list: Cons[Int] = new Cons[Int](2, new Cons(4, new Cons(6, new Cons(8, new Nil))))
   println(list.isEmpty)
   println(list.head)
   println("printing cons")
