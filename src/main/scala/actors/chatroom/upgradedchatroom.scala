@@ -1,3 +1,4 @@
+/*
 package actors.chatroom
 
 import actors._
@@ -33,4 +34,4 @@ class Client(username:String,server:ActorRef) extends Actor {
       self ! PoisonPill
     }
   }
-}
+}*/
