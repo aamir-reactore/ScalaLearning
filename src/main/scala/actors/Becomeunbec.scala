@@ -17,7 +17,7 @@ class EdNorton extends Actor {
       context.become(normalState)
     }
   }
-  def normalState:Receive = {
+  def normalState:Receive ={
     case TryToFindSolution => {
       println("Looking for solution to my problem...")
     }
@@ -35,17 +35,15 @@ object Becomeunbec extends App {
 
   val system = ActorSystem("BecomeHulkExample")
 
-  val edNorton = system.actorOf(Props[EdNorton], name = "DavidBanner")
+  val ed = system.actorOf(Props[EdNorton], name = "EdNorton")
 
-  edNorton ! ActNormalMessage // init to normalState
-
-  edNorton ! TryToFindSolution
-
-  edNorton ! BadGuysMakeMeAngry
+  ed ! ActNormalMessage // init to normalState
+  ed ! TryToFindSolution
+  ed ! BadGuysMakeMeAngry
 
   Thread.sleep(1000)
+  ed ! ActNormalMessage
+  ed ! TryToFindSolution
 
-  edNorton ! ActNormalMessage
 
-  system.terminate()
 }

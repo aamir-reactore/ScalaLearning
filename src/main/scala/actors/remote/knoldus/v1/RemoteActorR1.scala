@@ -1,3 +1,5 @@
+package actors.remote.knoldus.v1
+
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
 import com.typesafe.config.ConfigFactory
 
