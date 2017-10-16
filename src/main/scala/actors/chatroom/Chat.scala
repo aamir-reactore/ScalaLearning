@@ -1,3 +1,4 @@
+/*
 package actors
 
 import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props, Terminated}
@@ -15,8 +16,9 @@ class Server extends Actor {
   override def receive: Receive = {
     case Connect(username) => {
       broadcast(Info(s"$username has joined the chat"))
-      context.watch(sender)
       clients = (username,sender) :: clients
+      context.watch(sender)
+
     }
     case BroadCast(message) => {
       val clientOption = clients.find(_._2 == sender)
@@ -26,8 +28,8 @@ class Server extends Actor {
       }
     }
     case Terminated(client) => {
-      clients = clients.filterNot(_._2 == client)
       val clientOption = clients.find(_._2 == sender)
+      clients = clients.filterNot(_._2 == client)
       if(clientOption.isDefined) {
         val username = clientOption.get._1
         broadcast(Info(s"$username has left chat"))
@@ -69,11 +71,14 @@ object BroadCastChat extends App {
   client2 ! Send("Hi all")
 
   Thread.sleep(300)
-  val client4 = system.actorOf(Props(new Client("faik",server)),"Client3")
-  val client5 = system.actorOf(Props(new Client("rafaan",server)),"Client4")
+  val client3 = system.actorOf(Props(new Client("faik",server)),"Client3")
+  val client4 = system.actorOf(Props(new Client("rafaan",server)),"Client4")
 
-  Thread.sleep(300)
+  Thread.sleep(1000)
 
-  println("aamir broadcasting to all")
-  client1 ! Send("lechmovo sarneee")
+   client1 ! Send("lechmovo sarneee")
+  Thread.sleep(1000)
+
+  client4 ! Disconnect
 }
+*/
