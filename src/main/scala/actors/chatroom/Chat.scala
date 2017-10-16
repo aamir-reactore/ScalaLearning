@@ -1,64 +1,79 @@
-package actors.chatroom
+package actors
 
-import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props}
+import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props, Terminated}
 
-/**
-  * Source ==> http://www.deadcoderising.com/2015-05-26-akka-change-an-actors-behavior-using-context-become/
-  */
 abstract class Msg
-case class Send(msg:String) extends Msg
-case class NewMsg(from:String,msg:String) extends Msg
 case class Info(msg:String) extends Msg
+case class NewMessage(from:String,msg:String) extends Msg
+case class Send(msg:String) extends Msg
 case class Connect(username:String) extends Msg
-case class Broadcast(msg:String) extends Msg
-case object Disconnect extends Msg
-
+case class BroadCast(msg:String) extends Msg
+case object Disconnect
 class Server extends Actor {
+
   var clients = List[(String,ActorRef)]()
-  def receive  = {
+  override def receive: Receive = {
     case Connect(username) => {
-      broadcast(Info(s"$username joined the chat"))
+      broadcast(Info(s"$username has joined the chat"))
+      context.watch(sender)
       clients = (username,sender) :: clients
     }
-    case Broadcast(msg) => {
-      val username = clients.filter(_._2 == sender).head._1
-      broadcast(NewMsg(username,msg))
+    case BroadCast(message) => {
+      val clientOption = clients.find(_._2 == sender)
+      if(clientOption.isDefined) {
+        val username = clientOption.get._1
+        broadcast(NewMessage(username,message))
+      }
+    }
+    case Terminated(client) => {
+      clients = clients.filterNot(_._2 == client)
+      val clientOption = clients.find(_._2 == sender)
+      if(clientOption.isDefined) {
+        val username = clientOption.get._1
+        broadcast(Info(s"$username has left chat"))
+      }
     }
   }
-  def broadcast(msg:Msg) = {
-    clients.foreach(_._2 ! msg)
+
+  def broadcast(info:Msg) = {
+    clients.foreach(_._2 ! info)
+  }
+}
+class Client(username:String,server:ActorRef) extends Actor {
+  server ! Connect(username)
+  override def receive = {
+    case info:Info => {
+      println(s"[$username's client]- ${info.msg}")
+    }
+    case send: Send => {
+      server ! BroadCast(send.msg)
+    }
+    case newMsg:NewMessage => {
+      println(s"[$username's client]- from = ${newMsg.from},message = ${newMsg.msg}")
+    }
+    case Disconnect => self ! PoisonPill
   }
 }
 
-class Client(val username:String,server:ActorRef) extends Actor {
-    server ! Connect(username)
-    def receive = {
-      case NewMsg(from, msg) => {
-        println(s"[$username's client] - from = $from, message = $msg")
-      }
-      case Send(msg) => server ! Broadcast(msg)
-      case Info(msg) => {
-        println(s"[$username's client] - $msg")
-      }
-      case Disconnect => {
-        println(s"[$username's client] - disconnected")
-        self ! PoisonPill
-      }
-   }
-}
+object BroadCastChat extends App {
 
-object ChatBox extends App {
-  val system = ActorSystem("System")
-  val server = system.actorOf(Props[Server])
+  val system = ActorSystem("Broadcaster")
 
-  val c1 = system.actorOf(Props(new Client("Sam",server)))
-  c1 ! Send("Hi, anyone here?")
+  val server = system.actorOf(Props[Server],"Server")
 
-  Thread.sleep(1000)
-  val c2 = system.actorOf(Props(new Client("Mia", server)))
-  Thread.sleep(1000)
+  val client1 = system.actorOf(Props(new Client("aamir",server)),"Client1")
+  val client2 = system.actorOf(Props(new Client("oby",server)),"Client2")
 
- val c3 = system.actorOf(Props(new Client("Luke", server)))
+  Thread.sleep(300)
 
+  client2 ! Send("Hi all")
 
+  Thread.sleep(300)
+  val client4 = system.actorOf(Props(new Client("faik",server)),"Client3")
+  val client5 = system.actorOf(Props(new Client("rafaan",server)),"Client4")
+
+  Thread.sleep(300)
+
+  println("aamir broadcasting to all")
+  client1 ! Send("lechmovo sarneee")
 }

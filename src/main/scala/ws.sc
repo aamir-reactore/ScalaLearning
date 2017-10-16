@@ -36,6 +36,10 @@ s"Hours-${period.getHours} Minutes-${period.getMinutes} Seconds-${period.getSeco
 
 Seq(6,2,3,4).span(x => x % 2 == 0)
 Seq(1,2,3,4).span(x => x % 2 == 0)
+println(">>>")
+val l = List("abc","","def","hih","")
+l.map(_.trim).partition(_.nonEmpty)
+
 
 val num = 2
 num match {
@@ -45,6 +49,8 @@ num match {
 }
 List(1,2,3,4) ++  List(5,6,7,8)
 List(1,2,3,4) ::: List(5,6,7,8)
+
+
 
 List(5,4).splitAt(1)
 
