@@ -36,7 +36,7 @@ object forcomtest extends App {
   }
   def method3: Future[Int] = {
     for {
-      result <- if(true) {
+      result <- if(false) {
         Future(10)
       } else {
         throw new Exception("should read this message")

@@ -23,6 +23,13 @@ libraryDependencies ++= Seq(
  "com.typesafe.akka" %% "akka-http-core" % "10.0.1",
   "com.typesafe.akka" % "akka-cluster-tools_2.11" % "2.4.17",
   "com.typesafe.akka" % "akka-remote_2.11" % "2.4.17",
+<<<<<<< HEAD
   /*"org.specs2" % "specs2" % "2.4.6"*/
   "org.scalatest" %% "scalatest" % "3.0.1"
+=======
+  "commons-net" % "commons-net" % "3.3"
+
+  /*"org.specs2" % "specs2" % "2.4.6"
+  "org.scalatest" %% "scalatest" % "3.0.1"*/
+>>>>>>> 56e8a654ef4a4f3b40373dd0c934f66a692b8729
 )

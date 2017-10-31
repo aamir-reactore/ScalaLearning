@@ -1,1 +1,3 @@
 http://mbonaci.github.io/scala/#433---checking-variance-annotations
+
+https://www.markthomas.info/blog/92 (userful for traits)
