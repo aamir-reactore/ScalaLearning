@@ -24,7 +24,7 @@ object WritetoFTPFile1 extends App {
   files.foreach { x =>
      if(x.isFile) {
        val remoteFilename = s"/SharedLocation/SAP_IN/${x.getName}"
-       list map {x =>
+       list map { x =>
          val local = new ByteArrayInputStream(x.toCharArray.map(_.toByte))
          ftp.appendFile(remoteFilename, local)
        }
