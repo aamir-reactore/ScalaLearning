@@ -122,7 +122,7 @@ trait KafkaProducerImpl extends KafkaProducerComponent {
 trait KafkaProducerClient extends AbstractKafkaProducerClient with KafkaProducerImpl
 
 object ll extends App with KafkaProducerClient {
-case class MqttData(name:String, age:Int)extends  KafkaPublishEntity[Long] {
+case class MqttData(name:String, age:Int) extends  KafkaPublishEntity[Long] {
   topicId = "test-topic"
 }
   def publishToKafka() {
@@ -133,6 +133,4 @@ case class MqttData(name:String, age:Int)extends  KafkaPublishEntity[Long] {
   }
   publishToKafka()
   Thread.sleep(10000)
-
-
 }
