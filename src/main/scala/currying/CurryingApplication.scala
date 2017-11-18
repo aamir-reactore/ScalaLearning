@@ -5,9 +5,9 @@ package currying
   * val f: (A, B) => C to val curriedF: A => B => C or val curriedF: A => (B => C)
   */
 object CurryingApplication1 extends App {
-  val totalYearlyIncome:(Int,Int) => Int =  (income, bonus) => income + bonus
+  val totalYearlyIncome:(Int,Int)   =>  Int  =  (income, bonus) => income + bonus
   val totalYearlyIncomeCurried: Int => (Int => Int) = totalYearlyIncome.curried
-  val partialTotalYearlyIncome: Int => Int = totalYearlyIncomeCurried(10000)
+  val partialTotalYearlyIncome: Int =>  Int  = totalYearlyIncomeCurried(10000)
   partialTotalYearlyIncome(100)
 }
 
@@ -28,7 +28,7 @@ object CurryingApplication4 extends App {
     (a: A) => (b: B) => f(a, b)
   }
 
-  val g: (Int, Int) => Int = (x, y) => x + y
+  val g: (Int, Int)   => Int = (x, y) => x + y
   val sum: Int => Int => Int = curry(g)
   println( sum(1)(2) )
 
