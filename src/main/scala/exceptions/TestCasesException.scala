@@ -1,10 +1,11 @@
+/*
 package exceptions
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.{Matchers, Tag, WordSpec}
 
 import scala.util.Try
 
-class MyExceptionMessageSpec extends WordSpec with Matchers {
+class MyExceptionMessageSpec extends  Matchers {
   "My Exception Message spec" should {
     "return the message in the exception when getMessage is called " in {
       val res = throwExceptionMethod
@@ -22,4 +23,4 @@ class MyExceptionMessageSpec extends WordSpec with Matchers {
     }
   }
 }
-class MyCauseException(msg:String) extends Exception(msg)
+class MyCauseException(msg:String) extends Exception(msg)*/

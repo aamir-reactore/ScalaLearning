@@ -6,4 +6,6 @@ res.size
 (res(3)._1).isEmpty
 (res(3)._2).isEmpty
 
+List().init.lastOption.getOrElse(throw new Exception("init list.empty"))
+
 
