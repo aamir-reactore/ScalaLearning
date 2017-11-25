@@ -54,13 +54,7 @@ List(1,2,3,4) ::: List(5,6,7,8)
 
 List(5,4).splitAt(1)
 
-var s = Set("abc")
-s = s + "def"
 
-val m = Map(1 -> "abc")
-m.get(11)
-
-val mm = scala.collection.mutable.Map()
 
 
 

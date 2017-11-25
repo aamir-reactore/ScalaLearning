@@ -23,4 +23,5 @@ class MyExceptionMessageSpec extends  Matchers {
     }
   }
 }
-class MyCauseException(msg:String) extends Exception(msg)*/
+class MyCauseException(msg:String) extends Exception(msg)
+*/
