@@ -40,11 +40,11 @@ math.IEEEremainder(11.0,4.0)
 println("##Bit wise operator##")
 val bitAnd = 1 & 2
 val bitOR = 1 | 2
-val bitXOR = 1 ^ 3
+val bitXOR = 1 ^ 3 // if bits same 0 else 1
 val bitComplement = ~1 //unary
 
-val leftShift = 1 << 2
-val rightShift = -1 >> 31 // fills higehr bits with 1 while shift
+val leftShift = 1 << 2 // fills bits with 0 while shifting
+val rightShift = -1 >> 31 // fills higehr bits with higer bit while shift
 val unSignedRightShift = -1 >>> 31 // fills wit 0 while shifting
 
 println("##Equality operators#")
