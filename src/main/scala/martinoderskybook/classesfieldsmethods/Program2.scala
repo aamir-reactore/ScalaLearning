@@ -34,7 +34,7 @@ object Program2 extends App {
    val res = CheckSumAccumulator.calculate("yellow world")
   println(res)
  //as if companion class's object
-  val acc = CheckSumAccumulator
+  val acc  = CheckSumAccumulator
 
   val acc2 = new CheckSumAccumulator
   println(acc2)

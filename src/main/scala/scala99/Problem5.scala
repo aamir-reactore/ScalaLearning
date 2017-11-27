@@ -11,7 +11,7 @@ object ReverseList extends App {
     }
     reverse(l,Nil)
   }
-  def foldReverse[T](l:List[T]) = l.foldLeft(Li()((acc, b) => b :: acc)
+  def foldReverse[T](l:List[T]) = l.foldLeft(List[T]())((acc, b) => b :: acc)
 
   def martinOderskyLectureReverse(l: List[Int]):List[Int] = l match {
     case List()    => l
