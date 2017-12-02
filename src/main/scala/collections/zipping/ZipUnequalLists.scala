@@ -6,6 +6,7 @@ object UnequalList extends App {
   val likeList = List("mangoes","oranges","pears")
 
   val res = nameList zipAll(likeList, "", "")
+
   println("Result list is " + res)
   println("list size is"+res.size)
   println("Is last element first part empty " + res(3)._1.isEmpty)

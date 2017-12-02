@@ -9,8 +9,8 @@ object NthListElement extends App {
   def recursiveNth[T](index: Int, l: List[T]): T = (index, l) match {
     case (0, h :: _) => h
     case (n, _ :: tail) => recursiveNth(n - 1, tail)
-    case (_, Nil) => throw new NoSuchElementException("list is empty")
+    case (_, Nil) => throw new NoSuchElementException("element not found")
   }
 
-  println("nth element of list is = " + recursiveNth(4, l))
+  println("nth element of list is = " + recursiveNth(22, l))
 }
