@@ -2,7 +2,7 @@ val x = 0x00FF
 val b:Byte = 127
 val d = 10.9030e2
 println("## unicode character representation##")
-val c = '\u0041'
+val c = '\u0077'
 val bs = '\\'
 val str = "\\\"\'"
 
