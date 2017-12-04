@@ -1,7 +1,7 @@
 package martinoderskybook.functionalobjects
 
 object ll extends App {
-      //literal identifier
+      //literal identifier(alphanumeric,operator,mixed(unary_-),backtick)
   println(s"x is ${`while`(3)}") //backtick character
   def `while`(x:Int) = x
 

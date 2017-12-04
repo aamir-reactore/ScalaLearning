@@ -35,3 +35,20 @@ object FunctionsAsObjects2 extends App {
   //l.::("Abc") // ==> "Abc" :: l
 
 }
+object ll extends App {
+      val test = new Test(7, 8, 9)
+      test.printArgs()
+      test.modifyArray()
+      test.printArgs()
+
+
+    class Test(values: Int*) {
+      def modifyArray(): Unit = {
+        val array = values.toArray
+        array(1) = 5
+      }
+
+      def printArgs(): Unit =
+        println(values)
+    }
+}
