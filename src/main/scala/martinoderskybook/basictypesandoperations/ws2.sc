@@ -2,7 +2,9 @@ val x = 0x00FF
 val b:Byte = 127
 val d = 10.9030e2
 println("## unicode character representation##")
-val c = '\u0041'
+val ch1:Int = 'A'
+val ch2 = 'A'
+val c = '\u0077'
 val bs = '\\'
 val str = "\\\"\'"
 
@@ -15,6 +17,7 @@ val sym1 = Symbol.apply("Abc")
 val sym2 = Symbol("Abc")
 val sym3 = 'Def
 sym1.name
+val ss = 'aSymbol
 def symTest(s:Symbol) = s.name
 symTest('nameupdate)
 
