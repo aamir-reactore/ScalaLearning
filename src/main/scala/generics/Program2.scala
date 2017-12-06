@@ -2,6 +2,8 @@ package generics
 
 /**
   * https://stackoverflow.com/questions/30365846/why-are-input-parameters-contravariant-in-methods
+  * https://stackoverflow.com/questions/663254/why-doesnt-the-example-compile-aka-how-does-co-contra-and-in-variance-w
+  * (above link explanation by Daniel Spiewak)
   */
 class A
 class B extends A

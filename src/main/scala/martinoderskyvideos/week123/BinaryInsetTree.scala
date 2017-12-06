@@ -25,7 +25,7 @@ abstract class InSet {
 
   def incl(x: Int): InSet
 
-  def union(other: InSet): InSet
+  //def union(other: InSet): InSet
 }
 
 class EmptySet extends InSet {
@@ -36,7 +36,7 @@ class EmptySet extends InSet {
 
   override def toString: String = "."
 
-  def union(other: InSet): InSet = other
+  //def union(other: InSet): InSet = other
 }
 
 class NonEmptySet(elem: Int, left: InSet, right: InSet) extends InSet {
@@ -52,9 +52,9 @@ class NonEmptySet(elem: Int, left: InSet, right: InSet) extends InSet {
     else this
   }
 
-  def union(other: InSet): InSet = {
+ /* def union(other: InSet): InSet = {
     ((left union right) union other) incl elem
-  }
+  }*/
 
   override def toString: String = s"{$left$elem$right}"
 }
