@@ -5,12 +5,12 @@ val divide = new PartialFunction[Int, Int] {
 }
 val bol = divide.isDefinedAt(0)
 val ap = divide.apply(1)
-divide(2)
+divide(2) // calls apply directly
 //divide(0), java.lang.ArithmeticException: / by zero
 
 val divide2: PartialFunction[Int, Int] = {
   case d: Int if d != 0 => 42 / d
-  case _ => 0 // if not defined then scala.MatchError for divide2(0)
+  case _ => 0 // if this case not defined then scala.MatchError for divide2(0)
 }
 divide2(2)
 divide2(0)
@@ -27,14 +27,14 @@ val convert6to10 = new PartialFunction[Int,String] {
   override def isDefinedAt(x: Int): Boolean = x > 5 && x < 11
 }
 val pf1 = convert1to5 orElse convert6to10
-//pf1(12)  ArrayIndexOutOfBoundsException
+//pf1(12)  ArrayIndexOutOfBoundsException,coz directly calls apply method.
 pf1(8)
 pf1(4)
 
 /** collection api using partial functions
   * Ref : https://alvinalexander.com/scala/how-to-define-use-partial-functions-in-scala-syntax-examples
 **/
-//List(0,1,2) map { divide } CTE
+//List(0,1,2) map { divide } CTE on 0
 
 List(0,1,2) collect { divide }
 
