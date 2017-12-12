@@ -1,4 +1,4 @@
-//Indirect recursion (mutually recursive functions)
+/** Indirect recursion (mutually recursive functions) **/
 def isEven(x: Int): Boolean =
   if (x == 0) true else isOdd(x - 1)
 def isOdd(x: Int): Boolean =
