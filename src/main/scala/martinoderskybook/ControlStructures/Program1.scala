@@ -88,8 +88,6 @@ object BreakTest extends App {
     } catch {
       case e: Exception => {
          if(e eq new Exception) // comparing a fresh object using `eq' will always yield false
-           if(e eq new Exception)
-             
         println ("breaked")
          else
            println("breakebad")

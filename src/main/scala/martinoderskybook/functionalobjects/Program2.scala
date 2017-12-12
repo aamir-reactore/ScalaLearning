@@ -6,7 +6,7 @@ class Rational(n:Int, d:Int) /*class parameters*/{
   val numer: Int = n / g
   val denom: Int = d / g
 
-  //  def this(n:Int,m:Int,c:Int) = this(n) CTE must be after def this(n:Int) = this(n,1
+  //  def this(n:Int,m:Int,c:Int) = this(n) CTE, must be after def this(n:Int) = this(n,1
 
   def this(n:Int) = this(n, 1)
 
