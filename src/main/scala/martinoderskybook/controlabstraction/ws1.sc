@@ -32,23 +32,3 @@ val y: Int => Int = curriedSum(2)_  //way to get an actual reference to curriedS
 x(2)
 y(2)
 
-println {"hello"}
-def testCurly(a:Int,b:Int) = true
-//testCurly{1,2} CTE use () for more than 1 args else {} for 1 arg
-
-
-def twice(op: Double => Double, x: Double) = op(op(x))
-twice(_ + 2, 10)
-
-/**loan-pattern**/
-def withPrintWriter(file:java.io.File)(op:PrintWriter => Unit) = {
-  val writer = new PrintWriter(file)
-  try {
-    op(writer)
-  } finally {
-    writer.close
-  }
-}
-withPrintWriter(new java.io.File("/home/administrator/crudfixLPZK")) {
-  writer => writer.println("")
-}
