@@ -1,10 +1,9 @@
-import java.io.PrintWriter
+
 
 def filesHere = new java.io.File(".").listFiles
-
+type FunctorType = (String,String) => Boolean
 //using function literal
-def filesMatching1(query:String,
-                  matcher: (String,String) => Boolean) = {
+def filesMatching1(query:String, matcher: FunctorType) = {
   for(file <- filesHere; if matcher(file.getName, query)
    ) yield file
 }
