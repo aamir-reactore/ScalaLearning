@@ -6,13 +6,15 @@ object LastElement extends App {
   println("last element of list is = " + l.last)
 
   def recursiveLast[T](l: List[T]): T = l match {
-    case h :: Nil => h
+    case h :: Nil  => h
     case _ :: tail => recursiveLast(tail)
-    case _ => throw new NoSuchElementException
+    case _         => throw new NoSuchElementException
   }
 
   println("last element of list recursive is = " + recursiveLast[Int](l))
+
   def reduceMethod[T](list: List[T]): T = if (list.nonEmpty) list.reduce((_, b) => b) else throw new NoSuchElementException("List is empty")
+
   println("last element of list folding is = " + reduceMethod[Int](l))
 
 }

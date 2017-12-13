@@ -24,7 +24,7 @@ object ListTest1 extends App {
     case scala.Nil => scala.Nil
     case head :: tail => insertSort(head, iSort(tail))
   }
-  println(s"sorted list is ${iSort(List(8,7,6,5,4,3))}")
+  println(s"sorted list is ${iSort(List(8,7,6))}")
 }
 
 //insertion sort kind of thing, sort tail and then insert head in proper place

@@ -1,12 +1,12 @@
 package martinoderskybook.classesfieldsmethods
-import scala.collection.mutable.Map
+import scala.collection.mutable
 //Singleton or Standalone object
 /**
   ~~> a class connot extend an object
   ~~> an object cannot extends object
  */
 object CheckSumAccumulator {
- private val cache = Map.empty[String,Int]
+ private val cache = mutable.Map.empty[String,Int]
 
   def calculate(s:String) = {
     if(cache.contains(s))

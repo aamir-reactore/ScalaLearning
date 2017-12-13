@@ -3,7 +3,7 @@ package generics
 /**
   * Contravariance test
   */
-abstract class Type [-T]{
+abstract class Type[-T]{
   def typeName : Unit
 }
 
@@ -27,7 +27,7 @@ class TypeCarer{
 object ScalaContravarianceTest extends App {
 
     val superType = new SuperType
-    val subType = new SubType
+    val subType   = new SubType
 
     val typeCarer = new TypeCarer
 

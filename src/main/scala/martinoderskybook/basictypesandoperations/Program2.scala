@@ -10,8 +10,9 @@ object MathUtils {
     def absolute:Double = num.unary_-
   }
 }
+
 object MathUtilTest1 extends App {
   import MathUtils._
-  println( 2.7.absolute )
+  println( -2.7.absolute )
 }
 

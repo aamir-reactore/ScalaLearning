@@ -15,6 +15,7 @@ val s =
 println("## symbol literal ##")
 val sym1 = Symbol.apply("Abc")
 val sym2 = Symbol("Abc")
+val sym3 = 'Def
 sym1.name
 val ss = 'aSymbol
 def symTest(s:Symbol) = s.name
@@ -33,7 +34,7 @@ println("## string index ##")
 
 println("## arithmetic operators ##")
 'b' - 'a'
-11/4
+11 / 4
 11.0 / 4.0
 11 % 4
 11.0 % 4.0
@@ -47,7 +48,7 @@ val bitXOR = 1 ^ 3 // if bits same 0 else 1
 val bitComplement = ~1 //unary
 
 val leftShift = 1 << 2 // fills bits with 0 while shifting
-val rightShift = -1 >> 31 // fills higehr bits with higer bit while shift
+val rightShift = -1 >> 31 // fills higher bits with highest bit while shift
 val unSignedRightShift = -1 >>> 31 // fills wit 0 while shifting
 
 println("##Equality operators#")

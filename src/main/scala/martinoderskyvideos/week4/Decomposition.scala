@@ -12,7 +12,7 @@ class Number1(n:Int) extends Expr1 {
   override def isSum: Boolean = false
   override def numValue: Int = n
   override def leftOpt: Expr1 = throw new Error("Number1.leftOp")
-  override def rightOpt = throw new Error("Number1.leftOp")
+  override def rightOpt = throw new Error("Number1.rightOp")
 }
 class Sum1(e1:Expr1,e2:Expr1) extends Expr1  {
   override def isNumber: Boolean = false
