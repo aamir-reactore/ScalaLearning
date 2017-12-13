@@ -1,4 +1,7 @@
-/**Partial Functions**/
+/**Partial Functions
+  * Checks if a value is contained in the function's domain.
+  **/
+
 val divide = new PartialFunction[Int, Int] {
   def apply(x: Int) = 42 / x
   def isDefinedAt(x: Int) = x != 0
@@ -34,7 +37,7 @@ pf1(4)
 /** collection api using partial functions
   * Ref : https://alvinalexander.com/scala/how-to-define-use-partial-functions-in-scala-syntax-examples
 **/
-//List(0,1,2) map { divide } CTE on 0
+//List(0,1,2) map { divide } RTE on 0
 
 List(0,1,2) collect { divide }
 
