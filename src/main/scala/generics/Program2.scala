@@ -76,5 +76,5 @@ case class EuropeanSwallow() extends Bird
 object jj extends App {
   val africanSwallowList: ListNode[AfricanSwallow] = ListNode[AfricanSwallow](AfricanSwallow(), Nil())
   val birdList: Node[Bird] = africanSwallowList
-  birdList.prepend(new EuropeanSwallow) // becoz new EuropeanSwallow is a Bird itself so U >:B either B or its supertype, here its B
+  val x: Node[Bird] = birdList.prepend(new EuropeanSwallow) // becoz new EuropeanSwallow is a Bird itself so U >:B either B or its supertype, here its B
 }
