@@ -1,4 +1,4 @@
-package eciffocodeexamples.DateTimeExamples
+package DateTimeExamples
 
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.{DateTime, DateTimeZone, LocalDate, LocalTime}

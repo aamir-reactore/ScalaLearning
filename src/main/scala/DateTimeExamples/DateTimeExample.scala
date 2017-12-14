@@ -1,4 +1,4 @@
-package eciffocodeexamples.DateTimeExamples
+package DateTimeExamples
 
 /**
   * Created by Aamir-Fayaz on Oct, 2017
