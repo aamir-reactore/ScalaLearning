@@ -1,3 +1,5 @@
 http://mbonaci.github.io/scala/#433---checking-variance-annotations
 
 https://www.markthomas.info/blog/92 (userful for traits)
+
+https://stackoverflow.com/questions/32199989/what-are-the-differences-between-final-class-and-sealed-class-in-scala (sealed keyword)
