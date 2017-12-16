@@ -12,6 +12,7 @@ object FlattenList extends App {
 
   println("flatten result = " + flatten(List(List(1, 1), 2, List(3, List(5, 8)))))
   println(List(List(1, 1), List(2), List(List(3), List(5, 8)).flatten))
+  println(List(List(1, 1), List(2), List(List(3), List(5, 8))).flatten)
 
   sealed trait NestedList[T]
 
@@ -26,7 +27,7 @@ object FlattenList extends App {
 
   val list: List[NestedList[Int]] = List[Value[Int]](Value(1), Value(2), Value(3))
 
-  val l = Sequence(list)
+  val l= Sequence(list)
   val res = f2(l)
   println(s"functional ==> $res")
 
