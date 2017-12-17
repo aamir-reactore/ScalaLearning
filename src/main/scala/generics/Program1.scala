@@ -1,3 +1,4 @@
+/*
 package generics
 
 object TestProblem1 extends App {
@@ -18,4 +19,4 @@ class Stack[T] {
   def push(x:T) = { elem = x :: elem }
   def top:T  = elem.head
   def pop = {elem = elem.tail }
-}
+}*/

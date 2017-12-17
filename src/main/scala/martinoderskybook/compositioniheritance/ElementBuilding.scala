@@ -23,7 +23,7 @@ abstract class Element {
     if(w <= width) this else {
       val left = elem(' ',(w - width) / 2, height)
       val right = elem(' ', w - width - left.width,height)
-      left beside this beside right
+     left beside this beside right
     }
   }
   def heighten(h:Int):Element = {
@@ -58,9 +58,35 @@ object Element {
   }
 }
 
-object test extends App {
-  val ae1 =  Element.elem(Array("ob"))
-  val ae2 =  Element.elem(Array("obaid"))
-  println(ae1 above  ae2)
+object besidetest extends App {
+  val x1 =  Element.elem(Array("kimberly","musadhiq"))
+  val x2 =  Element.elem(Array("obaid","fayaz","hello","world","aamir"))
+  println(x1 beside  x2)
+  println("##########################")
+  val x3 =  Element.elem(Array("kimberly","musadhiq","obaid"))
+  val x4 =  Element.elem(Array("obaid"))
+  println(x3 beside  x4)
+  println("##########################")
 
+  val x5 =  Element.elem(Array(""))
+  val x6 =  Element.elem(Array("obaid","fayaz","hello","world","aamir"))
+  println(x5 beside  x6)
+  println("##########################")
+
+  val x7 =  Element.elem(Array("kimberly","musadhiq"))
+  val x8 =  Element.elem(Array("obaid","fayaz"))
+  println(x7 beside  x8)
+}
+
+object abovetest extends App {
+  val x1 =  Element.elem(Array("hello","jim","kimberly"))
+  val x2 =  Element.elem(Array("sam","goes"))
+  println(x1 above  x2)
+
+  println("##########################")
+
+  //depends upon width only
+  val x3 =  Element.elem(Array("hello","jim","kimberly","basinger"))
+  val x4 =  Element.elem(Array("hiles"))
+  println(x3 above  x4)
 }
