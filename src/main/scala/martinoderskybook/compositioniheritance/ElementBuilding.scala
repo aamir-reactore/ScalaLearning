@@ -18,7 +18,7 @@ abstract class Element {
     } yield line1 + line2
     )
   }
-  override def toString = contents mkString "\n"
+  override def toString:String = contents mkString "\n"
   def widen(w:Int):Element = {
     if(w <= width) this else {
       val left = elem(' ',(w - width) / 2, height)
@@ -89,4 +89,12 @@ object abovetest extends App {
   val x3 =  Element.elem(Array("hello","jim","kimberly","basinger"))
   val x4 =  Element.elem(Array("hiles"))
   println(x3 above  x4)
+
+  println("##########################")
+
+  val x5 =  Element.elem(Array("hi","hello"))
+  val x6 =  Element.elem(Array("complete"))
+  val h = x5 above  x6
+  println(x5 above  x6)
+  println(h.width)
 }
