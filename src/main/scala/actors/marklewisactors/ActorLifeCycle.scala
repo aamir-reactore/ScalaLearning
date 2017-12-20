@@ -29,7 +29,9 @@ object ActorSupervision1 extends App {
   }
 
   class ChildActor extends Actor {
+
     println("From Default Constructor, Child Actor Created..")
+
     override def receive = {
       case DivideByZero(n, d) => println(s"n /d is ${n / d}")
       case BadStuff           => throw new RuntimeException("Bad stuff happened")
@@ -65,6 +67,9 @@ object ActorSupervision1 extends App {
   val actSel = system.actorSelection("/user/ParentActor1/child-0")
   actSel ! DivideByZero(4, 0)
   actSel ! DivideByZero(4, 2)
+  Thread.sleep(1000)
+  println("Nothing happens by above two statements, as Resume executes in supervisor strategy")
+  println("Now, Restart actor when BadStuff happens")
   actSel ! BadStuff
 }
 /**

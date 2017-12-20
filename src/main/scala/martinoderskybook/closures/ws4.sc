@@ -22,7 +22,7 @@ divide2(0)
 val convert1to5 = new PartialFunction[Int,String] {
   val arr = Array("one","two","three","four","five")
   def apply(n:Int) = arr(n - 1)
-  override def isDefinedAt(x: Int): Boolean = x > 0 && x < 6
+   def isDefinedAt(x: Int): Boolean = x > 0 && x < 6
 }
 val convert6to10 = new PartialFunction[Int,String] {
   val arr = Array("six","seven","eight","nine","ten")

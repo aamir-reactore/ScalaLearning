@@ -8,8 +8,7 @@ import akka.util.Timeout
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
-import scala.concurrent.ExecutionContext.Implicits.global
-/*
+ /*
 object AskPattern1 extends App {
 
   case object AskName
@@ -27,7 +26,7 @@ object AskPattern1 extends App {
   val askResponse: Future[Any] = actor ? AskName
 
   askResponse.foreach(x => println(s"Name is $x"))
-}*/
+}
 import akka.pattern.pipe
 
 object AskPattern2 extends App {
@@ -40,8 +39,8 @@ object AskPattern2 extends App {
         sender ! NameResponse(name)
         //self ! PoisonPill
       }
-      case NameResponse(name) => {
-        println(s"piped here $name")
+      case NameResponse(naam) => {
+        println(s"piped here $naam")
       }
     }
   }
@@ -52,15 +51,14 @@ object AskPattern2 extends App {
 
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
-  val askResponsePiping  = (actor ? AskName) pipeTo actor
+  val askResponsePiping1  = (actor ? AskName) pipeTo actor
+  val askResponsePiping2  = askResponse pipeTo actor
 }
-/*
+
 object AskPattern3 extends App {
 
   case object AskName
-
   case class NameResponse(name: String)
-
   case class AskNameOf(actorRef: ActorRef)
 
   class AskActor(val name: String) extends Actor {
@@ -99,7 +97,7 @@ object AskPattern4 extends App {
 
   class AskActor(val name: String) extends Actor {
     //we can define ExecutionContext for the current system
-    implicit val ec = context.system.dispatcher
+    //implicit val ex = context.system.dispatcher
 
     override def receive = {
       case AskName => sender ! NameResponse(name)
@@ -120,7 +118,7 @@ object AskPattern4 extends App {
   val actor1 = system.actorOf(Props(new AskActor("jimmyactor")), "AskActor1")
   val actor2 = system.actorOf(Props(new AskActor("markactor")), "AskActor2")
 
-  implicit val ec = system.dispatcher
+  implicit val ewwx = system.dispatcher
   implicit val timeOut = Timeout(2.seconds)
   val askResponse: Future[NameResponse] = (actor1 ? AskName).mapTo[NameResponse]
 
@@ -128,6 +126,7 @@ object AskPattern4 extends App {
 
   actor1 ! AskNameOf(actor2)
 }
+
 object AskPattern5 extends App {
 
   class ActorExample extends Actor {
@@ -145,7 +144,7 @@ object AskPattern5 extends App {
   println(result)
 
 }
-
+*/
 object AskPattern6 extends App {
 
   class ActorExample extends Actor {
@@ -185,4 +184,4 @@ object AskPattern7 extends App {
   val result = Await.result(future, timeout.duration)
   println(result)
 
-}*/
+}

@@ -16,6 +16,8 @@ object ActorUrls1 extends App {
         context.actorOf(Props[ChildActor], s"child-$num")
         num += 1
       case SignalChildren(n) =>
+      //  val goodLookup: Option[ActorRef] = context.child("kid")
+       // println(goodLookup)
         context.children.foreach(_ ! PrintSignal(n))
     }
   }
@@ -71,10 +73,14 @@ object ActorUrls2 extends App {
   val actor2   = system.actorOf(Props[ParentActor], "ParentActor2")
 
   actor2 ! CreateChild
+  /**
+    An ActorSelection is a logical view of a section of an ActorSystem's tree of Actors,
+    allowing for broadcasting of messages to that section.
+    **/
   val child0Actor2: ActorSelection = system.actorSelection("akka://ActorHierarchy1/user/ParentActor2/child-0")
 
   child0Actor2 ! PrintSignal(20)
-  actor ! CreateChild
+         actor ! CreateChild
 
   actor ! SignalChildren(1)
 
@@ -82,7 +88,7 @@ object ActorUrls2 extends App {
 
 /**
   * If ur working inside the same ActorSystem then we can leave off
-  * protocol and actorSystem from actorUrl(actorPath)
+  * protocol and actorSystem from actorSelection
   */
 object ActorUrls3 extends App {
 

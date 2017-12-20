@@ -12,7 +12,8 @@ isOdd(5)
    You won’t get a tail-call optimization,
    if the final call goes to a function value
   */
-val funValue = nestedFun _
+val funValue: Int => Unit = nestedFun _
+// optimization: val funValue: Int => Unit = nestedFun
 def nestedFun(x: Int) {
   if (x != 0) { println(x); funValue(x - 1) }
 }
