@@ -6,7 +6,7 @@ import akka.actor.{Actor, ActorSystem, Props}
 object SimpleActorExample1 extends App {
 
   class SimpleActor extends Actor {
-    override def receive = {
+    override def receive: PartialFunction[Any, Unit] = {
       case s: String => println(s"String is $s")
       case n: Int => println(s"Number is $n")
     }

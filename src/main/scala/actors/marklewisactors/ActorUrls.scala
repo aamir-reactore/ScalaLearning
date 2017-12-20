@@ -1,6 +1,6 @@
 package actors.marklewisactors
 
-import akka.actor.{Actor, ActorSelection, ActorSystem, Props}
+import akka.actor.{Actor, ActorRef, ActorSelection, ActorSystem, Props}
 
 object ActorUrls1 extends App {
 
@@ -16,6 +16,8 @@ object ActorUrls1 extends App {
         context.actorOf(Props[ChildActor], s"child-$num")
         num += 1
       case SignalChildren(n) =>
+      //  val goodLookup: Option[ActorRef] = context.child("kid")
+       // println(goodLookup)
         context.children.foreach(_ ! PrintSignal(n))
     }
   }
