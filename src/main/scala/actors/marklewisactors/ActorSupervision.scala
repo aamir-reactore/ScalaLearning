@@ -1,7 +1,7 @@
 package actors.marklewisactors
 
 import akka.actor.SupervisorStrategy.{Restart, Resume}
-import akka.actor.{Actor, ActorSystem, OneForOneStrategy, Props}
+import akka.actor.{Actor, ActorSystem, AllForOneStrategy, OneForOneStrategy, Props}
 
 /** Try this:
   * https://danielasfregola.com/2015/03/09/how-to-supervise-akka-actors/
@@ -19,7 +19,7 @@ object ActorSupervision11 extends App {
     private var num = 0
 
     override def receive = {
-      case CreateChild =>
+      case CreateChild       =>
         context.actorOf(Props[ChildActor], s"child-$num")
         num += 1
       case SignalChildren(n) =>
@@ -30,6 +30,8 @@ object ActorSupervision11 extends App {
       case _: ArithmeticException => Resume
       case _: Exception           => Restart
     }
+  /*  override val supervisorStrategy = AllForOneStrategy(loggingEnabled = false) {
+    }*/
   }
 
   class ChildActor extends Actor {
