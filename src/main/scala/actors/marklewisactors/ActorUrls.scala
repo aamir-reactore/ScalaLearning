@@ -80,7 +80,7 @@ object ActorUrls2 extends App {
   val child0Actor2: ActorSelection = system.actorSelection("akka://ActorHierarchy1/user/ParentActor2/child-0")
 
   child0Actor2 ! PrintSignal(20)
-  actor ! CreateChild
+         actor ! CreateChild
 
   actor ! SignalChildren(1)
 
@@ -88,7 +88,7 @@ object ActorUrls2 extends App {
 
 /**
   * If ur working inside the same ActorSystem then we can leave off
-  * protocol and actorSystem from actorUrl(actorPath)
+  * protocol and actorSystem from actorSelection
   */
 object ActorUrls3 extends App {
 
