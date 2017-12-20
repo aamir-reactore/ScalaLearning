@@ -29,7 +29,9 @@ object ActorSupervision1 extends App {
   }
 
   class ChildActor extends Actor {
+
     println("From Default Constructor, Child Actor Created..")
+
     override def receive = {
       case DivideByZero(n, d) => println(s"n /d is ${n / d}")
       case BadStuff           => throw new RuntimeException("Bad stuff happened")
