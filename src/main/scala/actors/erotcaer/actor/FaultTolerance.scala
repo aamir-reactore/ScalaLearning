@@ -164,7 +164,8 @@ trait ExactlyOnceDeliveryActor[I] extends AbstractExactlyOnceDeliveryActor[I] {
 
 /************ Master-worker approach *****************/
 
-private[actor] class ExactlyOnceDeliveryMasterActor[I](override val props: PersistentProps) extends WorkpileMaster[Msg[I]] with AbstractExactlyOnceDeliveryActor[I] {
+private[actor] class ExactlyOnceDeliveryMasterActor[I](override val props: PersistentProps)
+  extends WorkpileMaster[Msg[I]] with AbstractExactlyOnceDeliveryActor[I] {
 
   val busyProcessingIds:ListBuffer[Long] = ListBuffer()
 
