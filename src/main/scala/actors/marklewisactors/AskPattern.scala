@@ -144,7 +144,7 @@ object AskPattern5 extends App {
   println(result)
 
 }
-
+*/
 object AskPattern6 extends App {
 
   class ActorExample extends Actor {
@@ -163,7 +163,7 @@ object AskPattern6 extends App {
   val result = Await.result(future, timeout.duration)
   println(result)
 
-}*/
+}
 
 object AskPattern7 extends App {
 

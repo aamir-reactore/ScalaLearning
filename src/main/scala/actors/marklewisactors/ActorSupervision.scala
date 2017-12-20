@@ -3,6 +3,10 @@ package actors.marklewisactors
 import akka.actor.SupervisorStrategy.{Restart, Resume}
 import akka.actor.{Actor, ActorSystem, OneForOneStrategy, Props}
 
+/** Try this:
+  * https://danielasfregola.com/2015/03/09/how-to-supervise-akka-actors/
+  */
+
 object ActorSupervision11 extends App {
 
   case object CreateChild
