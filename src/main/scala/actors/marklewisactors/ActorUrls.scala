@@ -1,6 +1,6 @@
 package actors.marklewisactors
 
-import akka.actor.{Actor, ActorRef, ActorSelection, ActorSystem, Props}
+import akka.actor.{Actor, ActorSelection, ActorSystem, Props}
 
 object ActorUrls1 extends App {
 
