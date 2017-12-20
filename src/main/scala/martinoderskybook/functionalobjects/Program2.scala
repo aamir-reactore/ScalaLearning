@@ -1,6 +1,6 @@
 package martinoderskybook.functionalobjects
 
-class Rational(n:Int, d:Int) /*class parameters*/{
+class Rational(n:Int, d:Int) /*class parameters*/ extends Ordered[Rational] {
   require(d != 0, "denomenator can't be zero") //java.lang.IllegalArgumentException
   private lazy val g = gcd(n.abs,d.abs)
   val numer: Int = n / g
@@ -29,6 +29,10 @@ class Rational(n:Int, d:Int) /*class parameters*/{
     if(lessThan(that)) that else this
   }
   private def gcd(a:Int,b:Int):Int = if(a == 0) b else gcd(b % a,a)
+
+  override def compare(that: Rational): Int = {
+    numer * that.denom - denom * that.numer
+  }
 }
 
 object RationalTest extends App {
@@ -51,4 +55,11 @@ object RationalTest extends App {
 
   println(s"after implicitly converting==>${2 + r1}")
 
+  println("####comparison using ordered trait###########")
+
+  val ra1 = new Rational(2,3)
+  val ra2 = new Rational(3,2)
+  println(ra1 compare ra2) // < 0 means this < that
+  println(ra2 compare ra1) // > 1 means this > that
+  println(ra2 compare ra2) //  ==  0 means this  == that
 }
