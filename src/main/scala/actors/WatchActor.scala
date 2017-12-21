@@ -10,7 +10,7 @@ class KennysDad extends Actor {
   val kenny = context.actorOf(Props[Kenny], name = "Kenny")
   context.watch(kenny)
   override def receive = {
-    case Terminated(kenny) => println(s"OMG, kenny's dad killed ${kenny.path.name}")
+    case Terminated(kny) => println(s"OMG, kenny's dad killed ${kny.path.name}")
     case _ => println("kenny's dad received a message")
   }
 }
