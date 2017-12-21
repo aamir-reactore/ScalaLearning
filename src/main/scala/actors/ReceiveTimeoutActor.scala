@@ -22,7 +22,7 @@ object Main extends App {
   val props = Props[ReceiveTimeoutActor1]
   val a = sys.actorOf(props)
   println(new Date + " / Started")
-  Thread.sleep(15000) // expect two timeout messages, one after 5 seconds, next after 10
+  Thread.sleep(16000) // expect two timeout messages, one after 5 seconds, next after 10
   // send ten msg's (1 every second) just when we should receive the third timeout
   1 to 10 foreach { x =>
     a ! "Message: " + x

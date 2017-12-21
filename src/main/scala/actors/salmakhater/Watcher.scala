@@ -11,13 +11,19 @@ object WatcherTest extends App {
   /**
     * By having only actor name (counter here) we can retrieve actorRef from it
     */
+  /**
+    * Identify(msgId)
+    * A message all Actors will understand, that when processed will reply with
+    * [[akka.actor.ActorIdentity]] containing the `ActorRef`. The `messageId`
+    * is returned in the `ActorIdentity` message as `correlationId`.
+    */
   class Watcher extends Actor {
     val selection = context.actorSelection("/user/counter")
-    selection ! Identify(None)
+    selection ! Identify("12")
 
     override def receive = {
-      case ActorIdentity(_, Some(ref)) =>
-        println(s"Actor Reference for counter is ...$ref and actor name itself is ${ref.path.name}")
+      case ActorIdentity(correlationId, Some(ref)) =>
+        println(s"Actor Reference for counter is ...$ref and actor name itself is ${ref.path.name}, correlationId = $correlationId")
       case ActorIdentity(_, None) =>
         println(s"Actor Reference for actor doesn't live")
     }

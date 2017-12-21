@@ -31,6 +31,7 @@ object EventStreamTest extends App {
   val subscriber1 = system.actorOf(Props[BookSubscriber],name="subscriber-1")
   val subscriber2 = system.actorOf(Props[BookSubscriber],name="subscriber-2")
 
+  //Now, going to publish a book.
   bookPublisher ! Book(title = "A book title", authors = List("Author", "Another author"))
   println(s">>>>${Thread.sleep(200)}")
   system.eventStream.unsubscribe(subscriber2, classOf[Book])
