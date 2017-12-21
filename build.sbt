@@ -25,8 +25,9 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" % "akka-remote_2.11" % "2.4.17",
   /*"org.specs2" % "specs2" % "2.4.6"*/
   "org.scalatest" %% "scalatest" % "3.0.1",
-  "commons-net" % "commons-net" % "3.3"
-
+  "commons-net" % "commons-net" % "3.3",
+    "com.typesafe" % "config" % "1.3.1",
+"org.apache.zookeeper" % "zookeeper" % "3.4.9"
   /*"org.specs2" % "specs2" % "2.4.6"
   "org.scalatest" %% "scalatest" % "3.0.1"*/
 )
