@@ -1,7 +1,5 @@
 package actors.erotcaer.actor
 
-/**
-  */
 import actors.erotcaer.actor.patterns.{ProcessResult, WorkpileMaster, WorkpileWorker}
 import akka.actor.{ActorRef, Props}
 import akka.pattern.pipe
