@@ -3,6 +3,7 @@ package slickakkahttp.Controllers
 import akka.actor.ActorRef
 import org.json4s.jackson.JsonMethods.parse
 import akka.pattern.ask
+import json.BaseJsonUtilities
 import org.json4s.DefaultFormats
 import slickakkahttp.Actors.ActorHelper
 import slickakkahttp.Entities.Employee
@@ -17,9 +18,11 @@ abstract class EmployeeControllerComponent {
 object EmployeeController extends EmployeeControllerComponent {
 
   implicit val f = DefaultFormats
+  import BaseJsonUtilities._
 
   def insertEmployeeController(actorRef: ActorRef, data: String): Future[Future[Employee]] = {
-    val dd: Try[Employee] = Try(parse(data).extract[Employee])
+    val dd: Try[Employee] = extractEntityWithTry[Employee](data)
+    //val dd: Try[Employee] = Try(parse(data).extract[Employee])
      dd match {
        case Success(s) => {
          val res = (actorRef ? s)(ActorHelper.commonOperationsTimeout).mapTo[Future[Employee]]

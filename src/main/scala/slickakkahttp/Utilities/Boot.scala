@@ -25,9 +25,11 @@ trait RestEndCollection extends EmployeeRestService {
 }
 
 object Boot extends App with RestEndCollection {
+
   implicit val materializer = ActorMaterializer()
 
   val r = Http().bindAndHandle(availableRoutes, interface = "0.0.0.0", port = 9000)
   r.map { x => println("Successfully Bound to " + x.localAddress) }.recover { case _ => println("Failed to Bind ") }
   Thread.sleep(5000)
+
 }
