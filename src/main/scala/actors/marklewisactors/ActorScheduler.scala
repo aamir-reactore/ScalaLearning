@@ -1,7 +1,6 @@
 package actors.marklewisactors
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Cancellable, Props}
-
 import scala.concurrent.duration._
 
 object ActorSchedulerExample1 extends App {
