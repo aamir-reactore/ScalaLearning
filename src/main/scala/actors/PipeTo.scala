@@ -25,7 +25,7 @@ object PipeToExample1 extends App {
       case message: String =>
         println("inside ActorB message block")
         val actorC = context.actorOf(Props[ActorC], "ActorC")
-        implicit val to = Timeout(2 seconds)
+        implicit val to = Timeout(2.seconds)
         val fromActorC = ask(actorC,"asking actorc").mapTo[RespondToActorB] pipeTo sender
     }
 
