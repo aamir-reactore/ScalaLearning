@@ -1,3 +1,4 @@
+/*
 package eciffocodeexamples
 
 import org.joda.time.LocalDate
@@ -204,4 +205,4 @@ class AssignShiftTest extends FunSuite {
     assert(res == resultList)
   }
 
-}
+}*/

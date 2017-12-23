@@ -1,3 +1,4 @@
+/*
 package DateTimeExamples
 
 import org.joda.time.LocalDate
@@ -52,4 +53,4 @@ class LocalDateCheckTest extends FunSuite {
 
   }
 
-}
+}*/

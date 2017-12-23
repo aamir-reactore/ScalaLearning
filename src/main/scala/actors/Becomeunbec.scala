@@ -17,7 +17,7 @@ class EdNorton extends Actor {
       context.become(normalState)
     }
   }
-  def normalState:Receive ={
+  def normalState:PartialFunction[Any, Unit] ={
     case TryToFindSolution => {
       println("Looking for solution to my problem...")
     }

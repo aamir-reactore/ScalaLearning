@@ -16,11 +16,6 @@ trait ActorHelper {
     ActorSystemContainer.system.actorOf(Props.create(clazz))
   }
 
-  /**
-     <p>If name is passed </p>
-     then the below logic will try find the actorRef from its context
-     else creates new actorRef
-   */
   def getActorRef[TActor](context: ActorContext, clazz: Class[TActor],name:String = null): ActorRef = {
 
     if(name == null) return context.actorOf(Props.create(clazz))

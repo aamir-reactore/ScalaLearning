@@ -1,7 +1,5 @@
 package actors.erotcaer.actor
 
-/**
-  */
 
 import akka.actor._
 import akka.pattern.ask

@@ -87,4 +87,5 @@ object ll extends App {
   case class A(name:String,age:Int)
   val ll  = List(A("aamir",24),A("boy",22))
   println(ll.asJson)
+
 }

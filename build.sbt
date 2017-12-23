@@ -27,7 +27,12 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.1",
   "commons-net" % "commons-net" % "3.3",
     "com.typesafe" % "config" % "1.3.1",
-"org.apache.zookeeper" % "zookeeper" % "3.4.9"
+"org.apache.zookeeper" % "zookeeper" % "3.4.9",
+  "org.postgresql" % "postgresql" % "9.4.1211",
+  "com.typesafe.slick" % "slick_2.11" % "3.2.0-M1",
+"org.json4s" %% "json4s-jackson" % "3.2.11","joda-time" % "joda-time" % "2.8.2",
+  "com.typesafe.akka" %% "akka-http-experimental" % "1.0"
+
   /*"org.specs2" % "specs2" % "2.4.6"
   "org.scalatest" %% "scalatest" % "3.0.1"*/
 )
