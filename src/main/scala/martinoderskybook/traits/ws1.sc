@@ -41,7 +41,7 @@ class A61 extends PrintA41 {
     println("Print A4 Sheet")
   }
 }
-
+println(">>>>>>>>>>>>>>>>>>>>>>>")
 var a1 = new A61() with Print1 // You can also extend trait during object creation
 a1.print()
 a1.printA4()
@@ -59,7 +59,7 @@ trait Pet {
 class XX
 trait Y extends XX
 class A
-class B extends   Y
+class B extends Y
 
 class Starship
 trait WarpCore {

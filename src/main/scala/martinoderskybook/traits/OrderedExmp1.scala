@@ -40,3 +40,27 @@ object PersonOrdTest extends App {
   val l = List(p1, p2, p3, p4)
   println(l.sorted)
 }
+
+object jj extends App {
+  //legal inheritance
+  class XX1
+  trait Y1 extends XX1
+  class A1
+  class B1 extends Y1 //this is normal inheritance
+
+  println(new B1())
+
+  //illegal inheritance
+/*  class StarfleetComponent
+  trait WarpCore extends StarfleetComponent
+  class RomulanStuff
+  class Warbird extends RomulanStuff with WarpCore*/
+
+  //legal inheritance
+  class StarfleetComponent1
+  trait WarpCore1 extends StarfleetComponent1
+  class Starship1 extends StarfleetComponent1 with WarpCore1
+  /**
+    *The trait and extending class should share same super class
+    */
+}
