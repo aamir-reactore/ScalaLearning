@@ -8,7 +8,7 @@ import slickakkahttp.Utilities.{BaseEntity, BaseTable}
 /**
   * Created by aamir on 9/3/17.
   */
-class EmployeeTable(_tableTag: Tag) extends BaseTable[Employee](_tableTag, Some("learning"), "Employee") {
+class EmployeeTable(_tableTag: Tag) extends BaseTable[Employee](_tableTag, None /*use Some(schema name)*/, "Employee") {
 
   def * = (id, firstName, isDeleted) <> (Employee.tupled, Employee.unapply)
 

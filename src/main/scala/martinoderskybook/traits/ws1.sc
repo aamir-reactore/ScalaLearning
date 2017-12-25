@@ -61,11 +61,10 @@ trait Y extends XX
 class A
 class B extends Y
 
-class Starship
 trait WarpCore {
   this: Starship =>
 }
-class Enterprise extends Starship with WarpCore
+class Enterprise extends WarpCore
 
 class DavidBanner
 trait Angry {
