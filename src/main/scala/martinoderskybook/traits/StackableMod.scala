@@ -129,7 +129,7 @@ object jj extends App {
   class XX1
   trait Y1 extends XX1
   class A1
-  class B1 extends Y1 //this is normal inheritance
+  class B1 extends Y1 //this is normal inheritance, works becoz no abstract override method inside Y1
 
   println(new B1())
 
