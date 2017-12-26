@@ -76,6 +76,7 @@ object Queue1 extends App {
 class  SMQueue1 extends BasicIntQueue with Filtering with Incrementing
 
 object Queue2 extends App {
+  //val q = new BasicIntQueue with Incrementing with Filtering
   val obj = new SMQueue1
   obj.put(-1)
   obj.put(0)
