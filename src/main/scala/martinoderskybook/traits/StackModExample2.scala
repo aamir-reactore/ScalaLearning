@@ -39,7 +39,11 @@ class ImpleDoubling extends Doubling {
 
 
 class MyQueue extends BasicIntQueue with Doubling
-
+object MyQueueTest extends App {
+  val myQueue = new MyQueue
+  myQueue.put(10)
+  println(myQueue.get())
+}
 /***
   * To see how to stack modifications, we need to define the other two modification traits, Incrementing and Filtering
   */
@@ -58,10 +62,6 @@ class  SMQueue extends BasicIntQueue with Incrementing with Filtering
 
 object Queue1 extends App {
 
-  val myQueue = new MyQueue
-  myQueue.put(10)
-  println(myQueue.get())
-  println("####################")
   val smQ1 = new SMQueue
   smQ1.put(-1) // Incrementing and BasicIntQueue not calling as if fails
   smQ1.put(0)
@@ -70,10 +70,10 @@ object Queue1 extends App {
   println(smQ1.get)
   println(smQ1.get)
 
-
 }
+
 //Now changing ordering of mixings
-class  SMQueue1 extends BasicIntQueue with Filtering with Incrementing
+class SMQueue1 extends BasicIntQueue with Filtering with Incrementing
 
 object Queue2 extends App {
   //val q = new BasicIntQueue with Incrementing with Filtering
@@ -83,16 +83,22 @@ object Queue2 extends App {
   obj.put(1)
   obj.buf.foreach(println)
 }
+object Queue3 extends App {
+  val obj = new BasicIntQueue with Incrementing with Filtering
+  obj.put(-1)
+  obj.put(0)
+  obj.put(1)
+  obj.buf.foreach(println)
+}
 
 /**
-
-   So,
+    So,
     Traits are a way to inherit from multiple class-like constructs, but they differ
     in important ways from the multiple inheritance present in many languages.
     One difference is especially important: the interpretation of super.
     With multiple inheritance, the method called by a super call can be determined
     right where the call appears. With traits, the method called is determined
     by a linearization of the classes and traits that are mixed into a class. This
-    is the difference that enables the stacking of modifications
+    is the difference that enables the stacking of modifications.
 
   **/
