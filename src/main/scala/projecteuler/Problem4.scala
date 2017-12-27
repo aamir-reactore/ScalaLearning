@@ -18,5 +18,7 @@ object CheckPalindromeInRange extends App {
     val numStr = num.toString
     numStr.zip(numStr.reverse).forall(x => x._1 == x._2)
   }
+
+  def samplePalindromeFinding(str:String) = str == str.reverse
  println(s"largest palindrome from three digit number is ==>${calculatePalindrome.max}")
 }

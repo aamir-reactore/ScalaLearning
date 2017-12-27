@@ -1,5 +1,7 @@
 package projecteuler
 
+
+
 object SumSquareDiff extends App {
 
   val sum = (1 to 100).sum
@@ -7,4 +9,6 @@ object SumSquareDiff extends App {
   val squareSum = (1 to 100).map(x => x * x).sum
 
   println(s"difference ${sumSquare - squareSum}")
+
 }
+

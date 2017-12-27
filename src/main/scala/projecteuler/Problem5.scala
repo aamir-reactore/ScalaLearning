@@ -5,11 +5,11 @@ object BetweenLimitDivisibility extends App {
   /**
     * takes lot of time to finish.
     */
-  def checkDiv(num: Long): Boolean = {
+/*  def checkDiv(num: Int): Boolean = {
     (20 to 11 by -1).forall(num % _ == 0)
   }
 
-  //val res1 = Iterator.from(1).find(checkDiv(_))
+  val res1 = Iterator.from(1).find(checkDiv)*/
 
    val res = (1L to 20L).reduceLeft{(a,b) =>lcm(a,b)}
   println(res)
