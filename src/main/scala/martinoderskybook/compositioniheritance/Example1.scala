@@ -1,4 +1,4 @@
-package multipleinheritence
+package martinoderskybook.compositioniheritance
 
 object MultipleInheritance1 extends App {
 
@@ -23,7 +23,7 @@ object MultipleInheritance1 extends App {
   class D extends B with C {}
 
   val d = new D
-  println(s">>>>>>>>>${d display}")
+  println(s">>>>>>>>>${d.display}")
 }
 
 object MultipleInheritance2 extends App {
