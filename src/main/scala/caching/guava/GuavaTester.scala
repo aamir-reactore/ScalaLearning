@@ -5,7 +5,7 @@ import scalacache.memoization._
 case class Employee(name:String,dept:String,empId:String)
 import caching.guava.GuavaCacheImpl._
 
-object GuavaTest extends App {
+object GuavaTest extends App with GuavaCacheManagerComponent  {
 
   //on first invocation, cache will be populated with corresponding employee record
 
@@ -49,4 +49,15 @@ object GuavaTest extends App {
       Future.successful(database(empId))
 
     }*/
+}
+
+object GuavaPutGetTest extends App with GuavaCacheManagerComponent {
+
+  put("abc","1",Employee("jack","psycho","90"))
+  val size =  getCacheSize("abc")
+  val all = getAll("abc")
+  val value = get("abc","1")
+  println(size)
+  println(all)
+  println(value)
 }

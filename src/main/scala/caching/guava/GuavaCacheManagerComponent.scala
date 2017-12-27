@@ -15,7 +15,7 @@ import scalacache.{Entry, ScalaCache}
   implicit val scalaCache = ScalaCache(GuavaCache(underlying))
 
   private def toExpiryTime(ttl: Duration): DateTime = DateTime.now.plusMillis(ttl.toMillis.toInt)
-/*
+
   /**
     * Saves the object to the cache using
     * a built in key generation of type prefixing
@@ -26,8 +26,8 @@ import scalacache.{Entry, ScalaCache}
     val tableNew = table.+(key -> value)
     //    table += (key -> value)
     val entry = Entry(tableNew, ttl.map(toExpiryTime))
-    removeAll(hashName)
-    //underlying.put(hashName, entry.asInstanceOf[Object])
+    //removeAll(hashName)
+    underlying.put(hashName, entry.asInstanceOf[Object])
 
 //    val ttlMsg = ttl.map(d => s" with TTL ${d.toMillis} ms") getOrElse ""
 //    logger.debug(s"Inserted value into cache with key $key$ttlMsg")
@@ -96,7 +96,7 @@ case class SomeEntity[Int,Long](id:Long)
                                ttl: Option[Duration] = None): Unit = {
     val entry = Entry(table, ttl.map(toExpiryTime))
     underlying.put(hashName, entry.asInstanceOf[Object])
-  }*/
+  }
 }
 
 object GuavaCacheManager /*extends GuavaCacheManager */{
