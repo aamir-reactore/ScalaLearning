@@ -87,16 +87,19 @@ object PizzaStackMod extends App {
   def method1():String = "t1"
 }
 trait A1 extends T1 {
-  override def method1() = super.method1() + "A1"
+  abstract override def method1() = super.method1() + "A1"
 }
 trait B1 extends T1 {
-  override def method1() = super.method1() + "B1"
+  abstract override def method1() = super.method1() + "B1"
 }
 
-class C1 extends B1 with A1 {
+class C11 extends B1 with A1 {
+}
+class C12 extends A1 with B1 {
 }
 object C1Test extends App {
-  println(new C1().method1())
+  println(new C11().method1())
+  println(new C12().method1())
 }
 
 class Printer {
