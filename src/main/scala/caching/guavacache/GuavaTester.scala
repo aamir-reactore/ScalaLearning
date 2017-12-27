@@ -1,9 +1,9 @@
-package caching.guava
+package caching.guavacache
 
 import scala.concurrent.duration._
 import scalacache.memoization._
 case class Employee(name:String,dept:String,empId:String)
-import caching.guava.GuavaCacheImpl._
+import GuavaCacheImpl._
 
 object GuavaTest extends App with GuavaCacheManagerComponent  {
 
@@ -18,10 +18,10 @@ object GuavaTest extends App with GuavaCacheManagerComponent  {
   println(getFromDatabase("103"))
   println(getFromDatabase("110"))
 
-  println(GuavaCacheImpl.underlyingGuavaCache.size)
+  println(underlyingGuavaCache.size)
 
   //expensive database call
-  def getFromDatabase(empId:String): Employee = memoizeSync(1.minute) {
+  def getFromDatabase(empId:String): Employee = memoizeSync(Some(1.minute)) {
     val e1 =   Employee("Mahesh", "Finance", "100")
     val e2 =   Employee("Rohan", "IT", "103")
     val e3 =   Employee("Sohan", "Admin", "110")
