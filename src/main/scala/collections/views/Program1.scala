@@ -1,4 +1,5 @@
-package collections.zipping.views
+package collections.views
+
 
 /**
   * Resources

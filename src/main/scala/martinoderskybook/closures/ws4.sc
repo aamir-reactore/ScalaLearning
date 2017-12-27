@@ -41,7 +41,7 @@ pf1(4)
 
 List(0,1,2) collect { divide }
 
-List(42, "cat") collect { case i: Int => i + 1 }
+List(42, 43,44,"cat") collect { case i: Int => i + 1 }
 
 val sample = 1 to 5
 val isEven:PartialFunction[Int,String] = {

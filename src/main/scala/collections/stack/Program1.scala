@@ -1,4 +1,4 @@
-package collections.zipping.stack
+package collections.stack
 
 object P1 extends App {
   val stk: Cons[Int] = Cons(1, Cons(2,Empty))
