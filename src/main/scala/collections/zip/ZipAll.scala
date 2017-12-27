@@ -1,4 +1,5 @@
-package collections.zipping
+package collections.zip
+
 
 object UnequalList extends App {
 

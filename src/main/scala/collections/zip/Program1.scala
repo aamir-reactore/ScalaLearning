@@ -1,4 +1,4 @@
-package collections.zipping
+package collections.zip
 
 object PZipping extends App {
 
