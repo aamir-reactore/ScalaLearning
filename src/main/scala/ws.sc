@@ -50,4 +50,7 @@ println("###############starting split test###################")
 println{"########some list loopholes start#######"}
 1 :: List(2)
 List(1,2) :: List(List(3,4))
+1 :: Nil
+List('a','b','c') :: Nil
+
 println{"########some list loopholes end#######"}
