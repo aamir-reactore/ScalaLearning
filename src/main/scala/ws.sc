@@ -47,5 +47,7 @@ println("###############starting split test###################")
 
 "madam".zipWithIndex
 "madam".zip("madam")
-
-
+println{"########some list loopholes start#######"}
+1 :: List(2)
+List(1,2) :: List(List(3,4))
+println{"########some list loopholes end#######"}

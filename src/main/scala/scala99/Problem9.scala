@@ -32,8 +32,8 @@ object SublistDuplicates extends App {
       val (a, b) = t.span(h == _)
       (h :: a) :: f1(b)
   }
-  println(s"sublisting duplicates = ${subListDuplicates(l)}")
-  println(s"usingSpan  duplicates = ${usingSpan(l)}")
-  println(s"sublisting duplicates = ${f1(l)}")
+  println(s"tail recursion sublisting duplicates = ${subListDuplicates(l)}")
+  println(s"tail recursion with Span  duplicates = ${usingSpan(l)}")
+  println(s"functional sublisting duplicates = ${f1(l)}")
 
 }
