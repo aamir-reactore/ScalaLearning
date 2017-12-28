@@ -1,9 +1,5 @@
 import org.joda.time.{LocalTime, Minutes, Period}
 
-def primeStream(s: Stream[Int]): Stream[Int] =
-  Stream.cons(s.head, primeStream(s.tail filter { _ % s.head != 0 }))
-val primes = primeStream(Stream.from(2))
-
 
 
 println("###pattern match test start")

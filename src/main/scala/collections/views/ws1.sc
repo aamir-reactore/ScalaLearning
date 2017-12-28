@@ -1,6 +1,6 @@
 (1 until 10).view.filter(_%5==0).map(_ + 1).sum
 
-Stream.from(1).map(_ + 1).takeWhile(_ < 10)
+
 //back
 
 /**
