@@ -9,7 +9,7 @@ object P13 extends App {
          case Nil => tempList.reverse
          case h :: _ => {
            val (group, list) = l.span(h == )
-           val x = (group.length, group.head) :: tempList
+           val x = (group.length, h) :: tempList
            runEncoding(list, x)
          }
        }

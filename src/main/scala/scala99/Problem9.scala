@@ -28,7 +28,7 @@ object SublistDuplicates extends App {
   }
 
 
-  def f1[T]: List[T] => List[Any] = {
+  def f1[T]: List[T] => List[List[T]] = {
     case Nil    => Nil
     case h :: t =>
       val (a, b) = t.span(h == _)
