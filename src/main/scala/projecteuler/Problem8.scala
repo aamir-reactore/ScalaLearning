@@ -3,7 +3,7 @@ package projecteuler
 object SlideListSum extends App {
 
  //char.toInt changes to ASCII and char.asDigit changes to actual digit
-
+//toLong needed as 13 digit sum out of range
   val str =
     """73167176531330624919225119674426574742355349194934
       |96983520312774506326239578318016984801869478851843
