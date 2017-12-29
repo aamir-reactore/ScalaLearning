@@ -23,7 +23,4 @@ object P14 extends App {
 
 
   println("Duplicate element list = " + usingFoldRight(l))
-
-
-
 }
