@@ -7,7 +7,7 @@ object P12 extends App {
 
   val res = l flatMap {
       case (n:Int, m) => List.fill(n)(m)
-      case x => x :: Nil
+      case x => x :: Nil //List(x)
     }
    println(res)
 

@@ -20,7 +20,9 @@ object PythNumberLimit extends App {
   def isPythagorous(a: Int, b: Int, c: Int): Boolean = {
     (a < b && b < c) && (a * a + b * b == c * c) && (a + b + c == 1000)
   }
-  val res: (Int, Int, Int) = resTrip.head
+  val res: (Int, Int, Int) = resTrip.head //here view is useful, becoz as head is there, so once we got our combo = 1000 it will not
+  //evaluate rest of the elements, as view knows only head needed, kick ass lazy evaluation
   println(s"shy triplets are ==> ${res._1}, ${res._2}, ${res._3}")
   println(s"triplet product is ${res._1 * res._2 * res._3}")
+  println(s"triplet sum is ${res._1 + res._2 + res._3}")
 }

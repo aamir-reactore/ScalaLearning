@@ -13,19 +13,14 @@ object P14 extends App {
       case Nil => tempList.reverse
       case (h :: tail) => duplicate(tail, h :: h :: tempList)
     }
-
     duplicate(l, Nil)
   }
 
   println("Duplicate element list = " + duplicateElements(l))
 
   //using foldRight
-  def usingFoldLeft[T](l: List[T]):List[T] =
-    l.foldRight(List[T]()) { (elem, acc) => elem :: elem :: acc }
+  def usingFoldRight[T](l: List[T]):List[T] = l.foldRight(List[T]()) { (elem, acc) => elem :: elem :: acc }
 
 
-  println("Duplicate element list = " + usingFoldLeft(l))
-
-
-
+  println("Duplicate element list = " + usingFoldRight(l))
 }

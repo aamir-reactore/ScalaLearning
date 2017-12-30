@@ -14,6 +14,11 @@ object NumberPrimeNumberMax extends App {
   val res = primeList.take(10001).toList.max
   println(res)
 
+  //using streams, but taking huge time, may cause stackoverflow error
+  def primeGenerator(s:Stream[Int]):Stream[Int] = {
+    Stream.cons(s.head,primeGenerator(s.tail.filter(_ % s.head != 0)))
+  }
+  println("using streams => " + primeGenerator(Stream.from(2)).take(10001).toList.max)
 }
 
 /**
