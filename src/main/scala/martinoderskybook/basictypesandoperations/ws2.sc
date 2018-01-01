@@ -1,4 +1,4 @@
-val x = 0x00FF
+val x = 0x00FF //hexadecimal representation
 val b:Byte = 127
 val d = 10.9030e2
 println("## unicode character representation##")

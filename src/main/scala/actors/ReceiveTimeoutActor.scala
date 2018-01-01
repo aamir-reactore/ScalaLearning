@@ -18,6 +18,7 @@ class ReceiveTimeoutActor1 extends Actor {
 }
 
 object Main extends App {
+
   val sys = ActorSystem("test")
   val props = Props[ReceiveTimeoutActor1]
   val a = sys.actorOf(props)

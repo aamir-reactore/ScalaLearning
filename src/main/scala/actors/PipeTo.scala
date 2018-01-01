@@ -22,13 +22,12 @@ object PipeToExample1 extends App {
 
   class ActorB extends Actor {
     def receive = {
-      case message: String =>
+      case _: String =>
         println("inside ActorB message block")
         val actorC = context.actorOf(Props[ActorC], "ActorC")
         implicit val to = Timeout(2.seconds)
-        val fromActorC = ask(actorC,"asking actorc").mapTo[RespondToActorB] pipeTo sender
+         ask(actorC,"asking actorc").mapTo[RespondToActorB] pipeTo sender
     }
-
   }
 
   class ActorC extends Actor {

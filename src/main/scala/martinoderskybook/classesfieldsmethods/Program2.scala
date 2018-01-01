@@ -37,6 +37,6 @@ object Program2 extends App {
   val acc  = CheckSumAccumulator
 
   val acc2 = new CheckSumAccumulator
-  println(acc2)
-  println(acc)
+  println("class's object = " + acc2)
+  println("companion object reference = " + acc)
 }

@@ -21,7 +21,7 @@ class Server extends Actor {
   def open(clients:List[(String,ActorRef)]):Receive = {
     case Connect(username) => {
       broadcast(Info(s"$username has joined the chat"),clients)
-      //context.watch(sender)
+      context.watch(sender)
       context.become(open((username,sender) :: clients))
     }
     case BroadCast(message) => {
@@ -41,7 +41,7 @@ class Server extends Actor {
     }
     case Close => {
       broadcast(Disconnect("chat box closed"),clients)
-      //context.become(close)
+      context.become(close)
     }
   }
 

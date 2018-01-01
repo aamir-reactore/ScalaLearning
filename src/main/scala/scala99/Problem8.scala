@@ -26,7 +26,8 @@ object RemoveConsecutiveDuplicates extends App {
   //using zip hats-off
   def usingZip[T]: List[T] => List[T] = {
     case Nil => Nil
-    case xs@(x :: tail) => x :: xs.zip(tail).filter(p => p._1 != p._2).map(_._2) // @ => variable binding on pattern matching
+    // @ => variable binding on pattern matching
+    case xs@(x :: tail) => x :: xs.zip(tail).filter(p => p._1 != p._2).map(_._2)
   }
 
   println("list after removing consecutive dup. = " + removeConsecutiveDuplicates(l))

@@ -5,7 +5,7 @@ import akka.actor.{Actor, ActorRef, ActorSystem, Props, ReceiveTimeout}
 import scala.concurrent.duration.Duration
 import scala.concurrent.duration._
 
-class ActorA extends Actor{
+class ActorA extends Actor {
   val myB = context.actorOf(Props[ActorB])
 
   def receive = {

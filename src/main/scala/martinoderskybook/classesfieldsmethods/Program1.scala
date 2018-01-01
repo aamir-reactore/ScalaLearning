@@ -1,6 +1,7 @@
 package martinoderskybook.classesfieldsmethods
 
 object Program1 extends App {
+
   val acc = new CheckSumAccumulator
   val csa = new CheckSumAccumulator
 
