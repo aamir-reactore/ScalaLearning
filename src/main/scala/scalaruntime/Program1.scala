@@ -78,6 +78,12 @@ object Program1Test3 extends App {
   println(arrayConformsTo[AnyRef](Array[Float]()))
   println(arrayConformsTo[AnyRef](Array[Float]()))
 
+  /**
+  Another solution (not requiring scala-reflect.jar),
+  albeit one which does not preserve the Float <:< AnyVal is true property
+  is to use a ClassTag as an extractor:
+
+    */
   def arrayConformsTo2[A](as: Array[_])(implicit arrayOfA: ClassTag[Array[A]]) = as match {
     case arrayOfA(_) => true
     case _           => false
