@@ -85,4 +85,5 @@ object Program1Test3 extends App {
   println(":>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
   println(arrayConformsTo2[Int](Array[Float]()))
+  println(arrayConformsTo2[Int](Array[Int]()))
 }
