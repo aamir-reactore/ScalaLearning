@@ -1,5 +1,8 @@
 package martinoderskybook.functionalobjects
-
+//we can have
+/**
+  * Identifier types: Alphanumeric,mixed(unary_-),operator(++,::),literal.
+  */
 object ll extends App {
       //literal identifier(alphanumeric,operator,mixed(unary_-),backtick)
   println(s"x is ${`while`(3)}") //backtick character

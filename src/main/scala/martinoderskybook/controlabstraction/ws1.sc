@@ -27,7 +27,7 @@ filesMatching2(_.endsWith(query))
 /*****currying*****/
 def curriedSum(x: Int)(y: Int) = x + y
 val x: Int => Int = curriedSum(1)
-val y: Int => Int = curriedSum(2)_  //way to get an actual reference to curriedSum’s “second” function, not space here with _
+val y: Int => Int = curriedSum(2)  //way to get an actual reference to curriedSum’s “second” function, not space here with _
 x(2)
 y(2)
 

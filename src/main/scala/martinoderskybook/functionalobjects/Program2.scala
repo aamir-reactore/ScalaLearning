@@ -51,7 +51,7 @@ object RationalTest extends App {
   println(s"multiple operations ${r1 + r2 * r1}") // evaluates as r1 + (r2 * r1)
 
   println(s"overloaded addition ==> ${r1 + 4}")
-  implicit def intToRational(i:Int) = new Rational(i)
+  implicit def intToRational(i:Int):Rational = new Rational(i)
 
   println(s"after implicitly converting==>${2 + r1}")
 

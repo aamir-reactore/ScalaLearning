@@ -22,5 +22,5 @@ object Spiral extends App {
         (verticalBar above corner) beside (space above sp)
     }
   }
-  println(spiral(6,0))
+  println(spiral(66,0))
 }
