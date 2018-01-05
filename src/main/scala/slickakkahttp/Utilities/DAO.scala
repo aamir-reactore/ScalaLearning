@@ -47,6 +47,9 @@ trait BaseRepositoryQuery[T <: BaseTable[E], E <: BaseEntity] {
   def getAllQuery: Query[T, E, Seq] = {
     query.filter(_.isDeleted === false)
   }
+  def getCountQuery: Rep[Int] = {
+    query.countDistinct
+  }
 
   def filterQuery[C <: Rep[_]](expr: T => C)(implicit wt:     CanBeQueryCondition[C]): Query[T, E, Seq] = {
     query.filter(expr).filter(_.isDeleted === false)

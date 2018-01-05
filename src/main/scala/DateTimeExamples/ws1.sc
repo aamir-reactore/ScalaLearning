@@ -11,3 +11,4 @@ val  hours = p.getHours
 
 val format = DateTimeFormat.forPattern("HH:mm:ss")
 val myDate = LocalTime.parse("10:20:00",format)
+myDate.toString
