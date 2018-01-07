@@ -1,6 +1,6 @@
 
 /**
-  * Include test and original code same code but tests in different package.
+  * Include test and original code in same file but tests in different package.
   */
 package bobrockets {
   package navigation {

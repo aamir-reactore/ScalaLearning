@@ -4,5 +4,6 @@ package bobrockets {
 package bobrockets.fleets {
   class Fleet2 {
     //def addShip = new Ship2, CTE
+    def addShip = new bobrockets.Ship2
   }
 }
