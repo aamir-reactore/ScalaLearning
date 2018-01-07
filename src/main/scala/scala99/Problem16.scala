@@ -1,5 +1,6 @@
 package scala99
 
+//remove occurance inside list as multiple of n
 object P16 extends App {
   val l = List(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16)
 
@@ -23,9 +24,12 @@ object P16 extends App {
   def f4[T](n: Int, list: List[T]): List[T] = {
     //here stream will have a starting value of 1, so it comes as 1 at starting for it i.e (1, now it as 1 and evaluate if else)
     val cycle: Stream[Int] = Stream.iterate(1) { it =>
-      if (it < n)  it + 1 else  1
+      println(s"it is $it")
+      println(s"n is $n")
+      if (it < n)  it + 1 else  it
     }
     println(s"head of stream ${cycle.head}")
+    println(s"zipping result = ${list.zip(cycle)}")
     list.zip(cycle).filter(_._2 < n).map(_._1)
   }
   println(f4(3,l))

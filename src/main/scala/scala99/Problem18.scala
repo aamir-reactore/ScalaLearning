@@ -4,7 +4,7 @@ package scala99
 object P18 extends App {
 
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
-
+   println(s"###test lis is = $l")
   def usingSlice[T](list:List[T], start:Int, end:Int):List[T] =
     list.slice(start, end)
 
@@ -20,6 +20,7 @@ object P18 extends App {
   def usingFoldRight[T](l:List[T], start:Int, end:Int): List[Any] =
     l.zip(1 to end).foldRight(List[T]()){case ((elem,index), acc) => if(index > start) elem :: acc else acc}
 
+  println(s"slicing with value start = 3 and end = 7, indexing like finding substring")
   println(s"slice using default method = ${usingSlice(l, 3, 7)}")
   println(s"slice using take drop method = ${usingDropTake(l, 3, 7)}")
   println(s"slice using zip method = ${usingZip(l, 3, 7)}")

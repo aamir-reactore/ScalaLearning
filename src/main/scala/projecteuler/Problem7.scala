@@ -10,9 +10,13 @@ object NumberPrimeNumberMax extends App {
     Iterator.from(num + 1).find(checkPrime).get
   }
 
-  val primeList: Iterator[Int] = Iterator.iterate(2)(primeIterator)
-  val res = primeList.take(10001).toList.max
-  println(res)
+  val primeList1: Iterator[Int] = Iterator.iterate(2)(primeIterator)
+  val res1 = primeList1.take(10001).toList.max
+  println(s"using Iterator.iterate $res1")
+
+  val primeList2= Stream.iterate(2)(primeIterator)
+  val res2 = primeList2.take(10001).toList.max
+  println(s"using Stream.iterate $res2")
 
   //using streams, but taking huge time, may cause stackoverflow error
   def primeGenerator(s:Stream[Int]):Stream[Int] = {
