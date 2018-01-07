@@ -14,7 +14,7 @@ package healthyfruits {
     }
   }
 }
-
+//import selector clause
 object ImportTest1 extends App {
   import healthyfruits.{Apple1 => MyApple,Pears1}
   new healthyfruits.Apple1
@@ -45,6 +45,13 @@ object ImportTest4 extends App {
 }
 
 object ImportTest5 extends App {
+  import healthyfruits.{_}
+  new Pears1
+  new Apple1
+  new Mango1
+}
+
+object ImportTest6 {
   /**
     * Scala implicity imports these three in all Scala files
     */
@@ -53,4 +60,5 @@ object ImportTest5 extends App {
   import Predef._
   //which  member is imported if present in all packages,
   //latest one defined e.g here Predef._ 's member will be imported
+  //in short later one shadows the previous one.
 }

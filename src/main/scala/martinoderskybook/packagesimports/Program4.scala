@@ -1,4 +1,4 @@
-
+//scala code resides in java platform's global hierarchy of packages
 package launch {
   class Booster3
 }
