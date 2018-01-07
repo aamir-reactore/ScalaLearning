@@ -15,6 +15,11 @@ package navigation {
 
     (new LegOfJourney).distance
   }
+
+  class A {
+    val obj = new Navigator
+    obj.useStartChart
+  }
 }
 
 package launch {
@@ -25,7 +30,7 @@ package launch {
     //guide.ditance, CTE distance is private to Navigator
   }
 }
-/**
+/** when applied to LegOfJourney.distance
   -> no access modifier means public access
   -> private[bobrockets] means access within outer package
   -> private[navigation] means access with inner package

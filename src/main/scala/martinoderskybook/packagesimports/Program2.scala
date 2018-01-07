@@ -12,6 +12,7 @@ package bobrockets {
   package fleets {
     class Fleet1 {
       def addShip = new Ship1
+      def addStarMap = new navigation.StarMap
     }
   }
 }
