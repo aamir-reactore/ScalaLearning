@@ -1,7 +1,7 @@
 package scala99
 
 // first index is 0 based and second one is 1 based (kinda like substring)
-object P18 extends App {
+object SliceList extends App {
 
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
    println(s"###test lis is = $l")
@@ -35,13 +35,13 @@ object P18 extends App {
         if (i > 0)
           f4(xs, i - 1, j - 1, acc)
         else if (j > 0)
-          f4(xs, 0, j - 1, x :: acc)
+          f4(xs, i, j - 1, x :: acc)
         else acc.reverse
     }
   }
 
 
 
-  println(f4(l,3,7))
+  println(s"functional style => ${f4(l,3,70)}")
 
 }

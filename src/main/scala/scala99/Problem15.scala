@@ -3,7 +3,7 @@ package scala99
 import scala.io.StdIn
 
 //duplicate elements of a list by number specified
-object P15 extends App {
+object DuplicateListRecursive extends App {
 
   val l = List('a','b','c')
   println("Enter duplication index..")

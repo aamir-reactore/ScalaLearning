@@ -60,5 +60,5 @@ object ImportTest6 {
   import Predef._
   //which  member is imported if present in all packages,
   //latest one defined e.g here Predef._ 's member will be imported
-  //in short later one shadows the previous one.
+  //in short, later imported one shadows the previous imported one.
 }

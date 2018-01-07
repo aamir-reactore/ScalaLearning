@@ -1,8 +1,9 @@
 package scala99
 
-object P19 extends App {
+object ListRotation extends App {
 
-  val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
+  //val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
+  val l = List('a', 'b', 'c', 'd', 'e')
 
 
   def test[T](list: List[T], index: Int): List[T] = (index, list) match {
@@ -25,7 +26,8 @@ object P19 extends App {
   }
 
 
-  println(test(l, -2))
-  println(f1(l, -3))
+  //println(test(l, -2))
+  println(test(l, 2))
+  //println(f1(l, -3))
   // println(abc(List(1,2,3,4,5,6)))
 }

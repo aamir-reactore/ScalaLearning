@@ -1,7 +1,7 @@
 package scala99
 
 //reverse Run-length encoding of a list modified, P11 uncompressed version
-object P12 extends App {
+object DuplicateListByLengthEncodingTuple extends App {
 
   val l: Seq[Any] = List((4,'a'), 'b', (2,'c'), (2,'a'), 'd', (4,'e'))
 

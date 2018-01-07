@@ -1,7 +1,7 @@
 package scala99
 
 //remove occurance inside list as multiple of n
-object P16 extends App {
+object RemoveNthMultipleList extends App {
   val l = List(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16)
 
    def usingZip(l:List[Int], index:Int):List[Int] = {
