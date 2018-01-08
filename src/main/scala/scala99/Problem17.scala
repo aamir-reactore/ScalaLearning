@@ -1,5 +1,5 @@
 package scala99
-//
+//split a list
 object SplitList extends App {
 
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
