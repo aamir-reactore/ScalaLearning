@@ -27,7 +27,10 @@ object ListRotation extends App {
 
 
   //println(test(l, -2))
+  println(test(l, -2))
+  println(f1(l, -2))
+
   println(test(l, 2))
-  //println(f1(l, -3))
+  println(f1(l, 2))
   // println(abc(List(1,2,3,4,5,6)))
 }

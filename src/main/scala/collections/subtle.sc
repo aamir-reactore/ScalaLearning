@@ -38,6 +38,15 @@ def tr(a:Int, b:Int) = a max b
 val res = (1 to 10).reduceLeft{(a,b) => tr(a,b)}
 println("##finding max using reduceleft end######")
 
-println("####unzipping#########")
+println("####unzipping start#########")
 val uz = List(('a',1),('b',2),('c',3),('d',4))
 uz.unzip
+println("####unzipping end #########")
+
+println("####drop take start#########")
+val ll = List()
+val lb = Nil
+ll.take(2)
+ll.drop(4)
+println("####drop take end#########")
+
