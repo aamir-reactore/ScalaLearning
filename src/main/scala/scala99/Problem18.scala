@@ -1,10 +1,10 @@
 package scala99
 
 // first index is 0 based and second one is 1 based (kinda like substring)
-object P18 extends App {
+object SliceList extends App {
 
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
-
+   println(s"###test lis is = $l")
   def usingSlice[T](list:List[T], start:Int, end:Int):List[T] =
     list.slice(start, end)
 
@@ -20,6 +20,7 @@ object P18 extends App {
   def usingFoldRight[T](l:List[T], start:Int, end:Int): List[Any] =
     l.zip(1 to end).foldRight(List[T]()){case ((elem,index), acc) => if(index > start) elem :: acc else acc}
 
+  println(s"slicing with value start = 3 and end = 7, indexing like finding substring")
   println(s"slice using default method = ${usingSlice(l, 3, 7)}")
   println(s"slice using take drop method = ${usingDropTake(l, 3, 7)}")
   println(s"slice using zip method = ${usingZip(l, 3, 7)}")
@@ -34,13 +35,13 @@ object P18 extends App {
         if (i > 0)
           f4(xs, i - 1, j - 1, acc)
         else if (j > 0)
-          f4(xs, 0, j - 1, x :: acc)
+          f4(xs, i, j - 1, x :: acc)
         else acc.reverse
     }
   }
 
 
 
-  println(f4(l,3,7))
+  println(s"functional style => ${f4(l,3,70)}")
 
 }

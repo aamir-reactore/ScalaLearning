@@ -1,6 +1,6 @@
 package scala99
-
-object P17 extends App {
+//
+object SplitList extends App {
 
   val l = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k')
 

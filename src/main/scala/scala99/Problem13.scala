@@ -1,6 +1,6 @@
 package scala99
 //P10 directly without using utility methods
-object P13 extends App {
+object DuplicateTupleListTailRecursion extends App {
 
     val l = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e', 'f')
 
