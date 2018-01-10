@@ -22,12 +22,22 @@ object ListRange extends App {
     case Some((r, n)) => r :: unfoldRight(n)(f)
   }
   def rangeFunctional(start: Int, end: Int): List[Int] =
-    unfoldRight(start) { n =>
-      if (n > end) None
-      else Some((n, n + 1))
+    unfoldRight(start){ n =>
+      if (n > end) None else Some((n, n + 1))
     }
 
   println(rangeFunctional(4,9))
 
+
+
+  //for testing try below options.
+  val x: (Int => Option[(Int, Int)]) => List[Int] = unfoldRight[Int,Int](1)
+
+  def tst(x:Int)(f:Int => Long): Long = x + f(x)
+
+  def r(y:Int) = y + 4
+  val  rrr = tst(1)(r)
+
+  println(s"rr test $rrr")
 
 }
