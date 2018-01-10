@@ -8,9 +8,12 @@ object ListRange extends App {
     }
     listRange(upper, Nil)
   }
+  //using scanLeft
+  def usingScanLeft(start:Int,end:Int) = List.fill(end-start)(1).scanLeft(4)(_ +_)
 
   println(s"Range between 4 and 9 is ==> ${tailListRange(4,9)}")
   println(s"Range between 4 and 9 is ==> ${List.range(4,9 + 1)}")
+  println(s"Range between 4 and 9 is ==> ${usingScanLeft(4,9)}")
 
 
 
