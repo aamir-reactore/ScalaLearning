@@ -64,3 +64,4 @@ trait LTables {
 
 } end of trait Ltables
 //now use Ltables.someTable as a query
+*/

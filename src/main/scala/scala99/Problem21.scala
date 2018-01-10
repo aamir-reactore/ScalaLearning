@@ -15,8 +15,8 @@ object Problem21Sol extends App {
 
   def usingTailRecursion[T](list: List[T], n: Int, x: T): List[T] = {
     def insertElement(list: List[T], n: Int, acc: List[T]): List[T] = (n, list) match {
-      case (0, l) => acc.reverse ::: x :: l
-      case (n, h :: tail) => insertElement(tail, n - 1, h :: acc)
+      case (0, li) => acc.reverse ::: x :: li
+      case (na, h :: tail) => insertElement(tail, na - 1, h :: acc)
       case (_, Nil) => throw new NoSuchElementException("list is empty")
     }
 

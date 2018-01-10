@@ -1,7 +1,8 @@
 package scala99
 
 object ListRange extends App {
-  def tailListRange(lower: Int, upper: Int) = {
+
+  def tailListRange(lower: Int, upper: Int): List[Int] = {
     def listRange(upper: Int, resList: List[Int]): List[Int] = {
       if (lower > upper) resList else listRange(upper - 1, upper :: resList)
     }

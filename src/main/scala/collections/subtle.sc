@@ -15,7 +15,7 @@ List(1,2) :: List(List(3,4))
 1 :: List(List(2,3))
 1 :: Nil
 List('a','b','c') :: Nil
-
+val head :: tail = List(1,2,3,4,5,6)
 println{"########some list examples end#######"}
 
 println("###############starting span###################")

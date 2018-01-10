@@ -26,20 +26,8 @@ object RemoveKthElementFromList extends App {
   def removeUsingDropTake[T](list:List[T], index:Int)  = {
     (l.take(index) ++ l.drop(index + 1),list(index))
   }
-  def removeAt2[A](n: Int, ls: List[A]): (List[A], A) = {
-    if (n < 0) throw new NoSuchElementException
-    else (n, ls) match {
-      case (_, Nil)       => throw new NoSuchElementException
-      case (0, h :: tail) => (tail, h)
-      case (_, h :: tail) => {
-        val (t, e) = removeAt(n - 1, ls.tail)
-        (ls.head :: t, e)
-      }
-    }
-  }
 
   println(s"using drop and take => ${removeUsingDropTake(l, 2)}")
-  println(s"using tail recursion=> ${remoteKthUsingPartitionRec(l, 2)}")
-  println(s"using removeAt=> ${removeAt(2, l)}")
-  println(s"using removeAt2=> ${removeAt2(2, l)}")
+  println(s"using tail recursion => ${remoteKthUsingPartitionRec(l, 2)}")
+  println(s"using removeAt => ${removeAt(2, l)}")
 }
