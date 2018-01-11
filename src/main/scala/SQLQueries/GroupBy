@@ -1,0 +1,6 @@
+select "OutputTypeId", SUM("OutputValue") as "TotalOutputValue", count(*) as "Total" from pr."PSTarget" group by "OutputTypeId"
+(for result of above query check groupByQuery1 png file)
+select "OutputTypeId", SUM("OutputValue") as "TotalOutputValue", count(*) as "Total" from pr."PSTarget" group by "OutputTypeId"; having "OutputTypeId" = 1;
+(for result of above query check groupByQuery3 png file)
+
+
