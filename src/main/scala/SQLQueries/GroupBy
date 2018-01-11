@@ -1,6 +1,13 @@
-select "OutputTypeId", SUM("OutputValue") as "TotalOutputValue", count(*) as "Total" from pr."PSTarget" group by "OutputTypeId"
+==> select "OutputTypeId", SUM("OutputValue") as "TotalOutputValue", count(*) as "Total" from pr."PSTarget" group by "OutputTypeId"
 (for result of above query check groupByQuery1 png file)
-select "OutputTypeId", SUM("OutputValue") as "TotalOutputValue", count(*) as "Total" from pr."PSTarget" group by "OutputTypeId"; having "OutputTypeId" = 1;
+
+==>select "OutputTypeId", SUM("OutputValue") as "TotalOutputValue", count(*) as "Total" from pr."PSTarget" group by "OutputTypeId"; having "OutputTypeId" = 1;
 (for result of above query check groupByQuery3 png file)
+
+==>select * from pr."PSTarget" where "PSTargetId" IN (select "PSTargetId" from pr."PSTarget" order by "PSTargetId" desc limit 2) order by "PSTargetId" limit 1
+(to get second last row from table)
+or
+select * from pr."PSTarget" where "PSTargetId" NOT IN (select max("PSTargetId") from pr."PSTarget") order by "PSTargetId" desc limit 1
+(to get second last record from table)
 
 
