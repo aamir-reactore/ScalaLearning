@@ -12,3 +12,19 @@ val  hours = p.getHours
 val format = DateTimeFormat.forPattern("HH:mm:ss")
 val myDate = LocalTime.parse("10:20:00",format)
 myDate.toString
+
+
+
+
+
+import org.joda.time.LocalTime
+import org.joda.time.LocalDateTime
+import org.joda.time.DateTime
+
+val now = LocalDate.now
+val t = LocalTime.now
+val dt = LocalDateTime.now
+
+val uDT = DateTime.now() // calculate from IST
+
+
