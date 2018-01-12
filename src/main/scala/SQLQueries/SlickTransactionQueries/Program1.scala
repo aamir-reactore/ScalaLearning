@@ -78,3 +78,48 @@ def buildUpdatePrePostDBQuery(cont: UpdatePrePostQuestionAnswer, prs: SysParams)
       })
 }
 */
+
+//Example3
+/*
+
+  def prePostConsumerInsert(itemsToInsert: List[PsPrePostCheckMapping], prs: SysParams): Future[StatusContainer] = {
+    val transactionRes = for {
+      query <- Future.sequence(itemsToInsert map { psPrePostCheckMapping =>
+        generateTransaction(prs, psPrePostCheckMapping)
+      })
+      finalQuery = DBIO.sequence(query)
+      yieldResult <- db(prs.mineId).run[List[(Seq[PsPrePostCheck], Seq[PsPrePostAnswers])]](finalQuery.transactionally)
+      _ = yieldResult.map { case (psPrePostChecks, _) =>
+        psPrePostChecks.map{ psPrePostCheck =>
+          sendAlertsOnAbnormalityLogged(prs, itemsToInsert.flatMap(_.prePostCheckList), psPrePostCheck)
+        }
+      }
+    } yield StatusContainer(true)
+
+    transactionRes.recover {
+      case ex => ex.printStackTrace()
+    }
+    transactionRes
+  }
+
+   private def generateTransaction(prs: SysParams, psPrePostCheckMapping: PsPrePostCheckMapping): Future[DBIOAction[(Seq[PsPrePostCheck], Seq[PsPrePostAnswers]), NoStream, Effect.Write with Effect.Write]] = {
+
+    val updatedAbnormalityList = updatePsPrePostAnswersAbnormality(psPrePostCheckMapping.prePostCheckList, psPrePostCheckMapping.psPrePostCheck)
+    val buildQuery = for {
+      futureUpdateList <- Future.sequence(updatedAbnormalityList map { x =>
+        updatePrePostAnswerCriticality(x, prs)
+      })
+      query = for {
+        insQuery <- psPrePostCheckTransactionalRepository.insertBatchAndReturnQuery(List(psPrePostCheckMapping.psPrePostCheck))
+        insertRecord = futureUpdateList.map(_.copy(psPrePostCheckId = insQuery.head.id))
+        insertBatchQuery <- insertBatchAndReturnQuery(insertRecord)
+        transaction = (insQuery, insertBatchQuery)
+      } yield transaction
+
+    } yield query
+    buildQuery.recover {
+      case ex => ex.printStackTrace()
+    }
+    buildQuery
+  }
+ */
