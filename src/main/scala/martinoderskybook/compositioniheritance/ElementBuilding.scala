@@ -42,7 +42,7 @@ object Element {
     override def width = s.length
     override def height= 1
   }
-  private class UniformElement(ch:Char,override val width:Int,override val height:Int) extends Element{
+  private class UniformElement(ch:Char,override val width:Int,override val height:Int) extends Element {
     private val line = ch.toString * width
     def contents = Array.fill(height)(line)
   }

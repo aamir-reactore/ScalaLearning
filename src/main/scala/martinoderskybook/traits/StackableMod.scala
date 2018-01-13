@@ -132,7 +132,7 @@ object jj extends App {
   class XX1
   trait Y1 extends XX1
   class A1
-  class B1 extends Y1 //this is normal inheritance, works becoz no abstract override method inside Y1
+  class B1 extends Y1 //this is normal inheritance, works becoz no abstract override method inside Y1 or not intermediate class extension as below
 
   println(new B1())
 
@@ -140,7 +140,13 @@ object jj extends App {
   /*  class StarfleetComponent
     trait WarpCore extends StarfleetComponent
     class RomulanStuff
-    class Warbird extends RomulanStuff with WarpCore*/
+    class Warbird extends RomulanStuff with WarpCore
+
+    Error: illegal inheritance; superclass RomulanStuff
+ is not a subclass of the superclass StarfleetComponent
+ of the mixin trait WarpCore
+    class Warbird extends RomulanStuff with WarpCore
+    */
 
   //legal inheritance
   class StarfleetComponent1
