@@ -1,4 +1,4 @@
-package abc
+package datastructures.search
 
 import org.scalatest.{Matchers, WordSpec}
 
