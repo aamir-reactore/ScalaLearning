@@ -19,12 +19,12 @@ object RemoveKthElementFromList extends App {
   def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
     case (Nil, _) if n < 0 => throw new NoSuchElementException
     case (pre, e :: post)  => (pre ::: post, e)
-    case (_, Nil)        => throw new NoSuchElementException
+    case (_, Nil)          => throw new NoSuchElementException
   }
 
   //zero based index passed for this method
-  def removeUsingDropTake[T](list:List[T], index:Int)  = {
-    (l.take(index) ++ l.drop(index + 1),list(index))
+  def removeUsingDropTake[T](list: List[T], index: Int) = {
+    (l.take(index) ++ l.drop(index + 1), list(index))
   }
 
   println(s"using drop and take => ${removeUsingDropTake(l, 2)}")

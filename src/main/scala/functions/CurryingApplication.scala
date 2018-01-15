@@ -1,7 +1,7 @@
-package currying
+package functions
 
 /**
-  * https://stackoverflow.com/documentation/scala/1636/currying#t=201707240343042457183
+  * https://stackoverflow.com/documentation/scala/1636/functions.currying#t=201707240343042457183
   * val f: (A, B) => C to val curriedF: A => B => C or val curriedF: A => (B => C)
   */
 object CurryingApplication1 extends App {

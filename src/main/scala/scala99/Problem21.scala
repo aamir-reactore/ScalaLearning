@@ -19,7 +19,6 @@ object Problem21Sol extends App {
       case (na, h :: tail) => insertElement(tail, na - 1, h :: acc)
       case (_, Nil) => throw new NoSuchElementException("list is empty")
     }
-
     insertElement(list, n, Nil)
   }
 

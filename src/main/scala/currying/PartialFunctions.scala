@@ -1,1 +1,0 @@
-//http://blog.bruchez.name/2011/10/scala-partial-functions-without-phd.html

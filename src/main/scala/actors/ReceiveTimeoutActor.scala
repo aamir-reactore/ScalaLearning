@@ -11,8 +11,9 @@ import scala.concurrent.duration._
   */
 class ReceiveTimeoutActor1 extends Actor {
   context.setReceiveTimeout(5 seconds)
+
   def receive = {
-    case x: String => println(new Date + " / Recieved: " + x)
+    case x: String      => println(new Date + " / Recieved: " + x)
     case ReceiveTimeout => println(new Date + " / No message received since 5 seconds")
   }
 }
