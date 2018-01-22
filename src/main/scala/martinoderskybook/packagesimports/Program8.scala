@@ -8,4 +8,7 @@ object AStartB extends App {
   //import java.util.regex.Pattern
   val pat = regex.Pattern.compile("a*b")
   //val pat = Pattern.compile("a*b")
+
+  import scala.collection.mutable
+  val m = mutable.Map[Int,Int]()
 }

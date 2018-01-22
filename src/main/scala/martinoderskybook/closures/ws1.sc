@@ -15,3 +15,4 @@ a.apply(1, 2, 3)
 
 val b: Int => Int = sum(1, _: Int, 3)
 b(4)
+//def to f-literal

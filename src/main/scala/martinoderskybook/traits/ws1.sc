@@ -31,6 +31,7 @@ abstract class PrintA41 {
 }
 
 class A61 extends PrintA41 {
+
   def print() {
     // Trait print
     println("print sheet")
