@@ -1,3 +1,4 @@
+/*
 package actors
 /**
   * Source ==> https://danielasfregola.com/2015/04/20/peer-to-many-communication-in-akka/
@@ -10,6 +11,7 @@ case class Book1(title:String, authors:List[String])
 class AuthorBookBus(author: String) extends EventBus
       with LookupClassification
       with ActorEventBus {
+
 
   override type Event = Book1
   override type Classifier = Boolean
@@ -58,3 +60,4 @@ object EventBusTest extends App {
 
   bookPublisher ! Book1(title = "Another book title", authors = List("Another Author"))
 }
+*/
