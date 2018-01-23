@@ -3,14 +3,15 @@ package scala99
 //flattening a list
 object FlattenList extends App {
 
-  def flatten(x: List[Any]):List[_] = {
+  def flatten[A](x: List[A]):List[_] = {
     x flatMap  {
-      case n: List[_] => flatten(n)
-      case e:Any          => List(e)
+      case n: List[A] => flatten(n)
+      case e:A          => List(e)
     }
   }
   println(s"same as flatten method ${List(List(List(1), List(1)).flatten, List(2), List(List(3), List(List(5), List(8)).flatten).flatten).flatten}")
   println("flatten result = " + flatten(List(List(1, 1), 2, List(3, List(5, 8)))))
+  println("flatten result = " + flatten(List(1, List(2, 3, 4), 5, List(6, 7, 8), 9, 10)))
   println(List(List(1, 1), List(2), List(List(3), List(5, 8)).flatten))
   println(List(List(1, 1), List(2), List(List(3), List(5, 8))).flatten)
 
