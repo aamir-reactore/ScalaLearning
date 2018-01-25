@@ -2,7 +2,7 @@ class Outer {
   class Inner {
     private def f:Unit = println("f")
     class InnerMost {
-      f //accessible here
+      f //accessible here, inner class can access outer class private members.
        val speed = 10
       private val distance = 90
     }

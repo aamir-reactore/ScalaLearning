@@ -2,7 +2,7 @@ package Futures
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
-
+import scala.concurrent.ExecutionContext.Implicits.global
 object jj extends App {
 
   case class A(nam: String)

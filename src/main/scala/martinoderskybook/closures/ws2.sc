@@ -20,7 +20,8 @@ WSRequestCommand("POST", Some("payload"), ("apiKey", "aa4608c6-567d-4906-bf11-ab
 
 
 println("**************Named arguments******************")
-def speed(distance: Float, time: Float): Float = distance / time
+def speed(distance: Float,
+          time: Float): Float = distance / time
 speed(100, 10)
 speed(time = 10, distance = 100)
 speed(distance = 100, time = 100)
@@ -29,7 +30,8 @@ speed(10, time = 100)
 //speed(time = 10,100) , CTE, positional arguments must come first
 
 println("**************Default parameters******************")
-def printTime(out: java.io.PrintStream = Console.out, divisor: Int = 1) =
+def printTime(out: java.io.PrintStream = Console.out,
+              divisor: Int = 1) =
   out.println("time = "+ System.currentTimeMillis()/divisor)
 printTime(divisor = 1000)
 printTime(out = Console.err)

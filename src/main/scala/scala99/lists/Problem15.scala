@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 import scala.io.StdIn
 

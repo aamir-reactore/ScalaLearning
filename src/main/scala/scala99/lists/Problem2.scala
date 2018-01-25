@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 // print penultimate element of a list
 object SecondLastElement extends App {

@@ -72,6 +72,7 @@ math.abs(2.7)
 
 -2.7.abs //Implicitly converted to RichDouble of class package scala.runtime.RichDouble
 -2.7.round
+2.7.round
 
 1.5.isInfinity
 (1.0 / 0).isInfinity

@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 //reversing elements of a list
 object ReverseList extends App {

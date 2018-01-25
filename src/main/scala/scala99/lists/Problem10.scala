@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 // run length encoding of a sub-lists constructed in Problem9
 object SubListEncodingLength extends App {

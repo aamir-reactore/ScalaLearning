@@ -14,7 +14,7 @@ package healthyfruits {
     }
   }
 }
-//import selector clause
+//import selector clause, here renaming class
 object ImportTest1 extends App {
   import healthyfruits.{Apple1 => MyApple,Pears1}
   new healthyfruits.Apple1
@@ -22,7 +22,7 @@ object ImportTest1 extends App {
   // CTE new Mango
   new Pears1
 }
-
+//here renaming packages, and class also
 object ImportTest2 extends App {
   import healthyfruits.{unHealthyfruits => mystylefruits}
   import mystylefruits.{CustardApple => SillyApple}
@@ -30,7 +30,7 @@ object ImportTest2 extends App {
   new mystylefruits.CustardApple
   new healthyfruits.unHealthyfruits.CustardApple
 }
-
+//ignoring Pears1 class
 object ImportTest3 extends App {
   import healthyfruits.{Pears1 =>  _,_}
   new Mango1
@@ -58,6 +58,7 @@ object ImportTest6 {
   import java.lang._
   import scala._
   import Predef._
+
   //which  member is imported if present in all packages,
   //latest one defined e.g here Predef._ 's member will be imported
   //in short, later imported one shadows the previous imported one.

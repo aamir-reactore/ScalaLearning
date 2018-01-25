@@ -1,4 +1,5 @@
-package scala99
+package scala99.lists
+
 //finding length of a list
 object ListLength extends App {
 

@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 //flattening a list
 object FlattenList extends App {
@@ -9,6 +9,7 @@ object FlattenList extends App {
       case e:A          => List(e)
     }
   }
+
   println(s"same as flatten method ${List(List(List(1), List(1)).flatten, List(2), List(List(3), List(List(5), List(8)).flatten).flatten).flatten}")
   println("flatten result = " + flatten(List(List(1, 1), 2, List(3, List(5, 8)))))
   println("flatten result = " + flatten(List(1, List(2, 3, 4), 5, List(6, 7, 8), 9, 10)))
@@ -38,8 +39,15 @@ object FlattenList extends App {
     case i:Int => s"int value $i"
     case i:Double => s"int value $i"
   }
+
+  val td1:PartialFunction[AnyVal,String] = {
+    case i:Int => s"int value $i"
+    case i:Double => s"int value $i"
+  }
   val x: Int => String = t1
+  val x1: PartialFunction[AnyVal, String] = td1
   println(x(2))
+  println(x1(2))
 
   val t2:PartialFunction[AnyVal,String] = {
     case i:Int => s"int value $i"

@@ -58,7 +58,7 @@ trait Filtering extends IntQueue {
   }
 }
 
-class  SMQueue extends BasicIntQueue with Incrementing with Filtering
+class SMQueue extends BasicIntQueue with Incrementing with Filtering
 
 object Queue1 extends App {
 

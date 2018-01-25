@@ -22,9 +22,7 @@ object BinaryInsetTree1 extends App {
 
 abstract class InSet {
   def contains(x: Int): Boolean
-
   def incl(x: Int): InSet
-
   //def union(other: InSet): InSet
 }
 

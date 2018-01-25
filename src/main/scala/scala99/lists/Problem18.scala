@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 // first index is 0 based and second one is 1 based (kinda like substring)
 object SliceList extends App {

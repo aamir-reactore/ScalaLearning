@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 //find nth element in a list
 object NthListElement extends App {

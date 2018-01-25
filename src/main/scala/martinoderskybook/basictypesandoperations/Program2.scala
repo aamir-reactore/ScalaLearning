@@ -5,8 +5,7 @@ package martinoderskybook.basictypesandoperations
  */
 
 object MathUtils {
-  implicit class AbsoluteResolver(num:Double) {
-    require(num < 0, "please provide a negative number")
+  implicit class AbsoluteResolver(val num:Double) extends AnyVal {
     def absolute:Double = num.unary_-
   }
 }

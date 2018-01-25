@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 // Duplicate the elements of a list.
 object DuplicateListElements extends App {

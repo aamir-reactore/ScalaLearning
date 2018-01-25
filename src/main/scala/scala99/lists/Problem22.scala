@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 object ListRange extends App {
 
@@ -25,7 +25,7 @@ object ListRange extends App {
     case Some((r, n)) => r :: unfoldRight(n)(f)
   }
   def rangeFunctional(start: Int, end: Int): List[Int] =
-    unfoldRight(start){ n =>
+    unfoldRight(start) { n =>
       if (n > end) None else Some((n, n + 1))
     }
 

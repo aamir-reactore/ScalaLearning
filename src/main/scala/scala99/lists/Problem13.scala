@@ -1,4 +1,5 @@
-package scala99
+package scala99.lists
+
 //P10 directly without using utility methods
 object DuplicateTupleListTailRecursion extends App {
 

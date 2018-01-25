@@ -17,13 +17,14 @@ def withPrintWriter(file:java.io.File)(op:PrintWriter => Unit) = {
     writer.close
   }
 }
+
 withPrintWriter(new java.io.File("/home/administrator/crudfixLPZK")) {
   writer => writer.println("")
 }
 
 def abc(f: () => Boolean) = {
-
 }
+
 abc(() => 5 > 4)
 def ghi(f: => Boolean) = {
   if(f) true else false

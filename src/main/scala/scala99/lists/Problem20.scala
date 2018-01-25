@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 object RemoveKthElementFromList extends App {
 

@@ -1,8 +1,7 @@
-package scala99
+package scala99.lists
 
 import scala.util.Random
-
-import RemoveKthElementFromList._
+import scala99.lists.RemoveKthElementFromList._
 
 object SelectRandom extends App {
 

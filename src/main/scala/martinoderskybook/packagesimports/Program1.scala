@@ -4,15 +4,10 @@
   */
 package bobrockets {
   package navigation {
-
     class Navigator1
     package tests {
-
       class NavigatorSuite
-
     }
-
   }
-
 }
 

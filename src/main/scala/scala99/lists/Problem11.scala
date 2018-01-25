@@ -1,4 +1,5 @@
-package scala99
+package scala99.lists
+
 // Run-length encoding of a list modified
 object RunLengthEncodingListPatterMatch extends App {
 

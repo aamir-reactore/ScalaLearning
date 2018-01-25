@@ -14,7 +14,7 @@ object ForComprehension1 extends App {
     ) println(s".sbt file is$file")
   }
 
-  def grep2(pattern: String) = {
+  def grep2(pattern: String): Array[File] = {
     for (
       file <- filesHere
       if file.getName.endsWith(".sbt")
@@ -50,14 +50,18 @@ object ForComprehension2 extends App {
 
 object Exception1 extends App {
   val res1: Int = try {
-   1
+    1
   } catch {
     case e: FileNotFoundException => throw e
     case e: IOException           => throw e
   } finally {
     2
   }
-   def g():Int = { try return  1 finally return 2 }
+
+  def g(): Int = {
+    try return 1 finally return 2
+  }
+
   println(res1)
   println(g)
 }
@@ -66,8 +70,8 @@ object PatternMatching1 extends App {
   val res: String = "pofu" match {
     case "gony" => "gony"
     case "pofu" => "pistola"
-    case "7" => "7"
-    case _ => "larif"
+    case "7"    => "7"
+    case _      => "larif"
   }
   println(res)
 }
@@ -87,13 +91,16 @@ object BreakTest extends App {
       op
     } catch {
       case e: Exception => {
-         if(e eq new Exception) // comparing a fresh object using `eq' will always yield false
-        println ("breaked")
-         else
-           println("breakebad")
+        if (e eq new Exception) // comparing a fresh object using `eq' will always yield false
+          println("breaked")
+        else
+          println("breakebad")
       }
     }
   }
-  def break: Nothing = { throw new Exception("control structures") }
+
+  def break: Nothing = {
+    throw new Exception("control structures")
+  }
 
 }

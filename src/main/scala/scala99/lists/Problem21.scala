@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 //insert user-input element at user-input position in list, assume 0 based
 object Problem21Sol extends App {

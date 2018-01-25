@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 //check if list is palindrome
 object PalindromeCheck extends App {

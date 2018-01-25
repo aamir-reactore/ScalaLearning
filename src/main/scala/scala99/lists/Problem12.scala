@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 //reverse Run-length encoding of a list modified, P11 uncompressed version
 object DuplicateListByLengthEncodingTuple extends App {

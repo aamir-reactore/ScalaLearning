@@ -1,4 +1,4 @@
-package scala99
+package scala99.lists
 
 //Pack consecutive duplicates of list elements into sublists.
 object SublistDuplicates extends App {

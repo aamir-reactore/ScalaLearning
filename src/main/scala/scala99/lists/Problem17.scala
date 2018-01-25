@@ -1,4 +1,5 @@
-package scala99
+package scala99.lists
+
 //split a list
 object SplitList extends App {
 

@@ -1,7 +1,8 @@
-package scala99
+package scala99.lists
 
-//remove occurance inside list as multiple of n
+//remove nth occurance inside list as multiple of n
 object RemoveNthMultipleList extends App {
+
   val l = List(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16)
 
    def usingZip(l:List[Int], index:Int):List[Int] = {
@@ -33,4 +34,5 @@ object RemoveNthMultipleList extends App {
     list.zip(cycle).filter(_._2 < n).map(_._1)
   }
   println(f4(3,l))
+
 }
