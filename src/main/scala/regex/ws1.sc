@@ -43,3 +43,9 @@ val res12 = if(s12.matches(".*")) true else false
 
 val s13 = "abc" //any characters, one or more times
 val res13 = if(s13.matches(".*")) true else false
+
+//case I
+
+val str = """ID:   12343-7888d""".stripMargin
+
+val res = if(str.matches("[a-zA-Z]+:.*")) true else false
