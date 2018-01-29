@@ -16,7 +16,7 @@ val res4 = if(s4.matches("[A-Z]+")) true else false
 val s5 = "1234567890"
 val res5 = if(s5.matches("[0-9]+")) true else false
 
-//. means any character
+//. means any character(means it should exist once)
 val s6 = "a"
 val res6 = if(s6.matches(".")) true else false
 
