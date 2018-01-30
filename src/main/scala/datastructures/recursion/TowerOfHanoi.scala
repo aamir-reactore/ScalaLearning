@@ -2,21 +2,19 @@ package datastructures.recursion
 
 import java.util.Scanner
 
-class TowerOfHanoi {
-  def solve(n: Int, start: String, auxiliary: String, end: String): Unit = {
+object TowerOfHanoi extends App {
+
+  def solve(n: Int, start: String, end: String, auxillary: String): Unit = {
     if (n == 1) System.out.println(start + " -> " + end)
     else {
-      solve(n - 1, start, end, auxiliary)
+      solve(n - 1, start, auxillary, end)
       System.out.println(start + " -> " + end)
-      solve(n - 1, auxiliary, start, end)
+      solve(n - 1, auxillary, end, start)
     }
   }
 
-  def main(args: Array[String]): Unit = {
-    val towersOfHanoi = new TowerOfHanoi
-    System.out.print("Enter number of discs: ")
-    val scanner = new Scanner(System.in)
-    val discs = scanner.nextInt
-    towersOfHanoi.solve(discs, "A", "B", "C")
-  }
+  println("Enter number of discs: ")
+  val scanner = new Scanner(System.in)
+  val discs = scanner.nextInt
+  solve(discs, "A", "B", "C")
 }
