@@ -19,7 +19,7 @@ class Queue[+A](in: List[A] = Nil, out: List[A] = Nil) {
       case Nil => throw new NoSuchElementException("empty queue.")
     }
   }
-  override def toString = (out ::: in.reverse).mkString(",")
+  override def toString = (out ::: in.reverse).mkString("Queue(",",",")")
 }
 
 object Queue {
