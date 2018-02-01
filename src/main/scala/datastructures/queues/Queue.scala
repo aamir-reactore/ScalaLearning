@@ -7,9 +7,9 @@ package datastructures.queues
   * Rear - O(1)
   */
 class Queue[+A](in: List[A] = Nil, out: List[A] = Nil) {
+  
   def isEmpty: Boolean = in.isEmpty && out.isEmpty
   def front:A =  dequeue match { case (a, _) => a }
-
   def rear:Queue[A] = dequeue match {case (_,a) => a}
   def enqueue[B >: A](a: B): Queue[B] = new Queue(a :: in, out)
   def dequeue:(A,Queue[A]) = out match {
@@ -20,6 +20,7 @@ class Queue[+A](in: List[A] = Nil, out: List[A] = Nil) {
     }
   }
   override def toString = (out ::: in.reverse).mkString("Queue(",",",")")
+
 }
 
 object Queue {
