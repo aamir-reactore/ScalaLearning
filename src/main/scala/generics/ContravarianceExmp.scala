@@ -31,6 +31,7 @@ object TestContra1 extends App {
   //Shape => String is a subtype of Circle => String
 }
 
+/*
 object TestContra2 extends App {
   class Animal 
  class Dog extends Animal 
@@ -42,4 +43,4 @@ object TestContra2 extends App {
 
   countDogsLegs(List(new Dog(),new Dog()),countLegsOfAnyAnimal)
   //Function1[Animal,Int] <: Function1[Dog,Int] since Dog <: Animal
-}
+}*/
