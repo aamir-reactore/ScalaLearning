@@ -1,5 +1,11 @@
 package datastructures.stacks
 
+/**
+  *
+  * Push - O(1)
+  * Top - O(1)
+  * Pop - O(1)
+  */
 class Stack[+A](self: List[A]) {
 
   def top: A = if (self.nonEmpty) self.head else throw new NoSuchElementException("top of empty stack")
