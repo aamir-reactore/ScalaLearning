@@ -3,7 +3,6 @@ package caching.redis
 import com.redis.serialization._
 import com.redis.{RedisClient, RedisClientPool}
 import json.BaseJsonUtilitiesComponent
-
 import scala.concurrent.duration.Duration
 import scala.util.{Failure, Success, Try}
 
