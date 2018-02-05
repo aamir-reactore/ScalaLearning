@@ -19,6 +19,7 @@ abstract sealed class Tree[+A] {
     else if (b > value) Tree.make(value, left, right.add(b))
     else this
   }
+
 }
 
 

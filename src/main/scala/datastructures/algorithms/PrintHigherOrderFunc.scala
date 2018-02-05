@@ -1,5 +1,6 @@
 package datastructures.algorithms
 
+
 object IntOps {
   implicit class ExtendedInt(n: Int) {
     def times(fn: Int => Unit): Unit =
