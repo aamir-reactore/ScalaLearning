@@ -1,6 +1,6 @@
 package datastructures.binarytrees
 
-abstract sealed class Tree[+A] {
+abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
   def value: A
 
   def left: Tree[A]
@@ -20,6 +20,13 @@ abstract sealed class Tree[+A] {
     else this
   }
 
+  def isBSTValid: Boolean = {
+    if (isEmpty) true
+    else if (left.isEmpty && right.isEmpty) true
+    else if (left.isEmpty) right.value >= value && right.isBSTValid
+    else if (right.isEmpty) left.value <= value && left.isBSTValid
+    else right.value >= value && left.value <= value && left.isBSTValid && right.isBSTValid
+  }
 }
 
 
