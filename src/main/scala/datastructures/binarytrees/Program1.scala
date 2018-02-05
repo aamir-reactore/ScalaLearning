@@ -19,10 +19,17 @@ abstract sealed class Tree[+A] {
     else if (b > value) Tree.make(value, left, right.add(b))
     else this
   }
+   def inOrderTraversal:String = {
+    if (isEmpty) "." else "{" + left.inOrderTraversal + value + right.inOrderTraversal + "}"
+  }
+  def postOrderTraversal:String = {
+    if (isEmpty) "." else "{" + left.inOrderTraversal + value + right.inOrderTraversal + "}"
+  }
+
 }
 
 
-object Leaf extends Tree[Nothing] {
+case object Leaf extends Tree[Nothing] {
 
   def value = fail("An empty tree.")
 
@@ -51,4 +58,9 @@ object Tree {
   def apply[A](xs: A*)(implicit ev$1: A => Ordered[A]): Tree[A] = {
     xs.foldLeft(Tree.empty[A])((tree, item) => tree.add(item))
   }
+}
+
+object TreeTest extends App{
+  val tree: Tree[Int] = Tree(10,5,20,2,6,15,30)
+  println(tree.inOrderTraversal)
 }
