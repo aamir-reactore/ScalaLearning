@@ -1,2 +1,2 @@
-implicit num: Numeric[B]
-2.negate
+import Numeric._
+num.negate(10)
