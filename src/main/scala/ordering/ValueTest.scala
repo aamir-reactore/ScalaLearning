@@ -41,7 +41,7 @@ object OrderingTest2 extends App {
   }
 
   val valueList = List(IntBox(5), IntBox(1), IntBox(3), IntBox(-2), IntBox(-6))
-  val boxOrdering: Ordering[Box[Int]] = new BoxOrdering(scala.math.Ordering.Int)
+  val boxOrdering: Ordering[Box[Int]] = new BoxOrdering[Int](scala.math.Ordering.Int)
   val sort = new Sort(boxOrdering)
   println(sort(valueList))
 }
@@ -61,4 +61,44 @@ object OrderingTest3 extends App {
   val valueList = List(IntBox(5), IntBox(1), IntBox(3), IntBox(-2), IntBox(-6))
   //println( BoxSort(valueList)(scala.math.Ordering.Int))
   println(BoxSort(valueList))
+}
+
+object OrderingTest4 extends App {
+
+  case class Value[T](i: T)
+
+  class ValueOrdering[T](ordering: Ordering[T]) extends Ordering[Value[T]] {
+    def compare(x: Value[T], y: Value[T]): Int = ordering.compare(x.i, y.i)
+  }
+    val valueList = List(Value(5), Value(1), Value(3), Value(-2), Value(-6))
+    val valuOrd = new ValueOrdering[Int](scala.math.Ordering.Int)
+    println(valueList.sorted(valuOrd))
+}
+
+object OrderingTest5 extends App {
+  val l = List(-2,1,0)
+  println(l.sorted(scala.math.Ordering.Int))
+  println(l.sorted)
+}
+
+object OrderingTest6 extends App {
+  val l = List(Some(2),None,Some(-1)).sorted(scala.math.Ordering.Option(scala.math.Ordering.Int))
+  //val l = List(Some(2),None,Some(-1)).sorted
+  println(l)
+}
+object OrderingTest7 extends App {
+  def compareSome(l:Option[Int], r:Option[Int])(implicit ord:Ordering[Option[Int]]) = {
+    import ord._
+    l < r
+  }
+  println(compareSome(Some(2),Some(1)))
+}
+object OrderingTest8 extends App {
+  import scala.math.Ordering.Implicits._
+  def cmpSome[T: Ordering](x: Option[T], y: Option[T]) = x < y
+  println(cmpSome(Some(1),Some(2)))
+}
+object OrderingTest9 extends App {
+  import scala.math.Ordering.Implicits._
+  println( (Some(2): Option[Int]) > (Some(1): Option[Int]) )
 }
