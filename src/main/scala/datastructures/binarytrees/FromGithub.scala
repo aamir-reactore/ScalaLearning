@@ -761,3 +761,13 @@ object Tree {
     Tree.make(x, lt, rt)
   }
 }
+
+object jj extends App {
+  class XX[+A](value:A) {
+    def nn[B>:A](implicit num: Numeric[B]) = {
+      num.negate(value)
+    }
+  }
+  val obj = new XX[Int](20)
+  println( obj.nn)
+}
