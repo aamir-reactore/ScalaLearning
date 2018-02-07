@@ -220,7 +220,6 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     def loop(t: Tree[A], a: B): B =
       if (t.isEmpty) a
       else loop(t.right, op(loop(t.left, a), t.value))
-
     loop(this, n)
   }
 
