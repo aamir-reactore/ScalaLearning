@@ -40,11 +40,8 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
 object Leaf extends Tree[Nothing] {
 
   def value = fail("An empty tree.")
-
   def left = fail("An empty tree.")
-
   def right = fail("An empty tree.")
-
   def size = 0
 
   def isEmpty = true
