@@ -1,4 +1,20 @@
-import scala.collection.immutable.{Nil, Queue}
+
+val l = List(1,2,3)
+l.take(3)
+l.drop(3)
+
+List(1).zip(List(1,2,3,4))
+val rl = List(1,2,3,4,5,6,7,8) diff List(4,5,6,7,8)
+
+
+/*import org.joda.time.DateTime
+
+val dt = DateTime.now()
+dt.withTimeAtStartOfDay()
+dt.withTimeAtStartOfDay().plusDays(1).minusSeconds(1)*/
+
+
+/*import scala.collection.immutable.{Nil, Queue}
 
 object Queue {
   def empty[A]: Queue[A] = new Queue(Nil, Nil)
@@ -67,7 +83,7 @@ val x7 = x6.tail
 x7.print
 
 x7.rear
-x7.front
+x7.front*/
 
 
 

@@ -1,1 +1,0 @@
-//http://like-a-boss.net/2012/07/30/ordering-and-ordered-in-scala.html (difference between ordering and ordered)

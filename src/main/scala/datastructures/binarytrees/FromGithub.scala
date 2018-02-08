@@ -220,7 +220,6 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     def loop(t: Tree[A], a: B): B =
       if (t.isEmpty) a
       else loop(t.right, op(loop(t.left, a), t.value))
-
     loop(this, n)
   }
 
@@ -271,7 +270,6 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     def loop(t: Tree[A], m: A): A =
       if (t.isEmpty) m
       else loop(t.left, t.value)
-
     if (isEmpty) fail("An empty tree.")
     else loop(left, value)
   }
@@ -760,4 +758,14 @@ object Tree {
     val (lt, rt) = pair(s / 2)
     Tree.make(x, lt, rt)
   }
+}
+
+object jj extends App {
+  class XX[+A](value:A) {
+    def nn[B>:A](implicit num: Numeric[B]) = {
+      num.negate(value)
+    }
+  }
+  val obj = new XX[Int](20)
+  println( obj.nn)
 }
