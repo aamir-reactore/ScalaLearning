@@ -27,6 +27,22 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
     else if (right.isEmpty) left.value <= value && left.isBSTValid
     else right.value >= value && left.value <= value && left.isBSTValid && right.isBSTValid
   }
+
+  def min: A = {
+    def loop(t: Tree[A], value: A): A = {
+      if (t.isEmpty) value else loop(t.left, value)
+    }
+    if (isEmpty) fail("An empty tree.")
+    else loop(left, value)
+  }
+
+  def max: A = {
+    def loop(t: Tree[A], value: A): A = {
+      if (t.isEmpty) value else loop(t.right, value)
+    }
+    if (isEmpty) fail("An empty tree.")
+    else loop(right, value)
+  }
 }
 
 
