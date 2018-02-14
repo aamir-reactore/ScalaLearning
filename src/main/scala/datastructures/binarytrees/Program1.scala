@@ -35,6 +35,7 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
   def postOrderTraversal: String = {
     if (isEmpty) "." else "{" + left.inOrderTraversal + value + right.inOrderTraversal + "}"
   }
+
 }
 
 object Leaf extends Tree[Nothing] {

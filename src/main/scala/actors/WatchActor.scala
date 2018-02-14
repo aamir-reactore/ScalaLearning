@@ -7,6 +7,7 @@ class Kenny extends Actor {
   }
 }
 class KennysDad extends Actor {
+
   val kenny = context.actorOf(Props[Kenny], name = "Kenny")
   context.watch(kenny)
   override def receive = {
