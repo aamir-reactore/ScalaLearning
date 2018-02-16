@@ -8,7 +8,7 @@ object TestProblem1 extends App {
 object GenericStack extends App {
   val stack = new Stack[Int]
   stack.push(1)
-  stack.push('a')
+  stack.push('b.a')
   println(stack.top)
   stack.pop
   println(stack.top)

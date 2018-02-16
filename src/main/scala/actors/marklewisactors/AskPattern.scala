@@ -135,7 +135,7 @@ object AskPattern5 extends App {
     }
   }
 
-  //java.util.concurrent.TimeoutException as receive block doesn't respond with a reply
+  //java.util.concurrent.TimeoutException as receive block doesn't respond with b.a reply
   val actorSystem = ActorSystem("ActorSystem")
   val actor = actorSystem.actorOf(Props[ActorExample], "RootActor")
   implicit val timeout: Timeout = Timeout(2.seconds)

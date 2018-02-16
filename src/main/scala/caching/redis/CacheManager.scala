@@ -13,7 +13,7 @@ trait CacheManager {
 
   /**
    * Saves the object to the cache using
-   * a built in key generation of type prefixing
+   * b.a built in key generation of type prefixing
    */
   def put(hashName: String, key: String, value: Any, ttl: Option[Duration] = None)
 

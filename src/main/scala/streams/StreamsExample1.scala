@@ -65,7 +65,7 @@ object Sink2 extends App {
     }
   }))
  /**
-  * forward all values that arrive at a sink to an actor
+  * forward all values that arrive at b.a sink to an actor
   */
   val sink = Sink.actorRef[Int](actor,onCompleteMessage = "stream completed")
   val runnable= Source(1 to 3) to sink

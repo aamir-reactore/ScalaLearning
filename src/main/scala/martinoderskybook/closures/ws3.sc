@@ -9,8 +9,8 @@ isOdd(4)
 isOdd(5)
 
 /**
-   You won’t get a tail-call optimization,
-   if the final call goes to a function value
+   You won’t get b.a tail-call optimization,
+   if the final call goes to b.a function value
   */
 val funValue: Int => Unit = nestedFun _
 // optimization: val funValue: Int => Unit = nestedFun

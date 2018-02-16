@@ -2,7 +2,7 @@ package martinoderskybook.classesfieldsmethods
 import scala.collection.mutable
 //Singleton or Standalone object
 /**
-  ~~> a class connot extend an object
+  ~~> b.a class connot extend an object
   ~~> an object cannot extends object
  */
 object CheckSumAccumulator {

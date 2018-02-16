@@ -3,5 +3,5 @@
 
 ==> http://blog.colinbreck.com/ (some useful akka and akka stream connections)
 
-==> https://stackoverflow.com/questions/20673091/what-message-does-pipeto-send-on-a-timeout-or-other-failure
+==> https://stackoverflow.com/questions/20673091/what-message-does-pipeto-send-on-b.a-timeout-or-other-failure
     (For pipeTo usage)

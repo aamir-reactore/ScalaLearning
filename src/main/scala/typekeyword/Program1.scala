@@ -10,7 +10,7 @@ object TypeP1 extends App {
   def method1(abc:Int):myType = Map(1 -> "abc")
 }
 
-//Scala also allows a class to have type members.
+//Scala also allows b.a class to have type members.
 trait BaseTypeP1 {
   type T
   def method: T

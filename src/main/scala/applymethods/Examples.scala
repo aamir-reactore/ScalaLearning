@@ -39,7 +39,7 @@ object ApplyTest3 extends App {
 }
 
 object ApplyTest4 extends App {
-  //Case class has no constructor but has a default apply method.
+  //Case class has no constructor but has b.a default apply method.
   case class Person(name: String, age: Integer, favColor: String)
   println(Person("aamir",28,"Dark Blue"))
 }

@@ -45,7 +45,7 @@ object ImplicitExample extends App {
   implicit val prefixLOL = Prefix("Hello")
     printText("World!")
 
-  // Best to hide this line somewhere below a pile of completely unrelated code.
+  // Best to hide this line somewhere below b.a pile of completely unrelated code.
   // Better yet, import its package from another distant place.
   //implicit val prefixLOL = Prefix("Hello")
 }*/

@@ -44,7 +44,7 @@ abstract sealed class Tree[+A <% Ordered[A]] {
   def isEmpty: Boolean
 
   /**
-    * Checks whether this tree is a binary search tree or not.
+    * Checks whether this tree is b.a binary search tree or not.
     *
     * Time - O(n)
     * Space - O(log n)
@@ -150,7 +150,7 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     else this
 
   /**
-    * Checks whether the 't' tree is a subtree of this tree.
+    * Checks whether the 't' tree is b.a subtree of this tree.
     *
     * NOTE: This task can be done in O(n + m) running time
     * by using the following algorithm:
@@ -184,7 +184,7 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     * 1. convert this tree into list - O(n)
     * 2. convert other tree into list - (m)
     * 3. merge these list into one - O(n + m)
-    * 4. build a new tree from sorted list - O(n + m)
+    * 4. build b.a new tree from sorted list - O(n + m)
     *
     * Time - O(n log n)
     * Space - O(log n)
@@ -230,7 +230,7 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     */
   def sum[B >: A](implicit num: Numeric[B]): B = fold(num.zero)(num.plus)
   /**
-    * Creates a new tree by mapping this tree to the 'f' function.
+    * Creates b.a new tree by mapping this tree to the 'f' function.
     *
     * Time - O(n)
     * Space - O(log n)
@@ -241,7 +241,7 @@ abstract sealed class Tree[+A <% Ordered[A]] {
 
   /**
     * Inverts the sign of all the values in this tree.
-    * In other words, builds a mirror tree.
+    * In other words, builds b.a mirror tree.
     *
     * Time - O(n)
     * Space - O(log n)
@@ -527,7 +527,7 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     * Space - O(log n)
     */
   def apply(n: Int): A =
-    if (isEmpty) fail("Tree doesn't contain a " + n + "th element.")
+    if (isEmpty) fail("Tree doesn't contain b.a " + n + "th element.")
     else {
       val size = left.size
       if (n < size) left(n)
@@ -668,7 +668,7 @@ object Tree {
     Branch(x, l, r, l.size + r.size + 1)
 
   /**
-    * Creates a new tree from given sequence 'xs'.
+    * Creates b.a new tree from given sequence 'xs'.
     *
     * Time - O(n log n)
     * Space - O(log n)
@@ -680,7 +680,7 @@ object Tree {
   }
 
   /**
-    * Creates a new balanced tree from given sorted array 'a'.
+    * Creates b.a new balanced tree from given sorted array 'b.a'.
     *
     * Time - O(n)
     * Space - O(log n)
@@ -697,11 +697,11 @@ object Tree {
   }
 
   /**
-    * Creates a new balanced tree from given sorted list 'l'.
+    * Creates b.a new balanced tree from given sorted list 'l'.
     *
     * http://www.geeksforgeeks.org/sorted-linked-list-to-balanced-bst/
     *
-    * TODO There should be a way to do it better.
+    * TODO There should be b.a way to do it better.
     *
     * Time - O(n)
     * Space - O(log n)
@@ -721,7 +721,7 @@ object Tree {
   /**
     * Exercise 2.5a @ PFDS.
     *
-    * Generates a complete tree of depth 'd' with 'x' stored in every node.
+    * Generates b.a complete tree of depth 'd' with 'x' stored in every node.
     *
     * Time - O(log n)
     * Space - O(log n)
@@ -736,7 +736,7 @@ object Tree {
   /**
     * Exercise 2.5b @ PFDS.
     *
-    * Generates a balanced tree of given size 's' with 'x' stored in every node.
+    * Generates b.a balanced tree of given size 's' with 'x' stored in every node.
     *
     * NOTES:
     *

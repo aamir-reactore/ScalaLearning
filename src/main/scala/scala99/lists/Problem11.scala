@@ -1,6 +1,6 @@
 package scala99.lists
 
-// Run-length encoding of a list modified
+// Run-length encoding of b.a list modified
 object RunLengthEncodingListPatterMatch extends App {
 
   val l = List((4, 'a'), (1, 'b'), (2, 'c'), (2, 'a'), (1, 'd'), (4, 'e'))

@@ -29,7 +29,7 @@ l.view.reverse.take(4)
 
 println("##################################")
 //The view does not copy these elements,
-// it just provides a reference to them.
+// it just provides b.a reference to them.
 val arr = (1 to 10).toArray
 val view = arr.view.slice(2, 5)
 arr(2) = 42
