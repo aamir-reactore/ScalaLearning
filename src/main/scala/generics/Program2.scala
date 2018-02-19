@@ -11,7 +11,7 @@ class C extends B
   object TestProb1 extends App {
 
   //type constraints
-  class D[T <: B] // T must be a B. i.e. for any T, it is a B or a subclass of B.
+  class D[T <: B] // T must be b.a B. i.e. for any T, it is b.a B or b.a subclass of B.
 
   new D[B]() //(upper bound)
   new D[C]()

@@ -4,7 +4,7 @@ import scala.reflect.ClassTag
 
 /**
   * Manifests give access to the Java reflection API (eg. method getMethods)
-  * without the need for instantiating a value of the instrumented type:
+  * without the need for instantiating b.a value of the instrumented type:
   */
 object Program1Test1 extends App {
 
@@ -57,7 +57,7 @@ object Program1Test2 extends App {
 
 /**
   * Deprecated method <:<, now check implementation:
-  * this program to check if array is of a particular type
+  * this program to check if array is of b.a particular type
   */
 object Program1Test3 extends App {
 
@@ -81,7 +81,7 @@ object Program1Test3 extends App {
   /**
   Another solution (not requiring scala-reflect.jar),
   albeit one which does not preserve the Float <:< AnyVal is true property
-  is to use a ClassTag as an extractor:
+  is to use b.a ClassTag as an extractor:
 
     */
   def arrayConformsTo2[A](as: Array[_])(implicit arrayOfA: ClassTag[Array[A]]) = as match {

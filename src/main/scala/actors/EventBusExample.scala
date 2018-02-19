@@ -27,14 +27,14 @@ class AuthorBookBus(author: String) extends EventBus
 class Book1Publisher(bus: AuthorBookBus) extends Actor {
   override def receive = {
     case book: Book1 =>
-      println(s"Yeah! Publishing a new book: $book")
+      println(s"Yeah! Publishing b.a new book: $book")
       bus.publish(book)
   }
 }
 
 class Book1Subscriber extends Actor {
   def receive = {
-    case book: Book1 => println(s"My name is ${self.path.name} and I have received a new book: $book")
+    case book: Book1 => println(s"My name is ${self.path.name} and I have received b.a new book: $book")
   }
 }
 
@@ -49,7 +49,7 @@ object EventBusTest extends App {
   val subscriber1 = system.actorOf(Props[Book1Subscriber], name = "subscriber-1")
   val subscriber2 = system.actorOf(Props[Book1Subscriber], name = "subscriber-2")
 
-  //Assume that now a subscriber wants to receive books for a specific author
+  //Assume that now b.a subscriber wants to receive books for b.a specific author
   authorBookBus.subscribe(subscriber1,true) //i.e.subscriber1 will receive all the books where one of the authors is "Author"
   authorBookBus.subscribe(subscriber2,false)//i.e.subscriber2 will receive all the books where one of the authors is not "Author"
 

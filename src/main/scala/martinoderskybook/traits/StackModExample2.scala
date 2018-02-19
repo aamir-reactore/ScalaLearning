@@ -20,8 +20,8 @@ trait Doubling extends IntQueue {
   }
 }
 /*class GG extends Doubling {
-  //CTE, class GG needs to be a mixin, since method put in trait Doubling of type (x: Int)Unit is marked
-  // `abstract' and `override', but no concrete implementation could be found in a base class
+  //CTE, class GG needs to be b.a mixin, since method put in trait Doubling of type (x: Int)Unit is marked
+  // `abstract' and `override', but no concrete implementation could be found in b.a base class
   class GG extends Doubling {
   override def get(): Int = 11
 }
@@ -93,12 +93,12 @@ object Queue3 extends App {
 
 /**
     So,
-    Traits are a way to inherit from multiple class-like constructs, but they differ
+    Traits are b.a way to inherit from multiple class-like constructs, but they differ
     in important ways from the multiple inheritance present in many languages.
     One difference is especially important: the interpretation of super.
-    With multiple inheritance, the method called by a super call can be determined
+    With multiple inheritance, the method called by b.a super call can be determined
     right where the call appears. With traits, the method called is determined
-    by a linearization of the classes and traits that are mixed into a class. This
+    by b.a linearization of the classes and traits that are mixed into b.a class. This
     is the difference that enables the stacking of modifications.
 
   **/

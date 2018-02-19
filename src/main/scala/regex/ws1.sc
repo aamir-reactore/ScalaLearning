@@ -9,7 +9,7 @@ val res2 = if(s2.matches("[a-zA-Z]+")) true else false
 val s3 = "12"
 val res3 = if(s3.matches("[a-zA-Z]+")) true else false
 
-//[a-zA-Z] mean anything from a to z or A to Z
+//[b.a-zA-Z] mean anything from b.a to z or A to Z
 val s4 = "hello"
 val res4 = if(s4.matches("[A-Z]+")) true else false
 

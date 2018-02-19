@@ -7,7 +7,7 @@ y.isInstanceOf[Traversable[_]]
 
 /**
 Scala generic types which are present at compile time are erased at
-runtime (erasure). TypeTags are a way of having access to that
+runtime (erasure). TypeTags are b.a way of having access to that
 lost compile time information at runtime
   */
 def getType[T:TypeTag](obj:T) = typeOf[T]

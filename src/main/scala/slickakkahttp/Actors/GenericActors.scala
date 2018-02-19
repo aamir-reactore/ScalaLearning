@@ -66,7 +66,7 @@ trait BaseActor extends Actor  {
 }
 class RootSupervisor extends BaseActor {
 
-  // Create a new actor under op supervisor
+  // Create b.a new actor under op supervisor
   receiver {
     case cmd:CreateActorRefCommand => {
       if(cmd.name.isDefined)

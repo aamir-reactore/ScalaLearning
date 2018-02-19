@@ -21,8 +21,8 @@ object OrderingTest1 extends App {
 object OrderingTest2 extends App {
 
   /**
-    * Ordering can be thought as a more general interface then Ordered.
-    * you can have many Orderings available for a class, which for Ordered isn’t possible without subtyping
+    * Ordering can be thought as b.a more general interface then Ordered.
+    * you can have many Orderings available for b.a class, which for Ordered isn’t possible without subtyping
     **/
   trait Box[T] {
     def value: T

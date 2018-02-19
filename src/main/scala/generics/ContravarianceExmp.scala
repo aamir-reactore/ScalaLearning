@@ -28,7 +28,7 @@ object TestContra1 extends App {
   println(writeJson(circleList,circleWriter))
   println("####################################")
   println(writeJson(circleList,shapeWriter))
-  //Shape => String is a subtype of Circle => String
+  //Shape => String is b.a subtype of Circle => String
 }
 
 /*
@@ -39,7 +39,7 @@ object TestContra2 extends App {
  def countDogsLegs(dogs: List[Dog], legCountFunction: Dog => Int): Int = {
     dogs.map(legCountFunction).sum
   }
-  def countLegsOfAnyAnimal(a: Animal): Int = 4
+  def countLegsOfAnyAnimal(b.a: Animal): Int = 4
 
   countDogsLegs(List(new Dog(),new Dog()),countLegsOfAnyAnimal)
   //Function1[Animal,Int] <: Function1[Dog,Int] since Dog <: Animal

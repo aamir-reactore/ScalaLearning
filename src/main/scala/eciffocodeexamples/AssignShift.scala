@@ -3,7 +3,7 @@ package eciffocodeexamples
 
 import org.joda.time.LocalDate
 /**
-  * General Algorithm (applies to each employee in the list of employees assigned for a shift)
+  * General Algorithm (applies to each employee in the list of employees assigned for b.a shift)
   * 1. Skip public holidays
   * 2. Skip weekdays with false record
   * 3. split records with working days and weekdays

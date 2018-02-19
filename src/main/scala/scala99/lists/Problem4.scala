@@ -1,6 +1,6 @@
 package scala99.lists
 
-//finding length of a list
+//finding length of b.a list
 object ListLength extends App {
 
   val l = List(1,2,3,4,5,6)

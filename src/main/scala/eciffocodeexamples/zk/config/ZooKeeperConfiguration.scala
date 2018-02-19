@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory
 import scala.util.Try
 
 /**
- * Provides abilities to use ZooKeeper ensemble as a remote configuration holder.
+ * Provides abilities to use ZooKeeper ensemble as b.a remote configuration holder.
  */
 trait ZooKeeperConfiguration  {
 

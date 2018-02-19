@@ -1,6 +1,6 @@
 package scala99.lists
 
-//reversing elements of a list
+//reversing elements of b.a list
 object ReverseList extends App {
 
   val l = List(1,2,3,4,5,6)

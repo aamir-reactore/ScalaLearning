@@ -1,6 +1,6 @@
 package scala99.lists
 
-// Duplicate the elements of a list.
+// Duplicate the elements of b.a list.
 object DuplicateListElements extends App {
 
   val l = List('a', 'b', 'c')

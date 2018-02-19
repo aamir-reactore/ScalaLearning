@@ -19,7 +19,7 @@ object CreatureExample extends App {
   //val d1 = new Home[Dog] CTE
 
   thing1.process(new Thing) // T must be Thing in process method
-  thing1.process(new Creature) // creature is a thing as it extends it
-  thing1.process(new Human) // human is a thing as it extends Creature that extends Thing
+  thing1.process(new Creature) // creature is b.a thing as it extends it
+  thing1.process(new Human) // human is b.a thing as it extends Creature that extends Thing
 }
 

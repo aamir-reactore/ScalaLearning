@@ -47,7 +47,7 @@ object RAtLeastOnceDelivery {
   }
 
   /**
-    * Information about a message that has not been confirmed. Included in [[UnconfirmedWarning]]
+    * Information about b.a message that has not been confirmed. Included in [[UnconfirmedWarning]]
     * and [[AtLeastOnceDeliverySnapshot]].
     */
   case class UnconfirmedDelivery(deliveryId: Long, destination: ActorPath, message: Any) {
@@ -75,19 +75,19 @@ object RAtLeastOnceDelivery {
 /**
   * Mix-in this trait with your `PersistentActor` to send messages with at-least-once
   * delivery semantics to destinations. It takes care of re-sending messages when they
-  * have not been confirmed within a configurable timeout. Use the [[AtLeastOnceDeliveryLike#deliver]] method to
-  * send a message to a destination. Call the [[AtLeastOnceDeliveryLike#confirmDelivery]] method when the destination
-  * has replied with a confirmation message.
+  * have not been confirmed within b.a configurable timeout. Use the [[AtLeastOnceDeliveryLike#deliver]] method to
+  * send b.a message to b.a destination. Call the [[AtLeastOnceDeliveryLike#confirmDelivery]] method when the destination
+  * has replied with b.a confirmation message.
   *
   * At-least-once delivery implies that original message send order is not always retained
   * and the destination may receive duplicate messages due to possible resends.
   *
   * The interval between redelivery attempts can be defined by [[AtLeastOnceDeliveryLike#redeliverInterval]].
-  * After a number of delivery attempts a [[AtLeastOnceDelivery.UnconfirmedWarning]] message
+  * After b.a number of delivery attempts b.a [[AtLeastOnceDelivery.UnconfirmedWarning]] message
   * will be sent to `self`. The re-sending will still continue, but you can choose to call
   * [[AtLeastOnceDeliveryLike#confirmDelivery]] to cancel the re-sending.
   *
-  * The `AtLeastOnceDelivery` trait has a state consisting of unconfirmed messages and a
+  * The `AtLeastOnceDelivery` trait has b.a state consisting of unconfirmed messages and b.a
   * sequence number. It does not store this state itself. You must persist events corresponding
   * to the `deliver` and `confirmDelivery` invocations from your `PersistentActor` so that the
   * state can be restored by calling the same methods during the recovery phase of the
@@ -98,10 +98,10 @@ object RAtLeastOnceDelivery {
   *
   * Support for snapshots is provided by [[AtLeastOnceDeliveryLike#getDeliverySnapshot]] and [[AtLeastOnceDeliveryLike#setDeliverySnapshot]].
   * The `AtLeastOnceDeliverySnapshot` contains the full delivery state, including unconfirmed messages.
-  * If you need a custom snapshot for other parts of the actor state you must also include the
+  * If you need b.a custom snapshot for other parts of the actor state you must also include the
   * `AtLeastOnceDeliverySnapshot`. It is serialized using protobuf with the ordinary Akka
   * serialization mechanism. It is easiest to include the bytes of the `AtLeastOnceDeliverySnapshot`
-  * as a blob in your custom snapshot.
+  * as b.a blob in your custom snapshot.
   *
   * @see [[AtLeastOnceDeliveryLike]]
   */
@@ -130,7 +130,7 @@ trait RAtLeastOnceDeliveryLike extends Eventsourced {
   /**
     * Maximum number of unconfirmed messages that will be sent at each redelivery burst
     * (burst frequency is half of the redelivery interval).
-    * If there's a lot of unconfirmed messages (e.g. if the destination is not available for a long time),
+    * If there's b.a lot of unconfirmed messages (e.g. if the destination is not available for b.a long time),
     * this helps to prevent an overwhelming amount of messages to be sent at once.
     *
     * The default value can be configured with the
@@ -145,7 +145,7 @@ trait RAtLeastOnceDeliveryLike extends Eventsourced {
 
   /**
     * After this number of delivery attempts an [[AtLeastOnceDelivery.UnconfirmedWarning]] message
-    * will be sent to `self`. The count is reset after a restart.
+    * will be sent to `self`. The count is reset after b.a restart.
     *
     * The default value can be configured with the
     * `akka.persistence.at-least-once-delivery.warn-after-number-of-unconfirmed-attempts`
@@ -196,9 +196,9 @@ trait RAtLeastOnceDeliveryLike extends Eventsourced {
     * between `deliver` and `confirmDelivery` is performed with the
     * `deliveryId` that is provided as parameter to the `deliveryIdToMessage`
     * function. The `deliveryId` is typically passed in the message to the
-    * destination, which replies with a message containing the same `deliveryId`.
+    * destination, which replies with b.a message containing the same `deliveryId`.
     *
-    * The `deliveryId` is a strictly monotonically increasing sequence number without
+    * The `deliveryId` is b.a strictly monotonically increasing sequence number without
     * gaps. The same sequence is used for all destinations of the actor, i.e. when sending
     * to multiple destinations the destinations will see gaps in the sequence if no
     * translation is performed.
@@ -231,9 +231,9 @@ trait RAtLeastOnceDeliveryLike extends Eventsourced {
     * between `deliver` and `confirmDelivery` is performed with the
     * `deliveryId` that is provided as parameter to the `deliveryIdToMessage`
     * function. The `deliveryId` is typically passed in the message to the
-    * destination, which replies with a message containing the same `deliveryId`.
+    * destination, which replies with b.a message containing the same `deliveryId`.
     *
-    * The `deliveryId` is a strictly monotonically increasing sequence number without
+    * The `deliveryId` is b.a strictly monotonically increasing sequence number without
     * gaps. The same sequence is used for all destinations of the actor, i.e. when sending
     * to multiple destinations the destinations will see gaps in the sequence if no
     * translation is performed.
@@ -253,7 +253,7 @@ trait RAtLeastOnceDeliveryLike extends Eventsourced {
   }
 
   /**
-    * Call this method when a message has been confirmed by the destination,
+    * Call this method when b.a message has been confirmed by the destination,
     * or to abort re-sending.
     * @see [[deliver]]
     * @return `true` the first time the `deliveryId` is confirmed, i.e. `false` for duplicate confirm
@@ -302,10 +302,10 @@ trait RAtLeastOnceDeliveryLike extends Eventsourced {
     * with [[setDeliverySnapshot]].
     *
     * The `AtLeastOnceDeliverySnapshot` contains the full delivery state, including unconfirmed messages.
-    * If you need a custom snapshot for other parts of the actor state you must also include the
+    * If you need b.a custom snapshot for other parts of the actor state you must also include the
     * `AtLeastOnceDeliverySnapshot`. It is serialized using protobuf with the ordinary Akka
     * serialization mechanism. It is easiest to include the bytes of the `AtLeastOnceDeliverySnapshot`
-    * as a blob in your custom snapshot.
+    * as b.a blob in your custom snapshot.
     */
   def getDeliverySnapshot: AtLeastOnceDeliverySnapshot =
     AtLeastOnceDeliverySnapshot(
@@ -314,7 +314,7 @@ trait RAtLeastOnceDeliveryLike extends Eventsourced {
 
   /**
     * If snapshot from [[getDeliverySnapshot]] was saved it will be received during recovery
-    * in a [[SnapshotOffer]] message and should be set with this method.
+    * in b.a [[SnapshotOffer]] message and should be set with this method.
     */
   def setDeliverySnapshot(snapshot: AtLeastOnceDeliverySnapshot): Unit = {
     deliverySequenceNr = snapshot.currentDeliveryId

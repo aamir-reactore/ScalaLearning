@@ -19,7 +19,7 @@ object FunctionsAsObjects2 extends App {
 
   //A function of 0 parameters.
 
-  //In the following example, the definition of javaVersion is a shorthand for the anonymous class definition anonfun0.
+  //In the following example, the definition of javaVersion is b.a shorthand for the anonymous class definition anonfun0.
 
   val javaVersion: () => String = () => sys.props("java.version")
    println(javaVersion())

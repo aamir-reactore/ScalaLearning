@@ -52,12 +52,12 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
     else loop(right, value)
   }
 
-  def fold[B](n:B)(f:(A,B) => B) = {
+ /* def fold[B](n:B)(f:(A,B) => B) = {
      def loop(t:Tree[A]) = {
        if(t.isEmpty)
      }
     loop(this)
-  }
+  }*/
 }
 
 }

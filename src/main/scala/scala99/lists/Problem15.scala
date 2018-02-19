@@ -2,7 +2,7 @@ package scala99.lists
 
 import scala.io.StdIn
 
-//duplicate elements of a list by number specified
+//duplicate elements of b.a list by number specified
 object DuplicateListRecursive extends App {
 
   val l = List('a','b','c')
