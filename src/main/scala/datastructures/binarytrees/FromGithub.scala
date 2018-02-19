@@ -222,7 +222,13 @@ abstract sealed class Tree[+A <% Ordered[A]] {
       else loop(t.right, op(loop(t.left, a), t.value))
     loop(this, n)
   }
-
+  /**
+    * Calculates the sum of all elements of this tree.
+    *
+    * Time - O(n)
+    * Space - O(log n)
+    */
+  def sum[B >: A](implicit num: Numeric[B]): B = fold(num.zero)(num.plus)
   /**
     * Creates a new tree by mapping this tree to the 'f' function.
     *
@@ -244,13 +250,7 @@ abstract sealed class Tree[+A <% Ordered[A]] {
     if (isEmpty) Tree.empty
     else Tree.make(num.negate(value), right.invert(num), left.invert(num))
 
-  /**
-    * Calculates the sum of all elements of this tree.
-    *
-    * Time - O(n)
-    * Space - O(log n)
-    */
-  def sum[B >: A](implicit num: Numeric[B]): B = fold(num.zero)(num.plus)
+
 
   /**
     * Calculates the product of all elements of this list.

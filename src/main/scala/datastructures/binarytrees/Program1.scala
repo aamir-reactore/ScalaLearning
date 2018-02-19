@@ -36,6 +36,30 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
     if (isEmpty) "." else "{" + left.inOrderTraversal + value + right.inOrderTraversal + "}"
   }
 
+  def min: A = {
+    def loop(t: Tree[A], value: A): A = {
+      if (t.isEmpty) value else loop(t.left, value)
+    }
+    if (isEmpty) fail("An empty tree.")
+    else loop(left, value)
+  }
+
+  def max: A = {
+    def loop(t: Tree[A], value: A): A = {
+      if (t.isEmpty) value else loop(t.right, value)
+    }
+    if (isEmpty) fail("An empty tree.")
+    else loop(right, value)
+  }
+
+  def fold[B](n:B)(f:(A,B) => B) = {
+     def loop(t:Tree[A]) = {
+       if(t.isEmpty)
+     }
+    loop(this)
+  }
+}
+
 }
 
 object Leaf extends Tree[Nothing] {
