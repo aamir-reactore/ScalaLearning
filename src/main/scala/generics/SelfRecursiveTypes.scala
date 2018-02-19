@@ -16,6 +16,7 @@ object SelfRecursiveTypes1 extends App {
   }
 
 }
+
 object SelfRecursiveTypes2 extends App {
   trait Doubler[T] {
     def double:T
@@ -50,6 +51,7 @@ object SelfRecursiveTypes4 extends App {
   case class Square(base:Double) extends Doubler[Square] {
     override def double: Square = Square(base * 2)
   }
+
 }
 
 //still one problem
