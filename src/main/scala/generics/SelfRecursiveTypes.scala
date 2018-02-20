@@ -71,7 +71,7 @@ object SelfRecursiveTypes5 extends App {
 
 }
 
-object SelfRecursiveTypes6 extends App {
+/*object SelfRecursiveTypes6 extends App {
   trait Doubler[T <: Doubler[T]] { self:T =>
     def double: T
   }
@@ -89,4 +89,4 @@ object SelfRecursiveTypes6 extends App {
   }
 
 
-}
+}*/

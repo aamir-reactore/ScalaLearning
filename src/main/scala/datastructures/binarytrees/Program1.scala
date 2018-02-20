@@ -40,6 +40,7 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
     def loop(t: Tree[A], value: A): A = {
       if (t.isEmpty) value else loop(t.left, value)
     }
+
     if (isEmpty) fail("An empty tree.")
     else loop(left, value)
   }
@@ -48,35 +49,39 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
     def loop(t: Tree[A], value: A): A = {
       if (t.isEmpty) value else loop(t.right, value)
     }
+
     if (isEmpty) fail("An empty tree.")
     else loop(right, value)
   }
 
- /* def fold[B](n:B)(f:(A,B) => B) = {
-     def loop(t:Tree[A]) = {
-       if(t.isEmpty)
-     }
-    loop(this)
-  }*/
-}
+  def fold[B](n: B)(f: (B, A) => B) = {
+    def loop(t: Tree[A], base: B): B = {
+      if (t.isEmpty) n else loop(t.right, f(loop(t.left, n),value))
+    }
+    loop(this, n)
+  }
 
 }
+
 
 object Leaf extends Tree[Nothing] {
 
-  def value = fail("An empty tree.")
-  def left = fail("An empty tree.")
-  def right = fail("An empty tree.")
-  def size = 0
+  def value: Nothing = fail("An empty tree.")
 
-  def isEmpty = true
+  def left: Tree[Nothing] = fail("An empty tree.")
+
+  def right: Tree[Nothing] = fail("An empty tree.")
+
+  def size: Int = 0
+
+  def isEmpty: Boolean = true
 
 }
 
 case class Branch[A](value: A, left: Tree[A] = Leaf,
                      right: Tree[A] = Leaf,
                      size: Int)(implicit ev$1: A => Ordered[A]) extends Tree[A] {
-  override def isEmpty: Boolean = false
+   def isEmpty: Boolean = false
 }
 
 object Tree {
@@ -85,12 +90,18 @@ object Tree {
   def make[A](value: A, left: Tree[A] = Leaf, right: Tree[A] = Leaf)(implicit ev$1: A => Ordered[A]) =
     Branch[A](value, left, right, left.size + right.size + 1)
 
-  def apply[A](xs: A*)(implicit ev$1: A => Ordered[A]): Tree[A] = {
+  def apply[A](xs: A*)(implicit ev$1:A => Ordered[A]): Tree[A] = {
     xs.foldLeft(Tree.empty[A])((tree, item) => tree.add(item))
   }
 }
 
-object TreeTest extends App{
-  val tree: Tree[Int] = Tree(10,5,20,2,6,15,30)
-  println(tree.inOrderTraversal)
+object TreeTest1 extends App {
+  //making an empty tree
+   val emptyTree: Tree[Int] = Tree.empty[Int]
+   println(emptyTree.size)
+   println(emptyTree.isEmpty)
+}
+object TreeTest2 extends App {
+  val tree = Tree(31,10,40,5,20,35,50)
+
 }
