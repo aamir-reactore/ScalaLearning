@@ -13,7 +13,7 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
 
   def fail(errMsg: String): Nothing = throw new NoSuchElementException(errMsg)
 
-  def add[B >: A](b: B)(implicit ev$1: B => Ordered[B]): Tree[B] = {
+  def add[B >:A](b: B)(implicit ev$1: B => Ordered[B]): Tree[B] = {
     if (isEmpty) Tree.make(b)
     else if (b < value) Tree.make(value, left.add(b), right)
     else if (b > value) Tree.make(value, left, right.add(b))
@@ -30,7 +30,7 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
 
   def min: A = {
     def loop(t: Tree[A], value: A): A = {
-      if (t.isEmpty) value else loop(t.left, value)
+      if (t.isEmpty) value else loop(t.left, t.value)
     }
 
     if (isEmpty) fail("An empty tree.")
@@ -93,7 +93,7 @@ object TreeTest1 extends App {
    println(emptyTree.size)
    println(emptyTree.isEmpty)
 }
+
 object TreeTest2 extends App {
   val tree = Tree(31,10,40,5,20,35,50)
-
 }
