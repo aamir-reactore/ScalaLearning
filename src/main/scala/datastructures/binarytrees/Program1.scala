@@ -28,6 +28,14 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
     else right.value >= value && left.value <= value && left.isBSTValid && right.isBSTValid
   }
 
+  def inOrderTraversal: String = {
+    if (isEmpty) "." else "{" + left.inOrderTraversal + value + right.inOrderTraversal + "}"
+  }
+
+  def postOrderTraversal: String = {
+    if (isEmpty) "." else "{" + left.inOrderTraversal + value + right.inOrderTraversal + "}"
+  }
+
   def min: A = {
     def loop(t: Tree[A], value: A): A = {
       if (t.isEmpty) value else loop(t.left, t.value)
