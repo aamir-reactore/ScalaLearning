@@ -17,9 +17,10 @@ trait CoreActorSystem {
 
 trait RootSupervisorHelper {
   self: CoreActorSystem =>
-  lazy val rootSupervisor = system.actorOf(Props[RootSupervisor]/**/)
+  lazy val rootSupervisor = system.actorOf(Props[RootSupervisor] /**/)
 }
-trait BaseActor extends Actor  {
+
+trait BaseActor extends Actor {
 
   lazy val receivers = new ListBuffer[Actor.Receive]
 
@@ -30,10 +31,9 @@ trait BaseActor extends Actor  {
   final def receive = {
     case msg => {
       val matches = receivers.filter(pf => pf.isDefinedAt(msg))
-      if(matches.size > 1) {
+      if (matches.size > 1) {
       }
-      if(matches.nonEmpty)
-      {
+      if (matches.nonEmpty) {
         matches.headOption.get(msg)
         interceptMsg(msg)
       }
@@ -43,15 +43,15 @@ trait BaseActor extends Actor  {
     }
   }
 
-  def interceptMsg(msg:Any) = {
+  def interceptMsg(msg: Any) = {
     //do nothing here
   }
 
   override val supervisorStrategy = OneForOneStrategy(maxNrOfRetries = 10, withinTimeRange = 5.second) {
-    case ex:ActorInitializationException => {
+    case ex: ActorInitializationException => {
       Stop
     }
-    case ex: Exception =>
+    case ex: Exception                    =>
       Resume
   }
 
@@ -64,12 +64,13 @@ trait BaseActor extends Actor  {
     stopMe()
   }
 }
+
 class RootSupervisor extends BaseActor {
 
   // Create b.a new actor under op supervisor
   receiver {
-    case cmd:CreateActorRefCommand => {
-      if(cmd.name.isDefined)
+    case cmd: CreateActorRefCommand => {
+      if (cmd.name.isDefined)
         sender ! context.actorOf(cmd.props, cmd.name.get)
       else sender ! context.actorOf(cmd.props)
     }
@@ -82,9 +83,9 @@ trait GeneralActors {
 
   val availableProcessors = 1 //Runtime.getRuntime.availableProcessors
 
-  def actorOf[T <:Actor : ClassTag](actorProperties: Props, name: Option[String] = None): ActorRef = {
-    val finalName =  name.getOrElse(actorProperties.clazz.getSimpleName)
-    if(finalName.toLowerCase().equals("none")) throw new IllegalArgumentException(
+  def actorOf[T <: Actor : ClassTag](actorProperties: Props, name: Option[String] = None): ActorRef = {
+    val finalName = name.getOrElse(actorProperties.clazz.getSimpleName)
+    if (finalName.toLowerCase().equals("none")) throw new IllegalArgumentException(
       """
         |
         |
@@ -93,58 +94,59 @@ trait GeneralActors {
         |
       """.stripMargin.format(actorProperties))
 
-    val actorRefFuture = ask(rootSupervisor, CreateActorRefCommand(actorProperties,Some(finalName)))(ActorHelper.actorCreationTimeout).mapTo[ActorRef]
+    val actorRefFuture = ask(rootSupervisor, CreateActorRefCommand(actorProperties, Some(finalName)))(ActorHelper.actorCreationTimeout).mapTo[ActorRef]
     Await.result(actorRefFuture, ActorHelper.actorCreationTimeout.duration)
   }
 
-  @deprecated("Name changed. Use actorOf instead","0.8.5.7-Kamon-snapshot")
-  def getActorRef[T <:Actor : ClassTag](actorProperties: Props, name: Option[String] = None): ActorRef = {
-    actorOf[T](actorProperties,name)
+  @deprecated("Name changed. Use actorOf instead", "0.8.5.7-Kamon-snapshot")
+  def getActorRef[T <: Actor : ClassTag](actorProperties: Props, name: Option[String] = None): ActorRef = {
+    actorOf[T](actorProperties, name)
   }
 
-  def actorOf[T <:Actor : ClassTag](clazz: Class[T]): ActorRef = {
+  def actorOf[T <: Actor : ClassTag](clazz: Class[T]): ActorRef = {
     // val finalName = classTag[T].runtimeClass.getName
     val props = Props(clazz)
-    val actorRefFuture = ask(rootSupervisor, CreateActorRefCommand(props,Some(props.clazz.getSimpleName)))(ActorHelper.actorCreationTimeout).mapTo[ActorRef]
+    val actorRefFuture = ask(rootSupervisor, CreateActorRefCommand(props, Some(props.clazz.getSimpleName)))(ActorHelper.actorCreationTimeout).mapTo[ActorRef]
     Await.result(actorRefFuture, ActorHelper.actorCreationTimeout.duration)
   }
 
-  @deprecated("Named changed. Use actorOf instead","0.8.5.7-Kamon-snapshot")
-  def getActorRef[T <:Actor : ClassTag](clazz: Class[T]): ActorRef = {
+  @deprecated("Named changed. Use actorOf instead", "0.8.5.7-Kamon-snapshot")
+  def getActorRef[T <: Actor : ClassTag](clazz: Class[T]): ActorRef = {
     actorOf[T](clazz)
   }
 
-  def createRouters[T <:Actor : ClassTag](actorProperties: Props, nrOfInstances: Int = availableProcessors, name: Option[String] = None) = {
-    actorOf[T](RoundRobinPool(nrOfInstances).props(actorProperties),name)
+  def createRouters[T <: Actor : ClassTag](actorProperties: Props, nrOfInstances: Int = availableProcessors, name: Option[String] = None) = {
+    actorOf[T](RoundRobinPool(nrOfInstances).props(actorProperties), name)
   }
 
-  def createRoutersByType[T <:Actor : ClassTag](nrOfInstances: Int = availableProcessors) = {
+  def createRoutersByType[T <: Actor : ClassTag](nrOfInstances: Int = availableProcessors) = {
     actorOf[T](RoundRobinPool(nrOfInstances).props(Props(classTag[T].runtimeClass)))
   }
 }
+
 case class CreateActorRefCommand(props: Props, name: Option[String] = None)
 
 trait ActorHelper {
 
   /**
-  Creates ActorRef using ActorSystem
+    * Creates ActorRef using ActorSystem
     */
   def getActorRef[T](clazz: Class[T]): ActorRef = {
     ActorSystemContainer.system.actorOf(Props.create(clazz))
   }
 
   /**
-  <p>If name is passed </p>
-     then the below logic will try find the actorRef from its context
-     else creates new actorRef
+    * <p>If name is passed </p>
+    * then the below logic will try find the actorRef from its context
+    * else creates new actorRef
     */
-  def getActorRef[TActor](context: ActorContext, clazz: Class[TActor],name:String = null): ActorRef = {
+  def getActorRef[TActor](context: ActorContext, clazz: Class[TActor], name: String = null): ActorRef = {
 
-    if(name == null) return context.actorOf(Props.create(clazz))
+    if (name == null) return context.actorOf(Props.create(clazz))
 
     val child = context.child(name)
-    if(child.isDefined) return child.get
-    context.actorOf(Props.create(clazz),name)
+    if (child.isDefined) return child.get
+    context.actorOf(Props.create(clazz), name)
   }
 
 }
@@ -156,6 +158,6 @@ object ActorHelper {
   val requestTimeout = Timeout(12.seconds)
 }
 
-object ActorSystemContainer  {
-  lazy val system: ActorSystem =  ActorSystem("GeneralActorSystem")
+object ActorSystemContainer {
+  lazy val system: ActorSystem = ActorSystem("GeneralActorSystem")
 }
