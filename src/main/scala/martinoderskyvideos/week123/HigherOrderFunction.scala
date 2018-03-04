@@ -23,7 +23,6 @@ object HigherOrderFunctionExample2 extends App {
 
     sumF
   }
-
   val res: Int = sum(x => x * x * x)(1, 5)
   println(res)
 }

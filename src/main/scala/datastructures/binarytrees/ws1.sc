@@ -1,2 +1,1 @@
-import Numeric._
-num.negate(10)
+List(1, 2.3)  
