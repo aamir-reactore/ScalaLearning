@@ -12,7 +12,12 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
   def isEmpty: Boolean
 
   def fail(errMsg: String): Nothing = throw new NoSuchElementException(errMsg)
-
+  /**
+    * Adds given element 'x' into this tree.
+    *
+    * Time - O(log n)
+    * Space - O(log n)
+    */
   def add[B >:A](b: B)(implicit ev$1: B => Ordered[B]): Tree[B] = {
     if (isEmpty) Tree.make(b)
     else if (b < value) Tree.make(value, left.add(b), right)

@@ -6,6 +6,7 @@ object HigherOrderFunctionExample1 extends App {
     def loop(a: Int, acc: Int): Int = {
       if (a > b) acc else loop(a + 1, f(a) + acc)
     }
+
     loop(a, 0)
   }
 
@@ -19,6 +20,7 @@ object HigherOrderFunctionExample2 extends App {
     def sumF(a: Int, b: Int): Int = {
       if (a > b) 0 else f(a) + sumF(a + 1, b)
     }
+
     sumF
   }
 
@@ -32,6 +34,7 @@ object HigherOrderFunctionExample3 extends App {
     // here type of sum is (Int => Int) => (Int, Int) => Int
     if (a > b) 0 else f(a) + sum(f)(a + 1, b)
   }
+
   val res: Int = sum(x => x * x * x)(1, 5)
   println(res)
 
@@ -75,18 +78,22 @@ object HigherOrderFunctionExample6 extends App {
   val tolerance = 0.0001
 
   def abs(x: Double): Double = if (x < 0) -x else x
+
   def isGoodEnough(x: Double, y: Double): Boolean = abs((x - y) / x) / x < tolerance
-  def fixedPoint(f: Double => Double)(firstGuess: Double):Double = {
+
+  def fixedPoint(f: Double => Double)(firstGuess: Double): Double = {
     def iterate(guess: Double): Double = {
       val next = f(guess)
       if (isGoodEnough(guess, next)) next else iterate(next)
     }
+
     iterate(firstGuess)
   }
 
-  def squareRoot(x:Double):Double= fixedPoint(y => (y + x / y) / 2)(1.0) // num => guess + num / guess , it gets num value here
-  def averageDump(f:Double => Double)(x:Double):Double = x + f(x) / 2
-  def squareWithAverageDump(x:Double) = fixedPoint(averageDump(y => x / y))(1.0)
+  def squareRoot(x: Double): Double = fixedPoint(y => (y + x / y) / 2)(1.0) // num => guess + num / guess , it gets num value here
+  def averageDump(f: Double => Double)(x: Double): Double = x + f(x) / 2
+
+  def squareWithAverageDump(x: Double) = fixedPoint(averageDump(y => x / y))(1.0)
 
   println(s"fixed point of b.a function f(x) = 1 + x / 2 is ${fixedPoint(x => 1 + x / 2)(1.0)}")
   println(s"square root of 2 using fixed point algorithm is is ${squareRoot(2)}")

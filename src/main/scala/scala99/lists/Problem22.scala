@@ -29,7 +29,7 @@ object ListRange extends App {
       if (n > end) None else Some((n, n + 1))
     }
 
-  println(rangeFunctional(4,9))
+  println(s"using range functional:==> ${rangeFunctional(4,9)}")
 
 
 
