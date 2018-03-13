@@ -1,3 +1,5 @@
+
+
 val s1 = "a"
 val res1 = if(s1.matches("[a-zA-Z]+")) true else false
 
@@ -49,3 +51,5 @@ val res13 = if(s13.matches(".*")) true else false
 val str = """ID:   12343-7888d""".stripMargin
 
 val res = if(str.matches("[a-zA-Z]+:.*")) true else false
+
+"ab12".matches("[a-zA-Z0-9]{4}")
