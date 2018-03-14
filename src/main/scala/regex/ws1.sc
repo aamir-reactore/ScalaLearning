@@ -52,4 +52,5 @@ val str = """ID:   12343-7888d""".stripMargin
 
 val res = if(str.matches("[a-zA-Z]+:.*")) true else false
 
-"ab12".matches("[a-zA-Z0-9]{4}")
+val r1 ="12abcd".matches("[a-zA-Z].+[0-9]+")
+val r2 = "a23b23cd2323".matches("[a-zA-Z0-9]+")
