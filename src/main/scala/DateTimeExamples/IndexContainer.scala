@@ -65,6 +65,7 @@ object ll extends App {
 object DateTimeExt {
 
   implicit class JodaDateTimeExtensions(val dateTime: DateTime) {
+
     def toDateTimeAtEndOfDay = {
       dateTime.withTime(LocalTime.parse("23:59:59.999"))
     }
