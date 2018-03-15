@@ -49,6 +49,19 @@ object DateTimeHelper {
   }
 }
 
+object ll extends App {
+
+  val dt1 = DateTime.now()
+  val dt2 = DateTime.now().plusMinutes(5)
+
+  println(dt1)
+  println(dt2)
+  val value1:Long = dt1.getMillis
+  val value2:Long = dt2.getMillis
+  val value3 = (value1 + Math.random * (value2 - value1)).toLong
+  println(new DateTime(value3))
+}
+
 object DateTimeExt {
 
   implicit class JodaDateTimeExtensions(val dateTime: DateTime) {
