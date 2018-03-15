@@ -1,3 +1,4 @@
+/*
 package datastructures.search
 
 import org.scalatest.{Matchers, WordSpec}
@@ -28,4 +29,4 @@ class LinearSearch1Test extends WordSpec with Matchers {
       result shouldBe expectedResult
     }
   }
-}
+}*/

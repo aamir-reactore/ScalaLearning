@@ -180,7 +180,7 @@ object KafkaProps {
 
   def apply(groupId: String) = {
     new KafkaProps(ResolveAddressUtility.getAddress+"-"+groupId, ConfigHelper.KAFKA_CONNECTION_STRING)
-  }
+  }z
 }
 case class PubSubTest(name:String, age:Int) extends KafkaPublishEntity[Long] {
   topicId = "test-topic"

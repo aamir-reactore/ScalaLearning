@@ -1,11 +1,11 @@
 
 
 val s1 = "a"
-val res1 = if(s1.matches("[a-zA-Z]+")) true else false
+val res1 = if(s1.matches("^[a-zA-Z]+$")) true else false
 
 //+ means "one or more"
 val s2 = ""
-val res2 = if(s2.matches("[a-zA-Z]+")) true else false
+val res2 = if(s2.matches("^[a-zA-Z]+&")) true else false
 
 
 val s3 = "12"
@@ -16,7 +16,7 @@ val s4 = "hello"
 val res4 = if(s4.matches("[A-Z]+")) true else false
 
 val s5 = "1234567890"
-val res5 = if(s5.matches("[0-9]+")) true else false
+val res5 = if(s5.matches("^[0-9]+&")) true else false
 
 //. means any character(means it should exist once)
 val s6 = "a"
