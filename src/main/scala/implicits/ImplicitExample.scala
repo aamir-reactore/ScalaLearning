@@ -1,4 +1,5 @@
 package Implicits
+
 object ImplicitExample extends App {
 
    def yo(implicit name:String) = println(s"yo $name")
@@ -10,6 +11,7 @@ object ImplicitExample extends App {
   //implicit val barney = "Barney"
   //yo
 }
+
 /*object ImplicitExample2 extends App {
 
   def yo(i:Int)(implicit name:String) = println(s"yo $name")
