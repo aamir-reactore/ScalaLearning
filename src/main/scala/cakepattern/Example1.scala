@@ -45,3 +45,19 @@
    override def getRosterEmployees(rosterId: Long, prs: SysParams) = Future.successful(rosterEmp
    }
   */
+class DepTest {
+  def printHello = println("hello")
+}
+object DependencyResolver {
+  implicit class DependencyResolverExtension(val path:String) {
+
+    def resolveDependency[T](): T = {
+      Class.forName(path).newInstance.asInstanceOf[T]
+    }
+  }
+}
+object ll extends App {
+  import DependencyResolver._
+  val res = "DepTest".resolveDependency[DepTest]()
+  println(res.printHello)
+}
