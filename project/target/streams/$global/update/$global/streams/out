@@ -6074,7 +6074,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 2561ms :: artifacts dl 191ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 3618ms :: artifacts dl 75ms[0m
 [0m[[0mdebug[0m] [0m	report for default#scalalearning-build;0.1-SNAPSHOT compile produced in /home/aamir/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalalearning-build;0.1-SNAPSHOT runtime produced in /home/aamir/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalalearning-build;0.1-SNAPSHOT test produced in /home/aamir/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-test.xml[0m
@@ -6088,5 +6088,5 @@
 [0m[[0mdebug[0m] [0m	report for default#scalalearning-build;0.1-SNAPSHOT docs produced in /home/aamir/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalalearning-build;0.1-SNAPSHOT pom produced in /home/aamir/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalalearning-build;0.1-SNAPSHOT scala-tool produced in /home/aamir/ScalaLearning/project/target/resolution-cache/reports/default-scalalearning-build-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (2561ms resolve - 191ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (3618ms resolve - 75ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
