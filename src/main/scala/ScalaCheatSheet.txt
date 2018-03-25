@@ -1,4 +1,4 @@
-http://mbonaci.github.io/scala/#433---checking-variance-annotations
+http://mbonaci.github.io/scala/#433---checking-variance-annotations(Martin's book code)
 
 https://www.markthomas.info/blog/92 (userful for traits)
 
