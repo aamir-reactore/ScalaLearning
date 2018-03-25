@@ -1,6 +1,10 @@
 package steps
 import cucumber.api.scala.{EN, ScalaDsl}
 import cucumbertest.MyCalculator
+
+/**
+  * Ref:https://alexromanov.github.io/2016/07/15/cucumber-scala-sbt/
+  */
  class StepDefinitions extends ScalaDsl with EN {
   var calc: MyCalculator = _
   var result: Int = _
