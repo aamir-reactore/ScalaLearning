@@ -18,3 +18,4 @@ object LastElement extends App {
   println("last element of list folding is = " + reduceMethod[Int](l))
 
 }
+

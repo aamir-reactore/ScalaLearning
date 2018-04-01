@@ -5,3 +5,5 @@
 val original = Map("A"-> 1,"B"-> 2)
 original.map { case (k, v) => (k, v + 1) }
 original.transform((_, v) => v + 1)
+original.mapValues(_ + 3)
+

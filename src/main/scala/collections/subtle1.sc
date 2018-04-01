@@ -24,7 +24,7 @@ Seq(6,2,3,4).span(x => x % 2 == 0)
 Seq(1,2,3,4).span(x => x % 2 == 0)
 
 val l = List("abc","","def","hih","")
-l.map(_.trim).partition(_.nonEmpty)
+val partitionRes = l.map(_.trim).partition(_.nonEmpty)
 
 println("###############ending span###################")
 
@@ -47,7 +47,7 @@ println("####unzipping end #########")
 println("####drop take start#########")
 val ll1 = List()
 val lb1 = Nil
-ll1.take(2)
+ll1.take(2) //drop,take doesn't throw error on Empty lists.
 lb1.drop(4)
 println("####drop take end#########")
 
