@@ -56,6 +56,7 @@ object Sink1 extends App {
 }
 
 object Sink2 extends App {
+
   implicit val system = ActorSystem("TestSystem")
   implicit val materializer = ActorMaterializer()
 
