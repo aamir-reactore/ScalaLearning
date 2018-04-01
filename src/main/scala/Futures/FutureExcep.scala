@@ -21,8 +21,8 @@ object FutureExcepTest1 extends App {
 object FutureExcepTest2 extends App {
 
   val r1: Future[Int] = Future(6 / 0) recoverWith {
-    case e: ArithmeticException  =>
-     Future.failed(e)
+    case e: ArithmeticException =>
+      Future.failed(e)
   }
   r1.onComplete {
     case Success(_) => {
@@ -36,7 +36,7 @@ object FutureExcepTest2 extends App {
 object FutureExcepTest3 extends App {
 
   val r1: Future[Int] = Future(6 / 0) recoverWith {
-    case e: ArithmeticException  =>
+    case e: ArithmeticException =>
       throw e
   }
   r1.onComplete {
@@ -48,30 +48,46 @@ object FutureExcepTest3 extends App {
   Thread.sleep(10000)
 }
 
-object FutureExcepTest4 extends App{
-  val f = Future { Int.MaxValue }
-    val res: Future[Int] = Future (6 / 0) recoverWith {
-      case e: ArithmeticException => f
-    } // result: Int.MaxValue
-  res.onComplete {
+object FutureExcepTest4 extends App {
+  val f = Future {
+    Int.MaxValue
+  }
+  val res: Future[Int] = Future(6 / 0) recoverWith {
+    case e: ArithmeticException => f
+  } // result: Int.MaxValue
+
+  Thread.sleep(10000)
+}
+
+object FutureTransformTest5 extends App {
+
+  val res1: Future[Int] = Future(6 / 3).transform(s => {
+    s
+  }, f => {
+    throw f
+  }
+  )
+
+  res1.onComplete {
     case Success(s) => {
       println(s"(((((((((($s))))))))))")
     }
     case Failure(f) => throw f
   }
-  Thread.sleep(10000)
-}
+  Thread.sleep(1000)
+  val res2: Future[Int] = Future(6 / 0).transform(s => {
+    s
+  }, f => {
+    throw f
+  }
+  )
 
-object FutureTransformTest extends App {
-  val r1: Future[Int] = Future(6 / 0) recover { case e: ArithmeticException => throw e }
-  /* res <- run[Unit](action, List(classOf[EmployeeCheckInStatus]))(prs).transform(s => {
-     sendToWS(prs.mineId, WSTopics.EMPLOYEE_CHECKINOUT_TOPIC, query1._2.asJson)
-     ActorSystemContainer.publish(query1._2)
-     StatusContainer(true)
-   }, f => f)*/
-  /*  r1.transform { s => {
-        12
-      }, f => f
+  res2.onComplete {
+    case Success(s) => {
+      println(s"(((((((((($s))))))))))")
     }
-    Thread.sleep(10000)*/
+    case Failure(f) => throw f
+  }
+
+  Thread.sleep(10000)
 }
