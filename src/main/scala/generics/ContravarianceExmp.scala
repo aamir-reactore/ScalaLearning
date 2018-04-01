@@ -4,7 +4,7 @@ package generics
   * Reference: https://stackoverflow.com/questions/48544153/contravariance-why-is-the-subtype
   */
 trait Shape {
-  val area: Double
+  def area: Double
 }
 class Circle(val radius:Double) extends Shape {
   override val area: Double = math.Pi * radius * radius
@@ -29,6 +29,7 @@ object TestContra1 extends App {
   println("####################################")
   println(writeJson(circleList,shapeWriter))
   //Shape => String is b.a subtype of Circle => String
+  //i.e Function[-A,+B] || Function[Shape,String] <:Function[Circle,String] as Circle <: Shape
 }
 
 /*

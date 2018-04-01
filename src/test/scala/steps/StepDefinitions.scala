@@ -4,6 +4,8 @@ import cucumbertest.MyCalculator
 
 /**
   * Ref:https://alexromanov.github.io/2016/07/15/cucumber-scala-sbt/
+  *
+  * https://github.com/Originate/guide/blob/master/cucumber.md
   */
  class StepDefinitions extends ScalaDsl with EN {
   var calc: MyCalculator = _
