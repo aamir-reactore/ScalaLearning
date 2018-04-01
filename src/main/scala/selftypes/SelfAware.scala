@@ -1,3 +1,5 @@
+package selftypes
+
 trait SelfAware { self =>
   val me = self
   
@@ -5,7 +7,10 @@ trait SelfAware { self =>
     println("called method1")
   }
 }
+object selftest extends App {
 
-class X
-val s = new X with SelfAware
-println(s.me.method1)
+  class X
+
+  val s = new X with SelfAware
+  println(s.me.method1)
+}

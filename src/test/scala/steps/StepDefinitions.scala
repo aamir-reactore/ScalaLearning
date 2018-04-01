@@ -8,6 +8,7 @@ import cucumbertest.MyCalculator
  class StepDefinitions extends ScalaDsl with EN {
   var calc: MyCalculator = _
   var result: Int = _
+
   Given("""^my calculator is running$"""){ () =>
     calc = new MyCalculator
   }
@@ -20,4 +21,5 @@ import cucumbertest.MyCalculator
   When("""^I subtract (\d+) and (\d+)$"""){ (firstNum:Int, secondNum:Int) =>
     result = calc.sub(firstNum, secondNum)
   }
+
 }
