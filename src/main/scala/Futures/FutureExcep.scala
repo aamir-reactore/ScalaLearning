@@ -1,14 +1,12 @@
 package Futures
 
-import Futures.FutureExcepTest3.r1
-
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
 object FutureExcepTest1 extends App {
 
-  val r1: Future[Int] = Future(6 / 0) /*recover { case e: ArithmeticException => throw e }*/
+  val r1: Future[Int] = Future(6 / 0)
   r1 onComplete {
     case Success(_) => {
       println("((((((((((success))))))))))")
@@ -61,8 +59,8 @@ object FutureExcepTest4 extends App {
 
 object FutureTransformTest5 extends App {
 
-  val res1: Future[Int] = Future(6 / 3).transform(s => {
-    s
+  val res1: Future[String] = Future(6 / 3).transform[String](_ => {
+    "String"
   }, f => {
     throw f
   }
