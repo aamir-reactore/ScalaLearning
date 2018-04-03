@@ -41,31 +41,54 @@ object VariableVSConstantPattern1 extends App {
 
   import math.{E, Pi}
 
-
   E match {
     //capital case treated as constant pattern
     case Pi => println(s"Strange math? Pi = $Pi")
     case _  => println("OK")
   }
 
-  /* Pi match {
-     case Pi => println(s"Strange math? Pi = $Pi")
-     case _  => println("OK")
-   }*/
+  Pi match {
+    case Pi => println(s"Strange math? Pi = $Pi")
+    case _  => println("OK")
+  }
 
   //small case treated as variable pattern
   E match {
     case pi => println(s"Strange math? Pi = $pi")
     case _  => println("OK")
   }
+
+  E match {
+    //capital case treated as constant pattern
+    case Pi => println(s"Strange math? Pi = $Pi")
+    case e  => println(s"matches e coz variable pattern, e = $e")
+    case _  => println("OK")
+  }
 }
 
-object Test extends App {
+object VariableVSConstantPattern2 extends App {
+
   import math.{Pi => pi}
   import math.E
 
   E match {
     case `pi` => "Strange math? Pi" + pi
-    case _   =>  "OK"
+    case _    => "OK"
+  }
+}
+
+object ConstructorPattern extends App {
+  val expr = UnOp("-", UnOp("-", Number(2))) // -(-2)
+  //supports nested matches or patterns
+  expr match {
+    case UnOp("-", UnOp("-", Number(2))) => println("matched")
+    case UnOp("-", _)                    => println("matched skipped one")
+    case _                               => println("not matched")
+  }
+
+  expr match {
+    case UnOp("-", _)                    => println("matched skipped one")
+    case UnOp("-", UnOp("-", Number(2))) => println("matched")
+    case _                               => println("not matched")
   }
 }
