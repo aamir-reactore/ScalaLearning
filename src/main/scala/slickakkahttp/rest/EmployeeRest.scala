@@ -1,7 +1,7 @@
 package slickakkahttp.rest
 
 import akka.actor.{ActorRef, ActorSystem}
-import akka.http.scaladsl.model.{HttpEntity, HttpResponse, MediaTypes, StatusCodes}
+import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
@@ -16,9 +16,18 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class EmployeeRest(actorRef: ActorRef, controller: EmployeeControllerComponent) extends Directives {
   implicit val system = ActorSystem.create("Test")
   implicit val materializer = ActorMaterializer()
+  implicit val executionContext = system.dispatcher
 
   implicit val f = DefaultFormats
-  val routes = path("employee") {
+  val routes = get {
+    pathSingleSlash {
+      complete{
+        HttpResponse(status = StatusCodes.OK, entity = HttpEntity(MediaTypes.`application/json`, compact(Extraction.decompose(""))))
+      }
+    }
+  }
+}
+  /*path("employee") {
     post {
        headerValueByName("apiKey") { token =>
         authorize(validateApiKey(token)) {
@@ -104,7 +113,7 @@ object ErrorCodes {
    val DUPLICATE_NAME:String = "Duplicate Name"
    }
    case class ErrorMessageContainer(message: String, ex: Option[String] = None, code: String = "")
-*/
+*/*/
 
 
-}
+//}

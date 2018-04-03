@@ -60,15 +60,12 @@ object VariableVSConstantPattern1 extends App {
   }
 }
 
-object VariableVSConstantPattern2 extends App {
+object Test extends App {
+  import math.{Pi => pi}
+  import math.E
 
-  import math.{E, Pi}
-
-  //back-ticks treats small case as constant patterns
-  def `val` = ???
-
-  "a" match {
-    case `a` => println(s"Strange math? Pi = $pi")
-    case _   => println("OK")
+  E match {
+    case `pi` => "Strange math? Pi" + pi
+    case _   =>  "OK"
   }
 }
