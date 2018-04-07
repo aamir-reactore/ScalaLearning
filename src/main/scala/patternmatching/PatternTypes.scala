@@ -92,3 +92,35 @@ object ConstructorPattern extends App {
     case _                               => println("not matched")
   }
 }
+
+object SequencePatterns extends App {
+  val l1 = List(1, 2, 3, 4, 5, 6)
+
+  l1 match {
+    case List(1, _*) => println("list first element as 1 then followed by n elements")
+    case _           => println {
+      "default case"
+    }
+  }
+
+  val l2 = List(1, 2, 3, 4, 5, 6)
+  l2 match {
+    case List(0, _*) => println("list first element as 1 then followed by n elements")
+    case _           => println {
+      "default case"
+    }
+  }
+
+}
+
+object TuplePattern extends App {
+
+  def tupleDemo(expr: Any) = expr match {
+    case (a, b)    => println(s"matched $a $b")
+    case (a, b, c) => println(s"matched $a $b$c")
+    case _         => println("default case")
+  }
+
+  tupleDemo(("a", 3, "-tuple"))
+}
+

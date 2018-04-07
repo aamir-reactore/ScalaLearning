@@ -19,8 +19,8 @@ abstract sealed class Tree[+A](implicit exp: A => Ordered[A]) {
     * Space - O(log n)
     */
   def add[B >:A](b: B)(implicit ev$1: B => Ordered[B]): Tree[B] = {
-    if (isEmpty) Tree.make(b)
-    else if (b < value) Tree.make(value, left.add(b), right)
+    if (this.isEmpty) Tree.make(b)
+    else if (b < this.value) Tree.make(value, left.add(b), right)
     else if (b > value) Tree.make(value, left, right.add(b))
     else this
   }
