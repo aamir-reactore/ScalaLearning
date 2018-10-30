@@ -1,3 +1,4 @@
+/*
 package steps
 import cucumber.api.scala.{EN, ScalaDsl}
 import cucumbertest.MyCalculator
@@ -25,3 +26,4 @@ import cucumbertest.MyCalculator
   }
 
 }
+*/

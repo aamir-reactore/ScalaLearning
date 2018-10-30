@@ -26,10 +26,35 @@ object ActorReplyingTest extends App {
     }
   }
 
-  val actorSystem = ActorSystem("ActorSystem")
+  val actorSystem = ActorSystem("ActorSystemName")
   val actor: ActorRef = actorSystem.actorOf(Props[ActorReplyExample], "RootActor")
-  println(actor.path)
-  println(actor)
+  println(s"actor path ===> ${actor.path}")
+  println(s"actor object ===> $actor")
   actor ! "Hello"
 
+}
+
+import akka.actor.{Actor,ActorSystem, Props, ActorRef};
+import akka.util.Timeout;
+import scala.concurrent.Await
+import akka.pattern.ask
+import scala.concurrent.duration._
+
+class ActorExample extends Actor{
+  def receive = {
+    case message:String => println("Message received: "+message+" from outside actor instance");
+      println("Replaying");
+        sender() ! "Hello, I got your message.";      // Replying message
+  }
+}
+
+object ActorExample{
+  def main(args:Array[String]){
+    val actorSystem = ActorSystem("ActorSystem");
+    val actor = actorSystem.actorOf(Props[ActorExample], "RootActor");
+    implicit val timeout = Timeout(10 seconds);
+    val future = actor ? "Hello";
+    val result = Await.result(future, timeout.duration);
+    println("Message received: "+result);
+  }
 }

@@ -1,3 +1,4 @@
+/*
 
 package scalasestspecifistyles
 
@@ -32,3 +33,4 @@ class Spec2SpecTest extends Specification with Mockito {
     }
   }
 }
+*/

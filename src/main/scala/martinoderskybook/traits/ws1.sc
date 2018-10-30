@@ -74,3 +74,8 @@ trait Angry {
 }
 
  val hulk = new DavidBanner with Angry
+
+val fruit = List("apple", "pear", "orange", "pineapple")
+fruit.groupBy(_.head).map { case (key, value) =>
+
+}

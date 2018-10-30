@@ -29,15 +29,15 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick" % "slick_2.11" % "3.2.0-M1",
   "org.json4s" %% "json4s-jackson" % "3.2.11", "joda-time" % "joda-time" % "2.8.2",
   "com.typesafe.akka" %% "akka-http-experimental" % "2.4.11.2",
-  //"com.github.cb372" %% "scalacache-caching.guava" % "0.9.3",
+  //"com.github.cb372" %% "scalacache-caching.guava" % "0.9.3",info.cukes
   "com.github.cb372" %% "scalacache-guava" % "0.9.4",
   "net.debasishg" %% "redisclient" % "3.4",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test",
   "com.vividsolutions" % "jts" % "1.13",
-  "org.specs2" %% "specs2" % "2.4.6" % "test",
+ // "org.specs2" %% "specs2" % "2.4.6" % "test",
   "org.scalacheck" %% "scalacheck" % "1.13.5" % "test",
-  "info.cukes" % "cucumber-scala_2.11" % "1.2.4",
-  "info.cukes" % "cucumber-junit" % "1.2.4",+
+ // "info.cukes" % "cucumber-scala_2.11" % "1.2.4",
+  //"info.cukes" % "cucumber-junit" % "1.2.4",+
   "junit" % "junit" % "4.12"
 
 )
