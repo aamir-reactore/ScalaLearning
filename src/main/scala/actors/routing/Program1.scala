@@ -2,8 +2,9 @@ package actors.routing
 
 import DonutStoreProtocol.{CheckStock, WorkerFailedException}
 import akka.actor.SupervisorStrategy.{Escalate, Restart}
-import akka.actor.{Actor, ActorLogging, ActorSystem, OneForOneStrategy, Props, SupervisorStrategy}
+import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, OneForOneStrategy, Props, SupervisorStrategy}
 import akka.pattern.ask
+import akka.routing.{DefaultResizer, RoundRobinPool}
 import akka.util.Timeout
 
 import scala.concurrent.Future
@@ -19,29 +20,25 @@ object DonutStoreProtocol {
 
 class DonutStockWorkerActor extends Actor with ActorLogging {
 
-  @throws[Exception](classOf[Exception])
   override def postRestart(reason: Throwable): Unit = {
     log.info(s"restarting ${self.path.name} because of $reason")
   }
 
   def receive = {
     case CheckStock(name) =>
-      findStock(name)
-      context.stop(self)
+      sender ! findStock(name)
   }
 
   def findStock(name: String): Int = {
-    log.info(s"Finding stock for donut = $name")
+    log.info(s"Finding stock for donut = $name, thread = ${Thread.currentThread().getId}")
     100
-     //throw new IllegalStateException("boom") // Will Escalate the exception up the hierarchy
-    throw new WorkerFailedException("boom") // Will Restart DonutStockWorkerActor
   }
 }
 
 class DonutStockActor extends Actor with ActorLogging {
 
   override def supervisorStrategy: SupervisorStrategy =
-    OneForOneStrategy(maxNrOfRetries = 3, withinTimeRange = 1 seconds) {
+    OneForOneStrategy(maxNrOfRetries = 3, withinTimeRange = 5 seconds) {
       case _: WorkerFailedException =>
         log.error("Worker failed exception, will restart.")
         Restart
@@ -51,30 +48,33 @@ class DonutStockActor extends Actor with ActorLogging {
         Escalate
     }
 
-  val workerActor = context.actorOf(Props[DonutStockWorkerActor], name = "DonutStockWorkerActor")
+
+  // We are using a resizable RoundRobinPool.
+  val resizer = DefaultResizer(lowerBound = 5, upperBound = 10)
+  val props = RoundRobinPool(5, Some(resizer), supervisorStrategy = supervisorStrategy)
+    .props(Props[DonutStockWorkerActor])
+  val donutStockWorkerRouterPool: ActorRef = context.actorOf(props, "DonutStockWorkerRouter")
 
   def receive = {
     case checkStock @ CheckStock(name) =>
       log.info(s"Checking stock for $name donut")
-      workerActor forward checkStock
+      donutStockWorkerRouterPool forward checkStock
   }
 }
-
 object TestDonoutActor extends App {
+
   val system = ActorSystem("DonutStoreActorSystem")
 
   val donutStockActor = system.actorOf(Props[DonutStockActor], name = "DonutStockActor")
 
   implicit val timeout = Timeout(5 second)
-  println("**********************************")
-  val vanillaDonutStock: Future[Int] = (donutStockActor ? CheckStock("vanilla")).mapTo[Int]
-  val result = for {
-    found <- vanillaDonutStock
-  } yield found
-  result.map(res => println(s"Vanilla donut stock = $res"))
+
+  val vanillaStockRequests = (1 to 10).map(_ => (donutStockActor ? CheckStock("vanilla")).mapTo[Int])
+  for {
+    results <- Future.sequence(vanillaStockRequests)
+  } yield println(s"vanilla stock results = $results")
 
   Thread.sleep(5000)
-  val isTerminated = system.terminate()
 
 
 }
