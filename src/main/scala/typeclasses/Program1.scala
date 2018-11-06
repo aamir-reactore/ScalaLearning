@@ -1,5 +1,8 @@
 package typeclasses
 
+import scala.annotation.implicitNotFound
+
+@implicitNotFound("No member of type class Duplicate in scope for ${T}")
 trait Duplicate[A, B] {
   def duplicate(value: A):B
 }
@@ -36,4 +39,5 @@ object DuplicateExample extends App {
   println(DuplicateWriter.write(10))
   println(DuplicateWriter.write(10)(Duplicate.duplicateInt))
   println(DuplicateWriter.write('c'))
+  //println(DuplicateWriter.write(3.3))
 }
