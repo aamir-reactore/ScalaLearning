@@ -50,9 +50,8 @@ class DonutStockActor extends Actor with ActorLogging {
 
 
   // We are using a resizable RoundRobinPool.
-  val resizer = DefaultResizer(lowerBound = 5, upperBound = 10)
-  val props = RoundRobinPool(5, Some(resizer), supervisorStrategy = supervisorStrategy)
-    .props(Props[DonutStockWorkerActor])
+  val resizer: DefaultResizer = DefaultResizer(lowerBound = 5, upperBound = 10)
+  val props: Props = RoundRobinPool(5, Some(resizer), supervisorStrategy = supervisorStrategy).props(Props[DonutStockWorkerActor])
   val donutStockWorkerRouterPool: ActorRef = context.actorOf(props, "DonutStockWorkerRouter")
 
   def receive = {
