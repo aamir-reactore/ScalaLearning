@@ -27,7 +27,7 @@ import scala.util.{Failure, Success}
 
   askResponse.foreach(x => println(s"Name is $x"))
 }*/
-
+/*
 object AskPattern2 extends App {
 import akka.pattern.pipe
   import scala.concurrent.ExecutionContext.Implicits.global
@@ -63,10 +63,11 @@ import akka.pattern.pipe
         case Failure(f) ⇒ println("failure")
       }
     }*/
-}
-/*
-object AskPattern3 extends App {
+}*/
 
+object AskPattern3 extends App {
+import akka.pattern.ask
+  import scala.concurrent.ExecutionContext.Implicits.global
   case object AskName
   case class NameResponse(name: String)
   case class AskNameOf(actorRef: ActorRef)
@@ -75,8 +76,9 @@ object AskPattern3 extends App {
     override def receive = {
       case AskName => sender ! NameResponse(name)
       case AskNameOf(other) =>
+        implicit val timeOut = Timeout(2.second)
         val res = other ? AskName
-        res onComplete {
+        res onComplete  {
           case Success(NameResponse(s)) =>
             println(s"They said their name was $s")
           case Success(_) =>
@@ -99,7 +101,7 @@ object AskPattern3 extends App {
 }
 
 
-object AskPattern4 extends App {
+/*object AskPattern4 extends App {
 
   case object AskName
   case class NameResponse(name: String)

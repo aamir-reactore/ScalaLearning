@@ -1,3 +1,5 @@
+package actors.marklewisactors
+
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
@@ -42,7 +44,8 @@ class MyActor(actorIncrement: ActorRef, actorEven: ActorRef, actorOdd: ActorRef)
   def receive = {
     case i: Int if i % 2 == 0 =>
       println(s"receive a: $i")
-      actorIncrement ? i map {
+
+      (actorIncrement ? i) map {
         case j: Int =>
           println(s"$j from increment a")
           actorOdd ! j
@@ -50,7 +53,7 @@ class MyActor(actorIncrement: ActorRef, actorEven: ActorRef, actorOdd: ActorRef)
     case i: Int =>
       println(s"receive b: $i")
       val future: Future[Any] = actorIncrement ? i
-      val r: Unit = future onSuccess {
+      future onSuccess {
         case i: Int =>
           println(s"$i from increment b")
           actorEven ! i

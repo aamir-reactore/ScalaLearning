@@ -11,3 +11,5 @@ val per = Person("aamir")
 //per.name, works if val name:String
 def add(a:Int, b:Int) : Int = ???
 add(10,20)
+
+List[Int](1,2,3).map(_+1)
