@@ -6,7 +6,7 @@ import akka.pattern.pipe
 import scala.concurrent.Future
 import scala.concurrent.duration._
 import scala.language.postfixOps
-import scala.util.Success
+import scala.util.{Failure, Success}
 
 class ActorIncrement extends Actor {
 
@@ -50,7 +50,7 @@ class MyActor(actorIncrement: ActorRef, actorEven: ActorRef, actorOdd: ActorRef)
     case i: Int =>
       println(s"receive b: $i")
       val future: Future[Any] = actorIncrement ? i
-      future onSuccess {
+      val r: Unit = future onSuccess {
         case i: Int =>
           println(s"$i from increment b")
           actorEven ! i
@@ -60,9 +60,9 @@ class MyActor(actorIncrement: ActorRef, actorEven: ActorRef, actorOdd: ActorRef)
       import scala.concurrent._
       import scala.concurrent.Await
       println(s"receive c: $s")
-      val r: Future[Int] = (actorIncrement ? s.toInt).mapTo[Int] filter(_ % 2 == 0) andThen { case Success(i: Int) => println(s"$i from increment c") } pipeTo actorEven
-      //val res = Await.result(r, Timeout(2.second).duration) // throws java.util.NoSuchElementException: Future.filter predicate is not satisfied, when s is even
-      //println(res), gives result when s is odd
+      val r= (actorIncrement ? s.toInt).mapTo[Int] filter(_ % 2 == 0) andThen { case Success(i: Int) => println(s"$i from increment c");case Failure(_) => println("filter pridicate failed")} pipeTo actorEven
+      val res = Await.result(r, Timeout(2.second).duration) // throws java.util.NoSuchElementException: Future.filter predicate is not satisfied, when s is even
+      println(res)//, gives result when s is odd
   }
 }
 
@@ -79,7 +79,7 @@ object TalkToActor extends App {
 
   //myActor ! 2
   //myActor ! 7
-  myActor ! "12"
+  myActor ! "11"
 
   Thread.sleep(1000)
 

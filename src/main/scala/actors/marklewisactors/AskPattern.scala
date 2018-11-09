@@ -4,13 +4,13 @@ package actors.marklewisactors
 import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-
+import akka.pattern.pipe
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
- /*
-object AskPattern1 extends App {
 
+/*object AskPattern1 extends App {
+    import scala.concurrent.ExecutionContext.Implicits.global
   case object AskName
   case class NameResponse(name: String)
 
@@ -26,10 +26,11 @@ object AskPattern1 extends App {
   val askResponse: Future[Any] = actor ? AskName
 
   askResponse.foreach(x => println(s"Name is $x"))
-}
-import akka.pattern.pipe
+}*/
 
 object AskPattern2 extends App {
+import akka.pattern.pipe
+  import scala.concurrent.ExecutionContext.Implicits.global
 
   case object AskName
   case class  NameResponse(name: String)
@@ -40,21 +41,30 @@ object AskPattern2 extends App {
         //self ! PoisonPill
       }
       case NameResponse(naam) => {
-        println(s"piped here $naam")
+        println(s"from receive method, piped here $naam")
       }
     }
   }
   val system = ActorSystem("AskPatternActorSystem")
   val actor = system.actorOf(Props(new AskActor("jimmyactor")), "AskActor1")
   implicit val timeOut = Timeout(2.seconds)
-  val askResponse  = (actor ? AskName).mapTo[NameResponse]
+  val askResponse: Future[NameResponse] = (actor ? AskName).mapTo[NameResponse]
 
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
-  val askResponsePiping1  = (actor ? AskName) pipeTo actor
-  val askResponsePiping2  = askResponse pipeTo actor
-}
+  val askResponsePiping1: Future[Any] = (actor ? AskName).pipeTo(actor)
+  val askResponsePiping2: Future[NameResponse] = askResponse pipeTo actor
+  askResponsePiping2.foreach(x => println(s"After piping, Name is ${x.name}"))
 
+
+  /*  def pipeTo[T](recipient: ActorRef, future: Future[T])(implicit sender: ActorRef = Actor.noSender): Future[T] = {
+      future andThen {
+        case Success(r) ⇒ println("success")
+        case Failure(f) ⇒ println("failure")
+      }
+    }*/
+}
+/*
 object AskPattern3 extends App {
 
   case object AskName
