@@ -65,7 +65,7 @@ import akka.pattern.pipe
     }*/
 }*/
 
-object AskPattern3 extends App {
+/*object AskPattern3 extends App {
 import akka.pattern.ask
   import scala.concurrent.ExecutionContext.Implicits.global
   case object AskName
@@ -98,10 +98,11 @@ import akka.pattern.ask
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
   actor1 ! AskNameOf(actor2)
-}
+}*/
 
 
 /*object AskPattern4 extends App {
+  import akka.pattern.pipe
 
   case object AskName
   case class NameResponse(name: String)
@@ -109,11 +110,13 @@ import akka.pattern.ask
 
   class AskActor(val name: String) extends Actor {
     //we can define ExecutionContext for the current system
-    //implicit val ex = context.system.dispatcher
 
     override def receive = {
       case AskName => sender ! NameResponse(name)
       case AskNameOf(other) =>
+        implicit val timeOut = Timeout(2.second)
+        implicit val ex = context.system.dispatcher
+
         val res = other ? AskName
         res onComplete {
           case Success(NameResponse(s)) =>
@@ -137,8 +140,9 @@ import akka.pattern.ask
   askResponse.foreach(x => println(s"Name is ${x.name}"))
 
   actor1 ! AskNameOf(actor2)
-}
+}*/
 
+/*
 object AskPattern5 extends App {
 
   class ActorExample extends Actor {
