@@ -71,6 +71,7 @@ object ActorSupervision1 extends App {
   println("Nothing happens by above two statements, as Resume executes in supervisor strategy")
   println("Now, Restart actor when BadStuff happens")
   actSel ! BadStuff
+
 }
 /**
   * one-for-one strategy, meaning that each child is treated separately (an all-for-one strategy works very similarly,

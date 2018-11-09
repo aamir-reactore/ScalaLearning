@@ -1,6 +1,11 @@
 package actors.marklewisactors
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import akka.pattern.ask
+import akka.util.Timeout
+
+import scala.concurrent.{Await, Future}
+import scala.concurrent.duration._
 
 object ActorReplyingTest extends App {
 
@@ -9,6 +14,7 @@ object ActorReplyingTest extends App {
     def receive = {
       case message: String =>
          println(s"Message received from ${sender.path.name} and $self, message = $message")
+         println(s">>>>>>>>>>>>>>>>>>Message received from $context")
         val child = context.actorOf(Props[ActorChildReplyExample], s"ActorChild-$num")
         Thread.sleep(1000)
          num += 1
@@ -29,18 +35,15 @@ object ActorReplyingTest extends App {
   val actorSystem = ActorSystem("ActorSystemName")
   val actor: ActorRef = actorSystem.actorOf(Props[ActorReplyExample], "RootActor")
   println(s"actor path ===> ${actor.path}")
+  println(s"actor name ===> ${actor.path.name}")
   println(s"actor object ===> $actor")
   actor ! "Hello"
 
 }
 
-import akka.actor.{Actor,ActorSystem, Props, ActorRef};
-import akka.util.Timeout;
-import scala.concurrent.Await
-import akka.pattern.ask
-import scala.concurrent.duration._
 
-class ActorExample extends Actor{
+
+class ActorExample extends Actor {
   def receive = {
     case message:String => println("Message received: "+message+" from outside actor instance");
       println("Replaying");
@@ -53,8 +56,8 @@ object ActorExample{
     val actorSystem = ActorSystem("ActorSystem");
     val actor = actorSystem.actorOf(Props[ActorExample], "RootActor");
     implicit val timeout = Timeout(10 seconds);
-    val future = actor ? "Hello";
-    val result = Await.result(future, timeout.duration);
+    val future: Future[Any] = actor ? "Hello";
+    val result:Any = Await.result(future, timeout.duration);
     println("Message received: "+result);
   }
 }

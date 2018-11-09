@@ -5,7 +5,9 @@ import akka.actor.{Actor, ActorSelection, ActorSystem, Props}
 object ActorUrls1 extends App {
 
   case object CreateChild
+
   case class SignalChildren(order: Int)
+
   case class PrintSignal(order: Int)
 
   class ParentActor extends Actor {
@@ -16,15 +18,15 @@ object ActorUrls1 extends App {
         context.actorOf(Props[ChildActor], s"child-$num")
         num += 1
       case SignalChildren(n) =>
-      //  val goodLookup: Option[ActorRef] = context.child("kid")
-       // println(goodLookup)
+        val goodLookup = context.child("child-0")
+        println(goodLookup.get.path.name)
         context.children.foreach(_ ! PrintSignal(n))
     }
   }
 
   class ChildActor extends Actor {
     override def receive = {
-      case PrintSignal(n) => println(s"$n--$self")
+      case PrintSignal(n) => println(s"n is ==> $n--$self")
     }
   }
 
@@ -47,7 +49,9 @@ object ActorUrls1 extends App {
 object ActorUrls2 extends App {
 
   case object CreateChild
+
   case class SignalChildren(order: Int)
+
   case class PrintSignal(order: Int)
 
   class ParentActor extends Actor {
@@ -68,19 +72,20 @@ object ActorUrls2 extends App {
     }
   }
 
-  val system   = ActorSystem("ActorHierarchy1")
-  val actor    = system.actorOf(Props[ParentActor], "ParentActor1")
-  val actor2   = system.actorOf(Props[ParentActor], "ParentActor2")
+  val system = ActorSystem("ActorHierarchy1")
+  val actor = system.actorOf(Props[ParentActor], "ParentActor1")
+  val actor2 = system.actorOf(Props[ParentActor], "ParentActor2")
 
   actor2 ! CreateChild
   /**
-    An ActorSelection is b.a logical view of b.a section of an ActorSystem's tree of Actors,
-    allowing for broadcasting of messages to that section.
+    * An ActorSelection is a logical view of a section of an ActorSystem's tree of Actors,
+    * allowing for broadcasting of messages to that section.
     **/
   val child0Actor2: ActorSelection = system.actorSelection("akka://ActorHierarchy1/user/ParentActor2/child-0")
 
   child0Actor2 ! PrintSignal(20)
-         actor ! CreateChild
+
+  actor ! CreateChild
 
   actor ! SignalChildren(1)
 

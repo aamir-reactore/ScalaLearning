@@ -19,6 +19,7 @@ object ActorForward extends App {
         self ! PoisonPill // will recursively stop all its child actors.
     }
     override def postStop() {
+      super.postStop()
       println("Child ActorExample stopped")
     }
   }
