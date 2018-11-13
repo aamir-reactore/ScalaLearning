@@ -30,6 +30,7 @@ class ActorA extends Actor {
 class ActorB extends Actor {
   def receive:Receive = {
     case _ => println("from ActorB")
+     // Thread.sleep(100000)
       sender ! "some Response"
   }
 }
