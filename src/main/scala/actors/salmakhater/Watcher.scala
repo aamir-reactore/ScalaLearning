@@ -42,7 +42,7 @@ object WatcherTest extends App {
   }
 
   val system = ActorSystem("watch-actor-selection")
-  val counter = system.actorOf(Props[Counter], "counter")
+  //val counter = system.actorOf(Props[Counter], "counter")
   val watcher = system.actorOf(Props[Watcher], "watcher")
 
   Thread.sleep(100)
