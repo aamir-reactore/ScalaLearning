@@ -1,5 +1,6 @@
 package actors.salmakhater
 
+import actors.salmakhater.Counter.Inc
 import akka.actor.{ActorIdentity, ActorSystem, Identify, Props}
 
 case object GetCount
@@ -24,6 +25,7 @@ object WatcherTest extends App {
     override def receive = {
       case ActorIdentity(correlationId, Some(ref)) =>
         println(s"Actor Reference for counter is ...$ref and actor name itself is ${ref.path.name}, correlationId = $correlationId")
+        ref ! Inc(10)
       case ActorIdentity(_, None) =>
         println(s"Actor Reference for actor doesn't live")
     }
@@ -35,14 +37,17 @@ object WatcherTest extends App {
     var count = 0
 
     override def receive = {
-      case Inc(x) => count += x
+      case Inc(x) => {
+        println("Inc called>>>>")
+        count += x
+      }
       case Dec(x) => count -= x
       case GetCount => sender ! count
     }
   }
 
   val system = ActorSystem("watch-actor-selection")
-  //val counter = system.actorOf(Props[Counter], "counter")
+  val counter = system.actorOf(Props[Counter], "counter")
   val watcher = system.actorOf(Props[Watcher], "watcher")
 
   Thread.sleep(100)
