@@ -21,12 +21,12 @@ object InsertSort {
 }
 
 object TestInsertSort extends App {
-  val l1 = List(6, 5, 4, 3, 2, 1)
+  val l1 = List(6, 1, 2, 3, 4, 5)
   println(s"Insert Sort1==>${InsertSort.apply.insertSort(l1)}")
 
-  val l2 = List(6, 5, 3, 4, 1, 2)
+  /*val l2 = List(6, 5, 3, 4, 1, 2)
   println(s"Insert Sort2==>${InsertSort.apply.insertSort(l2)}")
 
   val l3 = List(6, 5, 7, 3, 4, 8, 1, 2)
-  println(s"Insert Sort3==>${InsertSort.apply.insertSort(l3)}")
+  println(s"Insert Sort3==>${InsertSort.apply.insertSort(l3)}")*/
 }

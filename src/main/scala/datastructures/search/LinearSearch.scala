@@ -16,4 +16,7 @@ object LinearSearch1 extends App {
      search(list)
    }
 
+  val result: Option[Int] = searchLinear(List(1,2,3,4,5,6), 40)
+   if(result.nonEmpty) println("Element present") else println("Not present")
+
 }

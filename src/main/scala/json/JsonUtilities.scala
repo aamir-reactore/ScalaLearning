@@ -83,6 +83,7 @@ trait BaseJsonUtilitiesComponent  { this : BaseTypeSerializers =>
 object BaseJsonUtilities extends BaseJsonUtilitiesComponent with BaseTypeSerializers
 
 object ll extends App {
+
   import BaseJsonUtilities._
   case class A(name:String,age:Int)
   val ll  = List(A("aamir",24),A("boy",22))

@@ -2,6 +2,7 @@ package scala99.lists
 
 //Find last element of a list
 object LastElement extends App {
+
   val l = List(1, 2, 3, 4, 5, 6)
   println("last element of list is = " + l.last)
 

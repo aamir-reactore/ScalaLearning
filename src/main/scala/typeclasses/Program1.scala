@@ -24,15 +24,14 @@ object Duplicate {
 }
 
 object DuplicateWriter {
-  import Duplicate._
 
-  def write[A,B](value: A)(implicit dup: Duplicate[A, B]) = dup.duplicate(value)
+  def write[A,B](value: A)(implicit dup: Duplicate[A, B]): B = dup.duplicate(value)
 
 }
 
 object DuplicateExample extends App {
 
-  implicit val anotherDuplicateInt = new Duplicate[Int, Int] {
+  implicit val anotherDuplicateInt: Duplicate[Int, Int] = new Duplicate[Int, Int] {
     def duplicate(value: Int): Int = value + value
   }
   println(DuplicateWriter.write("hello"))
