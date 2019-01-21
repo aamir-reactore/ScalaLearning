@@ -1,10 +1,12 @@
 package martinoderskybook.compositioniheritance
 import Element.elem
+
 abstract class Element {
 
   def contents:Array[String]
   def height:Int = contents.length
   def width:Int = if(height == 0) 0 else contents(0).length
+
   def above(that:Element):Element = {
     val this1 = this widen that.width
     val that1 = that widen this.width
@@ -18,6 +20,7 @@ abstract class Element {
     } yield line1 + line2
     )
   }
+
   override def toString:String = contents mkString "\n"
   def widen(w:Int):Element = {
     if(w <= width) this else {
@@ -98,3 +101,23 @@ object abovetest extends App {
   println(x5 above  x6)
   println(h.width)
 }
+
+//testing if override keyword is needed or not
+
+abstract class TestOverride1 {
+  def f: String
+}
+
+class SubTestOverride1 extends TestOverride1 {
+  def f:String = "hello"  // no override keyword needed, here concrete one implements abstract one
+}
+
+abstract class TestOverride2 {
+  def f: String = "non abstract member"
+}
+
+class SubTestOverride2 extends TestOverride2 {
+  override def f:String = "hello"  // override keyword needed, here subclass overrides superclass one
+}
+
+
