@@ -79,3 +79,10 @@ val fruit = List("apple", "pear", "orange", "pineapple")
 fruit.groupBy(_.head).map { case (key, value) =>
 
 }
+
+object ee extends  App {
+
+  val fruit = List("apple", "apple", "pear", "orange", "pineapple","pineapple","pineapple")
+  val x = fruit.groupBy(_).toList
+
+}

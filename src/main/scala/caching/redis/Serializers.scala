@@ -4,9 +4,6 @@ import json.BaseJsonUtilitiesComponent
 
 import scala.util.Try
 
-/**
-  * Created by Muralig on 2/13/2016.
-  */
 
 trait CacheSerializer {
   def serialize(msg:Any):Any

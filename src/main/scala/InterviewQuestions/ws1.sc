@@ -12,4 +12,4 @@ val per = Person("aamir")
 def add(a:Int, b:Int) : Int = ???
 add(10,20)
 
-List[Int](1,2,3).map(_+1)
+List[Int](1,2,3).map(x => )

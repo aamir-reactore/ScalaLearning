@@ -50,7 +50,6 @@ object Program1 extends App {
     def fact(n: Int, acc: Int): Int = {
       if (n == 0) acc else fact(n - 1, acc * n)
     }
-
     fact(n, 1)
   }
 
@@ -89,5 +88,16 @@ object Program1 extends App {
 
   higherOrderNew()
   println("%" * 500)
+
+}
+
+object ll extends App {
+
+  var str: String = null
+
+  str = "hello\r\njava\r\nbook"
+  println(str)
+  str = str.replaceAll("(\\r|\\n)", "")
+  println(str)
 
 }

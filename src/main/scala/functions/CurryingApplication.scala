@@ -7,8 +7,9 @@ package functions
 object CurryingApplication1 extends App {
   val totalYearlyIncome:(Int,Int)   =>  Int  =  (income, bonus) => income + bonus
   val totalYearlyIncomeCurried: Int => (Int => Int) = totalYearlyIncome.curried
-  val partialTotalYearlyIncome: Int =>  Int  = totalYearlyIncomeCurried(10000)
-  partialTotalYearlyIncome(100)
+  val partialTotalYearlyIncome: Int =>  Int  = totalYearlyIncomeCurried(60)
+  val res = partialTotalYearlyIncome(400)
+  println(res)
 }
 
 object CurryingApplication3 extends App {
@@ -24,12 +25,12 @@ object CurryingApplication3 extends App {
 
 object CurryingApplication4 extends App {
 
-  def curry[A, B, C](f:(A,B) => C):A => B => C = {
-    (a: A) => (b: B) => f(a, b)
+  def curry[A, B, C](f:(A,B) => C):A => (B => C) = {
+    a: A => ((b: B) => f(a, b))
   }
 
   val g: (Int, Int)   => Int = (x, y) => x + y
-  val sum: Int => Int => Int = curry(g)
+  val sum: Int => (Int => Int) = curry(g)
   println( sum(1)(2) )
 
 }
@@ -43,4 +44,5 @@ object CurryingApplication5 extends App {
   println(f(2,3))
   val x1: Int => Int => Int = f.curried
   val x2: Int => Int => Int = CurryingApplication4.curry(f)
+
 }

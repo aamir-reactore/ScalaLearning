@@ -58,12 +58,12 @@ object ApplyTest6 extends App {
 //  Apply Functions are used for Anonymous Functions
   // In scala you can create an anonymous function like so:
 
-  val func1 = (x: String) => "hello %s".format(x)
-  val func2 = new Function1[String,String] {
+  val func1: String => String = (x: String) => "hello %s".format(x)
+  val func2: String => String = new Function1[String,String] {
     def apply(s:String) = "hello %s".format(s)
   }
   //syntactic sugar
-  val func3 = new ((String) => String) {
+  val func3 = new (String => String) {
     def apply(s:String) = "hello %s".format(s)
   }
   println(func1("world"))

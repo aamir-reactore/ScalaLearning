@@ -1,4 +1,4 @@
-class X(val name:String)
+class X(val name: String)
 only getter is generated for above class
 class X(private name:String)
 only getter generated and is private so we can access fields by public methods inside of class

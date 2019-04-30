@@ -1,6 +1,6 @@
 trait ActivityFacadeComponent extends ServiceDefaults {
   def findAllActivities(prs: SysParams): Future[List[Activity]] = memoize(1.minutes){
-    getAllResult[Activity](prs, ACTIVITY)("com.reactore.common.entity")
+    getAllResult[Activity](prs, ACTIVITY)("com.testproject.common.entity")
   }
 }
 
