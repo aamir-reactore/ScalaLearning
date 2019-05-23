@@ -1,0 +1,7 @@
+==> https://stackoverflow.com/questions/25115547/difference-between-forward-and-tell-in-akka-old.actors
+    (Above link to differentiate between tell and forward)
+
+==> http://blog.colinbreck.com/ (some useful akka and akka stream connections)
+
+==> https://stackoverflow.com/questions/20673091/what-message-does-pipeto-send-on-b.a-timeout-or-other-failure
+    (For pipeTo usage)
