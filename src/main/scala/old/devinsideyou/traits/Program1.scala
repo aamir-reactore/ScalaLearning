@@ -1,4 +1,5 @@
-package devinsideyou.traits
+package old.devinsideyou.traits
+
 
 class Animal
 trait Pet {

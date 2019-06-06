@@ -34,10 +34,14 @@ libraryDependencies ++= Seq(
   "net.debasishg" %% "redisclient" % "3.4",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test",
   "com.vividsolutions" % "jts" % "1.13",
- // "org.specs2" %% "specs2" % "2.4.6" % "test",
+  // "org.specs2" %% "specs2" % "2.4.6" % "test",
   "org.scalacheck" %% "scalacheck" % "1.13.5" % "test",
- // "info.cukes" % "cucumber-scala_2.11" % "1.2.4",
+  // "info.cukes" % "cucumber-scala_2.11" % "1.2.4",
   //"info.cukes" % "cucumber-junit" % "1.2.4",+
-  "junit" % "junit" % "4.12"
+  "junit" % "junit" % "4.12",
+  "org.apache.spark" %% "spark-core" % "2.4.0",
+  "org.apache.spark" %% "spark-sql" % "2.4.0",
+  "org.apache.spark" %% "spark-mllib" % "2.4.0",
+  "org.apache.avro" % "avro" % "1.8.2"
 
 )
