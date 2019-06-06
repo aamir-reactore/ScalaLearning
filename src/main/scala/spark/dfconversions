@@ -1,0 +1,7 @@
+    import spark.implicits._
+
+  //source airports
+  //val airportsDF = flightsRDD.map(flight => (flight.dest_id, flight.dest)).distinct.toDF()
+  val file = "E:/def.csv"
+  airportsDF.write.mode("overwrite")
+    .option("header", "true").csv(file)
