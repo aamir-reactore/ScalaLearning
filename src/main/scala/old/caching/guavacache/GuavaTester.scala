@@ -1,3 +1,4 @@
+/*
 package old.caching.guavacache
 
 import scala.concurrent.duration._
@@ -60,4 +61,4 @@ object GuavaPutGetTest extends App with GuavaCacheManagerComponent {
   println(size)
   println(all)
   println(value)
-}
+}*/

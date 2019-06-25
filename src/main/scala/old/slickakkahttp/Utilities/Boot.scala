@@ -1,3 +1,4 @@
+/*
 package slickakkahttp.Utilities
 
 import akka.http.scaladsl.Http
@@ -43,7 +44,6 @@ import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import scala.io.StdIn
 import scala.concurrent.ExecutionContext.Implicits.global
-/*
 object WebServer {
   def main(args: Array[String]) {
     implicit val system = ActorSystem()
@@ -55,7 +55,7 @@ object WebServer {
       get {
       /*  pathSingleSlash {
           complete(HttpEntity(ContentTypes.`text/html(UTF-8)`,"<html><body>Hello world!</body></html>"))
-        } ~*/
+        } ~
           path("ping") {
             complete("PONG!")
           } ~ path("crash") {
@@ -72,3 +72,4 @@ object WebServer {
       .onComplete(_ => system.terminate()) // and shutdown when done
   }
 }*/
+*/

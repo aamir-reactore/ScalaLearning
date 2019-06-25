@@ -1,3 +1,4 @@
+/*
 package old.caching.guavacache
 
 import com.google.common.cache.CacheBuilder
@@ -111,4 +112,4 @@ trait GuavaCache {
 object GuavaCacheImpl {
   val underlyingGuavaCache = GuavaCacheManager.guavaCacheManager.underlying //CacheBuilder.newBuilder().maximumSize(10000L).build[String, Object]
   implicit val scalaCache = ScalaCache(scalacache.guava.GuavaCache(underlyingGuavaCache))
-}
+}*/

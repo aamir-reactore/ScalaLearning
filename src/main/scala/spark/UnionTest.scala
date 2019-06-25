@@ -28,6 +28,8 @@ object UnionTest extends App {
   val penalty = "0.4"
   val adjustment = "0.6"
 
+  println("is data frame empty =====>" + df.isEmpty)
+  println("is data frame empty =====>" + df.head(1).isEmpty)
 
   var df1 = df.filter(col("zs_rule_confusion_matrix") === "FP")
   var df2 = df.filter(col("zs_rule_confusion_matrix") === "FN")
@@ -42,6 +44,7 @@ object UnionTest extends App {
   df1.show(false)
   df2.show(false)
   df = df1.union(df2)
+
 
 
 }

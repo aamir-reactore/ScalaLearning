@@ -1,0 +1,4 @@
+/etc/abrt
+/etc/abrt/plugins
+/etc/abrt/plugins/Ccpp
+/etc/readers

@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
   "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8",
   "joda-time" % "joda-time" % "2.9.9",
   "org.mockito" % "mockito-all" % "1.10.19",
-  "org.apache.kafka" % "kafka_2.11" % "0.10.1.0",
+  //"org.apache.kafka" % "kafka_2.11" % "0.10.1.0",
   "com.typesafe.akka" %% "akka-stream-kafka" % "0.13",
   "org.json4s" %% "json4s-jackson" % "3.4.0",
   "com.typesafe.akka" %% "akka-actor" % "2.4.17",
@@ -30,7 +30,7 @@ libraryDependencies ++= Seq(
   "org.json4s" %% "json4s-jackson" % "3.2.11", "joda-time" % "joda-time" % "2.8.2",
   "com.typesafe.akka" %% "akka-http-experimental" % "2.4.11.2",
   //"com.github.cb372" %% "scalacache-old.caching.guava" % "0.9.3",info.cukes
-  "com.github.cb372" %% "scalacache-guava" % "0.9.4",
+ // "com.github.cb372" %% "scalacache-guava" % "0.9.4",
   "net.debasishg" %% "redisclient" % "3.4",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test",
   "com.vividsolutions" % "jts" % "1.13",
