@@ -1,8 +1,9 @@
 package Implicits
 
+case class Foo(i: Int)
+
 object ImplicitConversionsP1 extends App {
 
-  case class Foo(i: Int)
 
   // without the implicit
   val x1 = Foo(40) + 2 // compilation-error (type mismatch)
@@ -17,3 +18,4 @@ object ImplicitConversionsP1 extends App {
   Console.println(x2)
 
 }
+
