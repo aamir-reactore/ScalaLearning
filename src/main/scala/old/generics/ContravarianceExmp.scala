@@ -23,7 +23,7 @@ object TestContra1 extends App {
     s"""{ "type" : "shape writer", "area" : "${shape.area}" }"""
   }
 
-   val circleList = List(new Circle(1.1),new Circle(6.2),new Circle(3.4))
+  val circleList = List(new Circle(1.1),new Circle(6.2),new Circle(3.4))
 
   println(writeJson(circleList,circleWriter))
   println("####################################")

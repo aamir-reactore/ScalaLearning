@@ -6135,7 +6135,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 2499ms :: artifacts dl 40ms
+[debug] :: resolution report :: resolve 691ms :: artifacts dl 28ms
 [debug] 	report for default#scalalearning-build;0.1-SNAPSHOT compile produced in E:\code\ScalaLearning\project\target\resolution-cache\reports\default-scalalearning-build-compile.xml
 [debug] 	report for default#scalalearning-build;0.1-SNAPSHOT runtime produced in E:\code\ScalaLearning\project\target\resolution-cache\reports\default-scalalearning-build-runtime.xml
 [debug] 	report for default#scalalearning-build;0.1-SNAPSHOT test produced in E:\code\ScalaLearning\project\target\resolution-cache\reports\default-scalalearning-build-test.xml
@@ -6149,5 +6149,5 @@
 [debug] 	report for default#scalalearning-build;0.1-SNAPSHOT docs produced in E:\code\ScalaLearning\project\target\resolution-cache\reports\default-scalalearning-build-docs.xml
 [debug] 	report for default#scalalearning-build;0.1-SNAPSHOT pom produced in E:\code\ScalaLearning\project\target\resolution-cache\reports\default-scalalearning-build-pom.xml
 [debug] 	report for default#scalalearning-build;0.1-SNAPSHOT scala-tool produced in E:\code\ScalaLearning\project\target\resolution-cache\reports\default-scalalearning-build-scala-tool.xml
-[debug] 	resolve done (2499ms resolve - 40ms download)
+[debug] 	resolve done (691ms resolve - 28ms download)
 [info] Done updating.
