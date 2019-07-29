@@ -1,10 +1,17 @@
 package old.InterviewQuestions
 
-object FIndDuplicateArrayElement1 extends App {
+object FIndDuplicateArrayElement extends App {
+  /**
+    * for array size n, having elements from 1 to n-1, find duplicate elements in array
+    */
 
- //https://www.geeksforgeeks.org/find-the-two-repeating-elements-in-a-given-array/
-}
+  val arr = Array(2, 3, 4, 5, 2, 5)
+  for (x <- arr.indices) {
+    if (arr(Math.abs(arr(x))) > 0)
+      arr(Math.abs(arr(x))) = -arr(Math.abs(arr(x)))
+    else
+      println(Math.abs(arr(x)))
+  }
 
-object FIndDuplicateArrayElement2 extends App {
-  //https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
+
 }
