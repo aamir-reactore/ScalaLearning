@@ -15,3 +15,21 @@ object FIndDuplicateArrayElement extends App {
 
 
 }
+object classtest extends App {
+
+  abstract class Element {
+    def contents: Array[String]
+  }
+
+  class ArrElement1(arr: Array[String]) extends Element {
+    def contents: Array[String] = arr
+  }
+
+
+  class ArrElement2(arr: Array[String]) extends Element {
+    val contents: Array[String] = arr
+  }
+
+  class ArrElement3(val contents: Array[String]) extends Element
+
+}
