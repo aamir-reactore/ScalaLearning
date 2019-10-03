@@ -56,8 +56,7 @@ object jj extends App {
   val humans = List(c1)
   val droids = List(c2)
 
-  def getHero(episode: Option[Episode.Value]) =
-    {
+  def getHero(episode: Option[Episode.Value]) = {
       episode flatMap (_ ⇒ getHuman("1000")) getOrElse droids.last
     }
 
