@@ -1,4 +1,5 @@
 package forcomprehensions
+
 import scala.collection.immutable
 
 object Program1 extends App {
@@ -31,13 +32,13 @@ object Program4 extends App {
   val cities = List("Washington", "Los Angeles", "New York", "Charlotte")
 
   val result: Seq[String] = for (city <- cities)
-              yield s"$city"
+    yield s"$city"
   result foreach { x => print(x + " ") }
 }
 
 object Program5 extends App {
-  val list1 = List(1,2,3,4)
-  val list2 = List(1,2,3,4)
+  val list1 = List(1, 2, 3, 4)
+  val list2 = List(1, 2, 3, 4)
 
   val result: immutable.Seq[Int] = for {
     x <- list1
@@ -48,7 +49,22 @@ object Program5 extends App {
 
   println()
 
-  val resultx = list1.flatMap(x => list2.map(y=> x + y))
+  val resultx = list1.flatMap(x => list2.map(y => x + y))
   resultx foreach { x => print(x + " ") }
 
+}
+
+trait Helper extends DelayedInit {
+  def delayedInit(body: => Unit) = {
+    println("dummy text, printed before initialization of C")
+    body // evaluates the initialization code of C
+  }
+}
+
+class C extends Helper {
+  println("this is the initialization code of C")
+}
+
+object Test extends App {
+  val c = new C
 }

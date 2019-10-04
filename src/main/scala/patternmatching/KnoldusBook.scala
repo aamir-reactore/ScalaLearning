@@ -113,3 +113,11 @@ object Program6 extends App {
   }
 
 }
+
+object ErrorProgram extends App {
+  val x: Any = 30
+
+  x match {
+    case s:String => println("s is a string") //scala.MatchError
+  }
+}
