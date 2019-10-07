@@ -33,3 +33,4 @@ object Program1 extends App {
   for(entry <- lb) println( entry )
 
 }
+
