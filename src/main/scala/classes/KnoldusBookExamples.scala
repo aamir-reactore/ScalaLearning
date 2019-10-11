@@ -35,3 +35,17 @@ class AB (a: String) {
   }
 
 }
+
+class CompanionTest(a:String) {
+
+}
+
+object CompanionTest {
+  def apply(a: String): CompanionTest = new CompanionTest(a)
+}
+
+object CompanionTestMain extends App {
+  val o1 = new CompanionTest("test1")
+  val o2 = CompanionTest("test2")
+  val o3 = CompanionTest.apply("test2")
+}

@@ -1,7 +1,5 @@
 package functions
 
-import scala.compat.Platform.currentTime
-
 object Main1 extends App {
   val succ = (x: Int) => x + 1
   val anonfun1 = new Function1[Int, Int] {

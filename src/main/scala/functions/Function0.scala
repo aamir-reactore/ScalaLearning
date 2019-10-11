@@ -15,7 +15,7 @@ object Main extends App {
   }
 }
 
-object Program1 extends App {
+/*object Program1 extends App {
 
   val f1: () => Unit = () => {
     println("I won't return shit")
@@ -32,5 +32,5 @@ object Program1 extends App {
    method(f2)
   for(entry <- lb) println( entry )
 
-}
+}*/
 
