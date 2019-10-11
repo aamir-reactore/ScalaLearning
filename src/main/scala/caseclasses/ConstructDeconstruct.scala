@@ -60,6 +60,7 @@ object AM {
 object PM {
   def unapply(t: LocalTime): Option[(Int, Int, Int)] =
     t match {
+      case Time(12, m, s) => Some(12, m, s)
       case Time(h, m, s) if h > 12 => Some(h - 12, m, s)
       case _ => None
     }
