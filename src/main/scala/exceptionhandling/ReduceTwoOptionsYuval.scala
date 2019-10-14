@@ -78,4 +78,27 @@ object ViewOptionCollection5 extends App {
   println(result)
 }
 
+object OptionMap1 extends App {
 
+  val x1 = Some(2)
+  val x2 = None
+  val x3 = Some(4)
+  val x4 = None
+
+  val l = List(x1, x2, x3, x4)
+  def sqrt(i: Int) = i * i
+  val res1: List[Option[Int]] = l.map(_.map(sqrt))
+  val res2: List[Int] = l.flatMap(_.map(sqrt))
+}
+
+object OptionMap2 extends App {
+
+  case class User(name: String, age:Option[Int])
+  def prettyPrint(user: User) = List(Option(user.name), user.age).flatten.mkString(", ")
+
+  val user1 = User("Aamir", Some(30))
+  val user2 = User("Aqsa", None)
+
+  println( prettyPrint(user1))
+  println( prettyPrint(user2))
+}

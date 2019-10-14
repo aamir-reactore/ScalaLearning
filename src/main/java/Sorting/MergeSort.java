@@ -1,55 +1,78 @@
 package Sorting;
 
-/**
- * Created by aamir on 23/7/17.
- */
-public class MergeSort {
-    public static void main(String[] args) throws InterruptedException {
-        int[] array = {6, 5, 4, 3, 1, 2};
-        mergeSort(array, 0, 5);
-        for(int i=0;i<array.length;i++)
-            System.out.print(array[i] + " ");
+public  class MergeSort
+{
+    void merge(int arr[], int beg, int mid, int end)
+    {
+        System.out.print("low =>" + beg);
+        System.out.print(" mid =>" + mid);
+        System.out.print(" high =>" + end);
+        System.out.println();
+
+        int l = mid - beg + 1;
+        int r = end - mid;
+
+        int LeftArray[] = new int [l];
+        int RightArray[] = new int [r];
+
+        for (int i=0; i<l; ++i)
+            LeftArray[i] = arr[beg + i];
+
+        for (int j=0; j<r; ++j)
+            RightArray[j] = arr[mid + 1+ j];
+
+
+        int i = 0, j = 0;
+        int k = beg;
+        while (i<l&&j<r)
+        {
+            if (LeftArray[i] <= RightArray[j])
+            {
+                arr[k] = LeftArray[i];
+                i++;
+            }
+            else
+            {
+                arr[k] = RightArray[j];
+                j++;
+            }
+            k++;
+        }
+        while (i<l)
+        {
+            arr[k] = LeftArray[i];
+            i++;
+            k++;
+        }
+
+        while (j<r)
+        {
+            arr[k] = RightArray[j];
+            j++;
+            k++;
+        }
     }
 
-    static void mergeSort(int[] array, int low, int high) {
-        if (low < high) {
-            int mid = (low + high) / 2;
-            mergeSort(array, low, mid);
-            mergeSort(array, mid + 1, high);
-            merge(array, low, mid, high);
+    void sort(int arr[], int beg, int end)
+    {
+        if (beg < end)
+        {
+            int mid = (beg+end)/2;
+            sort(arr, beg, mid);
+            sort(arr , mid+1, end);
+            merge(arr, beg, mid, end);
         }
     }
+    public static void main(String args[])
+    {
+        int arr [] = {6,2,5,8,3,1,9,7};
+        MergeSort ob = new MergeSort();
+        ob.sort(arr, 0, arr.length-1);
 
-    static void merge(int[] array, int low, int mid, int high) {
-        int left = low;
-        int right = mid + 1;
-        int[] temp = new int[high - low + 1];
-        int k = 0;
-        while (left <= mid && right <= high) {
-            if (array[left] < array[right]) {
-                temp[k] = array[left];
-                left = left + 1;
-            } else {
-                temp[k] = array[right];
-                right = right + 1;
-            }
-            k = k + 1;
-        }
-        if (left <= mid) {
-            while (left <= mid) {
-                temp[k] = array[left];
-                k = k + 1;
-                left = left + 1;
-            }
-        } else if (right <= high) {
-            while (right <= high) {
-                temp[k] = array[right];
-                k = k + 1;
-                right = right + 1;
-            }
-        }
-        for (int m = 0; m < temp.length; m++) {
-            array[low + m] = temp[m];
+        System.out.println("\nSorted array");
+        for(int i =0; i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
         }
     }
 }
