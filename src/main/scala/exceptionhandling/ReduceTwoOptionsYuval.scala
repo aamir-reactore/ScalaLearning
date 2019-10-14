@@ -1,5 +1,7 @@
 package exceptionhandling
 
+import scala.collection.immutable
+
 /*
 Followed this tutorial
 https://blog.yuvalitzchakov.com/reducing-two-options-in-scala/
@@ -62,7 +64,7 @@ object ViewOptionCollection3 extends App {
 
 object ViewOptionCollection4 extends App {
 
-  def reduce[T](a: Option[T], b: Option[T], f: (T, T) => T):Option[T] = {
+  def reduce[T](a: Option[T], b: Option[T], f: (T, T) => T): Option[T] = {
     (a ++ b).reduceLeftOption(f)
   }
 }
@@ -74,8 +76,28 @@ object ViewOptionCollection5 extends App {
   val third = Some(46)
   val fourth = None
 
-  val result: Option[Int] = (first ++ second ++ third ++ fourth).reduceLeftOption(math.max)
+  val resultX = (first ++ second ++ third ++ fourth).reduceLeftOption(math.max)
+  val result = (first ++ second ++ third ++ fourth).reduceLeftOption(math.max) // reduceLeftOption, if list empty returns None, reduceLeft throws empty.reduceLeft runtime error.
   println(result)
+}
+
+// what if we have N Option[T]’s
+object ViewOptionCollection6 extends App {
+
+  val first = Some(3)
+  val second = Some(42)
+  val third = Some(46)
+  val fourth = None
+
+  val optionsList = Seq(first, second, third, fourth)
+
+  def reduce[A](options: Option[A]*)(f: (A, A) => A) = {
+    options.flatten.reduceLeft(f)
+  }
+
+  val result = reduce(first, second, third, fourth)(math.max)
+  println("Result :" + result)
+
 }
 
 object OptionMap1 extends App {
@@ -85,20 +107,26 @@ object OptionMap1 extends App {
   val x3 = Some(4)
   val x4 = None
 
-  val l = List(x1, x2, x3, x4)
+  val l: immutable.List[Option[Int]] = List(x1, x2, x3, x4)
+  val lTest: List[Int] = (x1 ++ x2).toList
+  println("lTEst == > " + lTest)
+  println("l == > " + l.toString)
+
   def sqrt(i: Int) = i * i
+
   val res1: List[Option[Int]] = l.map(_.map(sqrt))
   val res2: List[Int] = l.flatMap(_.map(sqrt))
 }
 
 object OptionMap2 extends App {
 
-  case class User(name: String, age:Option[Int])
+  case class User(name: String, age: Option[Int])
+
   def prettyPrint(user: User) = List(Option(user.name), user.age).flatten.mkString(", ")
 
   val user1 = User("Aamir", Some(30))
   val user2 = User("Aqsa", None)
 
-  println( prettyPrint(user1))
-  println( prettyPrint(user2))
+  println(prettyPrint(user1))
+  println(prettyPrint(user2))
 }
