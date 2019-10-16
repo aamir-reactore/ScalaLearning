@@ -1,3 +1,4 @@
+/*
 /**
 Self types allow you to define cyclical dependencies. For example, you can achieve this:
   **/
@@ -26,4 +27,4 @@ trait Foo{
   */
 trait Woo extends Foo {
   def close = println("")
-}
+}*/

@@ -14,6 +14,7 @@ object CountWordsInFile extends App {
   val sc = new SparkContext(conf)
 
   val inputFile = sc.textFile("E:\\code\\SparkLearning\\sparktest.txt")
+
   val counts = inputFile.flatMap{ line =>
     line.split(" ")
   }.map{ word =>

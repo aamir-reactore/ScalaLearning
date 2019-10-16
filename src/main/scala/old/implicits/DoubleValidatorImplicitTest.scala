@@ -5,6 +5,7 @@ object DoubleValidatorImplicitTest extends App {
   import DoubleValidator._
 
   var num = 3.2
+  val res: Double = num.isValid
   println(num.isValid)
   num = Double.NaN
   println(num.isValid)

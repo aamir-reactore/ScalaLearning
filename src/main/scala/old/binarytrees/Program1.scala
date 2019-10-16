@@ -1,3 +1,4 @@
+/*
 
 package old.binarytrees
 
@@ -111,3 +112,4 @@ object TreeTest1 extends App {
 object TreeTest2 extends App {
   val tree = Tree(31,10,40,5,20,35,50)
 }
+*/
