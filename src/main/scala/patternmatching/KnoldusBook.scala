@@ -80,7 +80,7 @@ object Program4 extends App {
 }
 
 object Program5 extends App {
-  //matching on tuples and guard condition
+  //matching on collections.tuples and guard condition
 
   val tupleA: (String, String) = ("Hello", "Everyone")
   val tupleB: (String, String) = ("Learn", "Scala")

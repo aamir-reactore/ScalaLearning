@@ -1,3 +1,5 @@
+package old.spark
+
 object GroupingClusterUser extends App {
 
   val distinctClusterIds = List("112s","112l","112z","112x","112d","112e", "112sss","112lfsdf","112333z","1sss12x","ssss112d","dsfdf112e")

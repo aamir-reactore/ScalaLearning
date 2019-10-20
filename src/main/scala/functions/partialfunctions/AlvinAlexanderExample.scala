@@ -1,4 +1,4 @@
-package partialfunctions
+package functions.partialfunctions
 
 import scala.collection.immutable
 
@@ -16,7 +16,7 @@ object AlvinAlexanderExample1 extends App {
   //println(divide(0)) //directly calls apply method, so java.lang.ArithmeticException: / by zero
 
   if (divide.isDefinedAt(0)) println(divide(0))
-  if (divide.isDefinedAt(2)) println(divide(0))
+  if (divide.isDefinedAt(2)) println(divide(2))
   println(divide(1))
 }
 
@@ -30,7 +30,7 @@ object AlvinAlexanderExample2 extends App {
   //println(divide2(0))directly calls apply method, so java.lang.ArithmeticException: / by zero
 
   //explicit mention
-  if (divide2.isDefinedAt(0)) println(divide2(0)) // still error, coz isDefinedAt not mentioned inside case
+  if (divide2.isDefinedAt(0)) println(divide2(0)) // still error, coz isDefinedAt not mentioned inside case, mean no guard defined
 }
 
 object AlvinAlexanderExample3 extends App {
@@ -103,11 +103,11 @@ object AlvinAlexanderExample6 extends App {
 
   //List(2,3,4,0) map divide scala.MatchError for 0 , collect to rescue
 
-  List(2, 3, 4, 0) collect divide
+  val result: List[Int] = List(2, 3, 4, 0) collect divide
   /**
     * collect takes partial function as input
     * collect builds a new collection by applying partial function for all elements
-    * of collect for which that partial function is defined
+    * of collection for which that partial function is defined
     */
 
   List(42, "cat") collect { case i: Int => i + 1 }
