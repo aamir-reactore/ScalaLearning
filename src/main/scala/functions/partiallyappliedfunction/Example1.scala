@@ -46,8 +46,9 @@ object Example4 extends App {
   }
 
   // applying currying approach
-  val l: (Double, Double) => Double = div1 _
-  val m: Double => (Double => Double) = (div1 _).curried
+  val partiallyAppliedFunction:Function2[Double, Double, Double] = div1 _
+  val partiallyAppliedFunction1:(Double, Double) => Double = div1 _
+  val m: Double => (Double => Double) = partiallyAppliedFunction.curried
   val n: Double => (Double => (Double => Double)) = (div2 _).curried
 
 

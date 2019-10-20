@@ -22,7 +22,7 @@ object AlvinAlexanderExample1 extends App {
 
 object AlvinAlexanderExample2 extends App {
 
-  val divide2: PartialFunction[Int, Int] = {
+  val divide2: PartialFunction[Int, Int] =  {
     case d: Int => 42 / d
     //def isDefinedAt(x: Int): Boolean = x != 0 //doesn't work here
   }
@@ -146,5 +146,18 @@ object AlvinAlexanderExample8 extends App {
 
   println(y(7))
   println(z(7))
+}
+
+object CollectExample extends App {
+  val list: List[Double] = List(4, 16, 25, -9)
+  val res = list.map(Math.sqrt)
+  println(res)
+
+  val squareRootPartialFunction: PartialFunction[Double, Double] =  {
+    case d: Double if d > 0 => Math.sqrt(d)
+  }
+
+  val resCol = list.collect(squareRootPartialFunction)
+  println(resCol)
 }
 
