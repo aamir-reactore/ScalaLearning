@@ -44,3 +44,19 @@ object CallByName_Value2 extends App {
     // Calling function
     callByName(something())
 }
+
+object CallByName_Value3 extends App {
+
+  val f = (x: Int) => x + 20
+  def m1(f: Int => Int, num: Int) = f(num)
+  def m2(f: => Int) = f
+
+  println( m1(f, 20))
+  println( m2(f(30)))
+
+  val x = () => 100
+  println(m2(x()))
+  println(m2(200))
+
+
+}

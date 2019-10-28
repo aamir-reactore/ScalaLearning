@@ -9,23 +9,23 @@ object DataTypeDF extends App {
   val sc = spark.sparkContext
 
   val someData = Seq(
-    Row("2.1", "32.0", "322.0", false),
-    Row("1.0", "1,2,3,4","42.0", false),
-    Row("1.0", "1,2,3,4","41.0", false),
-    Row("2.1", "32.0","33.0", false),
-    Row("2.1", "32.0","32.0", false),
-    Row("2.1", "32.0", "31.0", false),
-    Row("3.0", "6.0","62.0", false),
-    Row("4.0", "52.0","51.0", false),
-    Row("4.0", "52.0","52.0", false),
-    Row("4.0", "52.0","52.0", false)
+    Row("2.1", "32.0", "12-09-2002", false),
+    Row("1.0", "1,2,3,4","12\\09\\1998", false),
+    Row("1.0", "1,2,3,4","12-09-2002", false),
+    Row("2.1", "32.0","19980908", false),
+    Row("2.1", "32.0","200108", false),
+    Row("2.1", "32.0", "12/09/1998", false),
+    Row("3.0", "6.0","12\\09\\1998", false),
+    Row("4.0", "52.0","12/09/1998", false),
+    Row("4.0", "52.0","12/09/1998", false),
+    Row("4.0", "52.0","12/09/1998", false)
   )
 
   val someSchema = List(
     StructField("c1", StringType, true),
     StructField("c2", DoubleType, true),
     StructField("c3", IntegerType, true),
-    StructField("c3", BooleanType, true)
+    StructField("c4", BooleanType, true)
   )
   var inputDF = spark.createDataFrame(
     spark.sparkContext.parallelize(someData),
@@ -33,8 +33,12 @@ object DataTypeDF extends App {
   )
 
   val inputDFCols:Array[String] = inputDF.columns
-  val columnDataTypes : Array[String] = inputDF.schema.fields.map(x=>x.dataType).map(x=>x.toString)
+  //inputDFCols foreach println
 
+  //println("**********************************************")
+  val columnDataTypes : Array[String] = inputDF.schema.fields.map(x=>x.dataType).map(x=>x.toString)
+  //columnDataTypes foreach println
+  //println("**********************************************")
   val res: Array[(String, String)] = inputDFCols zip columnDataTypes
   res foreach println
 
