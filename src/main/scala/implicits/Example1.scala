@@ -64,3 +64,13 @@ object Example6 extends App {
   alert(70)
 
 }
+
+object Example7 extends App {
+
+  implicit def strToInt[T](x:T) = x match {
+    case s: String => s.toInt
+  }
+
+  val x:Int = "200"
+  println(x)
+}
