@@ -2,6 +2,7 @@ package generics.covariance
 
 //https://www.journaldev.com/9585/scala-variances-covariant-invariant-contravariant
 object Program1 extends App {
+
   class Animal(name: String)
   class Dog(name: String) extends Animal(name)
 
@@ -28,4 +29,5 @@ object Program1 extends App {
 
   m1(c1)
   m1(c2)
+
 }
