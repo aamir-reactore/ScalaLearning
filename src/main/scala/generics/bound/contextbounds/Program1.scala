@@ -75,7 +75,7 @@ object ContextBounds6 extends App {
 
   implicit def sToInt(s: String) = s.toInt
   val res: Int = foo(202)
-  
+
 
   val result: Int = foo[String, Int]("202")
 
