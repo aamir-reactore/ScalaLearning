@@ -27,7 +27,7 @@ object EmptySpaceReplaceByQuote extends App {
     StructType(someSchema1)
   )
 
-  val l = List(3,5,7,9,166,522)
+  val l:List[Any] = List(3,5,7,9,166,522)
   val df = df1.filter(col("zs_recId_x").isin(l: _*) || col("zs_recId_y").isin(l: _*))
   df.show(false)
 

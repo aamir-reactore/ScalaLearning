@@ -21,7 +21,7 @@ object KennyTrial extends App {
   val kennyDad = system.actorOf(Props[KennysDad], name ="Kenny'sDad")
   val poorKenny = system.actorSelection("/user/Kenny'sDad/Kenny")
 
-  poorKenny.tell("hey kenny whatz up!!!",Actor.noSender)
+  poorKenny.tell("hey kenny whatz up!!!", Actor.noSender)
   poorKenny ! PoisonPill
 
   Thread.sleep(5000)

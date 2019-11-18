@@ -1,6 +1,6 @@
 package generics.constraints
 
-//https://stackoverflow.com/questions/30365846/why-are-input-parameters-contravariant-in-methods
+
 object ConvariantUsedInContravariantPosition extends App {
 
   case class KashList[+T](h: T, t: KashList[T]) {

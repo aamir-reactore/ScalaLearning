@@ -18,8 +18,10 @@ object Program1 extends App {
   val d = new Dog
   val p = new Puppy
 
+  class X extends Dog
   new AnimalCarer().display(d)
   new AnimalCarer().display(p)
+  new AnimalCarer().display(new X()) // because its a Dog
   //new AnimalCarer().display(a)
 
 }

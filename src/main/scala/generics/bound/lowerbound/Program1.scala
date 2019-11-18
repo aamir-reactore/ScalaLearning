@@ -26,8 +26,20 @@ object Program1 extends App {
   val d = new Dog
   val p = new Puppy
 
-  new AnimalCarer().display(d)
-  new AnimalCarer().display(p)
-  new AnimalCarer().display(a)
+  class SomeSubTypeOfAnimal extends Animal {
+    override def name: String = "some sub class"
+  }
+  val someSubClassAnimal = new SomeSubTypeOfAnimal()
+
+  class SubClassOfPuppy extends Puppy {
+    override def name = "subclassofputty"
+  }
+  val subClassPuppy = new SubClassOfPuppy()
+
+  new AnimalCarer().display(d) //dog, puppys superclass
+  new AnimalCarer().display(p) // puppy itself
+  new AnimalCarer().display(a) // animal superclass of Dog
+  new AnimalCarer().display(someSubClassAnimal) // its also an animal
+  new AnimalCarer().display(subClassPuppy) // becoz its a puppy
 
 }

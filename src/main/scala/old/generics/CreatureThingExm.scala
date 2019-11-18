@@ -1,3 +1,4 @@
+/*
 package generics
 
 class Thing
@@ -14,12 +15,12 @@ class Home[T >: Creature] {
 object CreatureExample extends App {
 
    val thing1 = new Home[Thing]
-   //val dog1 = new Home[Dog] //CTE
+   val dog1 = new Home[Dog] //CTE
   val c1 = new Home[Creature]
-  //val d1 = new Home[Dog] CTE
 
   thing1.process(new Thing) // T must be Thing in process method
   thing1.process(new Creature) // creature is b.a thing as it extends it
   thing1.process(new Human) // human is b.a thing as it extends Creature that extends Thing
 }
 
+*/
