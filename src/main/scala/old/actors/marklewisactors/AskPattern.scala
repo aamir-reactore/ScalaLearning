@@ -27,7 +27,7 @@ import scala.util.{Failure, Success}
 
   askResponse.foreach(x => println(s"Name is $x"))
 }*/
-/*
+
 object AskPattern2 extends App {
 import akka.pattern.pipe
   import scala.concurrent.ExecutionContext.Implicits.global
@@ -46,7 +46,7 @@ import akka.pattern.pipe
     }
   }
   val system = ActorSystem("AskPatternActorSystem")
-  val actor = system.actorOf(Props(new AskActor("jimmyactor")), "AskActor1")
+  val actor: ActorRef = system.actorOf(Props(new AskActor("jimmyactor")), "AskActor1")
   implicit val timeOut = Timeout(2.seconds)
   val askResponse: Future[NameResponse] = (actor ? AskName).mapTo[NameResponse]
 
@@ -54,7 +54,7 @@ import akka.pattern.pipe
 
   val askResponsePiping1: Future[Any] = (actor ? AskName).pipeTo(actor)
   val askResponsePiping2: Future[NameResponse] = askResponse pipeTo actor
-  askResponsePiping2.foreach(x => println(s"After piping, Name is ${x.name}"))
+ // askResponsePiping2.foreach(x => println(s"After piping, Name is ${x.name}"))
 
 
   /*  def pipeTo[T](recipient: ActorRef, future: Future[T])(implicit sender: ActorRef = Actor.noSender): Future[T] = {
@@ -63,7 +63,7 @@ import akka.pattern.pipe
         case Failure(f) ⇒ println("failure")
       }
     }*/
-}*/
+}
 
 /*object AskPattern3 extends App {
 import akka.pattern.ask

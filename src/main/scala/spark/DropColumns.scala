@@ -1,5 +1,6 @@
 package spark
 
+import org.apache.spark.sql.functions.{lit, udf, col}
 import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
 
@@ -26,10 +27,17 @@ object DropColumns extends App {
     StructType(someSchema1)
   )
 
-  df1.show(false)
-  val dropCols = List("c2")
-  val df = df1.drop(dropCols:_*)
+  val udf1 = udf((bucketScore: Double) => {
+    bucketScore + 2.0
+  })
+  df1 = df1.withColumn("zs_bucket1_similarity_adjustment", lit("0"))
+  df1 = df1.withColumn("zs_bucket1_similarity_adjustment", udf1(col("zs_bucket1_similarity_adjustment")))
 
-  println("\n****************************************************************************\n")
-  df.show(false)
+  df1.show
+  df1 = df1.withColumn("zs_bucket1_similarity_adjustment", lit("0"))
+
+  df1 = df1.withColumn("zs_bucket1_similarity_adjustment", udf1(col("zs_bucket1_similarity_adjustment")))
+  println("\n\n****************************************\n\n")
+  df1.show
+
 }

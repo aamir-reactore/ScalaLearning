@@ -7,7 +7,7 @@ object unsupervisedtesting extends App {
 
   def createRuleDataFrame = {
     var zs_rules_framework_df = spark.emptyDataFrame
-    val rulesList = List(
+    val rulesList: List[(Int, String, String, String, String, String)] = List(
       (1, "Institution", "zs_full_name", "similar", "zs_lei", "exact"),
       (2, "Institution", "zs_full_name", "similar", "zs_tax_identifier", "exact"),
       (3, "Institution", "zs_full_name", "similar", "zs_avox", "exact"),
@@ -41,4 +41,5 @@ object unsupervisedtesting extends App {
     zs_rules_framework_df = spark.createDataFrame(rulesList).toDF("zs_rule_number", "zs_entity_type", "zs_attribute_1", "zs_match_condition_1", "zs_attribute_2", "zs_match_condition_2")
     zs_rules_framework_df.show(false)
   }
+  createRuleDataFrame
 }

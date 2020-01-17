@@ -44,5 +44,10 @@ object WindowsByFunction extends App {
   val win_cluster = Window.partitionBy("Continent", "zs_cluster_id")
   df = df.drop("id")
   df = df.withColumn("zs_total_records", count("Continent").over(win_cluster)).distinct
+
+  val win = Window.partitionBy("Continent")
+  val countPerValue = count("Continent").over(win).as("zs_distinct_count")
+  val newdf = df.select(col("Continent").as("zs_attribute_value"), countPerValue).dropDuplicates()
   df.show(false)
+  newdf.show(false)
 }

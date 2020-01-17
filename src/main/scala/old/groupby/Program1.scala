@@ -4,7 +4,7 @@ object Program1 extends App {
 
    val l = List("Red", "Blue","Yellow","Red","Blue","Red","Yellow","Yellow","Red","Yellow","Red")
 
-   val r: Map[String, Int] = l.groupBy(identity).map(x => (x._1, x._2.length))
+   val r= l.groupBy(identity)//.map(x => (x._1, x._2.length))
 
    println("Input list = " + l)
    println("output = " + r)

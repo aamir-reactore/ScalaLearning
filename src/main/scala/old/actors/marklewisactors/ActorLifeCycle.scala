@@ -66,11 +66,11 @@ object ActorSupervision1 extends App {
 
   val actSel = system.actorSelection("/user/ParentActor1/child-0")
   actSel ! DivideByZero(4, 0)
-  actSel ! DivideByZero(4, 2)
+  //actSel ! DivideByZero(4, 2)
   Thread.sleep(1000)
   println("Nothing happens by above two statements, as Resume executes in supervisor strategy")
   println("Now, Restart actor when BadStuff happens")
-  actSel ! BadStuff
+  //actSel ! BadStuff
 
 }
 /**
